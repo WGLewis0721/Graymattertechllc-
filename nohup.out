@@ -1,0 +1,4 @@
+127.0.0.1 - - [10/Mar/2026 23:13:05] "HEAD /cloud-consulting.html HTTP/1.1" 200 -
+127.0.0.1 - - [10/Mar/2026 23:13:08] "GET /cloud-consulting.html HTTP/1.1" 200 -
+127.0.0.1 - - [10/Mar/2026 23:13:08] "GET /css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [10/Mar/2026 23:13:08] "GET /js/main.js HTTP/1.1" 200 -
