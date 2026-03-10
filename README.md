@@ -1,16 +1,16 @@
-# WD Digital Solutions — Business Website
+# Gray Matter LLC — Business Website
 
-A complete multi-page static business website for **WD Digital Solutions**, a web design and development freelance brand serving coaches, trainers, barbers, and entrepreneurs.
+A complete multi-page static business website for **Gray Matter LLC**, a digital solutions and technology consulting company offering web design, booking systems, e-commerce, and cloud / IT consulting (including 1099 contract engagements).
 
 ## Pages
 
 | File | Description |
 |------|-------------|
 | `index.html` | Home — hero, proof bar, services overview, featured work, CTA |
-| `services.html` | Services — detailed breakdown of all five service offerings |
+| `services.html` | Services — web services + cloud consulting (infrastructure, security, IT, DevOps) |
 | `portfolio.html` | Portfolio — filterable project grid with category filters |
-| `pricing.html` | Pricing — three-tier plans, add-ons, FAQ accordion |
-| `contact.html` | Contact — project inquiry form with validation, contact sidebar |
+| `pricing.html` | Pricing — three-tier web plans, add-ons, FAQ accordion |
+| `contact.html` | Contact — project inquiry form (web + cloud options), contact sidebar |
 | `agreement.html` | Client Agreement — full 8-section service terms document |
 
 ## Tech Stack
@@ -57,9 +57,15 @@ A complete multi-page static business website for **WD Digital Solutions**, a we
 - Mobile-first responsive grid system (1 → 2 → 3/4 columns)
 - Teal radial gradient hero with decorative glows
 
-## Getting Started
+## GitHub Pages Deployment
 
-No build step required. Simply open `index.html` in your browser or serve with any static file server:
+1. Push this repository to GitHub
+2. Go to **Settings → Pages**
+3. Under **Source**, select **Deploy from a branch**
+4. Choose `main` (or your working branch) and `/ (root)` as the folder
+5. Click **Save** — your site will be live at `https://<username>.github.io/<repo-name>/`
+
+No build step required. Simply open `index.html` in your browser or serve locally:
 
 ```bash
 # Using Python
@@ -74,5 +80,6 @@ npx serve .
 - [ ] Replace `hello@yourdomainhere.com` with your real email address
 - [ ] Update social media `href="#"` links with real profile URLs
 - [ ] Swap placeholder `picsum.photos` images with real project screenshots
-- [ ] Update the footer copyright year and company name if needed
+- [ ] Update the footer copyright year if needed
 - [ ] Replace the contact form with a real form backend (Formspree, Netlify Forms, etc.)
+- [ ] Update cloud consulting service descriptions with specific certifications or tooling expertise
