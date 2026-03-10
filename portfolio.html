@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gray Matter LLC — Portfolio of web design and development projects for fitness brands, food businesses, beauty clients, and personal brands." />
+  <title>Portfolio | Gray Matter LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">Gray Matter <span>LLC</span></a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="agreement.html">Agreement</a></li>
+        <li><a href="contact.html" class="btn btn-primary btn-sm">Contact</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="agreement.html">Agreement</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header text-center">
+    <div class="container">
+      <span class="section-label">Portfolio</span>
+      <h1>Work I've Built</h1>
+      <p>Real projects for real businesses — from fitness coaches to food brands and personal brand creators. Every site built with purpose.</p>
+    </div>
+  </header>
+
+  <!-- PORTFOLIO SECTION -->
+  <section class="section-pad" style="background:#0f172a;">
+    <div class="container">
+
+      <!-- FILTER BAR -->
+      <div class="filter-bar" role="group" aria-label="Filter projects by category">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="fitness">Fitness</button>
+        <button class="filter-btn" data-filter="food">Food</button>
+        <button class="filter-btn" data-filter="beauty">Beauty</button>
+        <button class="filter-btn" data-filter="personal-brand">Personal Brand</button>
+        <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+      </div>
+
+      <!-- PROJECTS GRID -->
+      <div class="projects-grid">
+
+        <!-- FitLife Pro (fitness) -->
+        <div class="project-card fade-up" data-category="fitness">
+          <img src="https://picsum.photos/seed/fitlife/600/400" alt="FitLife Pro coaching website" loading="lazy" />
+          <div class="project-card-body">
+            <span class="project-tag">Fitness</span>
+            <h3>FitLife Pro</h3>
+            <p>Full coaching website with class schedules, trainer bios, and integrated appointment booking for personal training sessions.</p>
+            <a href="contact.html" class="btn btn-sm btn-outline">View Project <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- CleenCuts Barbershop (fitness category as instructed: cleencuts = fitness) -->
+        <div class="project-card fade-up" data-category="fitness">
+          <img src="https://picsum.photos/seed/cleencuts/600/400" alt="CleenCuts Barbershop website" loading="lazy" />
+          <div class="project-card-body">
+            <span class="project-tag">Barbershop</span>
+            <h3>CleenCuts Barbershop</h3>
+            <p>Sleek barbershop site featuring a service menu, barber profiles, gallery, and an online booking flow powered by Square Appointments.</p>
+            <a href="contact.html" class="btn btn-sm btn-outline">View Project <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Glow by Renee (beauty) -->
+        <div class="project-card fade-up" data-category="beauty">
+          <img src="https://picsum.photos/seed/glowrenee/600/400" alt="Glow by Renee esthetics website" loading="lazy" />
+          <div class="project-card-body">
+            <span class="project-tag">Beauty</span>
+            <h3>Glow by Renee</h3>
+            <p>A luxury esthetics brand site with a service menu, client gallery, testimonials, and seamless online booking for spa appointments.</p>
+            <a href="contact.html" class="btn btn-sm btn-outline">View Project <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Chef Keisha (food) -->
+        <div class="project-card fade-up" data-category="food">
+          <img src="https://picsum.photos/seed/chefkeisha/600/400" alt="Chef Keisha catering website" loading="lazy" />
+          <div class="project-card-body">
+            <span class="project-tag">Food</span>
+            <h3>Chef Keisha</h3>
+            <p>A vibrant catering and private chef website with a rotating menu showcase, event inquiry form, and digital gift card store.</p>
+            <a href="contact.html" class="btn btn-sm btn-outline">View Project <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Marcus Makes Moves (fitness / personal brand) -->
+        <div class="project-card fade-up" data-category="fitness">
+          <img src="https://picsum.photos/seed/marcusmoves/600/400" alt="Marcus Makes Moves fitness brand website" loading="lazy" />
+          <div class="project-card-body">
+            <span class="project-tag">Fitness</span>
+            <h3>Marcus Makes Moves</h3>
+            <p>Personal training and lifestyle brand site for an athlete-turned-coach. Features transformation gallery, online program store, and coaching packages.</p>
+            <a href="contact.html" class="btn btn-sm btn-outline">View Project <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- The Hustle Journal (personal-brand) -->
+        <div class="project-card fade-up" data-category="personal-brand">
+          <img src="https://picsum.photos/seed/hustlejournal/600/400" alt="The Hustle Journal personal brand website" loading="lazy" />
+          <div class="project-card-body">
+            <span class="project-tag">Personal Brand</span>
+            <h3>The Hustle Journal</h3>
+            <p>Personal brand site for an entrepreneur and content creator — blog, newsletter opt-in, digital product store, and speaking inquiry page.</p>
+            <a href="contact.html" class="btn btn-sm btn-outline">View Project <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="container">
+      <span class="section-label">Your Project Next</span>
+      <h2>Ready to Add Your Site Here?</h2>
+      <p>Let's build something you're proud to show off. Reach out and let's talk about your vision.</p>
+      <div class="btn-actions">
+        <a href="contact.html" class="btn btn-primary btn-lg">Start a Project <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="pricing.html" class="btn btn-outline btn-lg">View Pricing</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">Gray Matter <span>LLC</span></a>
+          <p>Building digital experiences and cloud solutions for businesses, entrepreneurs, and independent professionals.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigate</h5>
+          <ul role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="agreement.html">Agreement</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul role="list">
+            <li><a href="services.html">Business Websites</a></li>
+            <li><a href="services.html">Booking Systems</a></li>
+            <li><a href="services.html">E-Commerce</a></li>
+            <li><a href="services.html">Personal Brand</a></li>
+            <li><a href="services.html">Cloud Consulting</a></li>
+            <li><a href="services.html">Cloud Security</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Connect</h5>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          </div>
+          <p style="margin-top:1rem;font-size:0.85rem;color:#475569;">hello@yourdomainhere.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Gray Matter LLC. All rights reserved.</p>
+        <p>Built with purpose, launched with precision.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

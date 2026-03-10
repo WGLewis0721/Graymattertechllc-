@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gray Matter LLC — Contact us to start your project. Web design, booking systems, e-commerce, cloud consulting, and more." />
+  <title>Contact | Gray Matter LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">Gray Matter <span>LLC</span></a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="agreement.html">Agreement</a></li>
+        <li><a href="contact.html" class="btn btn-primary btn-sm">Contact</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="agreement.html">Agreement</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header text-center">
+    <div class="container">
+      <span class="section-label">Get in Touch</span>
+      <h1>Let's Build Something</h1>
+      <p>Have a project in mind, need cloud consulting support, or just want to explore your options? Fill out the form and I'll get back to you within 24 hours.</p>
+    </div>
+  </header>
+
+  <!-- CONTACT SECTION -->
+  <section class="section-pad" style="background:#0f172a;">
+    <div class="container">
+      <div class="contact-layout">
+
+        <!-- CONTACT FORM -->
+        <div class="contact-form-wrap fade-up">
+          <h2 style="font-size:1.4rem;margin-bottom:0.5rem;">Project Inquiry</h2>
+          <p style="margin-bottom:2rem;font-size:0.95rem;">Tell me about your business and what you're looking to build. The more detail, the better.</p>
+
+          <form id="contact-form" novalidate>
+
+            <div class="form-group">
+              <label for="name">Full Name <span style="color:#f87171;">*</span></label>
+              <input type="text" id="name" name="name" placeholder="e.g. Jordan Smith" required />
+              <span class="form-error-msg">Please enter your full name.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address <span style="color:#f87171;">*</span></label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required />
+              <span class="form-error-msg">Please enter a valid email address.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number <span style="color:#64748b;font-size:0.8rem;">(optional)</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" />
+            </div>
+
+            <div class="form-group">
+              <label for="service">Service Interested In <span style="color:#f87171;">*</span></label>
+              <select id="service" name="service" required>
+                <option value="" disabled selected>Select a service…</option>
+                <optgroup label="Web &amp; Digital">
+                  <option value="business-website">Business Website</option>
+                  <option value="booking-integration">Booking Integration</option>
+                  <option value="ecommerce">E-Commerce / Digital Products</option>
+                  <option value="personal-brand">Personal Brand Website</option>
+                  <option value="full-platform">Full Digital Platform</option>
+                </optgroup>
+                <optgroup label="Cloud &amp; IT Consulting">
+                  <option value="cloud-infrastructure">Cloud Infrastructure</option>
+                  <option value="cloud-security">Cloud Security Consulting</option>
+                  <option value="it-consulting">IT Consulting</option>
+                  <option value="devops">DevOps &amp; Automation</option>
+                </optgroup>
+                <option value="not-sure">Not Sure Yet — Help Me Decide</option>
+              </select>
+              <span class="form-error-msg">Please select a service.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="description">Project Description <span style="color:#f87171;">*</span></label>
+              <textarea id="description" name="description" placeholder="Tell me about your business, what you need, and any goals or deadlines you have in mind…" required></textarea>
+              <span class="form-error-msg">Please describe your project.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="referral">How Did You Hear About Me? <span style="color:#64748b;font-size:0.8rem;">(optional)</span></label>
+              <select id="referral" name="referral">
+                <option value="" disabled selected>Select one…</option>
+                <option value="instagram">Instagram</option>
+                <option value="facebook">Facebook</option>
+                <option value="google">Google Search</option>
+                <option value="referral">Referral from a Friend</option>
+                <option value="linkedin">LinkedIn</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;margin-top:0.5rem;">
+              Send My Inquiry <i class="fa-solid fa-paper-plane"></i>
+            </button>
+
+          </form>
+
+          <!-- SUCCESS MESSAGE -->
+          <div class="form-success" id="form-success" role="alert" aria-live="polite">
+            <i class="fa-solid fa-circle-check"></i>
+            <h3>Message Sent!</h3>
+            <p>Thanks for reaching out. I'll review your project details and get back to you within 24 hours. Keep an eye on your inbox!</p>
+          </div>
+
+        </div>
+
+        <!-- CONTACT INFO SIDEBAR -->
+        <div class="contact-info-box fade-up">
+
+          <div>
+            <span class="section-label" style="margin-bottom:1.25rem;display:block;">Contact Info</span>
+
+            <div class="contact-detail">
+              <div class="icon-wrap"><i class="fa-solid fa-envelope"></i></div>
+              <div>
+                <h4>Email</h4>
+                <a href="mailto:hello@yourdomainhere.com">hello@yourdomainhere.com</a>
+              </div>
+            </div>
+
+            <div class="contact-detail" style="margin-top:1.25rem;">
+              <div class="icon-wrap"><i class="fa-solid fa-clock"></i></div>
+              <div>
+                <h4>Response Time</h4>
+                <p>Within 24 hours, Monday – Friday</p>
+              </div>
+            </div>
+
+            <div class="contact-detail" style="margin-top:1.25rem;">
+              <div class="icon-wrap"><i class="fa-solid fa-globe"></i></div>
+              <div>
+                <h4>Location</h4>
+                <p>Remote — serving clients nationwide</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- WHAT TO EXPECT -->
+          <div style="background:#1e293b;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1.75rem;margin-top:0.5rem;">
+            <h4 style="margin-bottom:1rem;">What Happens Next</h4>
+            <ul style="display:flex;flex-direction:column;gap:1rem;">
+              <li style="display:flex;align-items:flex-start;gap:0.75rem;">
+                <span style="width:26px;height:26px;background:rgba(20,184,166,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#14b8a6;flex-shrink:0;">1</span>
+                <div>
+                  <p style="font-size:0.85rem;font-weight:600;color:#f8fafc;margin-bottom:0.15rem;">I Review Your Inquiry</p>
+                  <p style="font-size:0.82rem;">Within 24 hours I'll read through your project details and prepare questions.</p>
+                </div>
+              </li>
+              <li style="display:flex;align-items:flex-start;gap:0.75rem;">
+                <span style="width:26px;height:26px;background:rgba(20,184,166,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#14b8a6;flex-shrink:0;">2</span>
+                <div>
+                  <p style="font-size:0.85rem;font-weight:600;color:#f8fafc;margin-bottom:0.15rem;">Discovery Call or Email</p>
+                  <p style="font-size:0.82rem;">We'll have a quick call or email exchange to nail down your goals, timeline, and budget.</p>
+                </div>
+              </li>
+              <li style="display:flex;align-items:flex-start;gap:0.75rem;">
+                <span style="width:26px;height:26px;background:rgba(20,184,166,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#14b8a6;flex-shrink:0;">3</span>
+                <div>
+                  <p style="font-size:0.85rem;font-weight:600;color:#f8fafc;margin-bottom:0.15rem;">Proposal &amp; Agreement</p>
+                  <p style="font-size:0.82rem;">I'll send over a project proposal, pricing, and client agreement to sign before we begin.</p>
+                </div>
+              </li>
+              <li style="display:flex;align-items:flex-start;gap:0.75rem;">
+                <span style="width:26px;height:26px;background:rgba(20,184,166,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#14b8a6;flex-shrink:0;">4</span>
+                <div>
+                  <p style="font-size:0.85rem;font-weight:600;color:#f8fafc;margin-bottom:0.15rem;">We Build &amp; Launch</p>
+                  <p style="font-size:0.82rem;">Deposit is paid, work begins, and your site goes live on schedule.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- SOCIAL LINKS -->
+          <div>
+            <h4 style="margin-bottom:1rem;">Follow Along</h4>
+            <div class="social-links">
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">Gray Matter <span>LLC</span></a>
+          <p>Building digital experiences and cloud solutions for businesses, entrepreneurs, and independent professionals.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigate</h5>
+          <ul role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="agreement.html">Agreement</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul role="list">
+            <li><a href="services.html">Business Websites</a></li>
+            <li><a href="services.html">Booking Systems</a></li>
+            <li><a href="services.html">E-Commerce</a></li>
+            <li><a href="services.html">Personal Brand</a></li>
+            <li><a href="services.html">Cloud Consulting</a></li>
+            <li><a href="services.html">Cloud Security</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Connect</h5>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          </div>
+          <p style="margin-top:1rem;font-size:0.85rem;color:#475569;">hello@yourdomainhere.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Gray Matter LLC. All rights reserved.</p>
+        <p>Built with purpose, launched with precision.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
