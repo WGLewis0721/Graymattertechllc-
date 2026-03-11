@@ -2,6 +2,8 @@
 
 A complete multi-page static business website for **Gray Matter LLC**, a digital solutions and technology consulting company offering web design, booking systems, e-commerce, and cloud / IT consulting (including 1099 contract engagements).
 
+https://wglewis0721.github.io/Graymattertechllc-/
+
 ## Pages
 
 | File | Description |
