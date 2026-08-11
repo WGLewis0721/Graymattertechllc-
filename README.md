@@ -1,6 +1,6 @@
-# Gray Matter LLC — Business Website
+# Gray Matter — Digital & Technology Solutions
 
-A complete multi-page static business website for **Gray Matter LLC**, a digital solutions and technology consulting company offering web design, booking systems, e-commerce, and cloud / IT consulting (including 1099 contract engagements).
+A complete multi-page static business website for **Gray Matter**, a digital and technology solutions company offering web design, booking systems, e-commerce, automation, and cloud, security &amp; DevOps consulting (including 1099 contract engagements).
 
 https://wglewis0721.github.io/Graymattertechllc-/
 
@@ -8,12 +8,15 @@ https://wglewis0721.github.io/Graymattertechllc-/
 
 | File | Description |
 |------|-------------|
-| `index.html` | Home — hero, proof bar, services overview, featured work, CTA |
-| `services.html` | Services — web services + cloud consulting (infrastructure, security, IT, DevOps) |
+| `index.html` | Home — hero, proof bar, 8-category services overview, How We Work preview, featured work, CTA |
+| `services.html` | Services — 8 categories (web design, booking, e-commerce, automation, cloud infrastructure, security, DevOps, technology consulting) |
+| `process.html` | How We Work — the 8-step "tech fit to finished solution" roadmap, ends in a business-inquiry CTA |
+| `cloud-consulting.html` | Cloud Consulting — cloud infrastructure, security, DevOps, and technology consulting for 1099/contract engagements |
 | `portfolio.html` | Portfolio — filterable project grid with category filters |
 | `pricing.html` | Pricing — three-tier web plans, add-ons, FAQ accordion |
 | `contact.html` | Contact — project inquiry form (web + cloud options), contact sidebar |
 | `agreement.html` | Client Agreement — full 8-section service terms document |
+| `sops.html` | Standard Operating Procedures — documented client-journey processes |
 
 ## Tech Stack
 
@@ -28,10 +31,15 @@ https://wglewis0721.github.io/Graymattertechllc-/
 /
 ├── index.html
 ├── services.html
+├── process.html
+├── cloud-consulting.html
 ├── portfolio.html
 ├── pricing.html
 ├── contact.html
 ├── agreement.html
+├── sops.html
+├── robots.txt
+├── sitemap.xml
 ├── css/
 │   └── style.css
 └── js/

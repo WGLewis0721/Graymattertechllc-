@@ -1,6 +1,6 @@
 /* === RESET & BASE === */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; font-size: 16px; }
 body {
   font-family: 'DM Sans', sans-serif;
   background: #0f172a;
@@ -52,7 +52,7 @@ p { color: #94a3b8; }
 .nav-container { display: flex; align-items: center; justify-content: space-between; }
 .nav-logo { font-family: 'Syne', sans-serif; font-size: 1.35rem; font-weight: 800; color: #f8fafc; }
 .nav-logo span { color: #14b8a6; }
-.nav-links { display: none; gap: 2rem; align-items: center; }
+.nav-links { display: none; gap: clamp(1rem, 1.8vw, 2rem); align-items: center; flex-wrap: wrap; justify-content: flex-end; row-gap: 0.5rem; }
 .nav-links a { font-size: 0.9rem; font-weight: 500; color: #94a3b8; transition: color 0.2s; position: relative; padding-bottom: 2px; }
 .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #14b8a6; transition: width 0.2s; }
 .nav-links a:hover, .nav-links a.active { color: #f8fafc; }
@@ -118,7 +118,7 @@ p { color: #94a3b8; }
 .cta-banner .btn-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
 /* === SERVICES PAGE === */
-.service-card { background: #1e293b; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 2.5rem; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column; gap: 1rem; }
+.service-card { background: #1e293b; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 2.5rem; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column; gap: 1rem; scroll-margin-top: 90px; }
 .service-card:hover { transform: translateY(-4px); border-color: rgba(20,184,166,0.3); box-shadow: 0 12px 36px rgba(0,0,0,0.3); }
 .service-card .card-icon { width: 60px; height: 60px; background: rgba(20,184,166,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
 .service-card .card-icon i { font-size: 1.6rem; color: #14b8a6; }
@@ -238,7 +238,93 @@ footer { background: #0a0f1e; border-top: 1px solid rgba(255,255,255,0.06); padd
 .fade-up:nth-child(3) { transition-delay: 0.2s; }
 .fade-up:nth-child(4) { transition-delay: 0.3s; }
 
+/* === BREADCRUMBS === */
+.breadcrumbs { font-size: 0.82rem; color: #64748b; margin-bottom: 1.25rem; }
+.breadcrumbs a { color: #94a3b8; transition: color 0.2s; }
+.breadcrumbs a:hover { color: #14b8a6; }
+.breadcrumbs span[aria-current] { color: #14b8a6; font-weight: 600; }
+
 /* === PAGE HEADER (inner pages) === */
 .page-header { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 8rem 0 4rem; }
 .page-header.text-center { text-align: center; }
 .page-header p { max-width: 600px; margin: 0.75rem auto 0; }
+
+/* === ACCESSIBILITY: FOCUS VISIBLE === */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.filter-btn:focus-visible,
+.faq-question:focus-visible {
+  outline: 2px solid #5eead4;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .fade-up { opacity: 1; transform: none; transition: none; }
+  .card:hover, .project-card:hover, .service-card:hover, .pricing-card:hover,
+  .btn-primary:hover, .btn-outline:hover, .project-card:hover img,
+  .roadmap-step:hover .roadmap-card { transform: none; }
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* === SERVICE CATEGORY GROUPS (services.html / cloud-consulting.html) === */
+.service-group { margin-bottom: 3.5rem; scroll-margin-top: 90px; }
+.service-group:last-child { margin-bottom: 0; }
+.service-group-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.service-group-header .group-icon { width: 46px; height: 46px; flex-shrink: 0; background: rgba(20,184,166,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+.service-group-header .group-icon i { font-size: 1.2rem; color: #14b8a6; }
+.service-group-header h2, .service-group-header h3 { font-size: 1.3rem; margin-bottom: 0.3rem; }
+.service-group-header p { font-size: 0.92rem; color: #94a3b8; margin: 0; max-width: 560px; }
+.category-toc { display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin-top: 2rem; }
+@media (min-width: 640px) { .category-toc { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) { .category-toc { grid-template-columns: repeat(4, 1fr); } }
+.category-toc a { display: flex; align-items: center; gap: 0.65rem; background: #1e293b; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 0.85rem 1rem; font-size: 0.88rem; font-weight: 600; color: #f8fafc; transition: border-color 0.2s, color 0.2s, transform 0.2s; min-height: 44px; }
+.category-toc a:hover { border-color: rgba(20,184,166,0.4); color: #14b8a6; transform: translateY(-2px); }
+.category-toc a i { color: #14b8a6; font-size: 1rem; flex-shrink: 0; }
+
+/* === HOMEPAGE: HOW WE WORK PREVIEW === */
+.how-we-work { background: #0f172a; }
+.milestone-row { display: grid; grid-template-columns: 1fr; gap: 1.25rem; align-items: stretch; margin: 2.5rem 0; }
+@media (min-width: 768px) { .milestone-row { grid-template-columns: repeat(4, 1fr); gap: 0; } }
+.milestone { background: #0f172a; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem 1.25rem; text-align: center; position: relative; }
+@media (min-width: 768px) { .milestone { border-radius: 0; border-right: none; } .milestone:first-child { border-radius: 12px 0 0 12px; } .milestone:last-child { border-radius: 0 12px 12px 0; border-right: 1px solid rgba(255,255,255,0.08); } }
+.milestone-num { width: 34px; height: 34px; margin: 0 auto 0.85rem; background: rgba(20,184,166,0.12); border: 1px solid rgba(20,184,166,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-weight: 700; color: #14b8a6; font-size: 0.95rem; }
+.milestone h4 { font-size: 0.98rem; margin-bottom: 0.35rem; }
+.milestone p { font-size: 0.82rem; margin: 0; }
+.milestone-connector { display: none; }
+@media (min-width: 768px) {
+  .milestone-connector { display: flex; align-items: center; justify-content: center; color: #14b8a6; font-size: 1.1rem; position: absolute; top: 50%; right: -1px; transform: translate(50%, -50%); width: 26px; height: 26px; background: #1e293b; border-radius: 50%; z-index: 2; }
+}
+.how-we-work-cta { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 1rem; }
+
+/* === PROCESS ROADMAP PAGE === */
+.roadmap-hero { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 8rem 0 4rem; text-align: center; }
+.roadmap-section { background: #0f172a; }
+.roadmap-list { list-style: none; position: relative; max-width: 900px; margin: 3rem auto 0; display: flex; flex-direction: column; gap: 2.5rem; }
+.roadmap-list::before { content: ''; position: absolute; top: 0; bottom: 0; left: 27px; width: 2px; background: linear-gradient(180deg, rgba(20,184,166,0.5), rgba(20,184,166,0.1)); }
+.roadmap-step { position: relative; display: grid; grid-template-columns: 56px 1fr; gap: 1.25rem; align-items: start; }
+.roadmap-step-num { width: 56px; height: 56px; background: #1e293b; border: 2px solid #14b8a6; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.3rem; color: #14b8a6; flex-shrink: 0; position: relative; z-index: 1; }
+.roadmap-card { background: #1e293b; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.75rem 2rem; transition: border-color 0.25s ease, transform 0.25s ease; }
+.roadmap-step:hover .roadmap-card { border-color: rgba(20,184,166,0.35); transform: translateY(-2px); }
+.roadmap-card .roadmap-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: #14b8a6; display: block; margin-bottom: 0.4rem; }
+.roadmap-card h3 { font-size: 1.15rem; margin-bottom: 0.6rem; }
+.roadmap-card p { font-size: 0.92rem; margin: 0; }
+
+@media (min-width: 900px) {
+  .roadmap-list { max-width: 1000px; }
+  .roadmap-list::before { left: 50%; transform: translateX(-50%); }
+  .roadmap-step { grid-template-columns: 1fr 56px 1fr; gap: 2rem; }
+  .roadmap-step-num { grid-column: 2; justify-self: center; }
+  .roadmap-step .roadmap-card { grid-column: 1; grid-row: 1; }
+  .roadmap-step:nth-child(even) .roadmap-card { grid-column: 3; text-align: left; }
+  .roadmap-step:nth-child(odd) .roadmap-card { text-align: right; }
+}
+
+.process-cta-box { background: rgba(20,184,166,0.07); border: 1px solid rgba(20,184,166,0.2); border-radius: 14px; padding: 3rem 2rem; text-align: center; margin-top: 4rem; }
+.process-cta-box h2 { margin-bottom: 0.85rem; }
+.process-cta-box p { max-width: 560px; margin: 0 auto 1.75rem; }
