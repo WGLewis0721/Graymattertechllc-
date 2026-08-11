@@ -238,6 +238,12 @@ footer { background: #0a0f1e; border-top: 1px solid rgba(255,255,255,0.06); padd
 .fade-up:nth-child(3) { transition-delay: 0.2s; }
 .fade-up:nth-child(4) { transition-delay: 0.3s; }
 
+/* === BREADCRUMBS === */
+.breadcrumbs { font-size: 0.82rem; color: #64748b; margin-bottom: 1.25rem; }
+.breadcrumbs a { color: #94a3b8; transition: color 0.2s; }
+.breadcrumbs a:hover { color: #14b8a6; }
+.breadcrumbs span[aria-current] { color: #14b8a6; font-weight: 600; }
+
 /* === PAGE HEADER (inner pages) === */
 .page-header { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 8rem 0 4rem; }
 .page-header.text-center { text-align: center; }

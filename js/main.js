@@ -101,6 +101,13 @@
   const requiredFields = form.querySelectorAll('[required]');
   const successMsg = document.getElementById('form-success');
 
+  // Preselect the service dropdown when linked from a service page (?service=slug)
+  const serviceField = form.querySelector('#service');
+  const preselect = new URLSearchParams(window.location.search).get('service');
+  if (serviceField && preselect && serviceField.querySelector(`option[value="${preselect}"]`)) {
+    serviceField.value = preselect;
+  }
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     let valid = true;
