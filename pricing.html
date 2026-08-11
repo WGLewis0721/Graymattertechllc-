@@ -16,16 +16,19 @@
   <meta name="twitter:description" content="Transparent, one-time project pricing for business websites, booking systems, e-commerce, and add-ons — no hidden costs or retainers required." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/gray-matter/favicons/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/gray-matter/favicons/favicon-32.png" />
+  <link rel="apple-touch-icon" href="assets/gray-matter/favicons/apple-touch-icon-180.png" />
 </head>
 <body>
 
   <!-- NAVBAR -->
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="container nav-container">
-      <a href="index.html" class="nav-logo">Gray Matter <span>LLC</span></a>
+      <a href="index.html" class="nav-logo"><img src="assets/gray-matter/brand/gm-wordmark.svg" alt="Gray Matter LLC, Digital and Technology Solutions" width="220" height="47" /></a>
       <ul class="nav-links" role="list">
         <li><a href="index.html">Home</a></li>
         <li><a href="services.html">Services</a></li>
@@ -59,13 +62,17 @@
     <div class="container">
       <span class="section-label">Pricing</span>
       <h1>Simple, Transparent Pricing</h1>
-      <p>No surprise fees, no hidden costs. The plans below cover business website projects. Automation, security, backup, cost cleanup, and ongoing support are scoped individually — see <a href="services.html" style="color:#14b8a6;font-weight:600;">all services</a> or request a quote.</p>
+      <p>No surprise fees, no hidden costs. The plans below cover business website projects. Automation, security, backup, cost cleanup, and ongoing support are scoped individually — see <a href="services.html" style="color:var(--gm-blue);font-weight:600;">all services</a> or request a quote.</p>
     </div>
   </header>
 
   <!-- PRICING SECTION -->
-  <section class="section-pad" style="background:#0f172a;">
+  <section class="section-pad" style="background:var(--gm-paper);">
     <div class="container">
+
+      <div class="package-visual fade-up">
+        <img src="assets/gray-matter/packages/gm-package-system.svg" alt="A base business website solution connects to booking and follow-up add-ons, creating a recommended outcome." loading="lazy" />
+      </div>
 
       <div class="pricing-grid">
 
@@ -149,14 +156,14 @@
 
       <!-- PRICING NOTE -->
       <div class="pricing-note fade-up">
-        <p><i class="fa-solid fa-circle-info" style="color:#14b8a6;margin-right:0.4rem;"></i> All prices are project-based one-time fees. A <strong style="color:#f8fafc;">50% deposit</strong> is required to begin, with the remaining balance due on delivery. Domain, hosting, and third-party service fees are <strong style="color:#f8fafc;">not included</strong> and are the client's responsibility. Need something custom? <a href="contact.html" style="color:#14b8a6;font-weight:600;">Let's talk.</a></p>
+        <p><i class="fa-solid fa-circle-info" style="color:var(--gm-blue);margin-right:0.4rem;"></i> All prices are project-based one-time fees. A <strong style="color:var(--gm-ink);">50% deposit</strong> is required to begin, with the remaining balance due on delivery. Domain, hosting, and third-party service fees are <strong style="color:var(--gm-ink);">not included</strong> and are the client's responsibility. Need something custom? <a href="contact.html" style="color:var(--gm-blue);font-weight:600;">Let's talk.</a></p>
       </div>
 
     </div>
   </section>
 
   <!-- ADD-ONS -->
-  <section class="section-pad" style="background:#1e293b;">
+  <section class="section-pad" style="background:var(--gm-white);">
     <div class="container">
       <div class="text-center">
         <span class="section-label">Add-Ons</span>
@@ -168,25 +175,25 @@
           <div class="card-icon" style="margin:0 auto 1rem;"><i class="fa-solid fa-envelope-open-text"></i></div>
           <h4>Email Marketing Setup</h4>
           <p style="font-size:0.85rem;margin-top:0.5rem;">Mailchimp, ConvertKit, or Klaviyo — list setup, welcome sequence, and opt-in form.</p>
-          <p style="color:#14b8a6;font-weight:700;margin-top:0.75rem;">+$75 – $150</p>
+          <p style="color:var(--gm-blue);font-weight:700;margin-top:0.75rem;">+$75 – $150</p>
         </div>
         <div class="card fade-up" style="text-align:center;">
           <div class="card-icon" style="margin:0 auto 1rem;"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
           <h4>SEO Audit &amp; Setup</h4>
           <p style="font-size:0.85rem;margin-top:0.5rem;">Keyword research, meta tags, sitemap, schema markup, and Google Search Console setup.</p>
-          <p style="color:#14b8a6;font-weight:700;margin-top:0.75rem;">+$100 – $200</p>
+          <p style="color:var(--gm-blue);font-weight:700;margin-top:0.75rem;">+$100 – $200</p>
         </div>
         <div class="card fade-up" style="text-align:center;">
           <div class="card-icon" style="margin:0 auto 1rem;"><i class="fa-solid fa-wrench"></i></div>
           <h4>Monthly Maintenance</h4>
           <p style="font-size:0.85rem;margin-top:0.5rem;">Monthly updates, backups, plugin maintenance, and minor content changes to keep your site running perfectly.</p>
-          <p style="color:#14b8a6;font-weight:700;margin-top:0.75rem;">$50 – $100/mo</p>
+          <p style="color:var(--gm-blue);font-weight:700;margin-top:0.75rem;">$50 – $100/mo</p>
         </div>
         <div class="card fade-up" style="text-align:center;">
           <div class="card-icon" style="margin:0 auto 1rem;"><i class="fa-solid fa-pen-nib"></i></div>
           <h4>Copywriting</h4>
           <p style="font-size:0.85rem;margin-top:0.5rem;">Professional website copy written to sell — homepage, about, and services pages that speak to your ideal client.</p>
-          <p style="color:#14b8a6;font-weight:700;margin-top:0.75rem;">+$75 – $200</p>
+          <p style="color:var(--gm-blue);font-weight:700;margin-top:0.75rem;">+$75 – $200</p>
         </div>
       </div>
     </div>
@@ -312,7 +319,7 @@
             <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
           </div>
-          <p style="margin-top:1rem;font-size:0.85rem;color:#475569;">graymattertechllc@gmail.com</p>
+          <p style="margin-top:1rem;font-size:0.85rem;color:rgba(255,255,255,0.55);">graymattertechllc@gmail.com</p>
         </div>
       </div>
       <div class="footer-bottom">
