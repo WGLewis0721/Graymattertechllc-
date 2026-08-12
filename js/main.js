@@ -150,3 +150,112 @@
     });
   });
 })();
+
+// === SWIPE-FIRST CARD ROWS: dot indicators + deck depth effect ===
+// Interaction priority on mobile is swipe > vertical scroll > tap. No touch
+// events are hijacked here (no preventDefault, no gesture library) — the
+// browser's native overflow-x scrolling + CSS scroll-snap does the work, so
+// the page still scrolls vertically the moment a swipe isn't horizontal.
+(function() {
+  const mobileQuery = window.matchMedia('(max-width: 767px)');
+  const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const rows = document.querySelectorAll('.swipe-row, .deck-row');
+  if (!rows.length) return;
+
+  rows.forEach(row => {
+    const items = Array.from(row.children);
+    if (items.length < 2) return;
+
+    const isDeck = row.classList.contains('deck-row');
+
+    const dots = document.createElement('div');
+    dots.className = 'swipe-dots';
+    dots.setAttribute('role', 'tablist');
+    dots.setAttribute('aria-label', 'Slide navigation');
+
+    items.forEach((item, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', `Go to slide ${i + 1} of ${items.length}`);
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => {
+        item.scrollIntoView({
+          behavior: reduceMotionQuery.matches ? 'auto' : 'smooth',
+          inline: isDeck ? 'center' : 'start',
+          block: 'nearest'
+        });
+      });
+      dots.appendChild(dot);
+    });
+
+    row.insertAdjacentElement('afterend', dots);
+    const dotButtons = dots.querySelectorAll('button');
+
+    // Returns each item's signed distance from the row's horizontal center,
+    // normalized to roughly [-1, 1] per card width. Used both to pick the
+    // "active" dot and, for deck rows, to drive the peek/scale/opacity.
+    const measure = () => {
+      const rowRect = row.getBoundingClientRect();
+      const rowCenter = rowRect.left + rowRect.width / 2;
+      return items.map(item => {
+        const r = item.getBoundingClientRect();
+        const itemCenter = r.left + r.width / 2;
+        return { offset: itemCenter - rowCenter, width: r.width || 1 };
+      });
+    };
+
+    const applyDeckStyle = (measurements) => {
+      if (!isDeck) return;
+      if (!mobileQuery.matches) {
+        // Off the mobile breakpoint: let the desktop grid CSS take over.
+        items.forEach(item => {
+          item.style.transform = '';
+          item.style.opacity = '';
+          item.style.zIndex = '';
+        });
+        return;
+      }
+      measurements.forEach((m, i) => {
+        const norm = m.offset / m.width;
+        const abs = Math.min(Math.abs(norm), 1.6);
+        const scale = Math.max(1 - abs * 0.16, 0.78);
+        const opacity = Math.max(1 - abs * 0.4, 0.4);
+        const lift = Math.min(abs * 10, 14);
+        items[i].style.transform = `translateY(${lift}px) scale(${scale})`;
+        items[i].style.opacity = String(opacity);
+        items[i].style.zIndex = String(Math.round(100 - abs * 10));
+      });
+    };
+
+    const updateActive = () => {
+      const measurements = measure();
+      let closestIndex = 0;
+      let closestDist = Infinity;
+      measurements.forEach((m, i) => {
+        const dist = Math.abs(m.offset);
+        if (dist < closestDist) {
+          closestDist = dist;
+          closestIndex = i;
+        }
+      });
+      dotButtons.forEach((dot, i) => dot.classList.toggle('active', i === closestIndex));
+      applyDeckStyle(measurements);
+      ticking = false;
+    };
+
+    let ticking = false;
+    const requestUpdate = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(updateActive);
+    };
+
+    row.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate, { passive: true });
+
+    // Paint the initial state (first card active / full-size) before any
+    // scroll or resize has fired.
+    requestUpdate();
+  });
+})();
