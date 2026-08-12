@@ -6,7 +6,7 @@
 
 ## Replace / remove
 - Replace the existing uniform `#0f172a/#1e293b` dark/teal template treatment with paper/ink tokens.
-- Replace the current text-only brand treatment with `brand/gm-wordmark.svg`. The approved symbol is the GM brain mark: the blue left fold is a G and the ink right fold is an M. Use `icons/gm-mark.svg` only when the full wordmark will not fit.
+- Replace the current text-only brand treatment with `brand/gm-logo-horizontal.svg`. The approved symbol is the supplied rounded monoline GM brain: one continuous deep-ink line system forms the brain, G, and M. Use `brand/gm-logo-stacked.svg` for centered/narrow placements and `icons/gm-mark.svg` only when a full lockup will not fit. Do not redraw or reinterpret the symbol.
 - Replace `picsum.photos` portfolio images immediately. They are placeholders and must not remain as portfolio proof.
 - Replace Font Awesome service icons with the supplied outcome-led SVGs.
 
@@ -29,3 +29,38 @@
 
 ## GitHub Pages compatibility
 Use relative URLs such as `assets/gray-matter-media-package/...`; do not require a bundler. SVGs are standalone and safe as `<img>`. Use CSS `@media` for asset swapping. Avoid JS dependency for the base visual system.
+
+## Approved logo — source of truth (mandatory)
+
+**Do not redraw, trace, regenerate, convert, or substitute the logo.** Previous implementation attempts failed because they treated the logo as an idea rather than placing the approved artwork.
+
+Use these exact, reference-derived PNG assets. They were cut directly from the client-approved identity board and preserve the exact approved geometry, wordmark, rule, tracking, colors, and GM brain mark:
+
+- Header/footer and primary desktop lockup: `brand/approved-reference/gm-logo-horizontal-approved.png`
+- Narrow/centered placement: `brand/approved-reference/gm-logo-stacked-approved.png`
+- Icon-only contexts at 72px+: `brand/approved-reference/gm-mark-approved.png`
+- Browser icon: `brand/approved-reference/gm-favicon-approved-32.png`
+- Apple touch icon: `brand/approved-reference/gm-apple-touch-approved-180.png`
+- PWA/app icon: `brand/approved-reference/gm-icon-approved-192.png` or `brand/approved-reference/gm-favicon-approved-512.png`
+
+Do **not** use any other `gm-logo-*`, `gm-mark-*`, or `favicons/*` identity file in this package. Those legacy files are superseded for web implementation.
+
+Implementation requirements:
+
+```html
+<!-- desktop header: use this exact file, not recreated HTML/SVG -->
+<a class="site-logo" href="index.html" aria-label="Gray Matter home">
+  <img src="assets/gray-matter-media-package/brand/approved-reference/gm-logo-horizontal-approved.png"
+       width="1132" height="270"
+       alt="Gray Matter — Digital and Technology Solutions">
+</a>
+```
+
+```css
+.site-logo img { display: block; width: clamp(178px, 20vw, 270px); height: auto; }
+@media (max-width: 560px) {
+  .site-logo img { width: 188px; }
+}
+```
+
+Never place the full identity-board screenshot on the public site. The full board remains a reference for review only. Do not recreate the mark with HTML letters, substitute a generic brain, split the symbol into colored halves, fill the hemispheres, add circuits, alter the blue rule, or change the wordmark/descriptive line spacing.

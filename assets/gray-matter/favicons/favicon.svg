@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Gray Matter GM mark">
-  <rect width="64" height="64" rx="14" fill="#13233B"/>
-  <path d="M30 13c-9-7-22-2-24 9-5 2-7 6-7 12 0 7 4 12 10 14 3 10 14 14 21 7M34 13c9-7 22-2 24 9 5 2 7 6 7 12 0 7-4 12-10 14-3 10-14 14-21 7M30 13v39" transform="translate(0 0) scale(.96)" fill="none" stroke="#F6F5F1" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M25 25c-6-4-12 0-12 7s6 11 12 7" fill="none" stroke="#81A5FF" stroke-width="4" stroke-linecap="round"/>
-  <path d="M38 40V25l6 9 6-9v15" fill="none" stroke="#F6F5F1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

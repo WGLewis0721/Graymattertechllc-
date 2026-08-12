@@ -4,9 +4,9 @@ All SVGs are editable production vectors. “Decorative” assets must receive `
 
 | File | Page / section | Purpose | Alt text | Desktop / mobile | Priority |
 |---|---|---|---|---|---|
-| `brand/gm-wordmark.svg` | Global header/footer | Wordmark | Gray Matter LLC, Digital and Technology Solutions | Header 220px max; 180px mobile | eager |
+| `brand/gm-wordmark.svg` | Supporting branded placements | Wordmark-only variation | Gray Matter, Digital and Technology Solutions | Use only where the GM mark is already visible nearby | lazy |
 | `brand/gm-logo-stacked.svg` | Social / narrow branded areas | Stacked primary logo | Gray Matter Digital and Technology Solutions logo with a GM brain mark. | Use at 180–260px wide; not for a compact site header | eager |
-| `icons/gm-mark.svg` | Compact header / app icon | Approved GM brain mark | A simplified brain mark with the letters G and M integrated into its hemispheres. | 28–56px; retain clear space equal to 20% of mark width | eager |
+| `icons/gm-mark.svg` | Compact header / app icon | Approved GM brain mark | A rounded monoline brain mark whose continuous structure forms the letters G and M. | 28–56px; retain clear space equal to 20% of mark width | eager |
 | `brand/gm-mark-monochrome.svg` | Single-color printing | One-color GM brain mark | A monochrome GM brain mark. | Use only where cobalt cannot reproduce | lazy |
 | `hero/gm-hero-desktop.svg` | Home / hero | Business need becoming a working outcome | A business need card connects to a clear customer path and working outcome. | Right of copy; swap at <767px | high |
 | `mobile/gm-hero-mobile.svg` | Home / hero | Mobile hero | A compact business need-to-outcome illustration. | Below copy, width 100% | high |
@@ -69,3 +69,23 @@ All SVGs are editable production vectors. “Decorative” assets must receive `
 | `social/gm-social-contract-consulting-portrait.svg` | Social | Editable social template | Gray Matter LLC service graphic. | Export matching format | lazy |
 | `social/gm-social-contract-consulting-story.svg` | Social | Editable social template | Gray Matter LLC service graphic. | Export matching format | lazy |
 | `favicons/favicon.svg` | Site favicon | Browser icon | Gray Matter mark. | Use 32px favicon and raster derivations | eager |
+
+## Approved brand identity files
+
+| File | Page / section | Purpose | Alt text | Desktop / mobile | Loading |
+|---|---|---|---|---|---|
+| `brand/gm-logo-horizontal.svg` | Global header/footer | Primary approved logo | Gray Matter LLC — Digital and Technology Solutions | 220–320px wide; preserve aspect ratio | Eager |
+| `brand/gm-logo-stacked.svg` | Centered/narrow layouts | Stacked logo | Gray Matter LLC — Digital and Technology Solutions | Use when horizontal lockup will not fit | Eager when above fold |
+| `brand/gm-mark-primary.svg` | Icon-only contexts | Approved GM brain mark | Gray Matter GM brain mark | 72px minimum; use favicon below 72px | Eager only above fold |
+| `brand/gm-mark-cobalt.svg` | Accent applications | Cobalt single-color mark | Gray Matter GM brain mark | Use on white or warm off-white only | Lazy |
+| `brand/gm-mark-reversed.svg` | Dark panels | Reversed GM brain mark | Gray Matter GM brain mark | Deep-ink background only | Lazy unless above fold |
+| `brand/gm-mark-monochrome.svg` | Print | One-color mark | Gray Matter GM brain mark | One-color output only | N/A |
+| `brand/gm-logo-horizontal-reversed.svg` | Dark header/footer | Reversed horizontal lockup | Gray Matter LLC — Digital and Technology Solutions | Use only on dark sections | Eager only if above fold |
+| `brand/gm-logo-horizontal-monochrome.svg` | One-color print | Black horizontal lockup | Gray Matter LLC — Digital and Technology Solutions | Print or single-color use | N/A |
+| `brand/gm-logo-horizontal-1200.png` | Compatibility/export | Raster horizontal lockup | Gray Matter LLC — Digital and Technology Solutions | Prefer SVG on the website | Lazy |
+| `brand/gm-logo-stacked-512.png` | Compatibility/export | Raster stacked lockup | Gray Matter LLC — Digital and Technology Solutions | Prefer SVG on the website | Lazy |
+| `favicons/favicon.svg` | Browser | Simplified approved mark | Gray Matter | 32–64px | Eager |
+| `favicons/favicon-32.png` | Browser fallback | 32px favicon | Gray Matter | Use as PNG fallback | Eager |
+| `favicons/apple-touch-icon-180.png` | Apple touch icon | 180px app icon | Gray Matter | Apple touch metadata | Eager |
+| `favicons/icon-192.png` | Web app manifest | 192px app icon | Gray Matter | Web app metadata | Eager |
+| `favicons/icon-512.png` | Web app manifest | 512px app icon | Gray Matter | Web app metadata | Eager |
