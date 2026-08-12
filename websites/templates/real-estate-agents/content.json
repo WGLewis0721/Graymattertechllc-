@@ -94,24 +94,6 @@
       "baths": 1,
       "address": "2290 Birchwood Ave, Denver, CO",
       "status": "For sale"
-    },
-    {
-      "image": "listing-5.png",
-      "imageAlt": "Placeholder photo standing in for a modern two-story home with large front windows",
-      "price": "$1,150,000",
-      "beds": 5,
-      "baths": 4,
-      "address": "615 Meridian Pl, Denver, CO",
-      "status": "For sale"
-    },
-    {
-      "image": "listing-6.png",
-      "imageAlt": "Placeholder photo standing in for a tan ranch-style home with mature landscaping",
-      "price": "$549,000",
-      "beds": 3,
-      "baths": 2,
-      "address": "340 Willow Creek Dr, Denver, CO",
-      "status": "For sale"
     }
   ],
   "neighborhoods": [
@@ -132,12 +114,6 @@
       "description": "An up-and-coming pocket with new construction mixed among older bungalows, popular with first-time buyers.",
       "image": "neighborhood-3.png",
       "imageAlt": "Placeholder photo standing in for a row of bungalow homes in Birchwood Corner"
-    },
-    {
-      "name": "Cedar Bend",
-      "description": "Established, leafy, and close to the reservoir trail. Larger homes on quarter-acre lots.",
-      "image": "neighborhood-4.png",
-      "imageAlt": "Placeholder photo standing in for a large home surrounded by mature trees in Cedar Bend"
     }
   ],
   "agent": {

@@ -83,6 +83,21 @@ export interface Hero {
   ctaHref?: string;
 }
 
+/** This vertical's own extension — a single trust badge for LicenseBadgeStrip.astro. */
+export interface License {
+  label: string;
+  detail?: string;
+}
+
+/** This vertical's own extension — a before/after project pair, as string image paths (resolved to ImageMetadata in the page, matching the shared BeforeAfterSlider's prop shape). */
+export interface BeforeAfterItem {
+  before: string;
+  after: string;
+  beforeAlt: string;
+  afterAlt: string;
+  label?: string;
+}
+
 export interface Content {
   business: Business;
   hero: Hero;
@@ -99,6 +114,10 @@ export interface Content {
   launched: boolean;
   site?: string;
   base?: string;
+  /** contractors-only field, see LicenseBadgeStrip.astro. */
+  licenses?: License[];
+  /** contractors-only field, see the BeforeAfterSlider usage in pages/index.astro. */
+  beforeAfter?: BeforeAfterItem[];
 }
 
 // strictRequired is off because business.anyOf legitimately requires

@@ -1,0 +1,92 @@
+---
+// ServiceChecklist — vertical-specific to hospitality-and-cleaning-services.
+// A single package tier rendered as a checklist of included tasks. Not
+// the same shape as the shared ServiceCard (price-forward, one price
+// per card, no list of included items) — this is task-forward, no
+// single price, and meant to be used once per package tier (Standard,
+// Deep Clean, Move-out, ...), so it stays local to this vertical rather
+// than being promoted to shared/.
+interface Props {
+  packageName: string;
+  items: string[];
+  /** Optional visual emphasis for a featured tier, e.g. "Most requested". */
+  highlight?: string;
+}
+
+const { packageName, items, highlight } = Astro.props;
+---
+
+<div class:list={['checklist', { 'checklist--highlight': !!highlight }]}>
+  {highlight && <p class="checklist__highlight">{highlight}</p>}
+  <h3 class="checklist__name">{packageName}</h3>
+  <ul class="checklist__items">
+    {
+      items.map((item) => (
+        <li class="checklist__item">
+          <span class="checklist__check" aria-hidden="true">&#10003;</span>
+          <span>{item}</span>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  .checklist {
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface-raised);
+    height: 100%;
+  }
+
+  .checklist--highlight {
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-md);
+  }
+
+  .checklist__highlight {
+    display: inline-block;
+    margin-bottom: var(--space-2xs);
+    padding: var(--space-3xs) var(--space-xs);
+    border-radius: var(--radius-full);
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .checklist__name {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-sm);
+  }
+
+  .checklist__items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .checklist__item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2xs);
+  }
+
+  .checklist__check {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.1em;
+    border-radius: var(--radius-full);
+    background: var(--color-surface-alt);
+    color: var(--color-primary);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+  }
+</style>

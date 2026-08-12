@@ -1,0 +1,77 @@
+---
+// LocationTracker — vertical-specific to food-trucks-and-services. A
+// weekly schedule of where the truck parks: day, location, and time
+// window. Genuinely different from the shared HoursTable (open/close
+// times only, no location) because a food truck moves and a shop
+// doesn't — a second row for the same day is expected (a lunch stop
+// and a dinner stop), which HoursTable's one-row-per-day shape can't
+// express. Real <table> markup, same accessible pattern as
+// HoursTable, so screen readers get correct row/column semantics.
+interface Stop {
+  day: string;
+  location: string;
+  time: string;
+}
+
+interface Props {
+  stops: Stop[];
+}
+
+const { stops } = Astro.props;
+---
+
+<table class="location-tracker">
+  <caption class="visually-hidden">Weekly truck schedule</caption>
+  <thead>
+    <tr>
+      <th scope="col">Day</th>
+      <th scope="col">Location</th>
+      <th scope="col">Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    {
+      stops.map((stop) => (
+        <tr>
+          <th scope="row">{stop.day}</th>
+          <td>{stop.location}</td>
+          <td>{stop.time}</td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>
+
+<style>
+  .location-tracker {
+    width: 100%;
+    max-width: var(--container-md);
+    border-collapse: collapse;
+  }
+
+  .location-tracker tr {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .location-tracker th,
+  .location-tracker td {
+    padding-block: var(--space-2xs);
+    padding-inline-end: var(--space-sm);
+    text-align: left;
+    font-weight: var(--weight-regular);
+  }
+
+  .location-tracker thead th {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--color-ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .location-tracker tbody th[scope='row'] {
+    font-weight: var(--weight-bold);
+    color: var(--color-accent);
+    white-space: nowrap;
+  }
+</style>

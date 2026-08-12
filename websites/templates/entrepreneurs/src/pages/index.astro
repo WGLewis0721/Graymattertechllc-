@@ -1,0 +1,183 @@
+---
+// entrepreneurs — single page. A solo entrepreneur doesn't need more
+// than one page: this is a personal-brand, story-driven site, so it
+// leads with the founder's story before anything transactional, then
+// moves through the offer, the shelf, behind-the-scenes photos,
+// custom/private offerings, social proof, and finally how to order.
+// That's a deliberately different rhythm than barbers-stylists (which
+// leads with a photo gallery) — see README.md, "what to change first
+// for a new client".
+import type { ImageMetadata } from 'astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/shared/Header.astro';
+import Hero from '../components/shared/Hero.astro';
+import Section from '../components/shared/Section.astro';
+import ItemShowcase from '../components/shared/ItemShowcase.astro';
+import ServiceCard from '../components/shared/ServiceCard.astro';
+import SwipeGallery from '../components/shared/SwipeGallery.astro';
+import TestimonialStrip from '../components/shared/TestimonialStrip.astro';
+import HoursTable from '../components/shared/HoursTable.astro';
+import ContactForm from '../components/shared/ContactForm.astro';
+import Footer from '../components/shared/Footer.astro';
+import OfferBlock from '../components/OfferBlock.astro';
+import StoryPanel from '../components/StoryPanel.astro';
+import LinkHub from '../components/LinkHub.astro';
+import { loadContent } from '../lib/content';
+import rawContent from '../../content.json';
+
+const content = loadContent(rawContent);
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+  '../../images/*.{png,jpg,jpeg}',
+  { eager: true }
+);
+
+function resolveImage(filename: string): ImageMetadata {
+  const match = Object.entries(imageModules).find(([path]) => path.endsWith(`/${filename}`));
+  if (!match) throw new Error(`No image found for "${filename}" in images/`);
+  return match[1].default;
+}
+
+const heroImage = resolveImage(content.hero.image);
+const kitchenImages = content.gallery.map((item) => ({
+  image: resolveImage(item.src),
+  alt: item.alt,
+}));
+const products = (content.products ?? []).map((p) => ({
+  image: resolveImage(p.image),
+  imageAlt: p.imageAlt,
+  name: p.name,
+  price: p.price,
+  description: p.description,
+}));
+const storyPhoto = content.story ? resolveImage(content.story.photo) : undefined;
+
+const nav = [
+  { label: 'Story', href: '#story' },
+  { label: 'Shop', href: '#products' },
+  { label: 'Custom orders', href: '#custom' },
+  { label: 'Order', href: '#order' },
+];
+---
+
+<BaseLayout content={content} businessType="FoodEstablishment">
+  <Header
+    businessName={content.business.name}
+    nav={nav}
+    ctaLabel="Order now"
+    ctaHref="#order"
+  />
+
+  <main id="main">
+    <Hero
+      heading={content.business.name}
+      subheading={content.business.tagline}
+      image={heroImage}
+      imageAlt={content.hero.alt}
+      ctaLabel={content.hero.ctaLabel}
+      ctaHref={content.hero.ctaHref}
+    />
+
+    {
+      content.story && storyPhoto && (
+        <Section id="story" heading="The story so far" width="sm">
+          <StoryPanel photo={storyPhoto} photoAlt={content.story.photoAlt} story={content.story.story} />
+        </Section>
+      )
+    }
+
+    {
+      content.offer && (
+        <Section width="sm">
+          <OfferBlock
+            heading={content.offer.heading}
+            description={content.offer.description}
+            ctaLabel={content.offer.ctaLabel}
+            ctaHref={content.offer.ctaHref}
+          />
+        </Section>
+      )
+    }
+
+    {
+      products.length > 0 && (
+        <Section id="products" heading="This week's shelf" background="alt">
+          <ItemShowcase items={products} />
+        </Section>
+      )
+    }
+
+    <Section heading="Behind the scenes">
+      <SwipeGallery id="kitchen-gallery" images={kitchenImages} />
+    </Section>
+
+    <Section id="custom" heading="Custom & private orders" background="alt">
+      <ul class="service-grid">
+        {
+          content.services.map((service) => (
+            <ServiceCard
+              name={service.name}
+              price={service.price}
+              duration={service.duration}
+              description={service.description}
+            />
+          ))
+        }
+      </ul>
+    </Section>
+
+    {
+      content.testimonials && content.testimonials.length > 0 && (
+        <Section heading="What people say">
+          <TestimonialStrip testimonials={content.testimonials} />
+        </Section>
+      )
+    }
+
+    <Section id="order" heading="Order or say hello" background="alt" width="sm">
+      <HoursTable hours={content.hours} />
+      <ContactForm endpoint={content.formEndpoint} submitLabel="Send message" />
+      {
+        content.links && content.links.length > 0 && (
+          <div class="order-links">
+            <p class="order-links__heading">Or find me here</p>
+            <LinkHub links={content.links} />
+          </div>
+        )
+      }
+    </Section>
+  </main>
+
+  <Footer
+    businessName={content.business.name}
+    phone={content.business.phone}
+    email={content.business.email}
+    address={content.business.address}
+    social={content.social}
+  />
+</BaseLayout>
+
+<style>
+  .service-grid {
+    display: grid;
+    gap: var(--space-sm);
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 40rem) {
+    .service-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .order-links {
+    margin-top: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .order-links__heading {
+    font-weight: var(--weight-medium);
+  }
+</style>

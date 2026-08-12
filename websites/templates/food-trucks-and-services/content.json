@@ -1,0 +1,144 @@
+{
+  "hero": {
+    "image": "hero.png",
+    "alt": "Placeholder photo standing in for the Golden Hour Tacos truck serving a line of customers at sunset, string lights glowing over the order window",
+    "ctaLabel": "Find us today",
+    "ctaHref": "#find-us"
+  },
+  "business": {
+    "name": "Golden Hour Tacos",
+    "tagline": "Street tacos worth chasing across town",
+    "phone": "+1-555-030-0300",
+    "email": "hello@goldenhourtacos.com",
+    "serviceArea": "Austin, TX and the surrounding metro"
+  },
+  "hours": [
+    { "day": "Mon", "open": null, "close": null },
+    { "day": "Tue-Fri", "open": "11:00", "close": "21:00" },
+    { "day": "Sat", "open": "09:00", "close": "22:00" },
+    { "day": "Sun", "open": "10:00", "close": "18:00" }
+  ],
+  "services": [
+    {
+      "name": "Private event booking",
+      "price": "From $650",
+      "duration": "2-3 hr service window",
+      "description": "The full truck, parked at your address, serving your guests directly from the window. Minimum headcount applies."
+    },
+    {
+      "name": "Corporate catering",
+      "price": "From $14/person",
+      "duration": "1-2 hr service window",
+      "description": "Taco bar or plated boxes, dropped off or served on-site for office lunches and team events."
+    },
+    {
+      "name": "Wedding and party add-on",
+      "price": "From $900",
+      "duration": "3 hr service window",
+      "description": "Late-night taco service for weddings and larger parties, timed to whenever your guests get hungry again."
+    }
+  ],
+  "gallery": [
+    { "src": "vibe-1.png", "alt": "Placeholder photo standing in for the Golden Hour Tacos truck parked with its service window lit up at dusk" },
+    { "src": "vibe-2.png", "alt": "Placeholder photo standing in for a cook working the flat-top griddle inside the truck" },
+    { "src": "vibe-3.png", "alt": "Placeholder photo standing in for a crowd gathered at picnic tables next to the truck" },
+    { "src": "vibe-4.png", "alt": "Placeholder photo standing in for a hand holding two tacos with the truck blurred in the background" }
+  ],
+  "testimonials": [
+    { "quote": "The al pastor alone is worth tracking their schedule for. We plan our Tuesdays around this truck.", "author": "Priya S." },
+    { "quote": "Booked them for our office party and the whole team is still talking about the elote. Easy to work with, showed up early, cleaned up after themselves.", "author": "Marcus T.", "role": "Office manager" },
+    { "quote": "Best fish taco in the city, full stop. The chipotle slaw makes it.", "author": "Devon R." }
+  ],
+  "theme": {
+    "fontPairing": "bold-display",
+    "colorScheme": "bold-accent",
+    "colors": {
+      "primary": "#f4b400",
+      "accent": "#d62828",
+      "surface": "#201810",
+      "ink": "#fdf6ea"
+    }
+  },
+  "formEndpoint": "https://formspree.io/f/goldenhourtacosdemo",
+  "map": {
+    "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d0!2d-97.7431!3d30.2672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sAustin%2C+TX!5e0!3m2!1sen!2sus",
+    "title": "Map of Golden Hour Tacos' home commissary in Austin, TX"
+  },
+  "social": {
+    "instagram": "https://instagram.com/goldenhourtacos",
+    "facebook": "https://facebook.com/goldenhourtacos",
+    "yelp": "https://yelp.com/biz/golden-hour-tacos-austin"
+  },
+  "seo": {
+    "title": "Golden Hour Tacos - Austin Food Truck",
+    "description": "Street tacos and catering from Austin's Golden Hour Tacos. Check today's stop or book the truck for your next party."
+  },
+  "launched": false,
+  "menu": [
+    {
+      "image": "menu-al-pastor.png",
+      "imageAlt": "Placeholder photo standing in for an al pastor taco topped with charred pineapple and cilantro",
+      "name": "Al Pastor Taco",
+      "price": "$4.50",
+      "description": "Achiote-marinated pork, charred pineapple, cilantro and onion, double corn tortilla."
+    },
+    {
+      "image": "menu-baja-fish.png",
+      "imageAlt": "Placeholder photo standing in for a Baja fish taco with slaw and crema",
+      "name": "Baja Fish Taco",
+      "price": "$5.00",
+      "description": "Beer-battered cod, chipotle slaw, lime crema, pickled red onion."
+    },
+    {
+      "image": "menu-carne-asada.png",
+      "imageAlt": "Placeholder photo standing in for a carne asada taco with salsa verde",
+      "name": "Carne Asada Taco",
+      "price": "$4.75",
+      "description": "Grilled skirt steak, roasted salsa verde, cotija, chopped onion."
+    },
+    {
+      "image": "menu-mushroom-poblano.png",
+      "imageAlt": "Placeholder photo standing in for a mushroom and poblano taco",
+      "name": "Mushroom Poblano Taco",
+      "price": "$4.25",
+      "description": "Sauteed mushroom and roasted poblano, black beans, pepita crumble. Vegetarian."
+    },
+    {
+      "image": "menu-elote.png",
+      "imageAlt": "Placeholder photo standing in for grilled elote street corn on a stick",
+      "name": "Elote Street Corn",
+      "price": "$5.50",
+      "description": "Grilled corn, chili-lime mayo, cotija, a heavy dust of tajin."
+    },
+    {
+      "image": "menu-nachos.png",
+      "imageAlt": "Placeholder photo standing in for a tray of loaded nachos with queso and pico de gallo",
+      "name": "Loaded Nachos",
+      "price": "$9.00",
+      "description": "Hand-cut chips, queso, pico de gallo, your choice of protein on top."
+    },
+    {
+      "image": "menu-horchata.png",
+      "imageAlt": "Placeholder photo standing in for a cup of horchata over ice",
+      "name": "Horchata",
+      "price": "$3.50",
+      "description": "House-made rice and cinnamon horchata, served over ice."
+    },
+    {
+      "image": "menu-churros.png",
+      "imageAlt": "Placeholder photo standing in for a basket of churro bites with chocolate dipping sauce",
+      "name": "Churro Bites",
+      "price": "$4.00",
+      "description": "Cinnamon sugar churro bites with a side of chocolate dipping sauce."
+    }
+  ],
+  "stops": [
+    { "day": "Tue", "location": "The Domain, Northside Plaza", "time": "11:00 AM - 2:00 PM" },
+    { "day": "Wed", "location": "South Congress Food Court", "time": "5:00 PM - 9:00 PM" },
+    { "day": "Thu", "location": "The Domain, Northside Plaza", "time": "11:00 AM - 2:00 PM" },
+    { "day": "Fri", "location": "Rainey Street Trailer Park", "time": "5:00 PM - 10:00 PM" },
+    { "day": "Sat", "location": "Barton Springs Farmers Market", "time": "9:00 AM - 1:00 PM" },
+    { "day": "Sat", "location": "East Austin Yard", "time": "5:00 PM - 10:00 PM" },
+    { "day": "Sun", "location": "Zilker Park, Trailhead Lot", "time": "12:00 PM - 6:00 PM" }
+  ]
+}

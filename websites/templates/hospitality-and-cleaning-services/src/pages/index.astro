@@ -1,0 +1,177 @@
+---
+// hospitality-and-cleaning-services — single page. A cleaning/turnover
+// service doesn't need more than one page: what's included, proof of
+// work, and how to get a quote all fit as anchor sections on one
+// scroll, consistent with the swipe-first, single-page philosophy this
+// whole library is built around (docs/PHILOSOPHY.md). See README.md,
+// "what to change first for a new client".
+import type { ImageMetadata } from 'astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/shared/Header.astro';
+import Hero from '../components/shared/Hero.astro';
+import Section from '../components/shared/Section.astro';
+import SwipeGallery from '../components/shared/SwipeGallery.astro';
+import BeforeAfterSlider from '../components/shared/BeforeAfterSlider.astro';
+import TestimonialStrip from '../components/shared/TestimonialStrip.astro';
+import HoursTable from '../components/shared/HoursTable.astro';
+import ContactForm from '../components/shared/ContactForm.astro';
+import MapEmbed from '../components/shared/MapEmbed.astro';
+import Footer from '../components/shared/Footer.astro';
+import ServiceChecklist from '../components/ServiceChecklist.astro';
+import AvailabilityBadge from '../components/AvailabilityBadge.astro';
+import { loadContent } from '../lib/content';
+import rawContent from '../../content.json';
+
+const content = loadContent(rawContent);
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+  '../../images/*.{png,jpg,jpeg}',
+  { eager: true }
+);
+
+function resolveImage(filename: string): ImageMetadata {
+  const match = Object.entries(imageModules).find(([path]) => path.endsWith(`/${filename}`));
+  if (!match) throw new Error(`No image found for "${filename}" in images/`);
+  return match[1].default;
+}
+
+const heroImage = resolveImage(content.hero.image);
+const spaceImages = content.gallery.map((item) => ({
+  image: resolveImage(item.src),
+  alt: item.alt,
+}));
+const beforeAfterItems = (content.beforeAfter ?? []).map((pair) => ({
+  before: resolveImage(pair.before),
+  after: resolveImage(pair.after),
+  beforeAlt: pair.beforeAlt,
+  afterAlt: pair.afterAlt,
+  label: pair.label,
+}));
+
+const nav = [
+  { label: 'Included', href: '#included' },
+  { label: 'Our work', href: '#work' },
+  { label: 'Reviews', href: '#reviews' },
+  { label: 'Quote', href: '#quote' },
+];
+---
+
+<BaseLayout content={content} businessType="HomeAndConstructionBusiness">
+  <Header
+    businessName={content.business.name}
+    nav={nav}
+    ctaLabel="Get a quote"
+    ctaHref="#quote"
+  />
+
+  <main id="main">
+    <Hero
+      heading={content.business.name}
+      subheading={content.business.tagline}
+      image={heroImage}
+      imageAlt={content.hero.alt}
+      ctaLabel={content.hero.ctaLabel}
+      ctaHref={content.hero.ctaHref}
+    />
+
+    {
+      content.availability && (
+        <div class="availability-wrap container">
+          <AvailabilityBadge text={content.availability} />
+        </div>
+      )
+    }
+
+    {
+      content.packages && content.packages.length > 0 && (
+        <Section id="included" heading="What's included">
+          <ul class="package-grid">
+            {content.packages.map((pkg, i) => (
+              <li>
+                <ServiceChecklist
+                  packageName={pkg.name}
+                  items={pkg.items}
+                  highlight={i === 1 ? 'Most requested' : undefined}
+                />
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )
+    }
+
+    {
+      spaceImages.length > 0 && (
+        <Section id="work" heading="Spaces we've cared for" background="alt">
+          <SwipeGallery id="work-gallery" images={spaceImages} />
+        </Section>
+      )
+    }
+
+    {
+      beforeAfterItems.length > 0 && (
+        <Section heading="See the difference">
+          <BeforeAfterSlider id="before-after" items={beforeAfterItems} />
+        </Section>
+      )
+    }
+
+    {
+      content.testimonials && content.testimonials.length > 0 && (
+        <Section id="reviews" heading="What clients say" background="alt">
+          <TestimonialStrip testimonials={content.testimonials} />
+        </Section>
+      )
+    }
+
+    <Section id="hours" heading="Hours">
+      <HoursTable hours={content.hours} />
+    </Section>
+
+    <Section id="quote" heading="Request a quote" background="alt">
+      <p class="quote-intro">Tell us about your space and we'll get back to you with a price, usually within one business day.</p>
+      <ContactForm
+        endpoint={content.formEndpoint}
+        submitLabel="Request my quote"
+        selectField={{
+          label: 'Service type',
+          name: 'service_type',
+          options: ['One-time cleaning', 'Recurring cleaning', 'Airbnb turnover', 'Move-in/move-out'],
+        }}
+      />
+      {content.map && <MapEmbed embedUrl={content.map.embedUrl} title={content.map.title} />}
+    </Section>
+  </main>
+
+  <Footer
+    businessName={content.business.name}
+    phone={content.business.phone}
+    email={content.business.email}
+    address={content.business.address}
+    social={content.social}
+  />
+</BaseLayout>
+
+<style>
+  .availability-wrap {
+    padding-block: var(--space-sm) 0;
+  }
+
+  .package-grid {
+    display: grid;
+    gap: var(--space-sm);
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 40rem) {
+    .package-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .quote-intro {
+    max-width: var(--container-sm);
+    margin-bottom: var(--space-md);
+    color: var(--color-ink-muted);
+  }
+</style>

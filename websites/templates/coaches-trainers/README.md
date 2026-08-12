@@ -30,7 +30,7 @@ One page: `src/pages/index.astro`. A solo coach doesn't need more than one scrol
 
 ## theme.css
 
-Distinct from barbers-stylists' near-black-and-red barbershop palette on a warm cream page. This vertical goes full dark: electric orange (`--color-accent`... actually `--color-primary`) and lime (`--color-accent`) against a near-black surface, a bold sans display heading font (`Archivo Black`), and a noticeably larger type scale (`--text-2xl`/`--text-3xl`/`--text-4xl` all bumped up) for "large type, bold imagery." Because the page background itself flips dark (not just the primary/accent tokens), every surface/ink/border token that depends on background contrast is overridden together so text, cards, and form fields all stay readable; see the comments in `theme.css` for the reasoning per token.
+Distinct from barbers-stylists' near-black-and-red barbershop palette on a warm cream page. This vertical goes full dark: electric orange (`--color-primary`) and lime (`--color-accent`) against a near-black surface, a bold sans display heading font (`Archivo Black`), and a noticeably larger type scale (`--text-2xl`/`--text-3xl`/`--text-4xl` all bumped up) for "large type, bold imagery." Because the page background itself flips dark (not just the primary/accent tokens), every surface/ink/border token that depends on background contrast is overridden together so text, cards, and form fields all stay readable; see the comments in `theme.css` for the reasoning per token.
 
 ## What to change first for a new client
 

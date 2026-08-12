@@ -1,0 +1,119 @@
+{
+  "hero": {
+    "image": "hero.png",
+    "alt": "Placeholder photo standing in for a bright, freshly cleaned living room with sunlight coming through the windows",
+    "ctaLabel": "Get a free quote",
+    "ctaHref": "#quote"
+  },
+  "business": {
+    "name": "Clearwater Home Services",
+    "tagline": "Spotless spaces, zero hassle",
+    "phone": "+1-555-040-0400",
+    "email": "hello@clearwaterhomeservices.com",
+    "address": "212 Harbor St, Tacoma, WA 98402"
+  },
+  "hours": [
+    { "day": "Mon-Fri", "open": "08:00", "close": "18:00" },
+    { "day": "Sat", "open": "09:00", "close": "14:00" },
+    { "day": "Sun", "open": null, "close": null }
+  ],
+  "services": [
+    { "name": "Standard clean", "price": "$120", "duration": "2 hrs", "description": "Regular upkeep for an already-tidy home." },
+    { "name": "Deep clean", "price": "$220", "duration": "3.5 hrs", "description": "A thorough top-to-bottom reset, recommended before the first standard clean." },
+    { "name": "Airbnb turnover", "price": "$85", "duration": "1-1.5 hrs", "description": "Guest-ready reset between checkout and check-in, priced per turn." },
+    { "name": "Move-in / move-out clean", "price": "$260", "duration": "4 hrs", "description": "Empty-home deep clean for move day, including inside cabinets and appliances." }
+  ],
+  "gallery": [
+    { "src": "gallery-1.png", "alt": "Placeholder photo standing in for a spotless kitchen counter and backsplash after a deep clean" },
+    { "src": "gallery-2.png", "alt": "Placeholder photo standing in for a freshly made guest bedroom ready for Airbnb check-in" },
+    { "src": "gallery-3.png", "alt": "Placeholder photo standing in for a streak-free bathroom mirror and sink after a standard clean" }
+  ],
+  "testimonials": [
+    { "quote": "They turn our Airbnb around in under an hour between guests and it always looks brand new. Never had a bad review about cleanliness since we started with them.", "author": "Priya S.", "role": "Airbnb host, North Tacoma" },
+    { "quote": "The deep clean before we moved in was worth every penny. Cabinets, baseboards, even the oven, all spotless.", "author": "Marcus T." }
+  ],
+  "theme": {
+    "fontPairing": "modern-sans",
+    "colorScheme": "cool-professional",
+    "colors": {
+      "primary": "#1d6fa5",
+      "accent": "#12a594",
+      "surface": "#ffffff",
+      "ink": "#16324a"
+    }
+  },
+  "formEndpoint": "https://formspree.io/f/clearwaterdemo",
+  "map": {
+    "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d0!2d-122.4443!3d47.2529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sTacoma%2C+WA!5e0!3m2!1sen!2sus",
+    "title": "Map to Clearwater Home Services"
+  },
+  "social": {
+    "instagram": "https://instagram.com/clearwaterhomeservices",
+    "google": "https://g.page/clearwaterhomeservices",
+    "yelp": "https://yelp.com/biz/clearwater-home-services-tacoma"
+  },
+  "seo": {
+    "title": "Clearwater Home Services - Tacoma Cleaning & Turnover",
+    "description": "Residential cleaning and Airbnb turnover service in Tacoma, WA. Standard cleans, deep cleans, and guest-ready turnovers. Get a free quote today."
+  },
+  "launched": false,
+  "packages": [
+    {
+      "name": "Standard Clean",
+      "items": [
+        "Dust all reachable surfaces",
+        "Vacuum and mop all floors",
+        "Wipe down kitchen counters and sink",
+        "Clean and disinfect bathrooms",
+        "Empty all trash bins",
+        "Make beds and straighten linens"
+      ]
+    },
+    {
+      "name": "Deep Clean",
+      "items": [
+        "Everything in a Standard Clean",
+        "Wipe baseboards and door frames",
+        "Clean inside the microwave and wipe oven exterior",
+        "Detail window sills and tracks",
+        "Dust light fixtures and ceiling fans",
+        "Wipe down cabinet fronts and handles"
+      ]
+    },
+    {
+      "name": "Airbnb Turnover",
+      "items": [
+        "Full reset between guest stays",
+        "Launder and remake all linens",
+        "Restock toiletries and paper goods",
+        "Take out trash and recycling",
+        "Quick damage and inventory check",
+        "Stage the space for check-in photos"
+      ]
+    }
+  ],
+  "availability": "Booking 3 days out this week",
+  "beforeAfter": [
+    {
+      "before": "ba-kitchen-before.png",
+      "after": "ba-kitchen-after.png",
+      "beforeAlt": "Placeholder photo standing in for a cluttered, grimy kitchen counter before cleaning",
+      "afterAlt": "Placeholder photo standing in for the same kitchen counter spotless and clear after cleaning",
+      "label": "Kitchen reset"
+    },
+    {
+      "before": "ba-bathroom-before.png",
+      "after": "ba-bathroom-after.png",
+      "beforeAlt": "Placeholder photo standing in for a bathroom sink and mirror with soap scum and water spots before cleaning",
+      "afterAlt": "Placeholder photo standing in for the same bathroom sink and mirror streak-free after cleaning",
+      "label": "Bathroom deep clean"
+    },
+    {
+      "before": "ba-bedroom-before.png",
+      "after": "ba-bedroom-after.png",
+      "beforeAlt": "Placeholder photo standing in for a guest bedroom with rumpled linens after checkout, before turnover",
+      "afterAlt": "Placeholder photo standing in for the same guest bedroom freshly made and staged after turnover",
+      "label": "Airbnb turnover"
+    }
+  ]
+}
