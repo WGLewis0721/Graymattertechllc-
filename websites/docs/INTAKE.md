@@ -37,15 +37,16 @@ The client picks from a short, pre-curated list, not an open-ended request. This
 
 ## 4. Form and integrations
 
-- [ ] Confirm which form provider to use (Formspree or Netlify Forms) and get or create the form endpoint ID.
+- [ ] Create or confirm a Formspree form and get the endpoint ID. Formspree is the only form provider this stack supports; Netlify Forms will not function on GitHub Pages, so it is never an option here regardless of client preference.
 - [ ] Confirm whether the client wants a map embed, and if so, the exact address to pin.
 - [ ] Confirm whether the client wants a booking widget embedded, and which provider (Calendly, Square Appointments, etc.), plus their existing booking link.
 - [ ] Confirm whether analytics should be included (Plausible or GA), and get the site ID if the client already has an account, or set one up as part of delivery.
 
 ## 5. Domain and hosting
 
-- [ ] Does the client have an existing domain? Get registrar and confirm DNS access, or confirm the client will delegate DNS changes.
-- [ ] If no domain yet, confirm the desired domain name before build starts so it can be reserved.
+- [ ] Does the client have an existing domain? Get registrar and confirm DNS access, or confirm the client will delegate DNS changes. The exact DNS records needed are in `docs/DEPLOYMENT.md`; get registrar access lined up during intake so launch isn't blocked waiting on it.
+- [ ] If no domain yet, confirm the desired domain name before build starts so it can be reserved. Without a custom domain, the site is reachable at `username.github.io/<repo>`, which is a usable fallback but not the default target.
+- [ ] Confirm the client repository can be public. GitHub Pages on the free plan requires a public source repository; a private repo needs a paid GitHub plan. This is a business decision, not just a technical one, since a public repo means the site's full source (including the pre-approval, pre-launch build) is visible to anyone who finds the repo. Flag this explicitly and get it resolved before the first repo is created, not discovered at launch. Confidentiality before launch is handled by keeping GitHub Pages disabled and reviewing on the gated preview host regardless of repo visibility, see `docs/SECURITY.md`; repo visibility is a separate, additional decision about source code exposure.
 
 ## Output of intake
 

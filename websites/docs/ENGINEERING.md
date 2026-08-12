@@ -22,7 +22,7 @@ These are hard limits, not targets to approach:
 
 - **Under 100KB total transfer** on initial mobile load, images included.
 - **Zero JS** on any page that has no interactive island. If a page has no form, no gallery interaction requiring JS, and no other island, it ships no JS bundle.
-- **Lighthouse mobile: 95+ performance, 100 accessibility.** Run against every template before it's added to the library, and against every client site before production deploy.
+- **Lighthouse mobile: 95+ performance, 100 accessibility.** Run against every template before it's added to the library, and against every client site before launch.
 - **Largest Contentful Paint under 1.5s** on simulated 4G.
 
 A change that would blow any of these limits does not ship. If a feature request can't fit the budget, the answer is a lighter implementation of the same feature, not a budget exception.
@@ -33,7 +33,7 @@ A change that would blow any of these limits does not ship. If a feature request
 - Vertical-specific parts: PascalCase, descriptive of function. `BookingWidget.astro`, `BeforeAfterSlider.astro`.
 - CSS custom properties: kebab-case, namespaced by category. `--color-primary`, `--color-accent`, `--font-heading`, `--font-body`, `--space-md`. Never a bare `--primary` with no category prefix.
 - `content.json` keys: camelCase, matching the shape documented in `ARCHITECTURE.md`.
-- Client project slugs: lowercase kebab-case business name, e.g. `fade-city-barbershop`.
+- Client project slugs and repo names: lowercase kebab-case business name, e.g. `fade-city-barbershop`.
 
 ## Definition of done for a client site
 
@@ -42,11 +42,15 @@ A client site is not done until every item below is true:
 - [ ] `content.json` fully populated, no placeholder text or Lorem Ipsum remaining anywhere.
 - [ ] All images processed: EXIF-stripped, resized and compressed for their placement, real alt text written per image.
 - [ ] Theme tokens set to the client's chosen font pairing and color, applied via `theme.css`, no component code edited to achieve the look.
+- [ ] `astro.config.mjs` has `site` and `base` set correctly for how this client will actually be served: `base: '/'` for a custom domain, `base: '/<repo>'` for a `username.github.io/<repo>` URL, with every internal link respecting it.
+- [ ] `public/.nojekyll` is present, committed, not just left to the deploy action to add at build time.
+- [ ] `public/CNAME` is absent until launch (custom-domain clients only get one at the launch step, see `docs/DEPLOYMENT.md`). Its presence or absence before launch is a deliberate signal of what stage the project is in.
 - [ ] Site builds clean (`npm run build`), no console errors or warnings.
 - [ ] Site fully usable with JS disabled: content visible, phone number tappable, form present and submittable.
-- [ ] Lighthouse mobile run: 95+ performance, 100 accessibility, confirmed against the actual deployed preview, not just local dev.
-- [ ] Total initial mobile transfer under 100KB, verified in the network panel against the preview deploy.
-- [ ] `_headers` file present in the build output and confirmed live on the preview deploy (check response headers).
-- [ ] Contact form tested end to end: honeypot present, submission reaches the provider, confirmation message shown, no input echoed back into the page.
+- [ ] Lighthouse mobile run: 95+ performance, 100 accessibility, confirmed against the actual deployed gated-preview build, not just local dev.
+- [ ] Total initial mobile transfer under 100KB, verified in the network panel against the gated-preview deploy.
+- [ ] The meta-tag Content-Security-Policy and Referrer-Policy from `docs/SECURITY.md` are present in `BaseLayout` and scoped to only the origins this specific template actually uses.
+- [ ] `<meta name="robots" content="noindex, nofollow">` and a disallow-all `robots.txt` are both present. They stay in place through every stage up to and including the launch checklist step that removes them.
+- [ ] Contact form tested end to end: honeypot present, submission reaches Formspree, confirmation message shown, no input echoed back into the page.
 - [ ] All tap targets checked at 44px minimum, especially phone number links, nav items, and form buttons.
-- [ ] Client has reviewed the preview deploy and signed off, or the single included revision round is complete.
+- [ ] Client has reviewed the gated preview and signed off, or the single included revision round is complete.
