@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#13233B"/><path d="M13 32C13 21 22 12 33 12h8v11h-8c-5 0-9 4-9 9s4 9 9 9h8v11h-8c-11 0-20-9-20-20Z" fill="#fff"/><path d="M45 12h8v40h-8z" fill="#81A5FF"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 128" role="img" aria-labelledby="title desc">
+  <title>Gray Matter GM brain mark</title><desc>A simplified brain mark with the letters G and M integrated into its two hemispheres.</desc>
+  <g fill="none" stroke="#13233B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M76 20C58 5 28 13 22 36c-10 3-16 13-16 25 0 14 9 26 22 29 5 21 33 29 48 14"/>
+    <path d="M84 20c18-15 48-7 54 16 10 3 16 13 16 25 0 14-9 26-22 29-5 21-33 29-48 14"/>
+    <path d="M76 20v89"/>
+  </g>
+  <path d="M60 42c-5-6-13-9-21-7-10 2-17 12-17 25s8 23 19 25c9 2 17-2 21-9" fill="none" stroke="#356AE6" stroke-width="9" stroke-linecap="round"/>
+  <path d="M95 83V43l14 23 14-23v40" fill="none" stroke="#13233B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

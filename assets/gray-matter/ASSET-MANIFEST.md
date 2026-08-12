@@ -5,6 +5,9 @@ All SVGs are editable production vectors. “Decorative” assets must receive `
 | File | Page / section | Purpose | Alt text | Desktop / mobile | Priority |
 |---|---|---|---|---|---|
 | `brand/gm-wordmark.svg` | Global header/footer | Wordmark | Gray Matter LLC, Digital and Technology Solutions | Header 220px max; 180px mobile | eager |
+| `brand/gm-logo-stacked.svg` | Social / narrow branded areas | Stacked primary logo | Gray Matter Digital and Technology Solutions logo with a GM brain mark. | Use at 180–260px wide; not for a compact site header | eager |
+| `icons/gm-mark.svg` | Compact header / app icon | Approved GM brain mark | A simplified brain mark with the letters G and M integrated into its hemispheres. | 28–56px; retain clear space equal to 20% of mark width | eager |
+| `brand/gm-mark-monochrome.svg` | Single-color printing | One-color GM brain mark | A monochrome GM brain mark. | Use only where cobalt cannot reproduce | lazy |
 | `hero/gm-hero-desktop.svg` | Home / hero | Business need becoming a working outcome | A business need card connects to a clear customer path and working outcome. | Right of copy; swap at <767px | high |
 | `mobile/gm-hero-mobile.svg` | Home / hero | Mobile hero | A compact business need-to-outcome illustration. | Below copy, width 100% | high |
 | `hero/gm-hero-pattern.svg` | Home / hero | Atmosphere |  | Decorative; hide below 768px | lazy |

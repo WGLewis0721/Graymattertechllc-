@@ -6,6 +6,7 @@
 
 ## Replace / remove
 - Replace the existing uniform `#0f172a/#1e293b` dark/teal template treatment with paper/ink tokens.
+- Replace the current text-only brand treatment with `brand/gm-wordmark.svg`. The approved symbol is the GM brain mark: the blue left fold is a G and the ink right fold is an M. Use `icons/gm-mark.svg` only when the full wordmark will not fit.
 - Replace `picsum.photos` portfolio images immediately. They are placeholders and must not remain as portfolio proof.
 - Replace Font Awesome service icons with the supplied outcome-led SVGs.
 
@@ -24,6 +25,7 @@
 - Eager only: desktop/mobile hero, wordmark (if used), favicon.
 - `loading="lazy"`: service icons after first viewport, outcomes, process, checkup, patterns, portfolio frames.
 - Decorative patterns: `alt=""`; service/hero/checkup/process assets use the manifest alt text. Never make essential copy image-only.
+- Use `favicons/favicon.svg`, plus the included 32px, 180px, 192px and 512px PNG derivatives in the document head and web-app metadata.
 
 ## GitHub Pages compatibility
 Use relative URLs such as `assets/gray-matter-media-package/...`; do not require a bundler. SVGs are standalone and safe as `<img>`. Use CSS `@media` for asset swapping. Avoid JS dependency for the base visual system.

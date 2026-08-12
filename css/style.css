@@ -289,6 +289,8 @@ footer .nav-logo span { color: var(--gm-mint); }
 @media (min-width: 640px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 900px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; } }
 .footer-brand .nav-logo { font-size: 1.2rem; margin-bottom: 1rem; display: inline-flex; }
+.footer-logo { align-items: center; gap: 0.65rem; }
+.footer-logo img { display: block; width: 34px; height: 34px; flex-shrink: 0; }
 .footer-brand p { font-size: 0.9rem; color: rgba(255,255,255,0.55); max-width: 250px; }
 .footer-col h5 { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.55); margin-bottom: 1.25rem; }
 .footer-col ul { display: flex; flex-direction: column; gap: 0.65rem; }

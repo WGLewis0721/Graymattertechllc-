@@ -3,6 +3,9 @@
 ## Direction
 **Practical Operating System.** Translate a business goal into a clear, guided working state. It is outcome-led, founder-accountable and technically credible without using generic cloud/cyber imagery.
 
+## Identity
+The approved primary symbol is the **GM brain mark**: a simplified two-hemisphere brain whose left fold forms a G and whose right fold forms an M. Use `brand/gm-wordmark.svg` in site headers, `brand/gm-logo-stacked.svg` where vertical space is available, and `icons/gm-mark.svg` for icon-only use. Keep the mark predominantly ink; cobalt highlights the G only. Do not add gradients, circuit traces, or additional colors to the logo.
+
 ## Color
 | Token | Value | Use |
 |---|---:|---|
