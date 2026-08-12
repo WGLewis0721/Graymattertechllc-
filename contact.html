@@ -16,16 +16,19 @@
   <meta name="twitter:description" content="Start a project with Gray Matter — web design, booking systems, e-commerce, automation, or cloud and technology consulting. Based in Montgomery, Alabama, serving clients nationwide." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/gray-matter/favicons/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/gray-matter/favicons/favicon-32.png" />
+  <link rel="apple-touch-icon" href="assets/gray-matter/favicons/apple-touch-icon-180.png" />
 </head>
 <body>
 
   <!-- NAVBAR -->
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="container nav-container">
-      <a href="index.html" class="nav-logo">Gray Matter <span>LLC</span></a>
+      <a href="index.html" class="nav-logo"><img src="assets/gray-matter/brand/gm-wordmark.svg" alt="Gray Matter LLC, Digital and Technology Solutions" width="220" height="47" /></a>
       <ul class="nav-links" role="list">
         <li><a href="index.html">Home</a></li>
         <li><a href="services.html">Services</a></li>
@@ -64,7 +67,7 @@
   </header>
 
   <!-- CONTACT SECTION -->
-  <section class="section-pad" style="background:#0f172a;">
+  <section class="section-pad" style="background:var(--gm-paper);">
     <div class="container">
       <div class="contact-layout">
 
@@ -76,24 +79,24 @@
           <form id="contact-form" novalidate>
 
             <div class="form-group">
-              <label for="name">Full Name <span style="color:#f87171;">*</span></label>
+              <label for="name">Full Name <span style="color:var(--gm-coral);">*</span></label>
               <input type="text" id="name" name="name" placeholder="e.g. Jordan Smith" required />
               <span class="form-error-msg">Please enter your full name.</span>
             </div>
 
             <div class="form-group">
-              <label for="email">Email Address <span style="color:#f87171;">*</span></label>
+              <label for="email">Email Address <span style="color:var(--gm-coral);">*</span></label>
               <input type="email" id="email" name="email" placeholder="you@example.com" required />
               <span class="form-error-msg">Please enter a valid email address.</span>
             </div>
 
             <div class="form-group">
-              <label for="phone">Phone Number <span style="color:#64748b;font-size:0.8rem;">(optional)</span></label>
+              <label for="phone">Phone Number <span style="color:var(--gm-ink-55);font-size:0.8rem;">(optional)</span></label>
               <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" />
             </div>
 
             <div class="form-group">
-              <label for="service">Service Interested In <span style="color:#f87171;">*</span></label>
+              <label for="service">Service Interested In <span style="color:var(--gm-coral);">*</span></label>
               <select id="service" name="service" required>
                 <option value="" disabled selected>Select a service…</option>
                 <optgroup label="Small Business Services">
@@ -119,13 +122,13 @@
             </div>
 
             <div class="form-group">
-              <label for="description">Project Description <span style="color:#f87171;">*</span></label>
+              <label for="description">Project Description <span style="color:var(--gm-coral);">*</span></label>
               <textarea id="description" name="description" placeholder="Tell me about your business, what you need, and any goals or deadlines you have in mind…" required></textarea>
               <span class="form-error-msg">Please describe your project.</span>
             </div>
 
             <div class="form-group">
-              <label for="referral">How Did You Hear About Me? <span style="color:#64748b;font-size:0.8rem;">(optional)</span></label>
+              <label for="referral">How Did You Hear About Me? <span style="color:var(--gm-ink-55);font-size:0.8rem;">(optional)</span></label>
               <select id="referral" name="referral">
                 <option value="" disabled selected>Select one…</option>
                 <option value="instagram">Instagram</option>
@@ -193,35 +196,35 @@
           </div>
 
           <!-- WHAT TO EXPECT -->
-          <div style="background:#1e293b;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1.75rem;margin-top:0.5rem;">
+          <div style="background:var(--gm-white);border:1px solid rgba(19,35,59,0.10);border-radius:12px;padding:1.75rem;margin-top:0.5rem;">
             <h4 style="margin-bottom:1rem;">What Happens Next</h4>
             <ul style="display:flex;flex-direction:column;gap:1rem;">
               <li style="display:flex;align-items:flex-start;gap:0.75rem;">
-                <span style="width:26px;height:26px;background:rgba(20,184,166,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#14b8a6;flex-shrink:0;">1</span>
+                <span style="width:26px;height:26px;background:rgba(53,106,230,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--gm-blue);flex-shrink:0;">1</span>
                 <div>
-                  <p style="font-size:0.85rem;font-weight:600;color:#f8fafc;margin-bottom:0.15rem;">I Review Your Inquiry</p>
+                  <p style="font-size:0.85rem;font-weight:600;color:var(--gm-ink);margin-bottom:0.15rem;">I Review Your Inquiry</p>
                   <p style="font-size:0.82rem;">Within 24 hours I'll read through your project details and prepare questions.</p>
                 </div>
               </li>
               <li style="display:flex;align-items:flex-start;gap:0.75rem;">
-                <span style="width:26px;height:26px;background:rgba(20,184,166,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#14b8a6;flex-shrink:0;">2</span>
+                <span style="width:26px;height:26px;background:rgba(53,106,230,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--gm-blue);flex-shrink:0;">2</span>
                 <div>
-                  <p style="font-size:0.85rem;font-weight:600;color:#f8fafc;margin-bottom:0.15rem;">Discovery Call or Email</p>
+                  <p style="font-size:0.85rem;font-weight:600;color:var(--gm-ink);margin-bottom:0.15rem;">Discovery Call or Email</p>
                   <p style="font-size:0.82rem;">We'll have a quick call or email exchange to nail down your goals, timeline, and budget.</p>
                 </div>
               </li>
               <li style="display:flex;align-items:flex-start;gap:0.75rem;">
-                <span style="width:26px;height:26px;background:rgba(20,184,166,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#14b8a6;flex-shrink:0;">3</span>
+                <span style="width:26px;height:26px;background:rgba(53,106,230,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--gm-blue);flex-shrink:0;">3</span>
                 <div>
-                  <p style="font-size:0.85rem;font-weight:600;color:#f8fafc;margin-bottom:0.15rem;">Proposal &amp; Agreement</p>
+                  <p style="font-size:0.85rem;font-weight:600;color:var(--gm-ink);margin-bottom:0.15rem;">Proposal &amp; Agreement</p>
                   <p style="font-size:0.82rem;">I'll send over a project proposal, pricing, and client agreement to sign before we begin.</p>
                 </div>
               </li>
               <li style="display:flex;align-items:flex-start;gap:0.75rem;">
-                <span style="width:26px;height:26px;background:rgba(20,184,166,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#14b8a6;flex-shrink:0;">4</span>
+                <span style="width:26px;height:26px;background:rgba(53,106,230,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--gm-blue);flex-shrink:0;">4</span>
                 <div>
-                  <p style="font-size:0.85rem;font-weight:600;color:#f8fafc;margin-bottom:0.15rem;">We Build &amp; Deliver</p>
-                  <p style="font-size:0.82rem;">Work begins, and your solution goes live on schedule — see our <a href="process.html" style="color:#14b8a6;">full process</a> for details.</p>
+                  <p style="font-size:0.85rem;font-weight:600;color:var(--gm-ink);margin-bottom:0.15rem;">We Build &amp; Deliver</p>
+                  <p style="font-size:0.82rem;">Work begins, and your solution goes live on schedule — see our <a href="process.html" style="color:var(--gm-blue);">full process</a> for details.</p>
                 </div>
               </li>
             </ul>
@@ -286,7 +289,7 @@
             <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
           </div>
-          <p style="margin-top:1rem;font-size:0.85rem;color:#475569;">graymattertechllc@gmail.com</p>
+          <p style="margin-top:1rem;font-size:0.85rem;color:rgba(255,255,255,0.55);">graymattertechllc@gmail.com</p>
         </div>
       </div>
       <div class="footer-bottom">
