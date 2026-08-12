@@ -28,5 +28,6 @@ Not visual novelty. Not flexibility for its own sake. The system optimizes for:
 2. **Predictable quality.** Every site hits the same performance and accessibility bar because every site is built from the same tested parts. Quality is a property of the frame, not something re-earned per project.
 3. **Low maintenance cost.** A bug fix or accessibility improvement to a shared component benefits every future site built from it. There is no fleet of diverged one-offs to patch individually.
 4. **A ceiling on complexity.** Fifteen templates that share too little is worse than a smaller set of templates that share almost everything. The system trades away infinite customization to guarantee the site that ships is fast, accessible, and cheap to produce.
+5. **A hosting model that gets out of the way.** GitHub Pages is free, static-only, and has no server to secure or maintain. The tradeoffs it imposes (documented in full in `docs/SECURITY.md` and `docs/DEPLOYMENT.md`) are accepted deliberately, in exchange for a hosting bill of zero and an attack surface that stays close to nonexistent.
 
 The client-facing promise: business name, photos, style pick. The system does the rest, and the rest is not a black box, it is the same well-worn frame, themed.

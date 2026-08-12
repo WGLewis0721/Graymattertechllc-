@@ -4,22 +4,25 @@ A template library for producing fast, mobile-first websites for small business 
 
 This is a productized service, not a custom web shop. Every client site is assembled from the same shared components. The only inputs required from a client are business name, photos, and a typography/color preference. Everything else is pre-built.
 
-See `docs/PHILOSOPHY.md` for why the system is built this way, `docs/ARCHITECTURE.md` for how it's structured, `docs/SECURITY.md` for the security posture, `docs/ENGINEERING.md` for the rules and performance budget, and `docs/INTAKE.md` for the client intake checklist.
+See `docs/PHILOSOPHY.md` for why the system is built this way, `docs/ARCHITECTURE.md` for how it's structured, `docs/SECURITY.md` for the security posture, `docs/ENGINEERING.md` for the rules and performance budget, `docs/INTAKE.md` for the client intake checklist, `docs/DEPLOYMENT.md` for how a site actually goes live, and `docs/CLIENT-PRIVACY.md` for the plain-language explanation given to clients.
 
 ## What this is
 
 A set of vertical templates (barber, lawyer, contractor, coach, real estate, generic solo) built on a shared component frame. A new client site is a new instance of a vertical template, themed and populated with that client's content, not a fork of the codebase.
 
-Stack: Astro (static output), plain CSS with custom properties, native CSS scroll-snap for galleries, `astro:assets` for images, Cloudflare Pages for hosting, Formspree or Netlify Forms for form handling. No backend, no database, no CMS.
+Stack: Astro (static output), plain CSS with custom properties, native CSS scroll-snap for galleries, `astro:assets` for images, GitHub Pages for hosting, Formspree for form handling. No backend, no database, no CMS.
+
+Hosting is GitHub Pages, which means one site per repository. This template library lives in `websites/` in this repo; every client gets their own repository, spun up from a vertical template via `degit`.
 
 ## Client intake flow
 
 1. Client fills out the intake checklist (`docs/INTAKE.md`): business name, contact info, hours, services, photos, and a style pick (font pairing + color from a short pre-approved list).
 2. Photos are EXIF-stripped and cropped to the sizes the template expects.
 3. Intake data is transcribed into `content.json` for the client's site.
-4. Site is spun up from the matching vertical template (see below), themed, and built locally for review.
-5. Client reviews a preview deploy. One round of revisions is included.
-6. Site is deployed to production and DNS is pointed at Cloudflare Pages.
+4. A new repository is spun up from the matching vertical template (see below), themed, and built locally for review.
+5. The build is deployed to a gated preview host, not GitHub Pages. GitHub Pages stays disabled on the client repo through this entire phase. See `docs/DEPLOYMENT.md` and `docs/SECURITY.md` for why.
+6. Client reviews the gated preview. One round of revisions is included.
+7. On client sign-off, GitHub Pages is enabled on the client repo for the first time, DNS is pointed at it, and `noindex` is turned off. See `docs/DEPLOYMENT.md` for the exact launch checklist.
 
 ## Spinning up a new client site
 
@@ -36,24 +39,26 @@ Then:
 2. Drop processed (EXIF-stripped, resized) images into `src/images/`.
 3. Set theme tokens in `src/theme.css` (or the theme file the template defines) to match the client's chosen font pairing and color.
 4. Run locally (`npm install && npm run dev`) and check the site against the definition of done in `docs/ENGINEERING.md`.
+5. Push the project to its own new GitHub repository. This becomes the client's permanent repo; GitHub Pages is not enabled on it yet.
 
-Client sites live and build outside this repo, in their own project directories. This repo holds the templates, not the generated client output.
+Client sites live and build outside this repo, in their own repositories. This repo holds the templates, not the generated client output.
 
 ## Deploying
 
-1. Push the generated client project to its own Cloudflare Pages project (own git repo per client, or direct upload).
-2. Set the build command to the Astro static build and the output directory to `dist/`.
-3. Configure environment variables (form endpoint IDs, analytics keys) in the Cloudflare Pages dashboard, not in the repo.
-4. Confirm the `_headers` file (see `docs/SECURITY.md`) ships with the build output.
-5. Point the client's domain at the Cloudflare Pages project once the client signs off.
+Deployment is two stages, detailed in full in `docs/DEPLOYMENT.md`:
+
+1. **Gated preview.** The build deploys to Cloudflare Pages behind Cloudflare Access (email one-time-code), so only the client can open it. GitHub Pages is not touched at this stage.
+2. **Launch.** Once the client signs off, GitHub Pages is enabled on the client's repo, the GitHub Actions workflow (`withastro/action`) builds and publishes it, DNS is pointed at GitHub Pages, Enforce HTTPS is turned on, and `noindex` is removed.
+
+The Astro build itself does not change between the two stages. Only where the same static output gets deployed changes.
 
 ## Delivery timeline
 
-One to two weeks from completed intake to production deploy:
+One to two weeks from completed intake to launch:
 
 - Day 1-2: intake review, photo processing, content.json draft.
-- Day 3-5: template spin-up, theming, first preview deploy.
-- Day 6-8: client review and one revision round.
-- Day 9-10: final QA against the performance budget and definition of done, production deploy.
+- Day 3-5: template spin-up, theming, first gated preview deploy.
+- Day 6-8: client review and one revision round on the gated preview.
+- Day 9-10: final QA against the performance budget and definition of done, then launch (GitHub Pages enabled, DNS cut over, `noindex` removed).
 
 Timeline assumes the client delivers intake materials (photos, copy, style pick) up front. Delays in intake delay the whole timeline; the process does not start a countdown on partial information.
