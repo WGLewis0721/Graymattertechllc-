@@ -1,0 +1,67 @@
+---
+// BaseLayout — the one layout every page in every vertical uses.
+//
+// Responsibilities, and only these: wire SEO meta + Open Graph tags,
+// emit the JSON-LD LocalBusiness schema, inject the client's theme
+// tokens as a :root override, and render the frame-level global chrome
+// (skip link, StickyCallBar). Everything else — Header, Footer, page
+// sections — is composed by the page itself via the default slot. Do
+// not add business copy or vertical-specific markup here; this file is
+// shared across every template (docs/ENGINEERING.md, principle 1).
+import '../styles/reset.css';
+import '../styles/tokens.css';
+import '../styles/global.css';
+import { buildMeta, buildLocalBusinessSchema } from '../lib/seo';
+import { resolveThemeVars } from '../lib/theme';
+import type { Content } from '../lib/content';
+import StickyCallBar from '../components/shared/StickyCallBar.astro';
+
+interface Props {
+  content: Content;
+  siteUrl: string;
+  /** schema.org subtype, e.g. "BarberShop", "LegalService". Defaults to LocalBusiness. */
+  businessType?: string;
+}
+
+const { content, siteUrl, businessType } = Astro.props;
+
+const meta = buildMeta(content, siteUrl);
+const jsonLd = buildLocalBusinessSchema(content, siteUrl, businessType);
+
+// Theme preset resolution (named font pairing / color scheme -> concrete
+// values) lives in lib/theme.ts, not here — see that file for why.
+const themeVars = resolveThemeVars(content.theme);
+
+const themeCss = Object.entries(themeVars)
+  .map(([key, value]) => `${key}: ${value};`)
+  .join(' ');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
+    <link rel="canonical" href={meta.canonicalUrl} />
+
+    <meta property="og:type" content="business.business" />
+    <meta property="og:title" content={meta.title} />
+    <meta property="og:description" content={meta.description} />
+    <meta property="og:url" content={meta.canonicalUrl} />
+    {meta.ogImage && <meta property="og:image" content={meta.ogImage} />}
+    <meta name="twitter:card" content="summary_large_image" />
+
+    {themeCss && <style set:html={`:root { ${themeCss} }`} />}
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+    <StickyCallBar phone={content.business.phone} address={content.business.address} />
+  </body>
+</html>

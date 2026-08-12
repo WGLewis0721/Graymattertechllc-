@@ -1,0 +1,53 @@
+{
+  "hero": {
+    "image": "hero.png",
+    "alt": "Placeholder hero photo standing in for a wide shot of the Fade City Barbershop storefront and chairs",
+    "ctaLabel": "Book a cut",
+    "ctaHref": "#contact"
+  },
+  "business": {
+    "name": "Fade City Barbershop",
+    "tagline": "Fresh cuts, no appointment drama",
+    "phone": "+1-555-010-0100",
+    "email": "book@fadecitybarber.com",
+    "address": "123 Main St, Springfield, IL 62701"
+  },
+  "hours": [
+    { "day": "Mon-Fri", "open": "09:00", "close": "19:00" },
+    { "day": "Sat", "open": "09:00", "close": "16:00" },
+    { "day": "Sun", "open": null, "close": null }
+  ],
+  "services": [
+    { "name": "Fade", "price": "$35", "duration": "30 min", "description": "Skin, mid, or low fade, blended and lined up." },
+    { "name": "Beard trim", "price": "$18", "duration": "15 min" },
+    { "name": "Fade + beard combo", "price": "$48", "duration": "45 min" },
+    { "name": "Kids cut (12 and under)", "price": "$25", "duration": "25 min" }
+  ],
+  "gallery": [
+    { "src": "shop-interior.png", "alt": "Placeholder photo standing in for the barbershop interior with three chairs" },
+    { "src": "barber-chairs.png", "alt": "Placeholder photo standing in for a row of barber chairs and mirrors" },
+    { "src": "owner-portrait.png", "alt": "Placeholder photo standing in for a portrait of the shop owner" },
+    { "src": "fade-closeup.png", "alt": "Placeholder photo standing in for a close-up of a finished fade haircut" }
+  ],
+  "testimonials": [
+    { "quote": "Best fade I've had in this city, and I never wait more than ten minutes.", "author": "Marcus T." },
+    { "quote": "Clean shop, honest prices, no upsell nonsense.", "author": "Devon R.", "role": "regular since 2023" }
+  ],
+  "theme": {
+    "fontPairing": "sans-serif-bold",
+    "colorScheme": "warm-neutral"
+  },
+  "formEndpoint": "https://formspree.io/f/demo00000",
+  "map": {
+    "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d0!2d-89.6501!3d39.7817!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSpringfield%2C+IL!5e0!3m2!1sen!2sus",
+    "title": "Map to Fade City Barbershop"
+  },
+  "social": {
+    "instagram": "https://instagram.com/fadecitybarber",
+    "google": "https://g.page/fadecitybarber"
+  },
+  "seo": {
+    "title": "Fade City Barbershop — Springfield, IL",
+    "description": "Walk-in fades, beard trims, and kids cuts in downtown Springfield. Open 7 days. Book by phone or online."
+  }
+}
