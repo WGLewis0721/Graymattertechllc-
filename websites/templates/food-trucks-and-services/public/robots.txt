@@ -1,0 +1,3 @@
+# Pre-launch. See docs/SECURITY.md, "search visibility".
+User-agent: *
+Disallow: /

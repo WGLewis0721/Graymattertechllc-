@@ -1,0 +1,79 @@
+---
+// TestimonialStrip — horizontal scroll-snap strip of quotes. Same
+// no-JS scroll-snap pattern as SwipeGallery, kept as a separate
+// component because its content shape (quote/author/role) is a
+// different category, not an image (docs/ENGINEERING.md, principle 2:
+// uniform joints per category, not one component doing two jobs).
+interface Testimonial {
+  quote: string;
+  author: string;
+  role?: string;
+}
+
+interface Props {
+  testimonials: Testimonial[];
+}
+
+const { testimonials } = Astro.props;
+---
+
+{
+  testimonials.length > 0 && (
+    <ul class="testimonial-strip">
+      {testimonials.map((t) => (
+        <li class="testimonial-strip__card">
+          <p class="testimonial-strip__quote">&ldquo;{t.quote}&rdquo;</p>
+          <p class="testimonial-strip__author">
+            {t.author}
+            {t.role && <span class="testimonial-strip__role"> — {t.role}</span>}
+          </p>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+<style>
+  .testimonial-strip {
+    display: flex;
+    gap: var(--space-sm);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--container-gutter);
+    -webkit-overflow-scrolling: touch;
+    padding-inline: var(--container-gutter);
+    padding-block: var(--space-3xs);
+  }
+
+  .testimonial-strip__card {
+    flex: 0 0 85%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    padding: var(--space-md);
+    background: var(--color-surface-raised);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .testimonial-strip__quote {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+  }
+
+  .testimonial-strip__author {
+    margin-top: var(--space-sm);
+    font-weight: var(--weight-medium);
+    color: var(--color-ink-muted);
+  }
+
+  .testimonial-strip__role {
+    font-weight: var(--weight-regular);
+  }
+
+  @media (min-width: 48rem) {
+    .testimonial-strip__card {
+      flex-basis: 45%;
+    }
+  }
+</style>

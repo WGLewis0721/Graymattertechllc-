@@ -1,0 +1,103 @@
+---
+// NeighborhoodStrip — vertical-specific to real-estate-agents. A
+// horizontal, swipeable strip of neighborhood highlight cards (name,
+// short description, optional photo). Same no-JS scroll-snap pattern
+// already used by the shared TestimonialStrip and SwipeGallery: native
+// CSS only, no carousel library (docs/PHILOSOPHY.md, "swipe first").
+// Not promoted to shared/ yet: no second vertical has needed this exact
+// "place, not person or product" card shape (docs/ENGINEERING.md,
+// principle 7).
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Neighborhood {
+  name: string;
+  description: string;
+  image?: ImageMetadata;
+  imageAlt?: string;
+}
+
+interface Props {
+  neighborhoods: Neighborhood[];
+}
+
+const { neighborhoods } = Astro.props;
+---
+
+{
+  neighborhoods.length > 0 && (
+    <ul class="neighborhood-strip">
+      {neighborhoods.map((n) => (
+        <li class="neighborhood-strip__card">
+          {n.image && (
+            <Image
+              class="neighborhood-strip__photo"
+              src={n.image}
+              alt={n.imageAlt ?? n.name}
+              widths={[400, 800]}
+              sizes="(min-width: 48rem) 40vw, 85vw"
+              loading="lazy"
+            />
+          )}
+          <div class="neighborhood-strip__body">
+            <p class="neighborhood-strip__name">{n.name}</p>
+            <p class="neighborhood-strip__description">{n.description}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+<style>
+  .neighborhood-strip {
+    display: flex;
+    gap: var(--space-sm);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--container-gutter);
+    -webkit-overflow-scrolling: touch;
+    padding-inline: var(--container-gutter);
+    padding-block: var(--space-3xs);
+  }
+
+  .neighborhood-strip__card {
+    flex: 0 0 80%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    background: var(--color-surface-raised);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .neighborhood-strip__photo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
+
+  .neighborhood-strip__body {
+    padding: var(--space-sm);
+  }
+
+  .neighborhood-strip__name {
+    font-family: var(--font-heading);
+    font-weight: var(--weight-bold);
+    font-size: var(--text-lg);
+  }
+
+  .neighborhood-strip__description {
+    margin-top: var(--space-3xs);
+    color: var(--color-ink-muted);
+    line-height: var(--leading-normal);
+  }
+
+  @media (min-width: 48rem) {
+    .neighborhood-strip__card {
+      flex-basis: 32%;
+    }
+  }
+</style>

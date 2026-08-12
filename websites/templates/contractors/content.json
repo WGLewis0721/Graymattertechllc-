@@ -1,0 +1,86 @@
+{
+  "hero": {
+    "image": "hero.png",
+    "alt": "Placeholder photo standing in for an Ironpeak Contracting crew framing a roof against a clear morning sky",
+    "ctaLabel": "Get a free quote",
+    "ctaHref": "#quote"
+  },
+  "business": {
+    "name": "Ironpeak Contracting",
+    "tagline": "Built tough. Done right.",
+    "phone": "+1-555-040-0400",
+    "email": "quotes@ironpeakcontracting.com",
+    "address": "2200 Industrial Pkwy, Golden, CO 80401"
+  },
+  "hours": [
+    { "day": "Mon-Fri", "open": "07:00", "close": "18:00" },
+    { "day": "Sat", "open": "08:00", "close": "14:00" },
+    { "day": "Sun", "open": null, "close": null }
+  ],
+  "services": [
+    { "name": "Roof replacement and repair", "price": "Free estimate", "description": "Architectural shingle, metal, and storm-damage roof work, licensed and inspected." },
+    { "name": "Kitchen remodeling", "price": "Free estimate", "description": "Cabinets, counters, and layout changes, from a single-wall refresh to a full gut." },
+    { "name": "Bathroom remodeling", "price": "Free estimate", "description": "Tile, fixtures, and accessibility upgrades, done in days not months." },
+    { "name": "Siding and gutters", "price": "Free estimate", "description": "Fiber-cement and vinyl siding, seamless gutters, and fascia repair." },
+    { "name": "Room additions", "price": "Free estimate", "description": "Permitted structural additions, framed and finished to match the existing home." },
+    { "name": "General repair and handyman", "price": "Free estimate", "description": "Small jobs and punch lists a licensed crew can turn around fast." }
+  ],
+  "gallery": [],
+  "testimonials": [
+    { "quote": "Our roof came off in a hailstorm and Ironpeak had a tarp on it the same afternoon. Full replacement was done in three days.", "author": "Renee K.", "role": "Arvada, CO" },
+    { "quote": "They gutted our kitchen and had it back together in two and a half weeks, on the price they quoted. No surprises.", "author": "Dave M.", "role": "Lakewood, CO" }
+  ],
+  "theme": {
+    "fontPairing": "bold-display",
+    "colorScheme": "bold-accent",
+    "colors": {
+      "primary": "#2b2f33",
+      "accent": "#ff6a00",
+      "surface": "#f4f1ec",
+      "ink": "#1c1f22"
+    }
+  },
+  "formEndpoint": "https://formspree.io/f/contractordemo",
+  "map": {
+    "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d0!2d-105.2211!3d39.7555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sGolden%2C+CO!5e0!3m2!1sen!2sus",
+    "title": "Map of Ironpeak Contracting's Denver metro service area"
+  },
+  "social": {
+    "facebook": "https://facebook.com/ironpeakcontracting",
+    "google": "https://g.page/ironpeakcontracting"
+  },
+  "seo": {
+    "title": "Ironpeak Contracting - Denver Metro General Contractor",
+    "description": "Licensed, bonded, and insured roofing and remodeling in the Denver metro area. Free quotes, 24/7 storm response."
+  },
+  "launched": false,
+  "licenses": [
+    { "label": "Licensed", "detail": "Colorado General Contractor License #GC-0234891" },
+    { "label": "Insured", "detail": "$2,000,000 general liability coverage" },
+    { "label": "Bonded", "detail": "$25,000 surety bond on file with the state" },
+    { "label": "Certified", "detail": "GAF Master Elite roofing installer" }
+  ],
+  "beforeAfter": [
+    {
+      "before": "before-roof.png",
+      "after": "after-roof.png",
+      "beforeAlt": "Placeholder photo standing in for a hail-damaged shingle roof before replacement",
+      "afterAlt": "Placeholder photo standing in for a new architectural shingle roof after replacement",
+      "label": "Full roof replacement, Arvada CO"
+    },
+    {
+      "before": "before-kitchen.png",
+      "after": "after-kitchen.png",
+      "beforeAlt": "Placeholder photo standing in for a dated kitchen with worn cabinets before remodeling",
+      "afterAlt": "Placeholder photo standing in for a remodeled kitchen with new cabinets and counters after the project",
+      "label": "Kitchen remodel, Lakewood CO"
+    },
+    {
+      "before": "before-bath.png",
+      "after": "after-bath.png",
+      "beforeAlt": "Placeholder photo standing in for an outdated bathroom before renovation",
+      "afterAlt": "Placeholder photo standing in for a renovated bathroom with new tile and fixtures after the project",
+      "label": "Bathroom remodel, Denver CO"
+    }
+  ]
+}

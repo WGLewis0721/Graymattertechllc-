@@ -1,0 +1,37 @@
+/*
+  theme.css — entrepreneurs vertical default. Layered between
+  tokens.css (generic frame defaults) and global.css by BaseLayout, so
+  a fresh client on this template already looks like a warm,
+  personal-brand food business before any content.json theme override
+  is applied. Only overrides the tokens that actually differ from
+  tokens.css; everything else (spacing scale, shadows, container
+  widths) inherits the frame default. A client's content.json theme
+  block still wins over this when it sets an explicit
+  colorScheme/fontPairing or theme.colors.
+
+  Feel: warm and personal, editorial. A serif heading paired with a
+  clean sans body, generous whitespace, softer/rounder corners than the
+  frame default for a hand-made feel, and a warm, appetizing palette
+  (terracotta primary, burnt-amber accent, cream surface) suited to a
+  home-kitchen food business or any solo, story-driven brand.
+*/
+:root {
+  --font-heading: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  --font-body: -apple-system, 'Avenir Next', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  --color-primary: #7c2d12;
+  --color-primary-hover: #5c2009;
+  --color-accent: #b45309;
+  --color-accent-hover: #8a3f07;
+
+  --color-surface: #fdfaf6;
+  --color-surface-alt: #f5ebdd;
+  --color-surface-raised: #ffffff;
+
+  --color-ink: #2b2420;
+  --color-ink-muted: #6b5d4f;
+  --color-border: #e7d9c4;
+
+  --radius-md: 14px; /* softer, hand-made feel than the frame default (10px) */
+  --radius-lg: 28px; /* also softer than the frame default (20px) */
+}

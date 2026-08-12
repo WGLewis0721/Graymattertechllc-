@@ -1,0 +1,37 @@
+---
+// BookingWidget — vertical-specific to barbers-stylists. A prominent
+// outbound link to whatever external booking provider this shop uses
+// (Square, Booksy, Calendly, or similar). Not a shared component: no
+// other vertical in this library links out to a third-party scheduler
+// as its primary conversion action in quite this way. `href` is always
+// the provider's own booking page, an absolute external URL, so this
+// component needs no knowledge of the GitHub Pages base path.
+import CTAButton from './shared/CTAButton.astro';
+
+interface Props {
+  provider: string;
+  href: string;
+  label?: string;
+}
+
+const { provider, href, label = 'Book an appointment' } = Astro.props;
+---
+
+<div class="booking-widget">
+  <CTAButton label={label} href={href} variant="accent" />
+  <p class="booking-widget__caption">via {provider}</p>
+</div>
+
+<style>
+  .booking-widget {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2xs);
+  }
+
+  .booking-widget__caption {
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+  }
+</style>

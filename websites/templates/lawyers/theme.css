@@ -1,0 +1,34 @@
+/*
+  theme.css — lawyers vertical default. Layered between tokens.css
+  (generic frame defaults) and global.css by BaseLayout, so a fresh
+  client on this template already looks like a law firm before any
+  content.json theme override is applied. Only overrides the tokens
+  that actually differ from tokens.css; everything else (spacing
+  scale, shadows, container widths) inherits the frame default. A
+  client's content.json theme block still wins over this when it sets
+  an explicit colorScheme/fontPairing or theme.colors.
+
+  Feel: authoritative and restrained, not bold or playful. Serif type
+  for both heading and body (this vertical is text-heavy, not
+  photo-forward, so a book-like reading feel matters more than a
+  loud display face). Deep navy/charcoal with a muted, low-saturation
+  brass accent rather than a bright color. Corners are tighter than
+  the frame default: restraint reads as minimal rounding, closer to
+  rectangular, not soft/bold.
+*/
+:root {
+  --font-heading: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  --font-body: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+
+  --color-primary: #1e2a3a;       /* deep navy */
+  --color-primary-hover: #141c27;
+  --color-accent: #8a7146;        /* muted, low-saturation brass — restrained, not bright */
+  --color-accent-hover: #6e5a38;
+  --color-surface: #faf9f6;       /* warm ivory, not stark white */
+  --color-surface-alt: #eef1f4;   /* pale, cool alternating section background */
+  --color-ink: #1c232c;           /* charcoal-navy body text */
+
+  --radius-sm: 3px;   /* tighter than the frame default (4px) */
+  --radius-md: 3px;   /* tighter than the frame default (10px) — minimal rounding, near-rectangular */
+  --radius-lg: 6px;   /* tighter than the frame default (20px) */
+}

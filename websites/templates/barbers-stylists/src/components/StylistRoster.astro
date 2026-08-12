@@ -1,0 +1,72 @@
+---
+// StylistRoster — vertical-specific to barbers-stylists. A compact
+// grid of the team: photo, name, specialty, no bio text. Not the same
+// shape as the shared BioCard (a single deep-dive profile with bio
+// text) — this is many-per-page and intentionally light, so it stays
+// local to this vertical rather than being promoted to shared/.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Stylist {
+  photo: ImageMetadata;
+  photoAlt: string;
+  name: string;
+  specialty: string;
+}
+
+interface Props {
+  stylists: Stylist[];
+}
+
+const { stylists } = Astro.props;
+---
+
+<ul class="stylist-roster">
+  {
+    stylists.map((stylist) => (
+      <li class="stylist-roster__card">
+        <Image
+          class="stylist-roster__photo"
+          src={stylist.photo}
+          alt={stylist.photoAlt}
+          widths={[200, 320, 480]}
+          sizes="(min-width: 48rem) 200px, 45vw"
+          loading="lazy"
+        />
+        <p class="stylist-roster__name">{stylist.name}</p>
+        <p class="stylist-roster__specialty">{stylist.specialty}</p>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .stylist-roster {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+
+  @media (min-width: 40rem) {
+    .stylist-roster {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .stylist-roster__photo {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+  }
+
+  .stylist-roster__name {
+    margin-top: var(--space-2xs);
+    font-weight: var(--weight-medium);
+  }
+
+  .stylist-roster__specialty {
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+  }
+</style>

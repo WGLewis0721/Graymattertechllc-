@@ -1,0 +1,42 @@
+# Template workflow for deploying a CLIENT repo to GitHub Pages
+# (docs/DEPLOYMENT.md, stage 2). This file lives here so that
+# scripts/new-client.sh carries it into every new client project via
+# degit. It has no effect inside THIS repo: GitHub Actions only reads
+# workflows from a repo's own top-level .github/workflows/, and this
+# one is nested under websites/, several directories below that. Once
+# copied into a standalone client repo (where it lands at that repo's
+# real .github/workflows/deploy.yml), it becomes live.
+#
+# `path` points at the Astro project relative to the client repo root.
+# A standard client repo has the Astro project at its root, so `path`
+# stays `.`. Do not enable this by turning on GitHub Pages before the
+# client has signed off — see docs/SECURITY.md, "pre-launch confidentiality".
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: withastro/action@v3
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v4

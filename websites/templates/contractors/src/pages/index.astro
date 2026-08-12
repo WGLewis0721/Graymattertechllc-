@@ -1,0 +1,200 @@
+---
+// contractors — single page. A job-site visitor needs to see proof of
+// licensing fast, then services, recent work, service area, and a way
+// to request a quote — all of that fits as anchor sections on one
+// scroll. See README.md, "what to change first for a new client".
+import type { ImageMetadata } from 'astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/shared/Header.astro';
+import Hero from '../components/shared/Hero.astro';
+import Section from '../components/shared/Section.astro';
+import CTAButton from '../components/shared/CTAButton.astro';
+import ServiceCard from '../components/shared/ServiceCard.astro';
+import TestimonialStrip from '../components/shared/TestimonialStrip.astro';
+import BeforeAfterSlider from '../components/shared/BeforeAfterSlider.astro';
+import HoursTable from '../components/shared/HoursTable.astro';
+import ContactForm from '../components/shared/ContactForm.astro';
+import MapEmbed from '../components/shared/MapEmbed.astro';
+import Footer from '../components/shared/Footer.astro';
+import LicenseBadgeStrip from '../components/LicenseBadgeStrip.astro';
+import { loadContent } from '../lib/content';
+import rawContent from '../../content.json';
+
+const content = loadContent(rawContent);
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+  '../../images/*.{png,jpg,jpeg}',
+  { eager: true }
+);
+
+function resolveImage(filename: string): ImageMetadata {
+  const match = Object.entries(imageModules).find(([path]) => path.endsWith(`/${filename}`));
+  if (!match) throw new Error(`No image found for "${filename}" in images/`);
+  return match[1].default;
+}
+
+const heroImage = resolveImage(content.hero.image);
+const projectPairs = (content.beforeAfter ?? []).map((item) => ({
+  before: resolveImage(item.before),
+  after: resolveImage(item.after),
+  beforeAlt: item.beforeAlt,
+  afterAlt: item.afterAlt,
+  label: item.label,
+}));
+
+const telHref = `tel:${content.business.phone.replace(/[^0-9+]/g, '')}`;
+
+const nav = [
+  { label: 'Services', href: '#services' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Service area', href: '#service-area' },
+  { label: 'Quote', href: '#quote' },
+];
+---
+
+<BaseLayout content={content} businessType="GeneralContractor">
+  <Header
+    businessName={content.business.name}
+    nav={nav}
+    ctaLabel="Get a free quote"
+    ctaHref="#quote"
+  />
+
+  <main id="main">
+    <Hero
+      heading={content.business.name}
+      subheading={content.business.tagline}
+      image={heroImage}
+      imageAlt={content.hero.alt}
+      ctaLabel={content.hero.ctaLabel}
+      ctaHref={content.hero.ctaHref}
+    />
+
+    {
+      content.licenses && content.licenses.length > 0 && (
+        <Section id="trust" heading="Licensed, bonded, and insured">
+          <LicenseBadgeStrip badges={content.licenses} />
+          <div class="trust__call">
+            <p class="trust__call-copy">Storm damage or an urgent repair? We answer day or night.</p>
+            <CTAButton label={`Call now: ${content.business.phone}`} href={telHref} variant="accent" />
+          </div>
+        </Section>
+      )
+    }
+
+    <Section id="services" heading="What we do" background="alt">
+      <ul class="service-grid">
+        {
+          content.services.map((service) => (
+            <ServiceCard
+              name={service.name}
+              price={service.price}
+              duration={service.duration}
+              description={service.description}
+            />
+          ))
+        }
+      </ul>
+    </Section>
+
+    {
+      content.testimonials && content.testimonials.length > 0 && (
+        <Section heading="What clients say">
+          <TestimonialStrip testimonials={content.testimonials} />
+        </Section>
+      )
+    }
+
+    {
+      projectPairs.length > 0 && (
+        <Section id="projects" heading="Recent projects" background="alt">
+          <BeforeAfterSlider id="projects-gallery" items={projectPairs} />
+        </Section>
+      )
+    }
+
+    {
+      content.map && (
+        <Section id="service-area" heading="Areas we serve">
+          <MapEmbed embedUrl={content.map.embedUrl} title={content.map.title} />
+        </Section>
+      )
+    }
+
+    <Section id="hours" heading="Hours" background="alt">
+      <HoursTable hours={content.hours} />
+    </Section>
+
+    <Section id="quote" heading="Request a free quote">
+      <p class="quote-intro">Tell us about the job and we will get back to you with a free, no-pressure estimate.</p>
+      <ContactForm
+        endpoint={content.formEndpoint}
+        submitLabel="Request my quote"
+        selectField={{
+          label: 'Project type',
+          name: 'project_type',
+          options: [
+            'Roofing',
+            'Kitchen remodel',
+            'Bathroom remodel',
+            'Siding and gutters',
+            'Room addition',
+            'General repair',
+          ],
+        }}
+      />
+    </Section>
+  </main>
+
+  <Footer
+    businessName={content.business.name}
+    phone={content.business.phone}
+    email={content.business.email}
+    address={content.business.address}
+    social={content.social}
+  />
+</BaseLayout>
+
+<style>
+  .service-grid {
+    display: grid;
+    gap: var(--space-sm);
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 40rem) {
+    .service-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .service-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .trust__call {
+    margin-top: var(--space-md);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-alt);
+  }
+
+  .trust__call-copy {
+    font-weight: var(--weight-medium);
+    color: var(--color-ink);
+    margin: 0;
+    flex: 1 1 16rem;
+  }
+
+  .quote-intro {
+    max-width: var(--container-sm);
+    margin-bottom: var(--space-md);
+    color: var(--color-ink-muted);
+  }
+</style>

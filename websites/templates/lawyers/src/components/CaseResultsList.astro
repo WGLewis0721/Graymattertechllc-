@@ -1,0 +1,62 @@
+---
+// CaseResultsList — vertical-specific to lawyers. A list of past case
+// result summaries, paired with one clear, visible disclaimer note
+// that past results in specific matters are a common source of
+// legal-advertising trouble. The note is rendered once, above the
+// list, rather than repeated per item, so it cannot be scrolled past
+// or missed the way a per-item footnote sometimes is.
+interface CaseResult {
+  summary: string;
+}
+
+interface Props {
+  results: CaseResult[];
+  /** Required "results vary" style note, shown above the list. */
+  note: string;
+}
+
+const { results, note } = Astro.props;
+---
+
+<div class="case-results">
+  <p class="case-results__note">{note}</p>
+  <ul class="case-results__list">
+    {
+      results.map((result) => (
+        <li class="case-results__item">{result.summary}</li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  .case-results {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .case-results__note {
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+    font-style: italic;
+    max-width: 60ch;
+    padding-inline-start: var(--space-sm);
+    border-inline-start: 2px solid var(--color-border);
+  }
+
+  .case-results__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .case-results__item {
+    padding: var(--space-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-raised);
+    line-height: var(--leading-relaxed);
+    max-width: 65ch;
+  }
+</style>

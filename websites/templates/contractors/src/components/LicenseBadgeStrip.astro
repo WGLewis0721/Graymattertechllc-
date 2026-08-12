@@ -1,0 +1,94 @@
+---
+// LicenseBadgeStrip — vertical-specific to contractors. A horizontal
+// strip of text-based trust badges (license number, insurance,
+// bonding, certifications). No other vertical needs proof-of-licensing
+// framed quite this way as a standalone strip, so this stays local
+// rather than moving to shared/ (docs/ENGINEERING.md, principle 7).
+// Placed immediately after Hero on the page since the spec calls for
+// proof of licensing near the top, not buried at the bottom.
+interface Badge {
+  label: string;
+  detail?: string;
+}
+
+interface Props {
+  badges: Badge[];
+}
+
+const { badges } = Astro.props;
+---
+
+<ul class="license-badge-strip">
+  {
+    badges.map((badge) => (
+      <li class="license-badge-strip__badge">
+        <span class="license-badge-strip__mark" aria-hidden="true">
+          &#10003;
+        </span>
+        <span class="license-badge-strip__text">
+          <span class="license-badge-strip__label">{badge.label}</span>
+          {badge.detail && <span class="license-badge-strip__detail">{badge.detail}</span>}
+        </span>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .license-badge-strip {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  @media (min-width: 40rem) {
+    .license-badge-strip {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .license-badge-strip {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .license-badge-strip__badge {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2xs);
+    padding: var(--space-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-raised);
+  }
+
+  .license-badge-strip__mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: var(--space-md);
+    height: var(--space-md);
+    border-radius: var(--radius-full);
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    font-weight: var(--weight-bold);
+  }
+
+  .license-badge-strip__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+  }
+
+  .license-badge-strip__label {
+    font-weight: var(--weight-bold);
+    color: var(--color-ink);
+  }
+
+  .license-badge-strip__detail {
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+  }
+</style>

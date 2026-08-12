@@ -1,0 +1,40 @@
+---
+// AvailabilityBadge — vertical-specific to hospitality-and-cleaning-services.
+// A small trust/urgency pill near the top of the page, e.g. "Accepting
+// new clients this week". Deliberately tiny: a status dot plus one
+// short line, not a full section, so it reads as reassurance rather
+// than a hard sales push.
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<p class="availability-badge">
+  <span class="availability-badge__dot" aria-hidden="true"></span>
+  {text}
+</p>
+
+<style>
+  .availability-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    padding: var(--space-2xs) var(--space-sm);
+    border-radius: var(--radius-full);
+    background: var(--color-surface-raised);
+    color: var(--color-ink);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .availability-badge__dot {
+    flex: 0 0 auto;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: var(--radius-full);
+    background: var(--color-accent);
+  }
+</style>

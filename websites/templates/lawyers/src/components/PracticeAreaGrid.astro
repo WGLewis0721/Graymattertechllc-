@@ -1,0 +1,74 @@
+---
+// PracticeAreaGrid — vertical-specific to lawyers. A grid of practice
+// area cards (name, short description, optional icon/emoji). Not the
+// shared ServiceCard: that component requires a `price`, and law
+// firms don't typically price-list practice areas the way a
+// barbershop prices haircuts, so forcing a fake price string here
+// would be dishonest placeholder copy. Zero hardcoded colors, every
+// visual value is a token from src/styles/tokens.css.
+interface PracticeArea {
+  name: string;
+  description: string;
+  icon?: string;
+}
+
+interface Props {
+  areas: PracticeArea[];
+}
+
+const { areas } = Astro.props;
+---
+
+<ul class="practice-area-grid">
+  {
+    areas.map((area) => (
+      <li class="practice-area-grid__card">
+        {area.icon && (
+          <span class="practice-area-grid__icon" aria-hidden="true">
+            {area.icon}
+          </span>
+        )}
+        <h3 class="practice-area-grid__name">{area.name}</h3>
+        <p class="practice-area-grid__description">{area.description}</p>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .practice-area-grid {
+    display: grid;
+    gap: var(--space-sm);
+    grid-template-columns: 1fr;
+  }
+
+  .practice-area-grid__card {
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-raised);
+  }
+
+  .practice-area-grid__icon {
+    display: block;
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-2xs);
+    line-height: 1;
+  }
+
+  .practice-area-grid__name {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-2xs);
+  }
+
+  .practice-area-grid__description {
+    color: var(--color-ink-muted);
+    line-height: var(--leading-relaxed);
+  }
+
+  @media (min-width: 40rem) {
+    .practice-area-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

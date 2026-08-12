@@ -1,0 +1,50 @@
+/*
+  theme.css — coaches-trainers vertical default. Layered between
+  tokens.css (generic frame defaults) and global.css by BaseLayout, so
+  a fresh client on this template already looks like a high-energy
+  training brand before any content.json theme override is applied.
+  Only overrides the tokens that actually differ from tokens.css;
+  everything else (spacing scale, container widths, radius) inherits
+  the frame default. A client's content.json theme block still wins
+  over this when it sets an explicit colorScheme/fontPairing or
+  theme.colors (see src/lib/theme.ts).
+
+  Feel: high energy, large type, bold imagery. A bright electric-orange
+  primary and lime accent against a near-black surface, distinct from
+  barbers-stylists' near-black + red on a warm cream page. Because the
+  page background itself flips dark here (not just primary/accent),
+  every text and surface token that depends on background/foreground
+  contrast is overridden together so nothing ends up unreadable.
+*/
+:root {
+  --font-heading: 'Archivo Black', 'Arial Black', sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+
+  /* Bold, electric palette: orange for primary actions/chrome, lime for
+     the loudest accent (hero/booking CTAs), near-black page surface. */
+  --color-primary: #d94f04;
+  --color-primary-hover: #b23f03;
+  --color-accent: #c6ff00;
+  --color-accent-hover: #a8d900;
+
+  --color-surface: #121212;
+  --color-surface-alt: #1c1c1c;
+  --color-surface-raised: #222220;
+
+  --color-ink: #f5f2ec;
+  --color-ink-muted: #b8b3a9;
+  --color-border: #33312c;
+
+  --color-on-primary: #ffffff;
+  --color-on-accent: #14140f; /* lime is bright — needs dark text, not the frame default white */
+
+  --color-focus-ring: #c6ff00; /* stays visible against the dark surface */
+  --color-success: #4ade80;    /* lighter than the frame default so it reads on a dark surface */
+  --color-error: #f87171;      /* same reason */
+
+  /* Noticeably larger type scale than the frame default, for "large
+     type, bold imagery" — headings get more room to be loud. */
+  --text-2xl: 2rem;      /* section heading, frame default 1.75rem */
+  --text-3xl: 2.75rem;   /* hero heading, mobile — frame default 2.25rem */
+  --text-4xl: 3.75rem;   /* hero heading, desktop — frame default 3rem */
+}

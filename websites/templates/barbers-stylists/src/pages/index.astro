@@ -1,0 +1,147 @@
+---
+// barbers-stylists — single page. A barbershop doesn't need more than
+// one page: everything a walk-in or a phone-in-hand visitor needs
+// (cuts, prices, hours, how to book) fits as anchor sections on one
+// scroll. See README.md, "what to change first for a new client".
+import type { ImageMetadata } from 'astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/shared/Header.astro';
+import Hero from '../components/shared/Hero.astro';
+import Section from '../components/shared/Section.astro';
+import ServiceCard from '../components/shared/ServiceCard.astro';
+import SwipeGallery from '../components/shared/SwipeGallery.astro';
+import TestimonialStrip from '../components/shared/TestimonialStrip.astro';
+import HoursTable from '../components/shared/HoursTable.astro';
+import ContactForm from '../components/shared/ContactForm.astro';
+import MapEmbed from '../components/shared/MapEmbed.astro';
+import Footer from '../components/shared/Footer.astro';
+import BookingWidget from '../components/BookingWidget.astro';
+import StylistRoster from '../components/StylistRoster.astro';
+import { loadContent } from '../lib/content';
+import rawContent from '../../content.json';
+
+const content = loadContent(rawContent);
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+  '../../images/*.{png,jpg,jpeg}',
+  { eager: true }
+);
+
+function resolveImage(filename: string): ImageMetadata {
+  const match = Object.entries(imageModules).find(([path]) => path.endsWith(`/${filename}`));
+  if (!match) throw new Error(`No image found for "${filename}" in images/`);
+  return match[1].default;
+}
+
+const heroImage = resolveImage(content.hero.image);
+const cutImages = content.gallery.map((item) => ({
+  image: resolveImage(item.src),
+  alt: item.alt,
+}));
+const stylists = (content.stylists ?? []).map((s) => ({
+  photo: resolveImage(s.photo),
+  photoAlt: s.photoAlt,
+  name: s.name,
+  specialty: s.specialty,
+}));
+
+const nav = [
+  { label: 'Cuts', href: '#cuts' },
+  { label: 'Stylists', href: '#stylists' },
+  { label: 'Prices', href: '#prices' },
+  { label: 'Book', href: '#book' },
+];
+---
+
+<BaseLayout content={content} businessType="BarberShop">
+  <Header
+    businessName={content.business.name}
+    nav={nav}
+    ctaLabel="Book now"
+    ctaHref="#book"
+  />
+
+  <main id="main">
+    <Hero
+      heading={content.business.name}
+      subheading={content.business.tagline}
+      image={heroImage}
+      imageAlt={content.hero.alt}
+      ctaLabel={content.hero.ctaLabel}
+      ctaHref={content.hero.ctaHref}
+    />
+
+    <Section id="cuts" heading="Fresh cuts">
+      <SwipeGallery id="cuts-gallery" images={cutImages} />
+    </Section>
+
+    {
+      stylists.length > 0 && (
+        <Section id="stylists" heading="Behind the chair" background="alt">
+          <StylistRoster stylists={stylists} />
+        </Section>
+      )
+    }
+
+    <Section id="prices" heading="Price list">
+      <ul class="price-grid">
+        {
+          content.services.map((service) => (
+            <ServiceCard
+              name={service.name}
+              price={service.price}
+              duration={service.duration}
+              description={service.description}
+            />
+          ))
+        }
+      </ul>
+    </Section>
+
+    {
+      content.testimonials && content.testimonials.length > 0 && (
+        <Section heading="What clients say" background="alt">
+          <TestimonialStrip testimonials={content.testimonials} />
+        </Section>
+      )
+    }
+
+    <Section id="hours" heading="Hours">
+      <HoursTable hours={content.hours} />
+    </Section>
+
+    <Section id="book" heading="Book a chair" background="alt">
+      <BookingWidget provider="Square" href="https://book.squareup.com/appointments/example" />
+      <p class="book-or">Or send a message and we will get back to you.</p>
+      <ContactForm endpoint={content.formEndpoint} />
+      {content.map && <MapEmbed embedUrl={content.map.embedUrl} title={content.map.title} />}
+    </Section>
+  </main>
+
+  <Footer
+    businessName={content.business.name}
+    phone={content.business.phone}
+    email={content.business.email}
+    address={content.business.address}
+    social={content.social}
+  />
+</BaseLayout>
+
+<style>
+  .price-grid {
+    display: grid;
+    gap: var(--space-sm);
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 40rem) {
+    .price-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .book-or {
+    margin-block: var(--space-md);
+    color: var(--color-ink-muted);
+  }
+</style>

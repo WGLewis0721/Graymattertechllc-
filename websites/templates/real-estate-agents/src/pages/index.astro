@@ -1,0 +1,241 @@
+---
+// real-estate-agents — single page. Listings are the hero of the site
+// (per README.md), so the featured-listings grid runs immediately
+// after Hero, ahead of everything else. Neighborhoods, the agent's own
+// profile, and the valuation CTA follow, with prices, gallery, and
+// contact details filling out the rest of the scroll. See README.md,
+// "what to change first for a new client".
+import type { ImageMetadata } from 'astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/shared/Header.astro';
+import Hero from '../components/shared/Hero.astro';
+import Section from '../components/shared/Section.astro';
+import ServiceCard from '../components/shared/ServiceCard.astro';
+import SwipeGallery from '../components/shared/SwipeGallery.astro';
+import TestimonialStrip from '../components/shared/TestimonialStrip.astro';
+import HoursTable from '../components/shared/HoursTable.astro';
+import ContactForm from '../components/shared/ContactForm.astro';
+import MapEmbed from '../components/shared/MapEmbed.astro';
+import CTAButton from '../components/shared/CTAButton.astro';
+import BioCard from '../components/shared/BioCard.astro';
+import Footer from '../components/shared/Footer.astro';
+import ListingCard from '../components/ListingCard.astro';
+import NeighborhoodStrip from '../components/NeighborhoodStrip.astro';
+import { loadContent } from '../lib/content';
+import rawContent from '../../content.json';
+
+const content = loadContent(rawContent);
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+  '../../images/*.{png,jpg,jpeg}',
+  { eager: true }
+);
+
+function resolveImage(filename: string): ImageMetadata {
+  const match = Object.entries(imageModules).find(([path]) => path.endsWith(`/${filename}`));
+  if (!match) throw new Error(`No image found for "${filename}" in images/`);
+  return match[1].default;
+}
+
+const heroImage = resolveImage(content.hero.image);
+
+const listings = (content.listings ?? []).map((listing) => ({
+  image: resolveImage(listing.image),
+  imageAlt: listing.imageAlt,
+  price: listing.price,
+  beds: listing.beds,
+  baths: listing.baths,
+  address: listing.address,
+  status: listing.status,
+}));
+
+const neighborhoods = (content.neighborhoods ?? []).map((n) => ({
+  name: n.name,
+  description: n.description,
+  image: n.image ? resolveImage(n.image) : undefined,
+  imageAlt: n.imageAlt,
+}));
+
+const galleryImages = content.gallery.map((item) => ({
+  image: resolveImage(item.src),
+  alt: item.alt,
+}));
+
+const agent = content.agent
+  ? {
+      photo: resolveImage(content.agent.photo),
+      photoAlt: content.agent.photoAlt,
+      name: content.agent.name,
+      title: content.agent.title,
+      bio: content.agent.bio,
+      credentials: content.agent.credentials,
+    }
+  : undefined;
+
+const nav = [
+  { label: 'Listings', href: '#listings' },
+  { label: 'Neighborhoods', href: '#neighborhoods' },
+  { label: 'Agent', href: '#agent' },
+  { label: 'Contact', href: '#contact' },
+];
+
+const interestField = {
+  label: "I'm interested in",
+  name: 'interest',
+  options: ['Buying a home', 'Selling a home', 'Free home valuation', 'Just have a question'],
+};
+---
+
+<BaseLayout content={content} businessType="RealEstateAgent">
+  <Header
+    businessName={content.business.name}
+    nav={nav}
+    ctaLabel="Contact Priya"
+    ctaHref="#contact"
+  />
+
+  <main id="main">
+    <Hero
+      heading={content.business.name}
+      subheading={content.business.tagline}
+      image={heroImage}
+      imageAlt={content.hero.alt}
+      ctaLabel={content.hero.ctaLabel}
+      ctaHref={content.hero.ctaHref}
+    />
+
+    {
+      listings.length > 0 && (
+        <Section id="listings" heading="Featured listings">
+          <ul class="listing-grid">
+            {listings.map((listing) => (
+              <li>
+                <ListingCard
+                  image={listing.image}
+                  imageAlt={listing.imageAlt}
+                  price={listing.price}
+                  beds={listing.beds}
+                  baths={listing.baths}
+                  address={listing.address}
+                  status={listing.status}
+                />
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )
+    }
+
+    {
+      neighborhoods.length > 0 && (
+        <Section id="neighborhoods" heading="Explore the neighborhoods" background="alt">
+          <NeighborhoodStrip neighborhoods={neighborhoods} />
+        </Section>
+      )
+    }
+
+    <Section id="services" heading="How I can help">
+      <ul class="service-grid">
+        {
+          content.services.map((service) => (
+            <ServiceCard
+              name={service.name}
+              price={service.price}
+              duration={service.duration}
+              description={service.description}
+            />
+          ))
+        }
+      </ul>
+    </Section>
+
+    {
+      agent && (
+        <Section id="agent" heading="Meet your agent" background="alt">
+          <BioCard
+            photo={agent.photo}
+            photoAlt={agent.photoAlt}
+            name={agent.name}
+            title={agent.title}
+            bio={agent.bio}
+            credentials={agent.credentials}
+          />
+        </Section>
+      )
+    }
+
+    <Section id="gallery" heading="Behind the scenes">
+      <SwipeGallery id="agent-gallery" images={galleryImages} />
+    </Section>
+
+    {
+      content.testimonials && content.testimonials.length > 0 && (
+        <Section heading="What clients say" background="alt">
+          <TestimonialStrip testimonials={content.testimonials} />
+        </Section>
+      )
+    }
+
+    <Section id="hours" heading="Hours">
+      <HoursTable hours={content.hours} />
+    </Section>
+
+    <Section heading="Curious what your home is worth?" background="alt" width="sm">
+      <p class="valuation-copy">
+        Get a free, no-obligation comparative market analysis. Most sellers hear back within one business day.
+      </p>
+      <CTAButton label="Get my free valuation" href="#contact" variant="accent" />
+    </Section>
+
+    <Section id="contact" heading="Get in touch">
+      <ContactForm endpoint={content.formEndpoint} selectField={interestField} />
+      {content.map && <MapEmbed embedUrl={content.map.embedUrl} title={content.map.title} />}
+    </Section>
+  </main>
+
+  <Footer
+    businessName={content.business.name}
+    phone={content.business.phone}
+    email={content.business.email}
+    address={content.business.address}
+    social={content.social}
+  />
+</BaseLayout>
+
+<style>
+  .listing-grid {
+    display: grid;
+    gap: var(--space-md);
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 40rem) {
+    .listing-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .listing-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .service-grid {
+    display: grid;
+    gap: var(--space-sm);
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 40rem) {
+    .service-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .valuation-copy {
+    margin-bottom: var(--space-md);
+    color: var(--color-ink-muted);
+    line-height: var(--leading-relaxed);
+  }
+</style>

@@ -1,0 +1,104 @@
+---
+// ListingCard — vertical-specific to real-estate-agents. A property
+// card: photo, price, beds/baths, address, and an optional status
+// badge (e.g. "For sale", "Under contract"). Not a shared component:
+// nothing in shared/ has this image + beds/baths + address shape
+// (docs/ENGINEERING.md, principle 7 — a vertical-specific need is
+// implemented locally first, promoted to shared/ only once a second
+// vertical needs the same shape). The page composes several of these
+// into a listing grid directly; there is no separate ListingGrid
+// component, see README.md.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  image: ImageMetadata;
+  imageAlt: string;
+  price: string;
+  beds: number;
+  baths: number;
+  address: string;
+  /** e.g. "For sale", "Under contract", "New listing". Omit for no badge. */
+  status?: string;
+}
+
+const { image, imageAlt, price, beds, baths, address, status } = Astro.props;
+---
+
+<article class="listing-card">
+  <div class="listing-card__media">
+    <Image
+      class="listing-card__photo"
+      src={image}
+      alt={imageAlt}
+      widths={[400, 800]}
+      sizes="(min-width: 64rem) 30vw, (min-width: 40rem) 45vw, 90vw"
+      loading="lazy"
+    />
+    {status && <span class="listing-card__status">{status}</span>}
+  </div>
+  <div class="listing-card__body">
+    <p class="listing-card__price">{price}</p>
+    <p class="listing-card__meta">
+      {beds} bed{beds === 1 ? '' : 's'} &middot; {baths} bath{baths === 1 ? '' : 's'}
+    </p>
+    <p class="listing-card__address">{address}</p>
+  </div>
+</article>
+
+<style>
+  .listing-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface-raised);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .listing-card__media {
+    position: relative;
+  }
+
+  .listing-card__photo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .listing-card__status {
+    position: absolute;
+    top: var(--space-xs);
+    left: var(--space-xs);
+    padding: var(--space-3xs) var(--space-xs);
+    border-radius: var(--radius-full);
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+  }
+
+  .listing-card__body {
+    padding: var(--space-sm);
+  }
+
+  .listing-card__price {
+    font-family: var(--font-heading);
+    font-weight: var(--weight-bold);
+    font-size: var(--text-xl);
+    color: var(--color-ink);
+  }
+
+  .listing-card__meta {
+    margin-top: var(--space-3xs);
+    color: var(--color-ink-muted);
+    font-size: var(--text-sm);
+  }
+
+  .listing-card__address {
+    margin-top: var(--space-2xs);
+    font-size: var(--text-sm);
+  }
+</style>

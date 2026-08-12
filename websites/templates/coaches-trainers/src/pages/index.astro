@@ -1,0 +1,196 @@
+---
+// coaches-trainers — single page. A solo coach doesn't need more than
+// one scrollable page: results, programs, schedule, and how to book
+// all fit as anchor sections on one scroll, consistent with the
+// swipe-first, single-page philosophy this whole library is built
+// around (docs/PHILOSOPHY.md). Section order deliberately differs from
+// barbers-stylists: the transformation slider leads right after Hero,
+// since proof-of-results is what a coach sells on, before Programs.
+// See README.md, "what to change first for a new client".
+import type { ImageMetadata } from 'astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/shared/Header.astro';
+import Hero from '../components/shared/Hero.astro';
+import Section from '../components/shared/Section.astro';
+import ServiceCard from '../components/shared/ServiceCard.astro';
+import SwipeGallery from '../components/shared/SwipeGallery.astro';
+import BeforeAfterSlider from '../components/shared/BeforeAfterSlider.astro';
+import TestimonialStrip from '../components/shared/TestimonialStrip.astro';
+import HoursTable from '../components/shared/HoursTable.astro';
+import ContactForm from '../components/shared/ContactForm.astro';
+import MapEmbed from '../components/shared/MapEmbed.astro';
+import CTAButton from '../components/shared/CTAButton.astro';
+import Footer from '../components/shared/Footer.astro';
+import ScheduleStrip from '../components/ScheduleStrip.astro';
+import { loadContent } from '../lib/content';
+import rawContent from '../../content.json';
+
+const content = loadContent(rawContent);
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+  '../../images/*.{png,jpg,jpeg}',
+  { eager: true }
+);
+
+function resolveImage(filename: string): ImageMetadata {
+  const match = Object.entries(imageModules).find(([path]) => path.endsWith(`/${filename}`));
+  if (!match) throw new Error(`No image found for "${filename}" in images/`);
+  return match[1].default;
+}
+
+const heroImage = resolveImage(content.hero.image);
+const floorImages = content.gallery.map((item) => ({
+  image: resolveImage(item.src),
+  alt: item.alt,
+}));
+const transformationItems = (content.transformations ?? []).map((t) => ({
+  before: resolveImage(t.before),
+  after: resolveImage(t.after),
+  beforeAlt: t.beforeAlt,
+  afterAlt: t.afterAlt,
+  label: t.label,
+}));
+const sessions = content.sessions ?? [];
+
+const nav = [
+  { label: 'Transformations', href: '#transformations' },
+  { label: 'Programs', href: '#programs' },
+  { label: 'Schedule', href: '#schedule' },
+  { label: 'Book', href: '#book' },
+];
+---
+
+<BaseLayout content={content} businessType="HealthClub">
+  <Header
+    businessName={content.business.name}
+    nav={nav}
+    ctaLabel="Book free session"
+    ctaHref="#book"
+  />
+
+  <main id="main">
+    <Hero
+      heading={content.business.name}
+      subheading={content.business.tagline}
+      image={heroImage}
+      imageAlt={content.hero.alt}
+      ctaLabel={content.hero.ctaLabel}
+      ctaHref={content.hero.ctaHref}
+    />
+
+    {
+      transformationItems.length > 0 && (
+        <Section id="transformations" heading="Real client transformations">
+          <BeforeAfterSlider id="transformations" items={transformationItems} />
+        </Section>
+      )
+    }
+
+    <Section id="programs" heading="Coaching programs" background="alt">
+      <ul class="program-grid">
+        {
+          content.services.map((service) => (
+            <ServiceCard
+              name={service.name}
+              price={service.price}
+              duration={service.duration}
+              description={service.description}
+            />
+          ))
+        }
+      </ul>
+    </Section>
+
+    <Section>
+      <div class="cta-banner">
+        <p class="cta-banner__text">Ready to see what a real plan feels like?</p>
+        <CTAButton label="Book your free intro session" href="#book" variant="accent" />
+      </div>
+    </Section>
+
+    <Section id="floor" heading="Inside the gym" background="alt">
+      <SwipeGallery id="floor-gallery" images={floorImages} />
+    </Section>
+
+    <Section id="schedule" heading="This week's schedule">
+      <ScheduleStrip sessions={sessions} bookHref="#book" />
+      <div class="cta-banner cta-banner--tight">
+        <p class="cta-banner__text">Spots fill up fast. Grab yours before the week starts.</p>
+        <CTAButton label="Book your free intro session" href="#book" variant="accent" />
+      </div>
+    </Section>
+
+    {
+      content.testimonials && content.testimonials.length > 0 && (
+        <Section heading="What clients say" background="alt">
+          <TestimonialStrip testimonials={content.testimonials} />
+        </Section>
+      )
+    }
+
+    <Section id="hours" heading="Hours">
+      <HoursTable hours={content.hours} />
+    </Section>
+
+    <Section id="book" heading="Book your free intro session" background="alt">
+      <p class="book-intro">
+        Thirty minutes, no pressure: tell us about your goals, get a movement assessment, and
+        leave with an actual plan.
+      </p>
+      <ContactForm endpoint={content.formEndpoint} submitLabel="Claim my free session" />
+      {content.map && <MapEmbed embedUrl={content.map.embedUrl} title={content.map.title} />}
+    </Section>
+  </main>
+
+  <Footer
+    businessName={content.business.name}
+    phone={content.business.phone}
+    email={content.business.email}
+    address={content.business.address}
+    social={content.social}
+  />
+</BaseLayout>
+
+<style>
+  .program-grid {
+    display: grid;
+    gap: var(--space-sm);
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 40rem) {
+    .program-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .program-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .cta-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    text-align: center;
+  }
+
+  .cta-banner--tight {
+    margin-top: var(--space-lg);
+  }
+
+  .cta-banner__text {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    max-width: 30ch;
+  }
+
+  .book-intro {
+    margin-bottom: var(--space-md);
+    color: var(--color-ink-muted);
+    font-size: var(--text-lg);
+  }
+</style>

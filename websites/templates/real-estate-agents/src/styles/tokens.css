@@ -1,0 +1,115 @@
+/*
+  tokens.css — the only place visual identity is allowed to have a value.
+
+  Every custom property below gets a default here so the frame renders a
+  coherent, on-brand-neutral look with zero client theming applied. A
+  client's `theme.css` (or the inline :root block BaseLayout injects from
+  content.json) overrides a subset of these — usually just the color and
+  font tokens — to apply that client's brand. Nothing in src/components/
+  ever reads a value that isn't one of these tokens. See
+  docs/ARCHITECTURE.md ("theme last") and docs/ENGINEERING.md (naming
+  conventions) before adding or renaming a token.
+*/
+
+:root {
+  /* ---------------------------------------------------------------
+     Color — primary/accent/surface/ink plus derived interaction states.
+     A client theme typically only overrides --color-primary,
+     --color-accent, and --color-surface; the rest are designed to stay
+     in proportion automatically. If a client swaps these, re-check
+     contrast (docs/ENGINEERING.md, principle 6: accessibility).
+  --------------------------------------------------------------- */
+  --color-primary: #1f2937;       /* brand color: CTAs, links, active states */
+  --color-primary-hover: #111827; /* primary, darkened, for :hover/:active */
+  --color-accent: #b45309;        /* secondary brand color: highlights, badges */
+  --color-accent-hover: #92400e;  /* accent, darkened, for :hover/:active */
+
+  --color-surface: #ffffff;       /* page background */
+  --color-surface-alt: #f7f5f2;   /* alternating section background */
+  --color-surface-raised: #ffffff;/* cards, the sticky call bar, form fields */
+
+  --color-ink: #1a1a1a;           /* primary text, on --color-surface */
+  --color-ink-muted: #5b5b5b;     /* secondary text: captions, meta, hours */
+  --color-border: #e2ddd6;        /* dividers, card borders, input borders */
+
+  --color-on-primary: #ffffff;    /* text/icon color on top of --color-primary */
+  --color-on-accent: #ffffff;     /* text/icon color on top of --color-accent */
+
+  --color-focus-ring: #2563eb;    /* visible focus outline, never removed */
+  --color-success: #15803d;       /* form success state */
+  --color-error: #b91c1c;         /* form error state */
+
+  --color-on-image: #ffffff;      /* text placed over a photo (Hero heading/subheading) */
+  --color-scrim-strong: rgba(0, 0, 0, 0.55); /* dark gradient stop behind text-over-photo */
+  --color-scrim-soft: rgba(0, 0, 0, 0.05);   /* light gradient stop, same use */
+
+  /* ---------------------------------------------------------------
+     Type — a heading/body font pair plus a fixed scale. content.json's
+     theme.fontPairing selects which pair BaseLayout injects; these are
+     the fallback pair used until that override lands.
+  --------------------------------------------------------------- */
+  --font-heading: 'Georgia', 'Iowan Old Style', serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  --text-xs: 0.75rem;    /* fine print, form hints */
+  --text-sm: 0.875rem;   /* captions, meta text, hours table */
+  --text-base: 1rem;     /* body copy */
+  --text-lg: 1.125rem;   /* lead paragraph, service card title */
+  --text-xl: 1.375rem;   /* section subheading */
+  --text-2xl: 1.75rem;   /* section heading */
+  --text-3xl: 2.25rem;   /* hero heading, mobile */
+  --text-4xl: 3rem;      /* hero heading, desktop */
+
+  --leading-tight: 1.15;   /* headings */
+  --leading-normal: 1.5;   /* body copy */
+  --leading-relaxed: 1.7;  /* long-form text: testimonials, about copy */
+
+  --weight-regular: 400;
+  --weight-medium: 600;
+  --weight-bold: 700;
+
+  /* ---------------------------------------------------------------
+     Spacing — one scale, used for margin, padding, and gap everywhere.
+     Never hardcode a px/rem spacing value in a component; pick the
+     closest step here.
+  --------------------------------------------------------------- */
+  --space-3xs: 0.25rem;  /* 4px  — tight icon/text gaps */
+  --space-2xs: 0.5rem;   /* 8px  — form field internal padding */
+  --space-xs: 0.75rem;   /* 12px — small gaps between inline elements */
+  --space-sm: 1rem;      /* 16px — default gap, card padding */
+  --space-md: 1.5rem;    /* 24px — section internal spacing */
+  --space-lg: 2.5rem;    /* 40px — space between stacked sections on mobile */
+  --space-xl: 4rem;      /* 64px — space between stacked sections on desktop */
+  --space-2xl: 6rem;     /* 96px — hero vertical padding, desktop */
+  --space-3xl: 8rem;     /* 128px — rare, large hero/closing sections */
+
+  /* ---------------------------------------------------------------
+     Radius — corner rounding scale.
+  --------------------------------------------------------------- */
+  --radius-sm: 4px;    /* form inputs, badges */
+  --radius-md: 10px;   /* cards, buttons, gallery images */
+  --radius-lg: 20px;   /* hero media, large panels */
+  --radius-full: 999px;/* pills, avatar crops, the sticky call button */
+
+  /* ---------------------------------------------------------------
+     Shadow — elevation scale. Used sparingly: this is a flat, fast,
+     mobile-first design, not a heavily skeuomorphic one.
+  --------------------------------------------------------------- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.16); /* StickyCallBar, modals */
+
+  /* ---------------------------------------------------------------
+     Container widths — max-width for content at each breakpoint, plus
+     the side gutter every Section applies.
+  --------------------------------------------------------------- */
+  --container-sm: 40rem;   /* 640px  — single-column text content */
+  --container-md: 56rem;   /* 896px  — default section width */
+  --container-lg: 72rem;   /* 1152px — wide sections: gallery, service grid */
+  --container-gutter: var(--space-sm); /* side padding at any width */
+
+  /* ---------------------------------------------------------------
+     Interaction — fixed constants, not meant to be themed per client.
+  --------------------------------------------------------------- */
+  --tap-target-min: 44px; /* minimum hit area, every interactive element */
+}

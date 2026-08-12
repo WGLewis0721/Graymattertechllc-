@@ -1,0 +1,180 @@
+---
+// lawyers — single page, denser and more text-forward than the other
+// verticals in this library (see README.md). A prospective client
+// evaluating a firm wants practice areas first, then reasons to trust
+// the firm (attorney background, past results), then a way to reach
+// out. The disclaimer sits near the bottom, close to the form, so it
+// is visible without being the first thing a visitor reads.
+import type { ImageMetadata } from 'astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/shared/Header.astro';
+import Hero from '../components/shared/Hero.astro';
+import Section from '../components/shared/Section.astro';
+import BioCard from '../components/shared/BioCard.astro';
+import SwipeGallery from '../components/shared/SwipeGallery.astro';
+import TestimonialStrip from '../components/shared/TestimonialStrip.astro';
+import HoursTable from '../components/shared/HoursTable.astro';
+import ContactForm from '../components/shared/ContactForm.astro';
+import MapEmbed from '../components/shared/MapEmbed.astro';
+import Footer from '../components/shared/Footer.astro';
+import PracticeAreaGrid from '../components/PracticeAreaGrid.astro';
+import CaseResultsList from '../components/CaseResultsList.astro';
+import DisclaimerBlock from '../components/DisclaimerBlock.astro';
+import { loadContent } from '../lib/content';
+import rawContent from '../../content.json';
+
+const content = loadContent(rawContent);
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+  '../../images/*.{png,jpg,jpeg}',
+  { eager: true }
+);
+
+function resolveImage(filename: string): ImageMetadata {
+  const match = Object.entries(imageModules).find(([path]) => path.endsWith(`/${filename}`));
+  if (!match) throw new Error(`No image found for "${filename}" in images/`);
+  return match[1].default;
+}
+
+const heroImage = resolveImage(content.hero.image);
+const officeImages = content.gallery.map((item) => ({
+  image: resolveImage(item.src),
+  alt: item.alt,
+}));
+const attorney = content.attorney
+  ? {
+      photo: resolveImage(content.attorney.photo),
+      photoAlt: content.attorney.photoAlt,
+      name: content.attorney.name,
+      title: content.attorney.title,
+      bio: content.attorney.bio,
+      credentials: content.attorney.credentials,
+    }
+  : null;
+
+// ConsultationForm is the shared ContactForm with its selectField prop
+// set to practice area, per components/shared/README.md's ContactForm
+// contract. Options come straight from content.json so a new client's
+// practice area list never needs a component change.
+const practiceAreaOptions = (content.practiceAreas ?? []).map((a) => a.name);
+
+const nav = [
+  { label: 'Practice areas', href: '#practice-areas' },
+  { label: 'Attorney', href: '#attorney' },
+  { label: 'Results', href: '#results' },
+  { label: 'Consultation', href: '#consultation' },
+];
+---
+
+<BaseLayout content={content} businessType="LegalService">
+  <Header
+    businessName={content.business.name}
+    nav={nav}
+    ctaLabel="Request a consultation"
+    ctaHref="#consultation"
+  />
+
+  <main id="main">
+    <Hero
+      heading={content.business.name}
+      subheading={content.business.tagline}
+      image={heroImage}
+      imageAlt={content.hero.alt}
+      ctaLabel={content.hero.ctaLabel}
+      ctaHref={content.hero.ctaHref}
+    />
+
+    {
+      content.practiceAreas && content.practiceAreas.length > 0 && (
+        <Section id="practice-areas" heading="Practice areas">
+          <PracticeAreaGrid areas={content.practiceAreas} />
+        </Section>
+      )
+    }
+
+    {
+      attorney && (
+        <Section id="attorney" heading="Your attorney" background="alt" width="sm">
+          <BioCard
+            photo={attorney.photo}
+            photoAlt={attorney.photoAlt}
+            name={attorney.name}
+            title={attorney.title}
+            bio={attorney.bio}
+            credentials={attorney.credentials}
+          />
+        </Section>
+      )
+    }
+
+    {
+      content.caseResults && content.caseResults.results.length > 0 && (
+        <Section id="results" heading="Recent case results" width="sm">
+          <CaseResultsList results={content.caseResults.results} note={content.caseResults.note} />
+        </Section>
+      )
+    }
+
+    {
+      content.testimonials && content.testimonials.length > 0 && (
+        <Section heading="What clients say" background="alt" width="sm">
+          <TestimonialStrip testimonials={content.testimonials} />
+        </Section>
+      )
+    }
+
+    {
+      officeImages.length > 0 && (
+        <Section id="office" heading="Our office">
+          <SwipeGallery id="office-gallery" images={officeImages} />
+        </Section>
+      )
+    }
+
+    <Section id="hours" heading="Hours" background="alt">
+      <HoursTable hours={content.hours} />
+    </Section>
+
+    <Section id="consultation" heading="Request a consultation" width="sm">
+      <p class="consultation-intro">
+        Tell us a little about your situation and which practice area fits best. We will follow up to
+        schedule a consultation.
+      </p>
+      <ContactForm
+        endpoint={content.formEndpoint}
+        submitLabel="Request a consultation"
+        selectField={{
+          label: 'Practice area',
+          name: 'practice_area',
+          options: practiceAreaOptions,
+        }}
+      />
+      {content.map && <MapEmbed embedUrl={content.map.embedUrl} title={content.map.title} />}
+    </Section>
+
+    {
+      content.disclaimer && (
+        <Section width="sm">
+          <DisclaimerBlock text={content.disclaimer} />
+        </Section>
+      )
+    }
+  </main>
+
+  <Footer
+    businessName={content.business.name}
+    phone={content.business.phone}
+    email={content.business.email}
+    address={content.business.address}
+    social={content.social}
+  />
+</BaseLayout>
+
+<style>
+  .consultation-intro {
+    margin-bottom: var(--space-md);
+    color: var(--color-ink-muted);
+    line-height: var(--leading-relaxed);
+    max-width: 60ch;
+  }
+</style>

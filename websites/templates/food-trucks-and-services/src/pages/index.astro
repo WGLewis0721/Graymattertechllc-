@@ -1,0 +1,141 @@
+---
+// food-trucks-and-services — single page. Finding today's location is
+// the most time-sensitive need for a mobile business, so LocationTracker
+// runs right after the Hero, ahead of the menu. See README.md, "what to
+// change first for a new client".
+import type { ImageMetadata } from 'astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/shared/Header.astro';
+import Hero from '../components/shared/Hero.astro';
+import Section from '../components/shared/Section.astro';
+import ItemShowcase from '../components/shared/ItemShowcase.astro';
+import SwipeGallery from '../components/shared/SwipeGallery.astro';
+import TestimonialStrip from '../components/shared/TestimonialStrip.astro';
+import HoursTable from '../components/shared/HoursTable.astro';
+import ContactForm from '../components/shared/ContactForm.astro';
+import MapEmbed from '../components/shared/MapEmbed.astro';
+import Footer from '../components/shared/Footer.astro';
+import LocationTracker from '../components/LocationTracker.astro';
+import { loadContent } from '../lib/content';
+import rawContent from '../../content.json';
+
+const content = loadContent(rawContent);
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+  '../../images/*.{png,jpg,jpeg}',
+  { eager: true }
+);
+
+function resolveImage(filename: string): ImageMetadata {
+  const match = Object.entries(imageModules).find(([path]) => path.endsWith(`/${filename}`));
+  if (!match) throw new Error(`No image found for "${filename}" in images/`);
+  return match[1].default;
+}
+
+const heroImage = resolveImage(content.hero.image);
+const vibeImages = content.gallery.map((item) => ({
+  image: resolveImage(item.src),
+  alt: item.alt,
+}));
+const menuItems = (content.menu ?? []).map((item) => ({
+  image: resolveImage(item.image),
+  imageAlt: item.imageAlt,
+  name: item.name,
+  price: item.price,
+  description: item.description,
+}));
+const stops = content.stops ?? [];
+
+const nav = [
+  { label: 'Find us', href: '#find-us' },
+  { label: 'Menu', href: '#menu' },
+  { label: 'Photos', href: '#vibe' },
+  { label: 'Book us', href: '#book' },
+];
+
+const eventTypeField = {
+  label: 'Event type',
+  name: 'event_type',
+  options: ['Private party', 'Corporate catering', 'Wedding', 'Other'],
+};
+---
+
+<BaseLayout content={content} businessType="FoodEstablishment">
+  <Header
+    businessName={content.business.name}
+    nav={nav}
+    ctaLabel="Book us"
+    ctaHref="#book"
+  />
+
+  <main id="main">
+    <Hero
+      heading={content.business.name}
+      subheading={content.business.tagline}
+      image={heroImage}
+      imageAlt={content.hero.alt}
+      ctaLabel={content.hero.ctaLabel}
+      ctaHref={content.hero.ctaHref}
+    />
+
+    {
+      stops.length > 0 && (
+        <Section id="find-us" heading="Find the truck today">
+          <p class="find-us-lead">We move around the metro every day of the week. Here is our regular route.</p>
+          <LocationTracker stops={stops} />
+        </Section>
+      )
+    }
+
+    {
+      menuItems.length > 0 && (
+        <Section id="menu" heading="The menu" background="alt">
+          <ItemShowcase items={menuItems} />
+        </Section>
+      )
+    }
+
+    {
+      vibeImages.length > 0 && (
+        <Section id="vibe" heading="The golden hour vibe">
+          <SwipeGallery id="vibe-gallery" images={vibeImages} />
+        </Section>
+      )
+    }
+
+    {
+      content.testimonials && content.testimonials.length > 0 && (
+        <Section heading="What people say" background="alt">
+          <TestimonialStrip testimonials={content.testimonials} />
+        </Section>
+      )
+    }
+
+    <Section id="book" heading="Book the truck">
+      <p class="book-lead">Private parties, corporate lunches, and weddings, no schedule to chase, we come to you.</p>
+      <ContactForm endpoint={content.formEndpoint} submitLabel="Request the truck" selectField={eventTypeField} />
+    </Section>
+
+    <Section id="hours" heading="Typical hours" background="alt">
+      <HoursTable hours={content.hours} />
+      {content.map && <MapEmbed embedUrl={content.map.embedUrl} title={content.map.title} />}
+    </Section>
+  </main>
+
+  <Footer
+    businessName={content.business.name}
+    phone={content.business.phone}
+    email={content.business.email}
+    address={content.business.address}
+    social={content.social}
+  />
+</BaseLayout>
+
+<style>
+  .find-us-lead,
+  .book-lead {
+    margin-bottom: var(--space-md);
+    color: var(--color-ink-muted);
+    max-width: 60ch;
+  }
+</style>
