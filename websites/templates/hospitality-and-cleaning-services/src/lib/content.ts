@@ -83,6 +83,21 @@ export interface Hero {
   ctaHref?: string;
 }
 
+/** This vertical's own extension — one package tier, see ServiceChecklist.astro. */
+export interface ServicePackage {
+  name: string;
+  items: string[];
+}
+
+/** This vertical's own extension — one before/after pair, see the shared BeforeAfterSlider. */
+export interface BeforeAfterPair {
+  before: string;
+  after: string;
+  beforeAlt: string;
+  afterAlt: string;
+  label?: string;
+}
+
 export interface Content {
   business: Business;
   hero: Hero;
@@ -99,6 +114,12 @@ export interface Content {
   launched: boolean;
   site?: string;
   base?: string;
+  /** hospitality-and-cleaning-services-only field, see ServiceChecklist.astro. */
+  packages?: ServicePackage[];
+  /** hospitality-and-cleaning-services-only field, see AvailabilityBadge.astro. */
+  availability?: string;
+  /** hospitality-and-cleaning-services-only field, see the shared BeforeAfterSlider. */
+  beforeAfter?: BeforeAfterPair[];
 }
 
 // strictRequired is off because business.anyOf legitimately requires

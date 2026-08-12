@@ -1,0 +1,138 @@
+{
+  "hero": {
+    "image": "hero.png",
+    "alt": "Placeholder photo standing in for a sunlit home kitchen counter with fresh sourdough loaves cooling",
+    "ctaLabel": "See this week's menu",
+    "ctaHref": "#products"
+  },
+  "business": {
+    "name": "Goldenrod Kitchen",
+    "tagline": "Small-batch bakes and dinners, made in my home kitchen for yours",
+    "phone": "+1-555-040-1200",
+    "email": "hello@goldenrodkitchen.com",
+    "serviceArea": "Austin, Texas. Local pickup and delivery within 15 miles."
+  },
+  "hours": [
+    { "day": "Online ordering", "open": "00:00", "close": "23:59" },
+    { "day": "Pickup: Wed", "open": "16:00", "close": "18:00" },
+    { "day": "Pickup: Sat", "open": "09:00", "close": "12:00" },
+    { "day": "Delivery window: Sat", "open": "10:00", "close": "14:00" }
+  ],
+  "services": [
+    {
+      "name": "Private dinner party, up to 8 guests",
+      "price": "From $650",
+      "duration": "3 hour experience",
+      "description": "A seasonal, multi course menu cooked in your own kitchen, planned around what looks good at the market that week."
+    },
+    {
+      "name": "Cooking class for two",
+      "price": "$180",
+      "duration": "2 hours",
+      "description": "Hands on, one recipe start to finish, plus a glass of wine while it's in the oven."
+    },
+    {
+      "name": "Weekly bake subscription",
+      "price": "$35 per week",
+      "description": "A rotating loaf, a pastry, and one seasonal treat, ready for Saturday pickup or Saturday delivery."
+    },
+    {
+      "name": "Custom celebration cake",
+      "price": "From $75",
+      "description": "Two weeks notice preferred. Tell me the flavors and the occasion, and I will sketch a few options."
+    }
+  ],
+  "gallery": [
+    { "src": "kitchen-1.png", "alt": "Placeholder photo standing in for flour dusted hands shaping a sourdough loaf" },
+    { "src": "kitchen-2.png", "alt": "Placeholder photo standing in for a tray of babka loaves fresh out of the oven" },
+    { "src": "kitchen-3.png", "alt": "Placeholder photo standing in for a Saturday pickup table set up on the porch" },
+    { "src": "kitchen-4.png", "alt": "Placeholder photo standing in for a basket of seasonal produce from the farmers market" }
+  ],
+  "testimonials": [
+    { "quote": "The sourdough sells out for a reason. I order two loaves every single week.", "author": "Priya R." },
+    { "quote": "I booked a private dinner for my parents' anniversary, and it was better than any restaurant we tried that year.", "author": "Marcus T.", "role": "Repeat client" },
+    { "quote": "The bake subscription is the best $35 I spend all week. Everything shows up still warm.", "author": "Dana K." }
+  ],
+  "theme": {
+    "fontPairing": "classic-serif",
+    "colorScheme": "warm-neutral",
+    "colors": {
+      "primary": "#7c2d12",
+      "accent": "#b45309",
+      "surface": "#fdfaf6",
+      "ink": "#2b2420"
+    }
+  },
+  "formEndpoint": "https://formspree.io/f/goldenrodkitchen",
+  "social": {
+    "instagram": "https://instagram.com/goldenrodkitchen",
+    "facebook": "https://facebook.com/goldenrodkitchen"
+  },
+  "seo": {
+    "title": "Goldenrod Kitchen - Home Bakery in Austin, TX",
+    "description": "Small batch sourdough, pastries, and private dinners made in a home kitchen in Austin. Order online for weekly pickup or delivery."
+  },
+  "launched": false,
+  "products": [
+    {
+      "image": "sourdough.png",
+      "imageAlt": "Placeholder photo standing in for a scored sourdough loaf with a golden crust",
+      "name": "Classic Sourdough Loaf",
+      "price": "$9",
+      "description": "48 hour cold ferment, baked fresh the morning of pickup."
+    },
+    {
+      "image": "babka.png",
+      "imageAlt": "Placeholder photo standing in for a swirled cardamom cinnamon babka loaf",
+      "name": "Cardamom Cinnamon Babka",
+      "price": "$14",
+      "description": "A buttery, laminated dough swirled with cardamom sugar."
+    },
+    {
+      "image": "galette.png",
+      "imageAlt": "Placeholder photo standing in for a rustic seasonal fruit galette",
+      "name": "Seasonal Fruit Galette",
+      "price": "$22",
+      "description": "Whatever is ripest at the market, in a flaky, all butter crust. Serves 6."
+    },
+    {
+      "image": "granola.png",
+      "imageAlt": "Placeholder photo standing in for a jar of turmeric ginger granola",
+      "name": "Turmeric Ginger Granola",
+      "price": "$10",
+      "description": "Oats, pepitas, and coconut, toasted with turmeric and fresh ginger. 12 ounce bag."
+    },
+    {
+      "image": "mealbox.png",
+      "imageAlt": "Placeholder photo standing in for a weekly meal prep box with five portioned dinners",
+      "name": "Weekly Meal Prep Box",
+      "price": "$85",
+      "description": "Five dinners, portioned and labeled, delivered Saturday morning."
+    },
+    {
+      "image": "cookiebox.png",
+      "imageAlt": "Placeholder photo standing in for a dozen assorted cookies packed in a bakery box",
+      "name": "Saturday Cookie Box",
+      "price": "$18",
+      "description": "A dozen assorted cookies, a different lineup every week."
+    }
+  ],
+  "offer": {
+    "heading": "New here? Take 10% off your first order",
+    "description": "Use the code FIRSTBAKE at checkout on any order over $25. Good for one order per household.",
+    "ctaLabel": "Claim your discount",
+    "ctaHref": "#order"
+  },
+  "story": {
+    "photo": "story-portrait.png",
+    "photoAlt": "Placeholder photo standing in for a portrait of Priya Anand in her home kitchen",
+    "story": "I started Goldenrod Kitchen in my own kitchen five years ago, baking one loaf of sourdough a week for neighbors who asked nicely. I had spent a decade in restaurant kitchens before that, and what I wanted most was to cook the way I actually eat: seasonal, unfussy, made from scratch, and shared around a table. Today I still bake and cook everything myself, in small batches, using a state approved home kitchen and local ingredients whenever I can find them. If you order from Goldenrod Kitchen, you are getting food I would serve my own family, made by the same two hands every time."
+  },
+  "links": [
+    { "label": "Order this week's menu", "href": "https://forms.gle/GoldenrodKitchenOrder" },
+    { "label": "Follow on Instagram", "href": "https://instagram.com/goldenrodkitchen" },
+    { "label": "Full menu and pricing (PDF)", "href": "https://goldenrodkitchen.com/menu.pdf" },
+    { "label": "Farmers market schedule", "href": "https://goldenrodkitchen.com/market-schedule" },
+    { "label": "Text to order", "href": "sms:+15550401200" }
+  ]
+}

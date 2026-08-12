@@ -1,0 +1,32 @@
+---
+// DisclaimerBlock — vertical-specific to lawyers. A small, visually
+// distinct block for the attorney-advertising / bar-compliance
+// disclaimer: muted color, smaller text, a top border to set it apart
+// from surrounding sections. The text itself is a prop sourced from
+// content.json's `disclaimer` field; see that field's schema
+// description and this template's README.md for why the shipped
+// value is a placeholder that must never go to a real client as-is.
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<div class="disclaimer-block">
+  <p class="disclaimer-block__text">{text}</p>
+</div>
+
+<style>
+  .disclaimer-block {
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .disclaimer-block__text {
+    font-size: var(--text-xs);
+    line-height: var(--leading-relaxed);
+    color: var(--color-ink-muted);
+    max-width: 70ch;
+  }
+</style>

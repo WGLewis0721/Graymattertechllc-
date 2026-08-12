@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://graymattertech.example/schemas/content.schema.json",
-  "title": "Client content.json",
-  "description": "Single source of truth for a client site's copy, contact info, hours, image references, and launch state. See websites/docs/ARCHITECTURE.md for the contract this schema enforces. A file that fails this schema fails the build — see src/lib/content.ts.",
+  "title": "Client content.json (food-trucks-and-services)",
+  "description": "Single source of truth for a client site's copy, contact info, hours, image references, and launch state. See websites/docs/ARCHITECTURE.md for the core contract this schema enforces; `menu` and `stops` are this vertical's own additive extensions, added locally to this template's copy of the schema, not to the shared library schema. A file that fails this schema fails the build — see src/lib/content.ts.",
   "type": "object",
   "additionalProperties": false,
   "required": ["business", "hero", "hours", "services", "gallery", "theme", "formEndpoint", "seo"],
@@ -168,6 +168,40 @@
       "type": "string",
       "pattern": "^/",
       "description": "Optional override for astro.config.mjs's `base`. '/' for a custom domain, '/<repo>' for a username.github.io/<repo> URL. The BASE_PATH env var takes precedence when set."
+    },
+    "menu": {
+      "type": "array",
+      "description": "This vertical's own extension: the food truck's menu, matching the shared ItemShowcase component's prop shape (image path strings here, resolved to ImageMetadata by the page). Rendered as \"MenuBoard\" — that's the shared ItemShowcase reused directly, not a new component.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["image", "imageAlt", "name", "price"],
+        "properties": {
+          "image": { "type": "string", "minLength": 1 },
+          "imageAlt": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Required. A missing or empty alt fails the build; see docs/ENGINEERING.md principle 6."
+          },
+          "name": { "type": "string", "minLength": 1 },
+          "price": { "type": "string", "minLength": 1 },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "stops": {
+      "type": "array",
+      "description": "This vertical's own extension: the weekly schedule of where the truck parks, rendered by src/components/LocationTracker.astro.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["day", "location", "time"],
+        "properties": {
+          "day": { "type": "string", "minLength": 1 },
+          "location": { "type": "string", "minLength": 1 },
+          "time": { "type": "string", "minLength": 1 }
+        }
+      }
     }
   }
 }

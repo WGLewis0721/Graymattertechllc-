@@ -1,0 +1,42 @@
+/*
+  theme.css — contractors vertical default. Layered between tokens.css
+  (generic frame defaults) and global.css by BaseLayout, so a fresh
+  client on this template already looks like a contracting outfit
+  before any content.json theme override is applied. Only overrides
+  the tokens that actually differ from tokens.css; everything else
+  (spacing scale, shadows, container widths) inherits the frame
+  default. A client's content.json theme block still wins over this
+  when it sets an explicit colorScheme/fontPairing or theme.colors.
+
+  Feel: rugged and practical. Charcoal + safety-orange, a bold sans for
+  headings, sharper corners, and noticeably larger body/button text
+  than the frame default so the page reads as sturdy and easy to tap
+  or read on a job site. --tap-target-min is a fixed frame constant
+  (see tokens.css's own comment) and is not touched here; the larger
+  feel comes from type scale and padding instead.
+*/
+:root {
+  --font-heading: 'Archivo Black', 'Arial Black', -apple-system, sans-serif;
+  --font-body: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+
+  --color-primary: #2b2f33;
+  --color-primary-hover: #1c1f22;
+  --color-accent: #ff6a00;
+  --color-accent-hover: #cc5500;
+  --color-surface: #f4f1ec;
+  --color-surface-alt: #e6e2da;
+  --color-surface-raised: #ffffff;
+  --color-ink: #1c1f22;
+  --color-ink-muted: #52504c;
+  --color-border: #d3cec4;
+
+  /* Slightly larger than the frame default across the board, so body
+     copy and buttons read as sturdy and legible at arm's length. */
+  --text-base: 1.0625rem;  /* 17px, up from 16px */
+  --text-lg: 1.25rem;      /* up from 1.125rem */
+  --text-xl: 1.5rem;       /* up from 1.375rem */
+
+  --radius-sm: 3px;   /* sharper corners than the frame default (4px) */
+  --radius-md: 6px;   /* sharper than the frame default (10px) */
+  --radius-lg: 12px;  /* sharper than the frame default (20px) */
+}

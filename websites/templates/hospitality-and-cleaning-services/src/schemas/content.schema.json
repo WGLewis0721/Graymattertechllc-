@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://graymattertech.example/schemas/content.schema.json",
-  "title": "Client content.json",
-  "description": "Single source of truth for a client site's copy, contact info, hours, image references, and launch state. See websites/docs/ARCHITECTURE.md for the contract this schema enforces. A file that fails this schema fails the build — see src/lib/content.ts.",
+  "title": "Client content.json (hospitality-and-cleaning-services)",
+  "description": "Single source of truth for a client site's copy, contact info, hours, image references, and launch state. See websites/docs/ARCHITECTURE.md for the core contract this schema enforces; `packages`, `availability`, and `beforeAfter` are this vertical's own additive extensions, added locally to this template's copy of the schema, not to the shared library schema. A file that fails this schema fails the build — see src/lib/content.ts.",
   "type": "object",
   "additionalProperties": false,
   "required": ["business", "hero", "hours", "services", "gallery", "theme", "formEndpoint", "seo"],
@@ -168,6 +168,44 @@
       "type": "string",
       "pattern": "^/",
       "description": "Optional override for astro.config.mjs's `base`. '/' for a custom domain, '/<repo>' for a username.github.io/<repo> URL. The BASE_PATH env var takes precedence when set."
+    },
+    "packages": {
+      "type": "array",
+      "description": "This vertical's own extension: one entry per package tier, rendered by src/components/ServiceChecklist.astro as a list of what's included.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "items"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "availability": {
+      "type": "string",
+      "minLength": 1,
+      "description": "This vertical's own extension: a short trust/urgency line rendered by src/components/AvailabilityBadge.astro, e.g. \"Booking 3 days out this week\"."
+    },
+    "beforeAfter": {
+      "type": "array",
+      "description": "This vertical's own extension: before/after image pairs rendered by the shared BeforeAfterSlider. Same shape as that component's `items` prop, but with string image paths since this lives in content.json.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["before", "after", "beforeAlt", "afterAlt"],
+        "properties": {
+          "before": { "type": "string", "minLength": 1 },
+          "after": { "type": "string", "minLength": 1 },
+          "beforeAlt": { "type": "string", "minLength": 1 },
+          "afterAlt": { "type": "string", "minLength": 1 },
+          "label": { "type": "string" }
+        }
+      }
     }
   }
 }

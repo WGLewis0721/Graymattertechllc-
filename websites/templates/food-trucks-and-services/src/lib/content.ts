@@ -83,6 +83,22 @@ export interface Hero {
   ctaHref?: string;
 }
 
+/** This vertical's own extension — the MenuBoard data (rendered via the shared ItemShowcase component). */
+export interface MenuItem {
+  image: string;
+  imageAlt: string;
+  name: string;
+  price: string;
+  description?: string;
+}
+
+/** This vertical's own extension — the LocationTracker weekly schedule data. */
+export interface Stop {
+  day: string;
+  location: string;
+  time: string;
+}
+
 export interface Content {
   business: Business;
   hero: Hero;
@@ -99,6 +115,10 @@ export interface Content {
   launched: boolean;
   site?: string;
   base?: string;
+  /** food-trucks-and-services-only field, see ItemShowcase usage in src/pages/index.astro ("MenuBoard"). */
+  menu?: MenuItem[];
+  /** food-trucks-and-services-only field, see LocationTracker.astro. */
+  stops?: Stop[];
 }
 
 // strictRequired is off because business.anyOf legitimately requires
