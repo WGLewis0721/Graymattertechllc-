@@ -1,0 +1,120 @@
+---
+// Header — top-of-page nav. Pure structure and behavior; every visual
+// value comes from tokens. `nav` hrefs are always in-page anchors
+// (#services, #contact) supplied by the page, never root-absolute
+// paths — that's what keeps this component correct under a non-root
+// GitHub Pages base without needing to know what the base is. See
+// components/shared/README.md.
+interface NavLink {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  businessName: string;
+  nav?: NavLink[];
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const { businessName, nav = [], ctaLabel, ctaHref } = Astro.props;
+---
+
+<header class="header">
+  <div class="header__inner container">
+    <a href="#main" class="header__name">{businessName}</a>
+    {
+      nav.length > 0 && (
+        <nav class="header__nav" aria-label="Primary">
+          <ul>
+            {nav.map((item) => (
+              <li>
+                <a href={item.href}>{item.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+    {
+      ctaLabel && ctaHref && (
+        <a class="header__cta" href={ctaHref}>
+          {ctaLabel}
+        </a>
+      )
+    }
+  </div>
+</header>
+
+<style>
+  .header {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    min-height: var(--tap-target-min);
+    padding-block: var(--space-2xs);
+  }
+
+  .header__name {
+    font-family: var(--font-heading);
+    font-weight: var(--weight-bold);
+    font-size: var(--text-lg);
+    text-decoration: none;
+    color: var(--color-ink);
+  }
+
+  .header__nav ul {
+    display: flex;
+    gap: var(--space-md);
+  }
+
+  .header__nav a {
+    font-weight: var(--weight-medium);
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-target-min);
+  }
+
+  .header__cta {
+    display: none;
+  }
+
+  @media (min-width: 48rem) {
+    .header__cta {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--tap-target-min);
+      padding-inline: var(--space-sm);
+      border-radius: var(--radius-md);
+      background: var(--color-primary);
+      color: var(--color-on-primary);
+      font-weight: var(--weight-medium);
+    }
+  }
+
+  /* Mobile: nav is a horizontal swipe strip, not a hidden/hamburger menu.
+     No JS toggle needed, nothing to discover via hover, consistent with
+     "swipe first" (docs/PHILOSOPHY.md). */
+  @media (max-width: 47.999rem) {
+    .header__nav ul {
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      flex-wrap: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .header__nav li {
+      scroll-snap-align: start;
+      flex: 0 0 auto;
+    }
+  }
+</style>

@@ -1,0 +1,106 @@
+---
+// ContactForm — posts directly to a Formspree endpoint. No backend, no
+// JS required to submit (docs/SECURITY.md, "form handling"). Formspree
+// only: Netlify Forms needs a Netlify build step to detect the form,
+// which never runs in this pipeline (GitHub Actions -> GitHub Pages),
+// so there is no Netlify Forms markup anywhere in this component and
+// none should ever be added. Fixed field set: name, phone or email,
+// message. A vertical that needs a different field set needs a
+// different form component in parts/, not a reconfigured ContactForm —
+// see components/shared/README.md.
+interface Props {
+  /** Formspree endpoint, e.g. https://formspree.io/f/xxxxxxx. Never a same-origin route. */
+  endpoint: string;
+  submitLabel?: string;
+  /** Optional post-submit redirect (e.g. "/thank-you"), passed through as Formspree's _next redirect field. */
+  redirectTo?: string;
+}
+
+const { endpoint, submitLabel = 'Send message', redirectTo } = Astro.props;
+---
+
+<form class="contact-form" method="POST" action={endpoint}>
+  {redirectTo && <input type="hidden" name="_next" value={redirectTo} />}
+
+  <!-- Honeypot: real users never see or fill this. Bots frequently do.
+       Visually hidden without display:none, which some bots skip. -->
+  <div class="contact-form__honeypot" aria-hidden="true">
+    <label for="company">Leave this field blank</label>
+    <input type="text" id="company" name="_honeypot" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <div class="contact-form__field">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required autocomplete="name" />
+  </div>
+
+  <div class="contact-form__field">
+    <label for="contact">Phone or email</label>
+    <input type="text" id="contact" name="contact" required autocomplete="tel" />
+  </div>
+
+  <div class="contact-form__field">
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="4" required></textarea>
+  </div>
+
+  <button type="submit" class="contact-form__submit">{submitLabel}</button>
+</form>
+
+<style>
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    max-width: var(--container-sm);
+  }
+
+  .contact-form__honeypot {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .contact-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+  }
+
+  .contact-form__field label {
+    font-weight: var(--weight-medium);
+    font-size: var(--text-sm);
+  }
+
+  .contact-form__field input,
+  .contact-form__field textarea {
+    min-height: var(--tap-target-min);
+    padding: var(--space-2xs);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-raised);
+    color: var(--color-ink);
+  }
+
+  .contact-form__field textarea {
+    min-height: calc(var(--tap-target-min) * 2);
+    resize: vertical;
+  }
+
+  .contact-form__submit {
+    min-height: var(--tap-target-min);
+    padding-inline: var(--space-md);
+    border-radius: var(--radius-md);
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    font-weight: var(--weight-medium);
+    align-self: flex-start;
+  }
+
+  .contact-form__submit:hover {
+    background: var(--color-primary-hover);
+  }
+</style>

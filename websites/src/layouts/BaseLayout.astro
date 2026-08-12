@@ -1,0 +1,97 @@
+---
+// BaseLayout — the one layout every page in every vertical uses.
+//
+// Responsibilities, and only these: wire SEO meta + Open Graph tags,
+// emit the JSON-LD LocalBusiness schema, emit the CSP and
+// Referrer-Policy meta tags (docs/SECURITY.md — GitHub Pages has no
+// header support, so this is the only place these policies can live),
+// gate indexing on content.json's `launched` flag, inject the client's
+// theme tokens as a :root override, and render the frame-level global
+// chrome (skip link, StickyCallBar). Everything else — Header, Footer,
+// page sections — is composed by the page itself via the default slot.
+// Do not add business copy or vertical-specific markup here; this file
+// is shared across every template (docs/ENGINEERING.md, principle 1).
+import '../styles/reset.css';
+import '../styles/tokens.css';
+import '../styles/global.css';
+import { buildMeta, buildLocalBusinessSchema } from '../lib/seo';
+import { resolveThemeVars } from '../lib/theme';
+import type { Content } from '../lib/content';
+import StickyCallBar from '../components/shared/StickyCallBar.astro';
+
+interface Props {
+  content: Content;
+  /** schema.org subtype, e.g. "BarberShop", "LegalService". Defaults to LocalBusiness. */
+  businessType?: string;
+}
+
+const { content, businessType } = Astro.props;
+
+// Astro.site + Astro.url already account for the configured `base`
+// (docs/DEPLOYMENT.md, stage 2, step 1), so the canonical URL for this
+// exact page is always correct whether this build lands on a custom
+// domain or a username.github.io/repo-name project URL. Never hardcode
+// a "/" root here.
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+
+const meta = buildMeta(content, canonicalUrl);
+const jsonLd = buildLocalBusinessSchema(content, canonicalUrl, businessType);
+
+// Theme preset resolution (named font pairing / color scheme -> concrete
+// values) lives in lib/theme.ts, not here — see that file for why.
+const themeVars = resolveThemeVars(content.theme);
+
+const themeCss = Object.entries(themeVars)
+  .map(([key, value]) => `${key}: ${value};`)
+  .join(' ');
+
+// Launch gating (docs/SECURITY.md, "search visibility"; docs/DEPLOYMENT.md,
+// launch checklist step 8). `launched` defaults to false via the schema
+// (src/lib/content.ts), so a content.json that omits it is safe by
+// default. robots.txt is generated from the same flag by
+// scripts/generate-robots.mjs — the two can never drift apart.
+const robotsContent = content.launched ? 'index, follow' : 'noindex, nofollow';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
+    <link rel="canonical" href={meta.canonicalUrl} />
+    <meta name="robots" content={robotsContent} />
+
+    <!-- GitHub Pages has no header support at all (docs/SECURITY.md).
+         CSP and Referrer-Policy are delivered here, as meta tags, which
+         is the only place they can be delivered on this host.
+         frame-ancestors is deliberately absent: it does nothing when
+         CSP arrives via meta, so it isn't included under the illusion
+         that it does. Trim frame-src / form-action to the exact
+         origins a given vertical template actually uses. -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; frame-src 'self' https://www.google.com https://maps.google.com; form-action 'self' https://formspree.io; base-uri 'none'; object-src 'none'"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <meta property="og:type" content="business.business" />
+    <meta property="og:title" content={meta.title} />
+    <meta property="og:description" content={meta.description} />
+    <meta property="og:url" content={meta.canonicalUrl} />
+    {meta.ogImage && <meta property="og:image" content={meta.ogImage} />}
+    <meta name="twitter:card" content="summary_large_image" />
+
+    {themeCss && <style set:html={`:root { ${themeCss} }`} />}
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+    <StickyCallBar phone={content.business.phone} address={content.business.address} />
+  </body>
+</html>

@@ -1,0 +1,49 @@
+---
+// Section — the generic page-section wrapper. Every stacked block on a
+// page (hero aside) is a Section containing other shared components.
+// See components/shared/README.md for the full joint contract.
+interface Props {
+  /** Optional id, used for in-page anchors (nav links, skip target). */
+  id?: string;
+  /** Section heading text. Omit for sections that don't need one. */
+  heading?: string;
+  /** Heading level, so page-level heading order stays correct. Default h2. */
+  headingLevel?: 'h2' | 'h3';
+  /** Background: 'default' (--color-surface) or 'alt' (--color-surface-alt), for visual rhythm between stacked sections. */
+  background?: 'default' | 'alt';
+  /** Content max-width. Default 'md'. */
+  width?: 'sm' | 'md' | 'lg';
+}
+
+const { id, heading, headingLevel = 'h2', background = 'default', width = 'md' } = Astro.props;
+const Heading = headingLevel;
+const containerClass = width === 'md' ? 'container' : `container container--${width}`;
+---
+
+<section id={id} class:list={['section', { 'section--alt': background === 'alt' }]}>
+  <div class={containerClass}>
+    {heading && <Heading class="section__heading">{heading}</Heading>}
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section {
+    padding-block: var(--space-lg);
+    background: var(--color-surface);
+  }
+
+  .section--alt {
+    background: var(--color-surface-alt);
+  }
+
+  .section__heading {
+    margin-bottom: var(--space-md);
+  }
+
+  @media (min-width: 48rem) {
+    .section {
+      padding-block: var(--space-xl);
+    }
+  }
+</style>
