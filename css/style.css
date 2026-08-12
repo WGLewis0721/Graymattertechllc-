@@ -527,3 +527,24 @@ textarea:focus-visible,
 .compare-table .plan-col-featured { background: rgba(47,100,214,0.05); }
 .compare-table tr:last-child th, .compare-table tr:last-child td { border-bottom: none; }
 @media (max-width: 767px) { .compare-table caption { padding: 1rem 1.25rem 0; } }
+
+/* === PROBLEM / FIX TABLE (Service Experiences) === */
+.fit-table-wrap { margin-top: 3rem; max-width: 900px; margin-left: auto; margin-right: auto; }
+.fit-table { width: 100%; border-collapse: separate; border-spacing: 0 0.85rem; }
+.fit-table thead th { text-align: left; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gm-blue); padding: 0 1.5rem 0.5rem; }
+.fit-table tbody tr { background: var(--gm-white); box-shadow: 0 0 0 1px var(--gm-line); border-radius: var(--gm-radius-card); }
+.fit-table tbody td { padding: 1.1rem 1.5rem; font-size: 0.95rem; vertical-align: middle; }
+.fit-table tbody td:first-child { color: var(--gm-ink-60); border-radius: var(--gm-radius-card) 0 0 var(--gm-radius-card); width: 55%; }
+.fit-table tbody td:last-child { border-radius: 0 var(--gm-radius-card) var(--gm-radius-card) 0; }
+.fit-table tbody td a { font-weight: 600; color: var(--gm-ink); display: inline-flex; align-items: center; gap: 0.5rem; transition: color 0.2s ease-out; }
+.fit-table tbody td a i { color: var(--gm-blue); font-size: 0.85rem; transition: transform 0.2s ease-out; }
+.fit-table tbody td a:hover { color: var(--gm-blue); }
+.fit-table tbody td a:hover i { transform: translateX(3px); }
+@media (max-width: 767px) {
+  .fit-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+  .fit-table, .fit-table tbody, .fit-table tbody tr, .fit-table tbody td { display: block; width: 100%; }
+  .fit-table tbody tr { padding: 1.1rem 1.25rem; border-radius: var(--gm-radius-card); }
+  .fit-table tbody td { padding: 0.4rem 0; width: auto !important; border-radius: 0 !important; }
+  .fit-table tbody td::before { content: attr(data-label); display: block; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gm-blue); margin-bottom: 0.25rem; }
+  .fit-table tbody td:first-child { border-bottom: 1px solid var(--gm-line); padding-bottom: 0.85rem; margin-bottom: 0.6rem; }
+}
