@@ -1,0 +1,94 @@
+{
+  "hero": {
+    "image": "hero.png",
+    "alt": "Placeholder photo standing in for a coach guiding a client through a heavy kettlebell lift on the Surge Performance training floor",
+    "ctaLabel": "Book your free intro session",
+    "ctaHref": "#book"
+  },
+  "business": {
+    "name": "Surge Performance Coaching",
+    "tagline": "Train hard. Recover smart. Show up stronger.",
+    "phone": "+1-555-030-0300",
+    "email": "coach@surgeperformance.com",
+    "address": "812 Union Blvd, Denver, CO 80204"
+  },
+  "hours": [
+    { "day": "Mon-Fri", "open": "05:30", "close": "19:00" },
+    { "day": "Sat", "open": "07:00", "close": "13:00" },
+    { "day": "Sun", "open": null, "close": null }
+  ],
+  "services": [
+    { "name": "Free intro session", "price": "$0", "duration": "30 min", "description": "A no-pressure conversation about your goals plus a movement assessment. No gym experience required." },
+    { "name": "1:1 personal coaching", "price": "$85", "duration": "50 min", "description": "One-on-one strength and conditioning built around your schedule and your goals." },
+    { "name": "Small group training", "price": "$35", "duration": "45 min", "description": "Train alongside 3-5 others with the coaching attention of a private session." },
+    { "name": "12-week transformation program", "price": "$899", "duration": "12 weeks", "description": "Structured strength, conditioning, and nutrition coaching aimed at a measurable goal." },
+    { "name": "Online coaching", "price": "$150/mo", "duration": "Ongoing", "description": "Custom programming, form checks, and weekly check-ins for clients who can't train in person." },
+    { "name": "Sport performance prep", "price": "$120", "duration": "60 min", "description": "Speed, power, and agility training for athletes preparing for a season or tryout." }
+  ],
+  "gallery": [
+    { "src": "floor-1.png", "alt": "Placeholder photo standing in for the Surge Performance training floor lined with kettlebells and bumper plates" },
+    { "src": "floor-2.png", "alt": "Placeholder photo standing in for a client mid-sprint on the indoor turf lane" },
+    { "src": "floor-3.png", "alt": "Placeholder photo standing in for a squat rack and loaded barbell station" },
+    { "src": "floor-4.png", "alt": "Placeholder photo standing in for a small group class warming up together before a session" }
+  ],
+  "testimonials": [
+    { "quote": "I walked in nervous about my knees and walked out with an actual plan. Six months later I'm squatting pain-free for the first time in years.", "author": "Renata M." },
+    { "quote": "The 12-week program is no joke. I lost 18 pounds and gained more strength than three years of gym-going alone ever got me.", "author": "Cole B." },
+    { "quote": "Online coaching kept me accountable while I traveled for work. The weekly check-ins made all the difference.", "author": "Priya S.", "role": "Online client" }
+  ],
+  "theme": {
+    "fontPairing": "bold-display",
+    "colorScheme": "bold-accent",
+    "colors": {
+      "primary": "#d94f04",
+      "accent": "#c6ff00",
+      "surface": "#121212",
+      "ink": "#f5f2ec"
+    }
+  },
+  "formEndpoint": "https://formspree.io/f/coachdemo",
+  "map": {
+    "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d0!2d-104.9847!3d39.7392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sDenver%2C+CO!5e0!3m2!1sen!2sus",
+    "title": "Map to Surge Performance Coaching"
+  },
+  "social": {
+    "instagram": "https://instagram.com/surgeperformance",
+    "facebook": "https://facebook.com/surgeperformance"
+  },
+  "seo": {
+    "title": "Surge Performance Coaching - Denver Personal Training",
+    "description": "Personal training, small group coaching, and online programs in Denver. Book a free intro session and start training with a real plan."
+  },
+  "launched": false,
+  "sessions": [
+    { "day": "Mon", "time": "6:00 AM", "name": "Sunrise Strength", "spotsLeft": "3 spots left" },
+    { "day": "Mon", "time": "5:30 PM", "name": "Small Group HIIT", "spotsLeft": "2 spots left" },
+    { "day": "Wed", "time": "6:00 AM", "name": "Sunrise Strength", "spotsLeft": "5 spots left" },
+    { "day": "Wed", "time": "5:30 PM", "name": "Small Group HIIT" },
+    { "day": "Fri", "time": "6:00 AM", "name": "Sunrise Strength", "spotsLeft": "1 spot left" },
+    { "day": "Sat", "time": "8:00 AM", "name": "Weekend Conditioning", "spotsLeft": "4 spots left" }
+  ],
+  "transformations": [
+    {
+      "before": "transform-1-before.png",
+      "beforeAlt": "Placeholder photo standing in for Renata before starting the 12-week transformation program",
+      "after": "transform-1-after.png",
+      "afterAlt": "Placeholder photo standing in for Renata after completing the 12-week transformation program",
+      "label": "Renata, 6 months"
+    },
+    {
+      "before": "transform-2-before.png",
+      "beforeAlt": "Placeholder photo standing in for Cole before starting 1:1 personal coaching",
+      "after": "transform-2-after.png",
+      "afterAlt": "Placeholder photo standing in for Cole after four months of 1:1 personal coaching",
+      "label": "Cole, 4 months"
+    },
+    {
+      "before": "transform-3-before.png",
+      "beforeAlt": "Placeholder photo standing in for a small group client before joining small group training",
+      "after": "transform-3-after.png",
+      "afterAlt": "Placeholder photo standing in for the same small group client after eight months of small group training",
+      "label": "Marcus, 8 months"
+    }
+  ]
+}

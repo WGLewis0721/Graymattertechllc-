@@ -1,0 +1,102 @@
+---
+// Footer — closing contact strip + social links + copyright. Structure
+// and behavior only, see components/shared/README.md.
+interface SocialLinks {
+  instagram?: string;
+  facebook?: string;
+  google?: string;
+  yelp?: string;
+}
+
+interface Props {
+  businessName: string;
+  phone: string;
+  email?: string;
+  address?: string;
+  social?: SocialLinks;
+}
+
+const { businessName, phone, email, address, social } = Astro.props;
+const socialEntries = Object.entries(social ?? {}).filter(([, href]) => Boolean(href));
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__contact">
+      <p class="footer__name">{businessName}</p>
+      <a href={`tel:${phone.replace(/[^0-9+]/g, '')}`}>{phone}</a>
+      {email && <a href={`mailto:${email}`}>{email}</a>}
+      {address && <p>{address}</p>}
+    </div>
+    {
+      socialEntries.length > 0 && (
+        <ul class="footer__social">
+          {socialEntries.map(([platform, href]) => (
+            <li>
+              <a href={href} rel="noopener noreferrer" target="_blank">
+                {platform}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+    <p class="footer__copyright">&copy; {year} {businessName}. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-surface-alt);
+    border-top: 1px solid var(--color-border);
+    padding-block: var(--space-lg);
+    /* leave room so content isn't hidden behind StickyCallBar on mobile */
+    margin-bottom: var(--tap-target-min);
+  }
+
+  .footer__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .footer__name {
+    font-family: var(--font-heading);
+    font-weight: var(--weight-bold);
+    color: var(--color-ink);
+  }
+
+  .footer__contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+    color: var(--color-ink-muted);
+  }
+
+  .footer__contact a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-target-min);
+    color: var(--color-ink-muted);
+  }
+
+  .footer__social {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .footer__social a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-target-min);
+    text-transform: capitalize;
+    color: var(--color-primary);
+  }
+
+  .footer__copyright {
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+  }
+</style>

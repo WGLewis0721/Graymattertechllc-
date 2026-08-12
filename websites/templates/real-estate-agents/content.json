@@ -1,0 +1,156 @@
+{
+  "hero": {
+    "image": "hero.png",
+    "alt": "Placeholder photo standing in for a tree-lined Denver street of single-family homes at golden hour",
+    "ctaLabel": "See current listings",
+    "ctaHref": "#listings"
+  },
+  "business": {
+    "name": "Priya Shah, Bluestem Realty Group",
+    "tagline": "Denver homes, handled with a plan from day one",
+    "phone": "+1-555-040-0175",
+    "email": "priya@bluestemrealtydenver.com",
+    "address": "2140 Larimer St, Suite 210, Denver, CO 80205"
+  },
+  "hours": [
+    { "day": "Mon-Fri", "open": "08:00", "close": "18:00" },
+    { "day": "Sat", "open": "09:00", "close": "16:00" },
+    { "day": "Sun", "open": null, "close": null }
+  ],
+  "services": [
+    { "name": "Buyer representation", "price": "No cost to you", "description": "Full-service search, showings, offers, and negotiation. Paid by the seller at closing, not by you." },
+    { "name": "Seller representation", "price": "Commission on close, quoted upfront", "description": "Pricing strategy, staging guidance, professional photos, and full MLS marketing." },
+    { "name": "Home valuation", "price": "Free consultation", "description": "A walkthrough and a written comparative market analysis, no obligation to list." },
+    { "name": "Relocation assistance", "price": "Free consultation", "description": "For buyers moving to Denver from out of state, including a first-visit neighborhood tour." }
+  ],
+  "gallery": [
+    { "src": "gallery-1.png", "alt": "Placeholder photo standing in for Priya greeting clients at an open house" },
+    { "src": "gallery-2.png", "alt": "Placeholder photo standing in for a sunlit living room staged for sale" },
+    { "src": "gallery-3.png", "alt": "Placeholder photo standing in for a closing-day handshake at the title office" },
+    { "src": "gallery-4.png", "alt": "Placeholder photo standing in for a for-sale sign with a sold rider in a front yard" }
+  ],
+  "testimonials": [
+    { "quote": "Priya walked us through every step of our first home purchase and never once made us feel rushed. We closed two weeks ahead of schedule.", "author": "Devon and Mika R." },
+    { "quote": "She priced our house exactly right. We had three offers above asking within a week of listing.", "author": "Harold T.", "role": "Seller, Foxglove Heights" },
+    { "quote": "As an out-of-state buyer, I needed someone who actually knew the neighborhoods. Priya sent video walkthroughs the same day I asked.", "author": "Aisha N." }
+  ],
+  "theme": {
+    "fontPairing": "editorial-serif",
+    "colorScheme": "navy-brass",
+    "colors": {
+      "primary": "#1b2a4a",
+      "accent": "#a97f2f",
+      "surface": "#faf8f4",
+      "ink": "#1c2333"
+    }
+  },
+  "formEndpoint": "https://formspree.io/f/realestatedemo",
+  "map": {
+    "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d0!2d-104.9903!3d39.7392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sDenver%2C+CO!5e0!3m2!1sen!2sus",
+    "title": "Map to the Bluestem Realty Group office"
+  },
+  "social": {
+    "instagram": "https://instagram.com/bluestemrealtydenver",
+    "facebook": "https://facebook.com/bluestemrealtydenver"
+  },
+  "seo": {
+    "title": "Priya Shah - Bluestem Realty Group, Denver",
+    "description": "Denver real estate agent Priya Shah. Buy, sell, or get a free home valuation with a straightforward, well-planned process."
+  },
+  "launched": false,
+  "listings": [
+    {
+      "image": "listing-1.png",
+      "imageAlt": "Placeholder photo standing in for a brick two-story home with a covered front porch",
+      "price": "$625,000",
+      "beds": 3,
+      "baths": 2,
+      "address": "428 Larkspur Ln, Denver, CO",
+      "status": "For sale"
+    },
+    {
+      "image": "listing-2.png",
+      "imageAlt": "Placeholder photo standing in for a single-story bungalow with a red front door",
+      "price": "$459,000",
+      "beds": 2,
+      "baths": 1.5,
+      "address": "1120 Foxglove Ct, Denver, CO",
+      "status": "New listing"
+    },
+    {
+      "image": "listing-3.png",
+      "imageAlt": "Placeholder photo standing in for a large stone-front home with a three-car garage",
+      "price": "$875,000",
+      "beds": 4,
+      "baths": 3,
+      "address": "77 Chestnut Ridge Rd, Denver, CO",
+      "status": "Under contract"
+    },
+    {
+      "image": "listing-4.png",
+      "imageAlt": "Placeholder photo standing in for a light blue craftsman-style home with a small front lawn",
+      "price": "$399,000",
+      "beds": 2,
+      "baths": 1,
+      "address": "2290 Birchwood Ave, Denver, CO",
+      "status": "For sale"
+    },
+    {
+      "image": "listing-5.png",
+      "imageAlt": "Placeholder photo standing in for a modern two-story home with large front windows",
+      "price": "$1,150,000",
+      "beds": 5,
+      "baths": 4,
+      "address": "615 Meridian Pl, Denver, CO",
+      "status": "For sale"
+    },
+    {
+      "image": "listing-6.png",
+      "imageAlt": "Placeholder photo standing in for a tan ranch-style home with mature landscaping",
+      "price": "$549,000",
+      "beds": 3,
+      "baths": 2,
+      "address": "340 Willow Creek Dr, Denver, CO",
+      "status": "For sale"
+    }
+  ],
+  "neighborhoods": [
+    {
+      "name": "Larkspur Hill",
+      "description": "Walkable blocks of early-1900s brick homes a few minutes from downtown, with a strong resale history.",
+      "image": "neighborhood-1.png",
+      "imageAlt": "Placeholder photo standing in for a tree-lined residential street in Larkspur Hill"
+    },
+    {
+      "name": "Foxglove Heights",
+      "description": "Quiet, family-oriented streets with larger lots, a top-rated elementary school, and easy highway access.",
+      "image": "neighborhood-2.png",
+      "imageAlt": "Placeholder photo standing in for a cul-de-sac of single-family homes in Foxglove Heights"
+    },
+    {
+      "name": "Birchwood Corner",
+      "description": "An up-and-coming pocket with new construction mixed among older bungalows, popular with first-time buyers.",
+      "image": "neighborhood-3.png",
+      "imageAlt": "Placeholder photo standing in for a row of bungalow homes in Birchwood Corner"
+    },
+    {
+      "name": "Cedar Bend",
+      "description": "Established, leafy, and close to the reservoir trail. Larger homes on quarter-acre lots.",
+      "image": "neighborhood-4.png",
+      "imageAlt": "Placeholder photo standing in for a large home surrounded by mature trees in Cedar Bend"
+    }
+  ],
+  "agent": {
+    "photo": "agent.png",
+    "photoAlt": "Placeholder photo standing in for a professional portrait of real estate agent Priya Shah",
+    "name": "Priya Shah",
+    "title": "Founder & Lead Agent, Bluestem Realty Group",
+    "bio": "Priya has sold homes across the Denver metro area for fifteen years and founded Bluestem Realty Group to run every transaction the way she would want her own handled: a clear timeline, straight answers, and no surprises at closing. She specializes in first-time buyers and sellers moving out of state.",
+    "credentials": [
+      "Colorado Licensed Realtor",
+      "Certified Residential Specialist (CRS)",
+      "Accredited Buyer's Representative (ABR)",
+      "15+ years in Denver real estate"
+    ]
+  }
+}

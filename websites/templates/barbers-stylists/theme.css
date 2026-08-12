@@ -1,0 +1,28 @@
+/*
+  theme.css — barbers-stylists vertical default. Layered between
+  tokens.css (generic frame defaults) and global.css by BaseLayout, so
+  a fresh client on this template already looks like a barbershop
+  before any content.json theme override is applied. Only overrides
+  the tokens that actually differ from tokens.css; everything else
+  (spacing scale, shadows, container widths) inherits the frame
+  default. A client's content.json theme block still wins over this
+  when it sets an explicit colorScheme/fontPairing or theme.colors.
+
+  Feel: visual and tight, photos carry the page. Bold sans headings,
+  near-black + barber-red, sharper corners than the frame default.
+*/
+:root {
+  --font-heading: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-body: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+
+  --color-primary: #151515;
+  --color-primary-hover: #000000;
+  --color-accent: #c81e3a;
+  --color-accent-hover: #a3162e;
+  --color-surface: #faf7f2;
+  --color-surface-alt: #efe9e0;
+  --color-ink: #151515;
+
+  --radius-md: 4px;  /* sharper corners than the frame default (10px) — tighter, less soft */
+  --radius-lg: 8px;
+}

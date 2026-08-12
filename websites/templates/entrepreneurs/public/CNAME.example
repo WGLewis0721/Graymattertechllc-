@@ -1,0 +1,17 @@
+# Copy this file to public/CNAME and replace the line below with the
+# client's real domain. Only do this at launch (docs/DEPLOYMENT.md,
+# stage 2, step 3) — never before the client has signed off.
+#
+# The real public/CNAME file must contain nothing but the bare domain:
+# one line, no comments, no protocol, no trailing slash. For example:
+#
+#   fadecitybarbershop.com
+#
+# For a client with no custom domain (served at username.github.io/repo
+# instead), there is no CNAME file at all, ever — delete this file in
+# that case rather than filling it in.
+#
+# public/CNAME does not exist in this repo before launch. Its absence
+# is a deliberate signal of what stage the project is in (see
+# docs/ENGINEERING.md, definition of done). Do not create the real file
+# ahead of time "to save a step."

@@ -1,0 +1,103 @@
+---
+// BioCard — a single-person profile: photo, name, title, bio text,
+// optional credentials list. Added once two verticals independently
+// needed the identical shape: real-estate-agents' "AgentBio" and
+// lawyers' "AttorneyProfile". Import it directly and relabel the
+// section heading per vertical; don't build a per-vertical copy. Not
+// the same shape as a roster of many people (barbers-stylists'
+// StylistRoster stays vertical-specific: compact, many-per-page, no
+// full bio text).
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  photo: ImageMetadata;
+  photoAlt: string;
+  name: string;
+  title: string;
+  bio: string;
+  credentials?: string[];
+}
+
+const { photo, photoAlt, name, title, bio, credentials } = Astro.props;
+---
+
+<div class="bio-card">
+  <Image
+    class="bio-card__photo"
+    src={photo}
+    alt={photoAlt}
+    widths={[240, 400, 600]}
+    sizes="(min-width: 48rem) 240px, 40vw"
+    loading="lazy"
+  />
+  <div class="bio-card__body">
+    <p class="bio-card__name">{name}</p>
+    <p class="bio-card__title">{title}</p>
+    <p class="bio-card__bio">{bio}</p>
+    {
+      credentials && credentials.length > 0 && (
+        <ul class="bio-card__credentials">
+          {credentials.map((c) => (
+            <li>{c}</li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</div>
+
+<style>
+  .bio-card {
+    display: grid;
+    gap: var(--space-md);
+    grid-template-columns: 1fr;
+  }
+
+  .bio-card__photo {
+    width: 100%;
+    max-width: 240px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+  }
+
+  .bio-card__name {
+    font-family: var(--font-heading);
+    font-weight: var(--weight-bold);
+    font-size: var(--text-xl);
+  }
+
+  .bio-card__title {
+    color: var(--color-ink-muted);
+    font-weight: var(--weight-medium);
+    margin-bottom: var(--space-sm);
+  }
+
+  .bio-card__bio {
+    line-height: var(--leading-relaxed);
+    max-width: 60ch;
+  }
+
+  .bio-card__credentials {
+    margin-top: var(--space-sm);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs);
+  }
+
+  .bio-card__credentials li {
+    padding: var(--space-3xs) var(--space-2xs);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+  }
+
+  @media (min-width: 40rem) {
+    .bio-card {
+      grid-template-columns: 240px 1fr;
+      align-items: start;
+    }
+  }
+</style>

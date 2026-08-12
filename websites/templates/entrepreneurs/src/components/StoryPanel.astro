@@ -1,0 +1,62 @@
+---
+// StoryPanel — vertical-specific to entrepreneurs. A portrait photo
+// plus a narrative paragraph telling the founder's story. Not the
+// shared BioCard: BioCard's shape is name/title/bio/credentials for a
+// professional profile (an agent, an attorney); this is a single
+// story-first block with no name/title fields of its own, meant to sit
+// near the top of a personal-brand page. Image is always a resolved
+// ImageMetadata object, never a bare src string, per
+// components/shared/README.md.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  photo: ImageMetadata;
+  photoAlt: string;
+  story: string;
+}
+
+const { photo, photoAlt, story } = Astro.props;
+---
+
+<div class="story-panel">
+  <Image
+    class="story-panel__photo"
+    src={photo}
+    alt={photoAlt}
+    widths={[320, 500, 800]}
+    sizes="(min-width: 48rem) 320px, 70vw"
+    loading="lazy"
+  />
+  <p class="story-panel__text">{story}</p>
+</div>
+
+<style>
+  .story-panel {
+    display: grid;
+    gap: var(--space-md);
+    align-items: start;
+  }
+
+  .story-panel__photo {
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+  }
+
+  .story-panel__text {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--color-ink);
+    max-width: 60ch;
+  }
+
+  @media (min-width: 48rem) {
+    .story-panel {
+      grid-template-columns: 320px 1fr;
+      gap: var(--space-xl);
+    }
+  }
+</style>

@@ -1,0 +1,52 @@
+---
+// OfferBlock — vertical-specific to entrepreneurs. A visually
+// emphasized callout for a single promotional offer (e.g. "first
+// order 10% off"). Not a shared component: no other vertical in this
+// library needs a single standalone promo callout with its own CTA in
+// quite this shape. `ctaHref` is supplied by the page already
+// base-aware (an in-page anchor or an absolute external URL), so this
+// component never prepends a leading slash itself, see
+// components/shared/README.md, "GitHub Pages base path".
+import CTAButton from './shared/CTAButton.astro';
+
+interface Props {
+  heading: string;
+  description: string;
+  ctaLabel: string;
+  ctaHref: string;
+}
+
+const { heading, description, ctaLabel, ctaHref } = Astro.props;
+---
+
+<div class="offer-block">
+  <p class="offer-block__heading">{heading}</p>
+  <p class="offer-block__description">{description}</p>
+  <CTAButton label={ctaLabel} href={ctaHref} variant="accent" />
+</div>
+
+<style>
+  .offer-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    border: 2px solid var(--color-accent);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface-raised);
+  }
+
+  .offer-block__heading {
+    font-family: var(--font-heading);
+    font-weight: var(--weight-bold);
+    font-size: var(--text-xl);
+    color: var(--color-ink);
+  }
+
+  .offer-block__description {
+    color: var(--color-ink-muted);
+    line-height: var(--leading-normal);
+    max-width: 60ch;
+  }
+</style>

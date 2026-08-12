@@ -1,0 +1,159 @@
+---
+// ScheduleStrip — vertical-specific to coaches-trainers. A horizontal
+// swipeable strip of bookable session cards (day, time, session name,
+// optional spots-left). Same no-JS native scroll-snap pattern already
+// used by the shared TestimonialStrip/SwipeGallery/BeforeAfterSlider
+// (docs/PHILOSOPHY.md, "swipe first"): no JS, no carousel library,
+// position dots are in-page anchor targets styled active via :target.
+// Kept local to this vertical rather than promoted to shared/ — no
+// other vertical currently needs a bookable-session-card shape (see
+// components/shared/README.md, "adding a new shared component", step
+// 1: promote only once a second vertical needs the exact same thing).
+// Only one instance of this component ever appears on a coaches-trainers
+// page, so the slide anchors use a fixed prefix rather than an `id`
+// prop — unlike SwipeGallery/BeforeAfterSlider, which need the `id`
+// prop to namespace multiple instances on the same page.
+interface Session {
+  day: string;
+  time: string;
+  name: string;
+  /** Optional scarcity/availability note, e.g. "3 spots left". */
+  spotsLeft?: string;
+}
+
+interface Props {
+  sessions: Session[];
+  /** Where each card's "Reserve" link points. Defaults to the page's booking anchor. */
+  bookHref?: string;
+}
+
+const { sessions, bookHref = '#book' } = Astro.props;
+const slug = 'schedule';
+
+const dotRules = sessions
+  .map(
+    (_, i) =>
+      `.schedule-strip:has(#${slug}-slide-${i}:target) .schedule-strip__dot--${i} { background: var(--color-primary); transform: scale(1.25); }`
+  )
+  .join('\n');
+---
+
+{
+  sessions.length > 0 && (
+    <div class="schedule-strip">
+      <ul class="schedule-strip__track">
+        {sessions.map((session, i) => (
+          <li id={`${slug}-slide-${i}`} class="schedule-strip__slide">
+            <p class="schedule-strip__day">{session.day}</p>
+            <p class="schedule-strip__time">{session.time}</p>
+            <p class="schedule-strip__name">{session.name}</p>
+            {session.spotsLeft && <p class="schedule-strip__spots">{session.spotsLeft}</p>}
+            <a class="schedule-strip__reserve" href={bookHref}>
+              Reserve your spot
+            </a>
+          </li>
+        ))}
+      </ul>
+      <nav class="schedule-strip__dots" aria-label="Schedule position">
+        {sessions.map((_, i) => (
+          <a
+            href={`#${slug}-slide-${i}`}
+            class:list={['schedule-strip__dot', `schedule-strip__dot--${i}`]}
+            aria-label={`Session ${i + 1} of ${sessions.length}`}
+          />
+        ))}
+      </nav>
+    </div>
+  )
+}
+
+{dotRules && <style set:html={dotRules} />}
+
+<style>
+  .schedule-strip__track {
+    display: flex;
+    gap: var(--space-sm);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--container-gutter);
+    -webkit-overflow-scrolling: touch;
+    padding-inline: var(--container-gutter);
+    padding-block: var(--space-3xs);
+  }
+
+  .schedule-strip__slide {
+    flex: 0 0 70%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+    padding: var(--space-md);
+    background: var(--color-surface-raised);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+  }
+
+  @media (min-width: 40rem) {
+    .schedule-strip__slide {
+      flex-basis: 32%;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .schedule-strip__slide {
+      flex-basis: 23%;
+    }
+  }
+
+  .schedule-strip__day {
+    font-family: var(--font-heading);
+    font-weight: var(--weight-bold);
+    font-size: var(--text-lg);
+  }
+
+  .schedule-strip__time {
+    color: var(--color-ink-muted);
+    font-weight: var(--weight-medium);
+  }
+
+  .schedule-strip__name {
+    font-weight: var(--weight-medium);
+  }
+
+  .schedule-strip__spots {
+    display: inline-block;
+    align-self: flex-start;
+    padding: var(--space-3xs) var(--space-2xs);
+    border-radius: var(--radius-full);
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+  }
+
+  .schedule-strip__reserve {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-target-min);
+    font-weight: var(--weight-medium);
+    color: var(--color-primary);
+  }
+
+  .schedule-strip__dots {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2xs);
+    padding-block: var(--space-sm);
+  }
+
+  .schedule-strip__dot {
+    width: var(--space-xs);
+    height: var(--space-xs);
+    border-radius: var(--radius-full);
+    background: var(--color-border);
+    transition: transform 0.15s ease, background-color 0.15s ease;
+  }
+</style>

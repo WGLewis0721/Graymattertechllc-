@@ -1,0 +1,62 @@
+---
+// LinkHub — vertical-specific to entrepreneurs. A link-in-bio-style
+// vertical stack of full-width tap targets (Instagram, order form,
+// menu, and similar). Not a shared component: no other vertical in
+// this library needs a standalone stack of outbound links as its own
+// section. Every href here is expected to be an absolute external URL
+// or a non-http scheme (mailto:, tel:, sms:) supplied by the page, so
+// this component needs no knowledge of the GitHub Pages base path —
+// see components/shared/README.md.
+interface Link {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  links: Link[];
+}
+
+const { links } = Astro.props;
+---
+
+<ul class="link-hub">
+  {
+    links.map((link) => (
+      <li>
+        <a class="link-hub__item" href={link.href} rel="noopener noreferrer">
+          {link.label}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .link-hub {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    max-width: var(--container-sm);
+  }
+
+  .link-hub__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--tap-target-min);
+    padding-inline: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-raised);
+    color: var(--color-ink);
+    font-weight: var(--weight-medium);
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .link-hub__item:hover {
+    background: var(--color-surface-alt);
+    border-color: var(--color-accent);
+  }
+</style>

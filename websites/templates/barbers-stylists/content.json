@@ -1,0 +1,69 @@
+{
+  "hero": {
+    "image": "hero.png",
+    "alt": "Placeholder photo standing in for the Sharpline Barber Co. shop floor with three chairs and a full house",
+    "ctaLabel": "Book now",
+    "ctaHref": "#book"
+  },
+  "business": {
+    "name": "Sharpline Barber Co.",
+    "tagline": "Sharp cuts, no wait",
+    "phone": "+1-555-020-0200",
+    "email": "book@sharplinebarber.com",
+    "address": "418 5th Ave, Pittsburgh, PA 15219"
+  },
+  "hours": [
+    { "day": "Mon", "open": null, "close": null },
+    { "day": "Tue-Fri", "open": "09:00", "close": "20:00" },
+    { "day": "Sat", "open": "08:00", "close": "17:00" },
+    { "day": "Sun", "open": "10:00", "close": "15:00" }
+  ],
+  "services": [
+    { "name": "Haircut", "price": "$30", "duration": "30 min" },
+    { "name": "Skin fade", "price": "$38", "duration": "40 min" },
+    { "name": "Beard trim", "price": "$15", "duration": "15 min" },
+    { "name": "Hot towel shave", "price": "$25", "duration": "25 min" },
+    { "name": "Kids cut, 12 and under", "price": "$20", "duration": "20 min" },
+    { "name": "Cut and beard combo", "price": "$45", "duration": "50 min" }
+  ],
+  "gallery": [
+    { "src": "cut-1.png", "alt": "Placeholder photo standing in for a finished skin fade with a sharp part line" },
+    { "src": "cut-2.png", "alt": "Placeholder photo standing in for a textured crop haircut" },
+    { "src": "cut-3.png", "alt": "Placeholder photo standing in for a beard trim and lineup" },
+    { "src": "cut-4.png", "alt": "Placeholder photo standing in for a classic taper haircut" }
+  ],
+  "testimonials": [
+    { "quote": "Been coming here two years, never had a bad cut. In and out in 30 minutes on a Saturday.", "author": "Jordan P." },
+    { "quote": "Best fade in the neighborhood. The hot towel shave is worth it on its own.", "author": "Marcus D." }
+  ],
+  "theme": {
+    "fontPairing": "bold-display",
+    "colorScheme": "bold-accent",
+    "colors": {
+      "primary": "#151515",
+      "accent": "#c81e3a",
+      "surface": "#faf7f2",
+      "ink": "#151515"
+    }
+  },
+  "formEndpoint": "https://formspree.io/f/barberdemo",
+  "map": {
+    "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d0!2d-79.9959!3d40.4406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sPittsburgh%2C+PA!5e0!3m2!1sen!2sus",
+    "title": "Map to Sharpline Barber Co."
+  },
+  "social": {
+    "instagram": "https://instagram.com/sharplinebarber",
+    "google": "https://g.page/sharplinebarber"
+  },
+  "seo": {
+    "title": "Sharpline Barber Co. - Pittsburgh Barbershop",
+    "description": "Walk-in and booked haircuts, fades, and beard trims in Pittsburgh. Seven days a week. Book online or by phone."
+  },
+  "launched": false,
+  "stylists": [
+    { "photo": "stylist-1.png", "photoAlt": "Placeholder photo standing in for a portrait of barber Rico", "name": "Rico", "specialty": "Fades and lineups" },
+    { "photo": "stylist-2.png", "photoAlt": "Placeholder photo standing in for a portrait of barber Dana", "name": "Dana", "specialty": "Classic cuts and beard work" },
+    { "photo": "stylist-3.png", "photoAlt": "Placeholder photo standing in for a portrait of barber Tomas", "name": "Tomas", "specialty": "Textured crops" },
+    { "photo": "stylist-4.png", "photoAlt": "Placeholder photo standing in for a portrait of barber Ellis", "name": "Ellis", "specialty": "Hot towel shaves" }
+  ]
+}

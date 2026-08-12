@@ -1,0 +1,111 @@
+{
+  "hero": {
+    "image": "hero.png",
+    "alt": "Placeholder photo standing in for the Whitfield and Cross Law reception area, wood paneling and a row of client chairs",
+    "ctaLabel": "Request a consultation",
+    "ctaHref": "#consultation"
+  },
+  "business": {
+    "name": "Whitfield & Cross Law",
+    "tagline": "Steady counsel for families and small businesses in Richmond, Virginia.",
+    "phone": "+1-804-555-0142",
+    "email": "intake@whitfieldcrosslaw.com",
+    "address": "118 East Grace Street, Suite 400, Richmond, VA 23219"
+  },
+  "hours": [
+    { "day": "Mon-Thu", "open": "09:00", "close": "17:00" },
+    { "day": "Fri", "open": "09:00", "close": "15:00" },
+    { "day": "Sat", "open": null, "close": null },
+    { "day": "Sun", "open": null, "close": null }
+  ],
+  "services": [
+    {
+      "name": "Initial consultation",
+      "price": "Free",
+      "duration": "30 min",
+      "description": "A brief conversation about your situation so we can confirm we are the right fit before any engagement begins."
+    },
+    {
+      "name": "Extended consultation",
+      "price": "By arrangement",
+      "duration": "60 min",
+      "description": "For matters that need more than a first conversation to scope, billed at an hourly rate agreed in advance."
+    }
+  ],
+  "gallery": [
+    { "src": "office-1.png", "alt": "Placeholder photo standing in for the firm's reception and waiting area" },
+    { "src": "office-2.png", "alt": "Placeholder photo standing in for the main conference room where client meetings are held" }
+  ],
+  "testimonials": [
+    { "quote": "Renata walked us through the whole estate plan in plain language and never made us feel rushed.", "author": "Held in confidence", "role": "Estate planning client" },
+    { "quote": "Our operating agreement was handled quickly and clearly ahead of a tight closing date.", "author": "Held in confidence", "role": "Small business client" }
+  ],
+  "theme": {
+    "fontPairing": "classic-serif",
+    "colorScheme": "cool-professional",
+    "colors": {
+      "primary": "#1e2a3a",
+      "accent": "#8a7146",
+      "surface": "#faf9f6",
+      "ink": "#1c232c"
+    }
+  },
+  "formEndpoint": "https://formspree.io/f/lawyersdemo",
+  "map": {
+    "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d0!2d-77.4360!3d37.5407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sRichmond%2C+VA!5e0!3m2!1sen!2sus",
+    "title": "Map to Whitfield & Cross Law"
+  },
+  "social": {
+    "facebook": "https://facebook.com/whitfieldcrosslaw",
+    "google": "https://g.page/whitfieldcrosslaw"
+  },
+  "seo": {
+    "title": "Whitfield & Cross Law - Richmond, VA Attorneys",
+    "description": "Estate planning, family law, small business law, and real estate counsel in Richmond, Virginia. Request a consultation today."
+  },
+  "launched": false,
+  "practiceAreas": [
+    {
+      "icon": "📜",
+      "name": "Estate Planning & Probate",
+      "description": "Wills, trusts, powers of attorney, and probate administration, built around how your family actually works, not a one-size template."
+    },
+    {
+      "icon": "🏠",
+      "name": "Family Law",
+      "description": "Divorce, custody, and support matters handled with a focus on practical, durable agreements over drawn-out conflict where possible."
+    },
+    {
+      "icon": "🧾",
+      "name": "Small Business Law",
+      "description": "Entity formation, contracts, and ongoing counsel for owner-operated businesses, from a first LLC filing through a later sale."
+    },
+    {
+      "icon": "🔑",
+      "name": "Real Estate Transactions",
+      "description": "Purchase and sale agreements, title review, and closings for residential and small commercial property in the Richmond area."
+    }
+  ],
+  "attorney": {
+    "photo": "attorney.png",
+    "photoAlt": "Placeholder photo standing in for a professional portrait of attorney Renata Whitfield",
+    "name": "Renata Whitfield",
+    "title": "Founding Partner",
+    "bio": "Renata founded the firm in 2011 after six years at a larger Richmond practice, wanting to work directly with clients rather than hand off matters to a team of associates. She focuses on estate planning and small business law, and still takes the intake call for every new estate planning client herself.",
+    "credentials": [
+      "J.D., University of Richmond School of Law",
+      "Virginia State Bar, admitted 2009",
+      "Virginia Bar Association, Estate Planning Section"
+    ]
+  },
+  "caseResults": {
+    "results": [
+      { "summary": "Negotiated a settlement in a contested probate matter, avoiding a lengthy trial and keeping a family business intact for the next generation." },
+      { "summary": "Structured the formation and operating agreement for a local restaurant group opening its third Richmond location." },
+      { "summary": "Reached a collaborative divorce settlement that kept both parents on an agreed co-parenting schedule within four months." },
+      { "summary": "Closed a commercial property purchase for a nonprofit client ahead of a tight financing deadline." }
+    ],
+    "note": "Every case is different. These summaries describe past results for other clients and do not predict or guarantee the outcome of any future matter."
+  },
+  "disclaimer": "PLACEHOLDER ATTORNEY ADVERTISING DISCLAIMER. This text is jurisdiction-specific and must be supplied by Whitfield & Cross Law's own counsel before this site is used for a real client. Do not launch with this placeholder text in place. A real disclaimer here will typically need to address attorney advertising rules in the firm's licensing state, a statement that past results do not guarantee future outcomes, and a statement that no attorney-client relationship is formed until a signed engagement letter is in place."
+}
