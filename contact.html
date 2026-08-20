@@ -45,6 +45,7 @@
                 <h6>Save Time</h6>
                 <ul role="list">
                   <li><a href="services/workflow-automation.html">Workflow Automation</a></li>
+                  <li><a href="services/process-documentation.html">Process &amp; Documentation</a></li>
                 </ul>
               </div>
               <div class="mega-col">
@@ -96,6 +97,7 @@
           <a href="services/business-opportunity-finder.html">Business Opportunity Finder</a>
           <h6>Save Time</h6>
           <a href="services/workflow-automation.html">Workflow Automation</a>
+          <a href="services/process-documentation.html">Process &amp; Documentation</a>
           <h6>Protect</h6>
           <a href="services/business-security.html">Business Security</a>
           <a href="services/backup-recovery.html">Backup &amp; Recovery</a>
@@ -148,10 +150,13 @@
               <p class="field-help">Pick the one that&rsquo;s closest. Not sure is a valid answer.</p>
               <div class="chip-set" data-goal-chips role="group" aria-label="What you are trying to accomplish"></div>
               <input type="hidden" id="goal" name="goal" />
+              <!-- Filled in when the visitor arrives from a "how far do you
+                   want to go" card on the recommendation panel. -->
+              <input type="hidden" id="level" name="level" />
             </fieldset>
 
             <div class="form-group">
-              <label for="name">Your Name <span style="color:var(--gm-coral);">*</span></label>
+              <label for="name">Your Name <span style="color:var(--gm-coral-ink);">*</span></label>
               <input type="text" id="name" name="name" autocomplete="name" placeholder="e.g. Jordan Smith" required />
               <span class="form-error-msg">Please enter your name.</span>
             </div>
@@ -162,7 +167,7 @@
             </div>
 
             <div class="form-group">
-              <label for="email">Email Address <span style="color:var(--gm-coral);">*</span></label>
+              <label for="email">Email Address <span style="color:var(--gm-coral-ink);">*</span></label>
               <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required />
               <span class="form-error-msg">Please enter a valid email address.</span>
             </div>
@@ -173,7 +178,7 @@
             </div>
 
             <div class="form-group">
-              <label for="description">What&rsquo;s Going On? <span style="color:var(--gm-coral);">*</span></label>
+              <label for="description">What&rsquo;s Going On? <span style="color:var(--gm-coral-ink);">*</span></label>
               <textarea id="description" name="description" placeholder="Describe the problem, the goal, or just the thing that keeps annoying you. Everyday language is fine." required></textarea>
               <span class="form-error-msg">Please tell us a little about it.</span>
             </div>
@@ -191,6 +196,7 @@
                   <option value="business-technology-checkup">Business Technology Checkup</option>
                   <option value="business-websites">Business Websites</option>
                   <option value="workflow-automation">Workflow Automation</option>
+                  <option value="process-documentation">Process &amp; Documentation Systems</option>
                   <option value="backup-recovery">Backup &amp; Recovery</option>
                   <option value="business-security">Business Security</option>
                   <option value="work-from-anywhere">Work From Anywhere</option>
@@ -281,28 +287,28 @@
             <h4 style="margin-bottom:1rem;">What Happens Next</h4>
             <ul style="display:flex;flex-direction:column;gap:1rem;">
               <li style="display:flex;align-items:flex-start;gap:0.75rem;">
-                <span style="width:26px;height:26px;background:rgba(53,106,230,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--gm-blue);flex-shrink:0;">1</span>
+                <span style="width:26px;height:26px;background:rgba(53,106,230,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--gm-blue-dark);flex-shrink:0;">1</span>
                 <div>
                   <p style="font-size:0.85rem;font-weight:600;color:var(--gm-ink);margin-bottom:0.15rem;">I Review Your Inquiry</p>
                   <p style="font-size:0.82rem;">Within 24 hours I'll read through your project details and prepare questions.</p>
                 </div>
               </li>
               <li style="display:flex;align-items:flex-start;gap:0.75rem;">
-                <span style="width:26px;height:26px;background:rgba(53,106,230,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--gm-blue);flex-shrink:0;">2</span>
+                <span style="width:26px;height:26px;background:rgba(53,106,230,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--gm-blue-dark);flex-shrink:0;">2</span>
                 <div>
                   <p style="font-size:0.85rem;font-weight:600;color:var(--gm-ink);margin-bottom:0.15rem;">Discovery Call or Email</p>
                   <p style="font-size:0.82rem;">We'll have a quick call or email exchange to nail down your goals, timeline, and budget.</p>
                 </div>
               </li>
               <li style="display:flex;align-items:flex-start;gap:0.75rem;">
-                <span style="width:26px;height:26px;background:rgba(53,106,230,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--gm-blue);flex-shrink:0;">3</span>
+                <span style="width:26px;height:26px;background:rgba(53,106,230,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--gm-blue-dark);flex-shrink:0;">3</span>
                 <div>
                   <p style="font-size:0.85rem;font-weight:600;color:var(--gm-ink);margin-bottom:0.15rem;">Proposal &amp; Agreement</p>
                   <p style="font-size:0.82rem;">I'll send over a project proposal, pricing, and client agreement to sign before we begin.</p>
                 </div>
               </li>
               <li style="display:flex;align-items:flex-start;gap:0.75rem;">
-                <span style="width:26px;height:26px;background:rgba(53,106,230,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--gm-blue);flex-shrink:0;">4</span>
+                <span style="width:26px;height:26px;background:rgba(53,106,230,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--gm-blue-dark);flex-shrink:0;">4</span>
                 <div>
                   <p style="font-size:0.85rem;font-weight:600;color:var(--gm-ink);margin-bottom:0.15rem;">We Build &amp; Deliver</p>
                   <p style="font-size:0.82rem;">Work begins, and your solution goes live on schedule — see our <a href="process.html" style="color:var(--gm-blue);">full process</a> for details.</p>
@@ -357,6 +363,7 @@
             <li><a href="services/business-technology-checkup.html">Business Technology Checkup</a></li>
             <li><a href="services/business-websites.html">Business Websites</a></li>
             <li><a href="services/workflow-automation.html">Workflow Automation</a></li>
+            <li><a href="services/process-documentation.html">Process &amp; Documentation Systems</a></li>
             <li><a href="services/backup-recovery.html">Backup &amp; Recovery</a></li>
             <li><a href="services/business-security.html">Business Security</a></li>
             <li><a href="services/work-from-anywhere.html">Work From Anywhere</a></li>

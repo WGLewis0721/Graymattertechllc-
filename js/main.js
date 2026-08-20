@@ -349,18 +349,22 @@ function gmEscape(str) {
   }, 4200);
 })();
 
-// === OUTCOME CHOOSER + RECOMMENDATION PANEL ===
-// Selecting a goal reveals matching services in place — it never throws the
-// visitor onto another page. The panel is supplementary content; the same
-// services are already linked from the static service menu below it.
+// === GUIDED SOLUTION FINDER ===
+// Three steps, all in place on the homepage: pick a goal, answer one to three
+// plain business questions, get one recommended starting point plus a choice of
+// how far to take it. Nothing navigates away until the visitor chooses to.
+// The static goal links in the markup are the no-JS fallback and the crawlable
+// copy of the same choices; this replaces them with real controls.
 (function() {
   const grid = document.querySelector('[data-outcome-grid]');
   const panel = document.querySelector('[data-reco-panel]');
   if (!grid || !panel || !window.GM_DATA) return;
 
   const D = window.GM_DATA;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let goal = null;
+  let answers = {};
 
-  // Render the goal cards from data so a new outcome needs no markup.
   grid.innerHTML = D.outcomes.map(o => (
     '<button type="button" class="goal-card" data-goal="' + gmEscape(o.goal) + '" aria-pressed="false" aria-controls="recommendation-panel">' +
       '<span class="goal-icon"><i class="fa-solid ' + gmEscape(o.icon) + '" aria-hidden="true"></i></span>' +
@@ -369,74 +373,155 @@ function gmEscape(str) {
       '<span class="goal-hint">Show me how <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>' +
     '</button>'
   )).join('');
-
   const cards = grid.querySelectorAll('.goal-card');
 
-  const renderService = (service, primaryCta, goal) => (
-    '<article class="reco-card">' +
-      '<div class="card-icon"><i class="fa-solid ' + gmEscape(service.icon) + '" aria-hidden="true"></i></div>' +
-      '<h4>' + gmEscape(service.name) + '</h4>' +
-      '<p>' + gmEscape(service.outcome) + '</p>' +
-      '<span class="reco-helps-label">Helps you</span>' +
-      '<ul>' + service.helps.map(h => '<li><i class="fa-solid fa-check" aria-hidden="true"></i>' + gmEscape(h) + '</li>').join('') + '</ul>' +
-      '<div class="reco-actions">' +
-        '<a class="btn btn-primary" href="' + gmEscape(D.inquiryUrl(service.slug, goal)) + '">' + gmEscape(primaryCta) + '</a>' +
-        '<a class="btn btn-outline" href="' + gmEscape(D.url(service.url)) + '">See ' + gmEscape(service.short) + '</a>' +
-      '</div>' +
-    '</article>'
-  );
-
-  const show = (goal) => {
-    const outcome = D.getOutcome(goal);
-    if (!outcome) return;
-    const list = outcome.services.map(D.getService).filter(Boolean);
-
-    panel.innerHTML =
-      '<div class="reco-head">' +
-        '<span class="section-label">Your Best Starting Points</span>' +
-        '<h3 tabindex="-1" data-reco-heading>' + gmEscape(outcome.lead) + '</h3>' +
-        '<p>Pick the one that sounds like your situation. Not sure? Start the conversation and we’ll tell you which fits.</p>' +
-      '</div>' +
-      '<div class="reco-grid' + (list.length > 2 ? ' is-three' : '') + '">' +
-        list.map((s, idx) => renderService(s, idx === 0 ? outcome.cta : s.cta, goal)).join('') +
-      '</div>' +
-      '<div class="reco-foot">' +
-        '<a class="btn btn-primary" href="' + gmEscape(D.inquiryUrl(list[0] ? list[0].slug : '', goal)) + '">' + gmEscape(outcome.cta) + ' <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>' +
-        '<a class="btn btn-outline" href="' + gmEscape(D.url('process.html')) + '">See How It Works</a>' +
-      '</div>';
-
+  const reveal = (html) => {
+    panel.innerHTML = html;
     panel.hidden = false;
     panel.classList.remove('is-entering');
-    void panel.offsetWidth; // restart the reveal animation
+    void panel.offsetWidth;
     panel.classList.add('is-entering');
-
-    const heading = panel.querySelector('[data-reco-heading]');
-    if (heading) heading.focus({ preventScroll: true });
-
+    const focusTarget = panel.querySelector('[data-panel-heading]');
+    if (focusTarget) focusTarget.focus({ preventScroll: true });
     const rect = panel.getBoundingClientRect();
-    if (rect.bottom > window.innerHeight) {
-      panel.scrollIntoView({
-        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
-        block: 'nearest'
-      });
+    if (rect.bottom > window.innerHeight || rect.top < 0) {
+      panel.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
     }
   };
 
+  // ---------------------------------------------------------- step 2
+  function renderQuestions() {
+    const outcome = D.getOutcome(goal);
+    const qs = D.personalization[outcome.goal] || [];
+    const answered = qs.filter(q => answers[q.id]).length;
+
+    reveal(
+      '<div class="finder-step">' +
+        '<div class="finder-head">' +
+          '<span class="section-label">Step 2 of 3</span>' +
+          '<h3 tabindex="-1" data-panel-heading>Tell us a little more</h3>' +
+          '<p>' + gmEscape(outcome.title) + '. A few taps and we\'ll tell you where we\'d start.</p>' +
+          '<div class="finder-progress" role="presentation"><span style="width:' +
+            Math.round((answered / Math.max(qs.length, 1)) * 100) + '%"></span></div>' +
+        '</div>' +
+        qs.map(q => (
+          '<fieldset class="finder-q">' +
+            '<legend>' + gmEscape(q.label) + '</legend>' +
+            '<div class="chip-set">' +
+              q.options.map(o => (
+                '<button type="button" class="chip" data-q="' + gmEscape(q.id) + '" data-a="' + gmEscape(o.id) + '"' +
+                  ' aria-pressed="' + (answers[q.id] === o.id ? 'true' : 'false') + '">' +
+                  '<i class="fa-solid fa-check chip-check" aria-hidden="true"></i>' +
+                  '<span>' + gmEscape(o.label) + '</span>' +
+                '</button>'
+              )).join('') +
+            '</div>' +
+          '</fieldset>'
+        )).join('') +
+        '<div class="finder-actions">' +
+          '<button type="button" class="btn btn-primary" data-see-reco>Show My Starting Point <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>' +
+          '<button type="button" class="btn btn-outline" data-change-goal>Pick a different goal</button>' +
+        '</div>' +
+      '</div>'
+    );
+  }
+
+  // ---------------------------------------------------------- step 3
+  function renderRecommendation() {
+    const outcome = D.getOutcome(goal);
+    const rule = D.recommend(goal, answers);
+    const service = D.getService(rule.service);
+    const ctx = 'service=' + encodeURIComponent(service.slug) + '&goal=' + encodeURIComponent(outcome.goal) +
+                (answers.business ? '&business=' + encodeURIComponent(answers.business) : '');
+
+    reveal(
+      '<div class="finder-step">' +
+        '<div class="finder-head">' +
+          '<span class="section-label">Step 3 of 3</span>' +
+          '<h3 tabindex="-1" data-panel-heading>Your recommended starting point</h3>' +
+        '</div>' +
+
+        '<article class="reco-hero">' +
+          '<div class="reco-hero-main">' +
+            '<div class="card-icon"><i class="fa-solid ' + gmEscape(service.icon) + '" aria-hidden="true"></i></div>' +
+            '<h4>' + gmEscape(service.name) + '</h4>' +
+            '<p class="reco-why"><strong>Why this:</strong> ' + gmEscape(rule.why) + '</p>' +
+            (rule.addons && rule.addons.length
+              ? '<span class="reco-helps-label">Usually paired with</span>' +
+                '<ul class="addon-list">' + rule.addons.map(a => '<li>' + gmEscape(a) + '</li>').join('') + '</ul>'
+              : '') +
+            '<a class="btn btn-outline" href="' + gmEscape(D.url(service.url)) + '">See ' + gmEscape(service.short) + ' <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>' +
+          '</div>' +
+        '</article>' +
+
+        '<div class="ladder-head">' +
+          '<h4>Choose how far you want to go</h4>' +
+          '<p>Same starting point, four levels of help. Nothing is priced until we understand the job.</p>' +
+        '</div>' +
+        '<div class="ladder-grid">' +
+          D.ladder.map(l => (
+            '<a class="ladder-card" href="' + gmEscape(D.url('contact.html') + '?' + ctx + '&level=' + l.id) + '">' +
+              '<span class="ladder-icon"><i class="fa-solid ' + gmEscape(l.icon) + '" aria-hidden="true"></i></span>' +
+              '<span class="ladder-title">' + gmEscape(l.title) + '</span>' +
+              '<span class="ladder-quote">&ldquo;' + gmEscape(l.quote) + '&rdquo;</span>' +
+              '<span class="ladder-desc">' + gmEscape(l.description) + '</span>' +
+              '<span class="ladder-cta">' + gmEscape(l.cta) + ' <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>' +
+            '</a>'
+          )).join('') +
+        '</div>' +
+
+        '<div class="finder-actions">' +
+          '<button type="button" class="btn btn-outline" data-back-to-questions>Change my answers</button>' +
+          '<button type="button" class="btn btn-outline" data-change-goal>Pick a different goal</button>' +
+        '</div>' +
+      '</div>'
+    );
+  }
+
+  // ---------------------------------------------------------- wiring
   cards.forEach(card => {
     card.addEventListener('click', () => {
-      const wasSelected = card.getAttribute('aria-pressed') === 'true';
+      const was = card.getAttribute('aria-pressed') === 'true';
       cards.forEach(c => c.setAttribute('aria-pressed', 'false'));
-      if (wasSelected) { panel.hidden = true; return; }
+      if (was) { panel.hidden = true; goal = null; answers = {}; return; }
       card.setAttribute('aria-pressed', 'true');
-      show(card.dataset.goal);
+      goal = card.dataset.goal;
+      answers = {};
+      renderQuestions();
     });
   });
 
-  // Deep link: index.html?goal=save-time opens that recommendation directly.
+  panel.addEventListener('click', (e) => {
+    const chip = e.target.closest('.chip[data-q]');
+    if (chip) {
+      const q = chip.dataset.q;
+      const picked = answers[q] === chip.dataset.a;
+      answers[q] = picked ? undefined : chip.dataset.a;
+      panel.querySelectorAll('.chip[data-q="' + CSS.escape(q) + '"]').forEach(c =>
+        c.setAttribute('aria-pressed', String(!picked && c === chip)));
+      const qs = D.personalization[D.getOutcome(goal).goal] || [];
+      const done = qs.filter(x => answers[x.id]).length;
+      const bar = panel.querySelector('.finder-progress span');
+      if (bar) bar.style.width = Math.round((done / Math.max(qs.length, 1)) * 100) + '%';
+      return;
+    }
+    if (e.target.closest('[data-see-reco]')) { renderRecommendation(); return; }
+    if (e.target.closest('[data-back-to-questions]')) { renderQuestions(); return; }
+    if (e.target.closest('[data-change-goal]')) {
+      cards.forEach(c => c.setAttribute('aria-pressed', 'false'));
+      panel.hidden = true; goal = null; answers = {};
+      grid.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
+      const first = grid.querySelector('.goal-card');
+      if (first) first.focus({ preventScroll: true });
+    }
+  });
+
+  // Deep link: index.html?goal=save-time opens straight at the questions.
   const preset = new URLSearchParams(window.location.search).get('goal');
-  if (preset) {
-    const match = grid.querySelector('.goal-card[data-goal="' + CSS.escape(preset) + '"]');
-    if (match) { match.setAttribute('aria-pressed', 'true'); show(preset); }
+  if (preset && D.getOutcome(preset)) {
+    const resolved = D.getOutcome(preset).goal;
+    const match = grid.querySelector('.goal-card[data-goal="' + CSS.escape(resolved) + '"]');
+    if (match) { match.setAttribute('aria-pressed', 'true'); goal = resolved; renderQuestions(); }
   }
 })();
 
@@ -594,6 +679,23 @@ function gmEscape(str) {
     }
   }
 
+  // The guided finder passes the visitor's business type and how far they want
+  // to go. Both become readable context rather than codes in a URL.
+  const bizField = form.querySelector('#business');
+  const bizParam = params.get('business');
+  if (bizField && bizParam && !bizField.value) {
+    const match = (D.personalization['get-more-customers'] || [])
+      .find(q => q.id === 'business');
+    const opt = match && match.options.find(o => o.id === bizParam);
+    if (opt) bizField.placeholder = opt.label + ' — add your business name';
+  }
+  const level = params.get('level');
+  const levelField = form.querySelector('#level');
+  if (level && levelField) {
+    const l = (D.ladder || []).find(x => x.id === level);
+    if (l) levelField.value = l.title;
+  }
+
   // Configurator selections arrive as ?wants=book,quote — turn them back into
   // a sentence the visitor can edit rather than a code they'd have to decode.
   const wants = params.get('wants');
@@ -602,7 +704,7 @@ function gmEscape(str) {
     const labels = [];
     ['websiteActions', 'automationTasks', 'opportunityTargets', 'opportunityAreas',
      'checkupConcerns', 'backupAssets', 'securityRisks', 'remoteNeeds',
-     'costAreas', 'partnerTasks'].forEach(key => {
+     'costAreas', 'partnerTasks', 'docNeeds'].forEach(key => {
       (D[key] || []).forEach(opt => {
         if (wants.split(',').indexOf(opt.id) > -1 && labels.indexOf(opt.label) === -1) labels.push(opt.label);
       });

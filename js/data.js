@@ -64,6 +64,19 @@
       interest: 'workflow-automation'
     },
     {
+      slug: 'process-documentation',
+      name: 'Process & Documentation Systems',
+      short: 'Documentation',
+      icon: 'fa-folder-tree',
+      art: 'assets/gray-matter/services/gm-service-technology-partner.svg',
+      problem: 'Everything important is in someone\u2019s head.',
+      outcome: 'Turn scattered procedures into one system people can actually use.',
+      helps: ['Train new people faster', 'Delegate without re-explaining', 'Keep results consistent', 'Stop depending on one person'],
+      cta: 'Organize My Documentation',
+      url: 'services/process-documentation.html',
+      interest: 'process-documentation'
+    },
+    {
       slug: 'backup-recovery',
       name: 'Backup & Recovery',
       short: 'Backup',
@@ -149,15 +162,6 @@
   ---------------------------------------------------------------- */
   var outcomes = [
     {
-      goal: 'get-found',
-      title: 'Get Found',
-      icon: 'fa-magnifying-glass-location',
-      description: 'Show up when people search for what you do.',
-      lead: 'Here’s how Gray Matter helps customers find you',
-      services: ['business-websites', 'business-technology-checkup'],
-      cta: 'Help Me Get Found'
-    },
-    {
       goal: 'get-more-customers',
       title: 'Get More Customers',
       icon: 'fa-arrow-trend-up',
@@ -172,8 +176,17 @@
       icon: 'fa-clock',
       description: 'Stop repeating the same manual work every single week.',
       lead: 'Here are the ways Gray Matter can help you save time',
-      services: ['workflow-automation', 'business-websites', 'technology-partner'],
+      services: ['workflow-automation', 'process-documentation', 'business-websites'],
       cta: 'Help Me Save Time'
+    },
+    {
+      goal: 'organize-my-business',
+      title: 'Organize My Business',
+      icon: 'fa-folder-tree',
+      description: 'Get what\u2019s in your head into a system other people can run.',
+      lead: 'Here\u2019s how Gray Matter gets it out of your head',
+      services: ['process-documentation', 'workflow-automation', 'technology-partner'],
+      cta: 'Organize My Business'
     },
     {
       goal: 'protect-my-business',
@@ -203,15 +216,6 @@
       cta: 'Help Me Cut Costs'
     },
     {
-      goal: 'not-sure',
-      title: 'I Don’t Know What I Need',
-      icon: 'fa-circle-question',
-      description: 'Describe the problem in your own words. We’ll sort out the technology.',
-      lead: 'Start here — no technical answers required',
-      services: ['business-technology-checkup', 'technology-partner'],
-      cta: 'Help Me Figure It Out'
-    },
-    {
       goal: 'handle-it-for-me',
       title: 'Handle It For Me',
       icon: 'fa-handshake-angle',
@@ -219,6 +223,16 @@
       lead: 'Here’s what handing it off looks like',
       services: ['technology-partner', 'business-technology-checkup'],
       cta: 'Talk About Ongoing Support'
+    },
+    {
+      // Always last: it's the card for people none of the others fit.
+      goal: 'not-sure',
+      title: 'Not Sure What I Need',
+      icon: 'fa-circle-question',
+      description: 'Describe the problem in your own words. We’ll sort out the technology.',
+      lead: 'Start here — no technical answers required',
+      services: ['business-technology-checkup', 'technology-partner'],
+      cta: 'Help Me Figure It Out'
     }
   ];
 
@@ -334,6 +348,240 @@
     { id: 'backups', label: 'Keeping backups working', icon: 'fa-hard-drive', summary: 'Backups checked so you don\u2019t have to' },
     { id: 'security', label: 'Security questions', icon: 'fa-lock', summary: 'Someone to answer the security questions' },
     { id: 'decisions', label: 'Choosing new tools', icon: 'fa-compass-drafting', summary: 'A second opinion before you buy' }
+  ];
+
+
+  /* --- QUICK PERSONALIZATION ------------------------------------
+     After a goal is picked we ask 1-3 plain business questions, never
+     technical ones, then turn the answers into one recommended starting
+     point. Two or three taps, no typing, and every question is skippable.
+  ---------------------------------------------------------------- */
+  var BUSINESS_TYPES = [
+    { id: 'salon', label: 'Salon or barber' },
+    { id: 'trades', label: 'Contractor or home services' },
+    { id: 'professional', label: 'Professional services' },
+    { id: 'local', label: 'Another local service business' },
+    { id: 'online', label: 'Online or product business' },
+    { id: 'other', label: 'Something else' }
+  ];
+
+  function businessQuestion() {
+    return { id: 'business', label: 'What kind of business do you run?', options: BUSINESS_TYPES };
+  }
+
+  var personalization = {
+    'get-more-customers': [
+      businessQuestion(),
+      { id: 'contact', label: 'How do customers reach you now?', options: [
+        { id: 'dm', label: 'Social media messages' },
+        { id: 'phone', label: 'Phone calls' },
+        { id: 'booking', label: 'A booking app' },
+        { id: 'website', label: 'My website' },
+        { id: 'walkin', label: 'They just show up' }
+      ]},
+      { id: 'improve', label: 'What would you most like to improve?', options: [
+        { id: 'bookings', label: 'More bookings' },
+        { id: 'quotes', label: 'More quote requests' },
+        { id: 'professional', label: 'Look more established' },
+        { id: 'easier', label: 'Make booking easier' }
+      ]}
+    ],
+    'save-time': [
+      businessQuestion(),
+      { id: 'repeat', label: 'What do you repeat most often?', options: [
+        { id: 'confirmations', label: 'Sending confirmations' },
+        { id: 'followup', label: 'Chasing follow-ups' },
+        { id: 'dataentry', label: 'Copying the same information twice' },
+        { id: 'scheduling', label: 'Scheduling back and forth' },
+        { id: 'reports', label: 'Building the same report' }
+      ]},
+      { id: 'written', label: 'Is the process written down anywhere?', options: [
+        { id: 'no', label: 'No, it’s in my head' },
+        { id: 'partly', label: 'Partly, and out of date' },
+        { id: 'yes', label: 'Yes, it’s documented' }
+      ]}
+    ],
+    'organize-my-business': [
+      businessQuestion(),
+      { id: 'where', label: 'Where do your procedures live now?', options: [
+        { id: 'heads', label: 'In people’s heads' },
+        { id: 'scattered', label: 'Scattered files and screenshots' },
+        { id: 'stale', label: 'Written down but out of date' },
+        { id: 'none', label: 'Nowhere yet' }
+      ]},
+      { id: 'why', label: 'What are you trying to make possible?', options: [
+        { id: 'delegate', label: 'Hand work to someone else' },
+        { id: 'consistency', label: 'Get consistent results' },
+        { id: 'continuity', label: 'Stop depending on one person' },
+        { id: 'scale', label: 'Prepare to grow' }
+      ]}
+    ],
+    'protect-my-business': [
+      businessQuestion(),
+      { id: 'worry', label: 'What worries you most?', options: [
+        { id: 'access', label: 'Who still has access' },
+        { id: 'files', label: 'Losing files' },
+        { id: 'email', label: 'Someone getting into my email' },
+        { id: 'unsure', label: 'Not sure, just uneasy' }
+      ]}
+    ],
+    'work-from-anywhere': [
+      businessQuestion(),
+      { id: 'where', label: 'Where do you need to work from?', options: [
+        { id: 'home', label: 'Home' },
+        { id: 'jobsite', label: 'Job sites' },
+        { id: 'travel', label: 'On the road' },
+        { id: 'multi', label: 'More than one location' }
+      ]}
+    ],
+    'save-money': [
+      businessQuestion(),
+      { id: 'suspect', label: 'What do you suspect is happening?', options: [
+        { id: 'unused', label: 'Paying for things nobody uses' },
+        { id: 'duplicate', label: 'Two tools doing one job' },
+        { id: 'unknown', label: 'I don’t know what I pay for' }
+      ]}
+    ],
+    'handle-it-for-me': [
+      businessQuestion(),
+      { id: 'who', label: 'Who handles technology today?', options: [
+        { id: 'me', label: 'Me, on top of everything else' },
+        { id: 'employee', label: 'An employee, unofficially' },
+        { id: 'nobody', label: 'Nobody, really' },
+        { id: 'mixed', label: 'Different people, different things' }
+      ]}
+    ],
+    'not-sure': [
+      businessQuestion(),
+      { id: 'friction', label: 'What’s the most annoying part right now?', options: [
+        { id: 'customers', label: 'Not enough customers' },
+        { id: 'admin', label: 'Too much admin work' },
+        { id: 'messy', label: 'Nothing is written down' },
+        { id: 'breaking', label: 'Things keep breaking' },
+        { id: 'unsure', label: 'Genuinely not sure' }
+      ]}
+    ]
+  };
+
+  /* --- RECOMMENDATION RULES -------------------------------------
+     First matching rule wins, so put the specific ones first. `when` is
+     matched against the answers; a rule with no `when` is the goal's
+     default. `why` is one sentence, in the customer's own terms.
+  ---------------------------------------------------------------- */
+  var recommendationRules = [
+    { goal: 'get-more-customers', when: { contact: 'dm' }, service: 'business-websites',
+      addons: ['Online booking', 'Follow-up automation'],
+      why: 'Customers currently have to message you to ask about services, prices, and availability, so the fastest win is a place that answers all three and takes the booking.' },
+    { goal: 'get-more-customers', when: { improve: 'quotes' }, service: 'business-websites',
+      addons: ['Quote request form', 'Photo gallery', 'Follow-up automation'],
+      why: 'Quote requests convert best when someone can see your past work and send you the job details in one go, instead of starting with a phone call.' },
+    { goal: 'get-more-customers', when: { contact: 'walkin' }, service: 'business-websites',
+      addons: ['Google Business Profile setup', 'Online booking'],
+      why: 'If people mostly find you by walking past, the missing piece is being findable by everyone who does not.' },
+    { goal: 'get-more-customers', service: 'business-websites',
+      addons: ['Online booking', 'Quote request form'],
+      why: 'One place that explains what you do and lets people act on it is the shortest path to more customers.' },
+
+    { goal: 'save-time', when: { written: 'no' }, service: 'process-documentation',
+      addons: ['Workflow Automation once the steps are clear'],
+      why: 'The steps live in your head right now, and automating something undefined just makes the mess run faster — so we write it down first, simplify it, then automate the right parts.' },
+    { goal: 'save-time', service: 'workflow-automation',
+      addons: ['Forms and notifications', 'Follow-up automation'],
+      why: 'The repetitive parts of the job are already well defined, which makes them the easiest thing to hand to a system.' },
+
+    { goal: 'organize-my-business', when: { where: 'heads' }, service: 'process-documentation',
+      addons: ['SOPs and checklists', 'Workflow Automation later'],
+      why: 'Nothing can be delegated while it only exists in someone’s memory, so the first job is getting it out and into a form other people can follow.' },
+    { goal: 'organize-my-business', service: 'process-documentation',
+      addons: ['Document cleanup', 'One current version of everything'],
+      why: 'You have the material already — it just needs to become one organized, current system instead of scattered files.' },
+
+    { goal: 'protect-my-business', when: { worry: 'files' }, service: 'backup-recovery',
+      addons: ['Tested restores', 'Business Security review'],
+      why: 'Losing files is the risk you named, and a backup nobody has tested is the one that fails on the day it matters.' },
+    { goal: 'protect-my-business', service: 'business-security',
+      addons: ['Access review', 'Backup & Recovery'],
+      why: 'Most small business incidents start with access someone still has and nobody remembered to remove.' },
+
+    { goal: 'work-from-anywhere', service: 'work-from-anywhere',
+      addons: ['Secure remote access', 'Backup & Recovery'],
+      why: 'Getting to your files from anywhere is straightforward; doing it safely is the part worth setting up properly.' },
+
+    { goal: 'save-money', service: 'technology-cost-cleanup',
+      addons: ['Subscription review', 'Consolidation plan'],
+      why: 'You cannot cut what you cannot see, so this starts with a full list of what actually leaves your account each month.' },
+
+    { goal: 'handle-it-for-me', when: { who: 'me' }, service: 'technology-partner',
+      addons: ['Business Technology Checkup first'],
+      why: 'You are the technology department right now, so the first step is a checkup that tells us what you have been carrying.' },
+    { goal: 'handle-it-for-me', service: 'technology-partner',
+      addons: ['Business Technology Checkup first'],
+      why: 'One place to call works best once someone has actually looked at what you are running.' },
+
+    { goal: 'not-sure', when: { friction: 'customers' }, service: 'business-websites',
+      addons: ['Business Technology Checkup'],
+      why: 'You named customers as the problem, so we would start where customers actually meet your business.' },
+    { goal: 'not-sure', when: { friction: 'admin' }, service: 'workflow-automation',
+      addons: ['Business Technology Checkup'],
+      why: 'Admin work is the friction you named, and it is usually the easiest thing to measurably reduce.' },
+    { goal: 'not-sure', when: { friction: 'messy' }, service: 'process-documentation',
+      addons: ['Business Technology Checkup'],
+      why: 'Nothing being written down is the constraint under most of the other problems, so it is the right place to begin.' },
+    { goal: 'not-sure', service: 'business-technology-checkup',
+      addons: ['A prioritized list of what to fix first'],
+      why: 'When nothing stands out as the obvious problem, a checkup is the cheapest way to find out what actually is.' }
+  ];
+
+  /* --- PRODUCT LADDER -------------------------------------------
+     How far the visitor wants to go, not what it costs. No prices are
+     stated anywhere because none have been set; each level routes into
+     the inquiry flow carrying the visitor's chosen level of commitment.
+  ---------------------------------------------------------------- */
+  var ladder = [
+    { id: 'plan', title: 'Start Small', quote: 'Show me what I should do.',
+      description: 'A written recommendation you could act on yourself.', cta: 'Get My Plan', icon: 'fa-map' },
+    { id: 'build', title: 'Have Us Build It', quote: 'Set this up for me.',
+      description: 'We implement the recommended solution end to end.', cta: 'Build It For Me', icon: 'fa-hammer' },
+    { id: 'custom', title: 'Build Something Custom', quote: 'My business needs something specific.',
+      description: 'Scoped around how your business actually runs.', cta: 'Talk About My Business', icon: 'fa-compass-drafting' },
+    { id: 'ongoing', title: 'Have Us Manage It', quote: 'Help me keep it working.',
+      description: 'Ongoing support so technology stops landing on you.', cta: 'Handle This For Me', icon: 'fa-headset' }
+  ];
+
+  /* --- HOMEPAGE SHORTLISTS ---------------------------------------
+     The homepage routes; the All Services page owns the full catalog.
+  ---------------------------------------------------------------- */
+  var homeSolutions = ['business-websites', 'workflow-automation', 'process-documentation',
+                       'business-technology-checkup', 'business-opportunity-finder', 'technology-partner'];
+
+  var audienceGroups = [
+    { id: 'local', title: 'Local Service Businesses', icon: 'fa-store',
+      members: ['Barbers & salons', 'Detailers', 'Contractors', 'Home services', 'Cleaning & turnover'],
+      industries: ['barbers-salons', 'detailers', 'contractors', 'cleaning-services'] },
+    { id: 'professional', title: 'Professional & Appointment Businesses', icon: 'fa-briefcase',
+      members: ['Real estate', 'Consultants', 'Clinics & studios', 'Professional services'],
+      industries: ['real-estate', 'appointment-businesses', 'professional-services'] },
+    { id: 'growing', title: 'Owners & Growing Businesses', icon: 'fa-seedling',
+      members: ['Solo founders', 'Food trucks & mobile', 'Teams outgrowing their tools'],
+      industries: ['entrepreneurs', 'food-trucks'] }
+  ];
+
+  /* --- LOW-TICKET DIGITAL PRODUCTS -------------------------------
+     Intentionally empty. The card and page architecture reads from this
+     list, but no product ships until a real price and a real deliverable
+     exist. Shape:
+     { slug, name, forWho, problem, deliverable, outcome, price, service }
+  ---------------------------------------------------------------- */
+  var products = [];
+
+
+  var docNeeds = [
+    { id: 'onboarding', label: 'Training new people', icon: 'fa-user-plus', summary: 'New people can get productive without shadowing you' },
+    { id: 'delegate', label: 'Handing work off', icon: 'fa-share-nodes', summary: 'Work can be delegated without re-explaining it' },
+    { id: 'consistency', label: 'Everyone doing it differently', icon: 'fa-arrows-to-dot', summary: 'The same job gets done the same way' },
+    { id: 'scattered', label: 'Files scattered everywhere', icon: 'fa-folder-open', summary: 'One current version, one place' },
+    { id: 'keyperson', label: 'One person knows everything', icon: 'fa-user-shield', summary: 'The business stops depending on one memory' },
+    { id: 'compliance', label: 'Proving how we do things', icon: 'fa-clipboard-list', summary: 'Written procedures you can show someone' }
   ];
 
   /* --- TRANSFORMATIONS (before → after) -------------------------
@@ -532,7 +780,11 @@
     return null;
   }
 
+  // 'get-found' was merged into 'get-more-customers'; old links still resolve.
+  var GOAL_ALIASES = { 'get-found': 'get-more-customers' };
+
   function getOutcome(goal) {
+    goal = GOAL_ALIASES[goal] || goal;
     for (var i = 0; i < outcomes.length; i++) {
       if (outcomes[i].goal === goal) return outcomes[i];
     }
@@ -541,6 +793,22 @@
 
   /* Deep-link into the shared inquiry form carrying the visitor's
      context, e.g. contact.html?service=workflow-automation&goal=save-time */
+  /** Pick the first matching recommendation rule for a goal + answers. */
+  function recommend(goal, answers) {
+    goal = GOAL_ALIASES[goal] || goal;
+    answers = answers || {};
+    var fallback = null;
+    for (var i = 0; i < recommendationRules.length; i++) {
+      var r = recommendationRules[i];
+      if (r.goal !== goal) continue;
+      if (!r.when) { if (!fallback) fallback = r; continue; }
+      var ok = true;
+      for (var k in r.when) { if (answers[k] !== r.when[k]) { ok = false; break; } }
+      if (ok) return r;
+    }
+    return fallback;
+  }
+
   function inquiryUrl(serviceSlug, goal) {
     var qs = [];
     if (serviceSlug) qs.push('service=' + encodeURIComponent(serviceSlug));
@@ -551,6 +819,12 @@
   global.GM_DATA = {
     services: services,
     outcomes: outcomes,
+    personalization: personalization,
+    recommendationRules: recommendationRules,
+    ladder: ladder,
+    homeSolutions: homeSolutions,
+    audienceGroups: audienceGroups,
+    products: products,
     websiteActions: websiteActions,
     websiteBaseAddons: websiteBaseAddons,
     automationTasks: automationTasks,
@@ -560,6 +834,7 @@
     remoteNeeds: remoteNeeds,
     costAreas: costAreas,
     partnerTasks: partnerTasks,
+    docNeeds: docNeeds,
     opportunityTargets: opportunityTargets,
     opportunityAreas: opportunityAreas,
     transformations: transformations,
@@ -571,6 +846,7 @@
     url: url,
     getService: getService,
     getOutcome: getOutcome,
+    recommend: recommend,
     inquiryUrl: inquiryUrl
   };
 })(window);
