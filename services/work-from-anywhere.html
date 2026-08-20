@@ -189,8 +189,26 @@
     </div>
   </header>
 
+  <!-- RECOGNITION -->
+  <section class="section-pad-sm section-paper">
+    <div class="container">
+      <div class="recognition-grid">
+        <div class="recognition-card fade-up">
+          <span class="rq-mark" aria-hidden="true">&ldquo;</span>
+          <p>Ever driven back to the shop just to open one file?</p>
+          <a href="#choose">Show me what fixes this <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="recognition-card fade-up">
+          <span class="rq-mark" aria-hidden="true">&ldquo;</span>
+          <p>Emailing yourself attachments so you can work from home?</p>
+          <a href="#choose">Show me what fixes this <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ANYWHERE DIAGRAM -->
-  <section class="section-pad section-paper">
+  <section class="section-pad section-white">
     <div class="container">
       <div class="text-center">
         <span class="section-label">How It Works</span>
@@ -241,6 +259,30 @@
   </section>
 
   <!-- WHAT THIS SOLVES -->
+  <!-- CHOOSE WHAT YOU NEED -->
+  <section class="section-pad section-paper" id="choose">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Choose What You Need</span>
+        <h2 class="section-title">What Do You Need to Reach, and From Where?</h2>
+        <p class="section-subtitle">Pick what you actually need off-site. Access you don&rsquo;t need is access nobody should have.</p>
+      </div>
+
+      <div class="config-layout">
+        <div>
+          <div class="chip-set" data-chipset="remoteNeeds" role="group" aria-label="What Do You Need to Reach, and From Where?"></div>
+        </div>
+
+        <aside class="config-summary" data-summary-for="remoteNeeds" aria-live="polite">
+          <h3>You&rsquo;ll be able to:</h3>
+          <p class="summary-empty" data-summary-empty>Nothing picked yet. Choose what applies and this fills in.</p>
+          <ul class="summary-list" data-summary-list hidden></ul>
+          <a class="btn btn-primary" data-summary-cta href="../contact.html?service=work-from-anywhere&amp;goal=work-from-anywhere">Work From Anywhere <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
   <section class="section-pad section-white" id="what-you-get">
     <div class="container">
       <div class="grid-2" style="gap:2.5rem;align-items:start;">
@@ -267,14 +309,68 @@
       </div>
 
       <div class="text-center" style="margin-top:3rem;">
-        <a href="../contact.html?service=work-from-anywhere&amp;goal=work-from-anywhere" class="btn btn-primary btn-lg">Set Up Remote Access <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <a href="../contact.html?service=work-from-anywhere&amp;goal=work-from-anywhere" class="btn btn-primary btn-lg">Work From Anywhere <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         <a href="../process.html" class="btn btn-outline btn-lg" style="margin-left:1rem;">See How It Works</a>
       </div>
     </div>
   </section>
 
+  <!-- BEFORE / AFTER -->
+  <section class="section-pad section-paper">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">What Changes</span>
+        <h2 class="section-title">Tied to One Computer &rarr; Flexible</h2>
+        <p class="section-subtitle">A general transformation, not a specific client result.</p>
+      </div>
+      <article class="ba-block fade-up" data-ba-block style="max-width:900px;margin:0 auto;">
+        <div class="ba-pair">
+          <div class="ba-side ba-before">
+            <span class="ba-label"><i class="fa-solid fa-circle-minus" aria-hidden="true"></i> Before</span>
+            <ul>
+              <li><i class="fa-solid fa-xmark" aria-hidden="true"></i> The business runs from one desk</li>
+              <li><i class="fa-solid fa-xmark" aria-hidden="true"></i> Files travel by email attachment</li>
+              <li><i class="fa-solid fa-xmark" aria-hidden="true"></i> Nobody else can cover for you</li>
+            </ul>
+          </div>
+          <div class="ba-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
+          <div class="ba-side ba-after">
+            <span class="ba-label"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> After</span>
+            <ul>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> The same files from any device</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> One place everyone works from</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Your team can carry on without you</li>
+            </ul>
+          </div>
+        </div>
+        <p class="ba-result"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i> <span><strong>Business result:</strong> where you are stops deciding what you can get done.</span></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section-pad section-white">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">How We Work</span>
+        <h2 class="section-title">Tech Fit to Completion</h2>
+        <p class="section-subtitle">The same five steps for every service. No surprises, nothing starts before you agree to it.</p>
+      </div>
+      <ol class="process-mini">
+        <li class="pm-step fade-up"><div class="pm-num">1</div><h3>Tell Us</h3><p>Describe the problem in your own words.</p></li>
+        <li class="pm-step fade-up"><div class="pm-num">2</div><h3>Fit Check</h3><p>We confirm we&rsquo;re the right people for it.</p></li>
+        <li class="pm-step fade-up"><div class="pm-num">3</div><h3>Recommend</h3><p>You get a plain-language recommendation.</p></li>
+        <li class="pm-step fade-up"><div class="pm-num">4</div><h3>Build</h3><p>We scope it, build it, and test it.</p></li>
+        <li class="pm-step fade-up"><div class="pm-num">5</div><h3>Launch</h3><p>It goes live &mdash; and we&rsquo;re still here.</p></li>
+      </ol>
+      <div class="how-we-work-cta">
+        <a href="../process.html" class="btn btn-outline">See the Full Process <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </section>
+
   <!-- RELATED SERVICES -->
-  <section class="section-pad" style="background:var(--gm-white);">
+  <section class="section-pad section-paper">
     <div class="container">
       <div class="text-center">
         <span class="section-label">Often Paired With</span>

@@ -54,30 +54,6 @@
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 })();
 
-// === PORTFOLIO FILTER ===
-(function() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card[data-category]');
-
-  if (!filterBtns.length) return;
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filter = btn.dataset.filter;
-      projectCards.forEach(card => {
-        if (filter === 'all' || card.dataset.category === filter) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-    });
-  });
-})();
-
 // === FAQ ACCORDION ===
 (function() {
   const faqItems = document.querySelectorAll('.faq-item');
@@ -157,16 +133,14 @@
 // browser's native overflow-x scrolling + CSS scroll-snap does the work, so
 // the page still scrolls vertically the moment a swipe isn't horizontal.
 (function() {
-  const mobileQuery = window.matchMedia('(max-width: 767px)');
   const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const rows = document.querySelectorAll('.swipe-row, .deck-row');
+  const rows = document.querySelectorAll('.swipe-row');
   if (!rows.length) return;
 
   rows.forEach(row => {
     const items = Array.from(row.children);
     if (items.length < 2) return;
 
-    const isDeck = row.classList.contains('deck-row');
 
     const dots = document.createElement('div');
     dots.className = 'swipe-dots';
@@ -182,7 +156,7 @@
       dot.addEventListener('click', () => {
         item.scrollIntoView({
           behavior: reduceMotionQuery.matches ? 'auto' : 'smooth',
-          inline: isDeck ? 'center' : 'start',
+          inline: 'start',
           block: 'nearest'
         });
       });
@@ -192,9 +166,8 @@
     row.insertAdjacentElement('afterend', dots);
     const dotButtons = dots.querySelectorAll('button');
 
-    // Returns each item's signed distance from the row's horizontal center,
-    // normalized to roughly [-1, 1] per card width. Used both to pick the
-    // "active" dot and, for deck rows, to drive the peek/scale/opacity.
+    // Returns each item's signed distance from the row's horizontal center.
+    // Used to pick which dot reads as "active".
     const measure = () => {
       const rowRect = row.getBoundingClientRect();
       const rowCenter = rowRect.left + rowRect.width / 2;
@@ -202,29 +175,6 @@
         const r = item.getBoundingClientRect();
         const itemCenter = r.left + r.width / 2;
         return { offset: itemCenter - rowCenter, width: r.width || 1 };
-      });
-    };
-
-    const applyDeckStyle = (measurements) => {
-      if (!isDeck) return;
-      if (!mobileQuery.matches) {
-        // Off the mobile breakpoint: let the desktop grid CSS take over.
-        items.forEach(item => {
-          item.style.transform = '';
-          item.style.opacity = '';
-          item.style.zIndex = '';
-        });
-        return;
-      }
-      measurements.forEach((m, i) => {
-        const norm = m.offset / m.width;
-        const abs = Math.min(Math.abs(norm), 1.6);
-        const scale = Math.max(1 - abs * 0.16, 0.78);
-        const opacity = Math.max(1 - abs * 0.4, 0.4);
-        const lift = Math.min(abs * 10, 14);
-        items[i].style.transform = `translateY(${lift}px) scale(${scale})`;
-        items[i].style.opacity = String(opacity);
-        items[i].style.zIndex = String(Math.round(100 - abs * 10));
       });
     };
 
@@ -240,7 +190,6 @@
         }
       });
       dotButtons.forEach((dot, i) => dot.classList.toggle('active', i === closestIndex));
-      applyDeckStyle(measurements);
       ticking = false;
     };
 
@@ -651,7 +600,9 @@ function gmEscape(str) {
   const description = form.querySelector('#description');
   if (wants && description && !description.value) {
     const labels = [];
-    ['websiteActions', 'automationTasks', 'opportunityTargets', 'opportunityAreas'].forEach(key => {
+    ['websiteActions', 'automationTasks', 'opportunityTargets', 'opportunityAreas',
+     'checkupConcerns', 'backupAssets', 'securityRisks', 'remoteNeeds',
+     'costAreas', 'partnerTasks'].forEach(key => {
       (D[key] || []).forEach(opt => {
         if (wants.split(',').indexOf(opt.id) > -1 && labels.indexOf(opt.label) === -1) labels.push(opt.label);
       });
