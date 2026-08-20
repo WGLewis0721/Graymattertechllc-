@@ -95,7 +95,7 @@ p { color: var(--gm-ink-60); }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 .mobile-nav { display: none; background: var(--gm-white); padding: 1.5rem 1.25rem; border-top: 1px solid var(--gm-line); }
 .mobile-nav.open { display: flex; flex-direction: column; gap: 1rem; }
-.mobile-nav a { font-size: 1rem; font-weight: 500; color: var(--gm-ink-60); padding: 0.5rem 0; border-bottom: 1px solid var(--gm-line); transition: color 0.2s; }
+.mobile-nav a { display: flex; align-items: center; min-height: 44px; font-size: 1rem; font-weight: 500; color: var(--gm-ink-60); padding: 0.5rem 0; border-bottom: 1px solid var(--gm-line); transition: color 0.2s; }
 .mobile-nav a:last-child { border-bottom: none; }
 .mobile-nav a:hover, .mobile-nav a.active { color: var(--gm-blue); }
 /* The Solutions menu needs room; below 900px the better-organised mobile
@@ -307,7 +307,7 @@ footer { background: var(--gm-white); border-top: 1px solid var(--gm-line); padd
 .footer-bottom p { font-size: 0.85rem; color: var(--gm-ink-45); }
 
 /* === ANIMATIONS === */
-.fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+.fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.35s ease-out, transform 0.35s ease-out; }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 .fade-up:nth-child(2) { transition-delay: 0.1s; }
 .fade-up:nth-child(3) { transition-delay: 0.2s; }
@@ -832,7 +832,8 @@ textarea:focus-visible,
 .roadmap-detail { font-size: 0.88rem; color: var(--gm-ink-55); margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px dashed var(--gm-line); }
 @media (min-width: 900px) {
   .roadmap-detail { max-height: 0; opacity: 0; overflow: hidden; margin-top: 0; padding-top: 0; border-top-color: transparent; transition: max-height 0.3s ease-out, opacity 0.25s ease-out, margin-top 0.25s ease-out, padding-top 0.25s ease-out; }
-  .roadmap-step:hover .roadmap-detail, .roadmap-step:focus-within .roadmap-detail { max-height: 9rem; opacity: 1; margin-top: 0.6rem; padding-top: 0.6rem; border-top-color: var(--gm-line); }
+  .roadmap-step:hover .roadmap-detail, .roadmap-step:focus-within .roadmap-detail,
+  .roadmap-card:hover .roadmap-detail, .roadmap-card:focus-within .roadmap-detail { max-height: 9rem; opacity: 1; margin-top: 0.6rem; padding-top: 0.6rem; border-top-color: var(--gm-line); }
 }
 
 /* --- SERVICE CARD: PROBLEM → OUTCOME → REVEAL ---------------- */
