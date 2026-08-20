@@ -736,30 +736,30 @@
       id: 'starter',
       tier: 'Starter',
       name: 'Essential Site',
-      price: '$250 – $350',
+      price: 'From $750',
       forWho: 'I need a professional website.',
       outcome: 'Customers can find you, understand what you do, and get in touch.',
-      features: ['Up to 3 pages', 'Mobile-friendly design', 'Contact form', 'Social links', 'Basic search setup', 'Delivered in 5–7 days'],
+      features: ['Up to 3 pages', 'Mobile-friendly design', 'Contact form', 'Social links', 'Basic search setup', 'Delivered in 7–10 business days'],
       featured: false
     },
     {
       id: 'business',
       tier: 'Business',
       name: 'Business Site',
-      price: '$500 – $800',
+      price: 'From $1,500',
       forWho: 'I want customers to contact or book me.',
       outcome: 'Customers can browse services, see pricing, and book without calling.',
-      features: ['Up to 6 custom pages', 'Online booking', 'Inquiry form', 'Services and pricing', 'Photo gallery', 'Search and analytics setup', 'Delivered in 7–14 days'],
+      features: ['Up to 5 customized pages', 'Online booking', 'Inquiry form', 'Services and pricing', 'Photo gallery', 'Search and analytics setup', 'Delivered in 2–3 weeks'],
       featured: true
     },
     {
       id: 'growth',
       tier: 'Growth',
       name: 'Full Platform',
-      price: '$1,000+',
+      price: 'From $3,000',
       forWho: 'I want my website connected to how my business runs.',
       outcome: 'The website feeds the rest of your business instead of sitting beside it.',
-      features: ['Unlimited pages', 'Booking and payments', 'Online store or digital products', 'Follow-up automation', 'Lead capture', 'Analytics and conversion tracking', 'Delivered in 2–4 weeks'],
+      features: ['Up to 8 pages', 'Booking and payments', 'Defined e-commerce or digital-product scope', 'One core automation integration', 'Lead capture', 'Analytics and conversion tracking', 'Delivered in 4–6 weeks'],
       featured: false
     }
   ];

@@ -76,6 +76,9 @@
 
   const requiredFields = form.querySelectorAll('[required]');
   const successMsg = document.getElementById('form-success');
+  const submitError = document.getElementById('form-submit-error');
+  const submitButton = form.querySelector('[type="submit"]');
+  const submitButtonLabel = submitButton ? submitButton.innerHTML : '';
 
   // Preselect the service dropdown when linked from a service page (?service=slug)
   const serviceField = form.querySelector('#service');
@@ -84,7 +87,7 @@
     serviceField.value = preselect;
   }
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     let valid = true;
 
@@ -111,10 +114,35 @@
       }
     }
 
-    if (valid) {
+    if (!valid) return;
+
+    if (submitError) submitError.hidden = true;
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.innerHTML = 'Sending&hellip; <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>';
+    }
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !(result.success === true || result.success === 'true')) {
+        throw new Error('Inquiry service did not confirm delivery.');
+      }
+
+      form.reset();
       form.style.display = 'none';
       successMsg.classList.add('show');
       successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (error) {
+      if (submitError) submitError.hidden = false;
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.innerHTML = submitButtonLabel;
+      }
     }
   });
 
