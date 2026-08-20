@@ -255,8 +255,10 @@
     { id: 'work', label: 'View Your Work', icon: 'fa-images', summary: 'See examples of your work', addons: ['Photo gallery'] }
   ];
 
-  /* Add-ons every recommended setup starts from. */
-  var websiteBaseAddons = ['Mobile-friendly design', 'Contact form', 'Google Business Profile setup'];
+  /* What every website build starts from. Kept identical to the Starter
+     package on pricing.html: booking, payments, stores, and Google Business
+     Profile setup are separate scope, never universal inclusions. */
+  var websiteBaseAddons = ['Mobile-friendly design', 'Contact form', 'Basic on-page SEO setup'];
 
   /* --- WORKFLOW AUTOMATION OPTIONS ------------------------------ */
   var automationTasks = [
