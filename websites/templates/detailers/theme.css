@@ -1,0 +1,36 @@
+/*
+  theme.css — detailers vertical default. Layered between tokens.css
+  (generic frame defaults) and global.css by BaseLayout, so a fresh
+  client on this template already looks right before any content.json
+  theme override is applied. Only overrides the tokens that actually
+  differ from tokens.css; everything else (spacing scale, container
+  widths) inherits the frame default. A client's content.json theme
+  block still wins over this.
+
+  Feel: garage-clean. Near-black chrome and a cold blue that reads like
+  shop lighting on wet paint, over a cool off-white body. Deliberately
+  colder and harder-edged than hospitality-and-cleaning (warm, soft,
+  reassuring) and colder than barbers-stylists (near-black plus warm
+  crimson, on a cream surface) — the two verticals it would otherwise
+  most resemble. Tight corners, because a detailing page is selling
+  precision, not comfort.
+*/
+:root {
+  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+
+  --color-primary: #101418;
+  --color-primary-hover: #232a32;
+  --color-accent: #1f8fd6;
+  --color-accent-hover: #1670ab;
+  --color-surface: #f4f6f8;
+  --color-surface-alt: #e6ebf0;
+  --color-surface-raised: #ffffff;
+  --color-ink: #101418;
+  --color-ink-muted: #4d5a67;
+  --color-border: #cdd6de;
+
+  --radius-sm: 3px;
+  --radius-md: 6px;   /* tighter than the frame default (10px) */
+  --radius-lg: 10px;  /* panels stay crisp rather than pillowy */
+}

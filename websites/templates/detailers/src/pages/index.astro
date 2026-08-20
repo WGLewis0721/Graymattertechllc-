@@ -1,0 +1,250 @@
+---
+// detailers — single page. A detail shop sells on one thing above all
+// others: the transformation. So this vertical deliberately breaks the
+// section order the other templates settled into — the before/after
+// comparison sits immediately under the hero, ahead of pricing, rather
+// than mid-scroll as proof after the fact. Everything below it exists to
+// answer "what does that cost on my vehicle" while the difference is
+// still on screen. See README.md, "what to change first for a new
+// client", and docs/PHILOSOPHY.md for the single-page reasoning.
+import type { ImageMetadata } from 'astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/shared/Header.astro';
+import Hero from '../components/shared/Hero.astro';
+import Section from '../components/shared/Section.astro';
+import BeforeAfterSlider from '../components/shared/BeforeAfterSlider.astro';
+import ServiceCard from '../components/shared/ServiceCard.astro';
+import SwipeGallery from '../components/shared/SwipeGallery.astro';
+import TestimonialStrip from '../components/shared/TestimonialStrip.astro';
+import HoursTable from '../components/shared/HoursTable.astro';
+import ContactForm from '../components/shared/ContactForm.astro';
+import CTAButton from '../components/shared/CTAButton.astro';
+import MapEmbed from '../components/shared/MapEmbed.astro';
+import StickyCallBar from '../components/shared/StickyCallBar.astro';
+import Footer from '../components/shared/Footer.astro';
+import VehicleSizeTable from '../components/VehicleSizeTable.astro';
+import { loadContent } from '../lib/content';
+import rawContent from '../../content.json';
+
+const content = loadContent(rawContent);
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+  '../../images/*.{png,jpg,jpeg}',
+  { eager: true }
+);
+
+function resolveImage(filename: string): ImageMetadata {
+  const match = Object.entries(imageModules).find(([path]) => path.endsWith(`/${filename}`));
+  if (!match) throw new Error(`No image found for "${filename}" in images/`);
+  return match[1].default;
+}
+
+const heroImage = resolveImage(content.hero.image);
+const workImages = content.gallery.map((item) => ({
+  image: resolveImage(item.src),
+  alt: item.alt,
+}));
+const beforeAfterItems = (content.beforeAfter ?? []).map((pair) => ({
+  before: resolveImage(pair.before),
+  after: resolveImage(pair.after),
+  beforeAlt: pair.beforeAlt,
+  afterAlt: pair.afterAlt,
+  label: pair.label,
+}));
+
+// Vehicle sizes double as the quote form's select options: a visitor who
+// just read the price matrix picks the same size again, in the same
+// words, instead of describing their vehicle in free text.
+const vehicleSizes = content.vehicleSizes ?? [];
+
+const nav = [
+  { label: 'Results', href: '#results' },
+  { label: 'Pricing', href: '#pricing' },
+  { label: 'Add-ons', href: '#addons' },
+  { label: 'Book', href: '#book' },
+];
+---
+
+<BaseLayout content={content} businessType="AutoWash">
+  <Header
+    businessName={content.business.name}
+    nav={nav}
+    ctaLabel="Book a detail"
+    ctaHref="#book"
+  />
+
+  <main id="main">
+    <Hero
+      heading={content.business.name}
+      subheading={content.business.tagline}
+      image={heroImage}
+      imageAlt={content.hero.alt}
+      ctaLabel={content.hero.ctaLabel}
+      ctaHref={content.hero.ctaHref}
+    />
+
+    {
+      beforeAfterItems.length > 0 && (
+        <Section id="results" heading="Drag to see the difference">
+          <p class="lede">
+            Every one of these is the same vehicle, same angle, same light. That is the
+            whole job.
+          </p>
+          <BeforeAfterSlider id="results-slider" items={beforeAfterItems} />
+        </Section>
+      )
+    }
+
+    {
+      content.vehicleTiers && content.vehicleTiers.length > 0 && vehicleSizes.length > 0 && (
+        <Section id="pricing" heading="Pricing by vehicle size" background="alt">
+          <p class="lede">
+            Priced up front, so a truck never turns into a surprise at drop-off. Anything
+            unusual gets quoted after we see it.
+          </p>
+          <VehicleSizeTable
+            sizes={vehicleSizes}
+            tiers={content.vehicleTiers}
+            featured="Full Detail"
+          />
+        </Section>
+      )
+    }
+
+    <Section id="addons" heading="Add-ons">
+      <p class="lede">Bolt any of these onto a package above, or book one on its own.</p>
+      <ul class="addon-grid">
+        {
+          content.services.map((service) => (
+            <ServiceCard
+              name={service.name}
+              price={service.price}
+              duration={service.duration}
+              description={service.description}
+            />
+          ))
+        }
+      </ul>
+    </Section>
+
+    {
+      workImages.length > 0 && (
+        <Section id="work" heading="Recent work" background="alt">
+          <SwipeGallery id="work-gallery" images={workImages} />
+        </Section>
+      )
+    }
+
+    {
+      content.testimonials && content.testimonials.length > 0 && (
+        <Section id="reviews" heading="What customers say">
+          <TestimonialStrip testimonials={content.testimonials} />
+        </Section>
+      )
+    }
+
+    <Section id="hours" heading="Hours and service area" background="alt">
+      <HoursTable hours={content.hours} />
+      {
+        content.business.serviceArea && (
+          <p class="service-area">
+            <span class="service-area__label">We cover</span>
+            {content.business.serviceArea}.
+          </p>
+        )
+      }
+    </Section>
+
+    <Section id="book" heading="Book a detail">
+      {
+        content.booking && (
+          <div class="booking">
+            <CTAButton
+              label={`Book online via ${content.booking.provider}`}
+              href={content.booking.href}
+              variant="accent"
+            />
+            {content.booking.note && <p class="booking__note">{content.booking.note}</p>}
+          </div>
+        )
+      }
+
+      <p class="lede">
+        Not sure which package your vehicle needs? Send the details and we&rsquo;ll come
+        back with a price, usually the same day.
+      </p>
+
+      <ContactForm
+        endpoint={content.formEndpoint}
+        submitLabel="Send my request"
+        selectField={vehicleSizes.length > 0
+          ? { label: 'Vehicle size', name: 'vehicle_size', options: vehicleSizes }
+          : undefined}
+      />
+
+      {content.map && <MapEmbed embedUrl={content.map.embedUrl} title={content.map.title} />}
+    </Section>
+  </main>
+
+  <StickyCallBar phone={content.business.phone} address={content.business.address} />
+
+  <Footer
+    businessName={content.business.name}
+    phone={content.business.phone}
+    email={content.business.email}
+    address={content.business.address}
+    social={content.social}
+  />
+</BaseLayout>
+
+<style>
+  .lede {
+    max-width: var(--container-sm);
+    margin-bottom: var(--space-md);
+    color: var(--color-ink-muted);
+  }
+
+  .addon-grid {
+    display: grid;
+    gap: var(--space-sm);
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 40rem) {
+    .addon-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .addon-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .service-area {
+    margin-top: var(--space-md);
+    color: var(--color-ink-muted);
+  }
+
+  .service-area__label {
+    display: block;
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-ink-muted);
+    margin-bottom: var(--space-3xs);
+  }
+
+  .booking {
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .booking__note {
+    margin-top: var(--space-2xs);
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+  }
+</style>

@@ -103,8 +103,19 @@ const { businessName, nav = [], ctaLabel, ctaHref } = Astro.props;
 
   /* Mobile: nav is a horizontal swipe strip, not a hidden/hamburger menu.
      No JS toggle needed, nothing to discover via hover, consistent with
-     "swipe first" (docs/PHILOSOPHY.md). */
+     "swipe first" (docs/PHILOSOPHY.md).
+
+     min-width: 0 is load-bearing. As a flex item, .header__nav defaults to
+     min-width: auto, which refuses to shrink below its content width — so
+     the strip below pushed the whole page wide instead of scrolling itself,
+     producing horizontal overflow at narrow widths (measured at 320px on
+     every template with four nav items). Letting the item shrink is what
+     makes the overflow-x: auto underneath actually engage. */
   @media (max-width: 47.999rem) {
+    .header__nav {
+      min-width: 0;
+    }
+
     .header__nav ul {
       overflow-x: auto;
       scroll-snap-type: x proximity;

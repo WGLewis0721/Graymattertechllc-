@@ -1,0 +1,209 @@
+{
+  "hero": {
+    "image": "hero.png",
+    "alt": "Placeholder photo standing in for a freshly detailed dark sedan under shop lights with water beading on the paint",
+    "ctaLabel": "Book a detail",
+    "ctaHref": "#book"
+  },
+  "business": {
+    "name": "Mirrorline Auto Detail",
+    "tagline": "Paint that looks better than the day you bought it",
+    "phone": "+1-555-060-0600",
+    "email": "book@mirrorlinedetail.com",
+    "address": "1140 Coosa St, Montgomery, AL 36104",
+    "serviceArea": "Montgomery, Prattville, Millbrook, and Wetumpka"
+  },
+  "hours": [
+    {
+      "day": "Mon-Fri",
+      "open": "08:00",
+      "close": "18:00"
+    },
+    {
+      "day": "Sat",
+      "open": "08:00",
+      "close": "16:00"
+    },
+    {
+      "day": "Sun",
+      "open": null,
+      "close": null
+    }
+  ],
+  "services": [
+    {
+      "name": "Clay bar treatment",
+      "price": "$60",
+      "duration": "45 min",
+      "description": "Pulls embedded grit out of the clear coat so wax and sealant actually bond."
+    },
+    {
+      "name": "Headlight restoration",
+      "price": "$80",
+      "duration": "1 hr",
+      "description": "Sands and re-seals hazed lenses. Pair of headlights."
+    },
+    {
+      "name": "Engine bay clean",
+      "price": "$70",
+      "duration": "45 min",
+      "description": "Degreased, dressed, and safe around the electronics."
+    },
+    {
+      "name": "Pet hair removal",
+      "price": "$45+",
+      "duration": "30-90 min",
+      "description": "Priced by how bad it is. Send a photo and we'll tell you."
+    },
+    {
+      "name": "Ozone odor treatment",
+      "price": "$90",
+      "duration": "3 hrs",
+      "description": "For smoke and mildew that shampooing alone won't lift."
+    },
+    {
+      "name": "Ceramic coating, 1-year",
+      "price": "$450+",
+      "duration": "1 day",
+      "description": "Applied over a corrected finish. Quoted after paint inspection."
+    }
+  ],
+  "vehicleSizes": [
+    "Sedan / Coupe",
+    "SUV / Crossover",
+    "Truck / 3-row"
+  ],
+  "vehicleTiers": [
+    {
+      "name": "Maintenance Wash",
+      "duration": "1 hr",
+      "description": "For a car that's already in good shape and needs to stay that way.",
+      "prices": [
+        "$65",
+        "$80",
+        "$95"
+      ],
+      "includes": [
+        "Hand wash and hand dry",
+        "Wheels, tires, and wheel wells",
+        "Windows in and out",
+        "Interior vacuum and wipe-down"
+      ]
+    },
+    {
+      "name": "Full Detail",
+      "duration": "3-4 hrs",
+      "description": "The one most people book. Inside and out, back to showroom.",
+      "prices": [
+        "$185",
+        "$225",
+        "$265"
+      ],
+      "includes": [
+        "Everything in a Maintenance Wash",
+        "Clay bar and machine-applied sealant",
+        "Carpet and upholstery shampoo",
+        "Leather clean and condition",
+        "Door jambs, vents, and console detail"
+      ]
+    },
+    {
+      "name": "Paint Correction",
+      "duration": "1-2 days",
+      "description": "Removes swirls and scratches rather than filling them. Priced after we see the paint.",
+      "prices": [
+        "$450+",
+        "$525+",
+        "$600+"
+      ],
+      "includes": [
+        "Everything in a Full Detail",
+        "Multi-stage machine polish",
+        "Swirl and scratch removal",
+        "Paint depth inspection before work starts",
+        "Ceramic coating available on top"
+      ]
+    }
+  ],
+  "beforeAfter": [
+    {
+      "before": "ba-paint-before.png",
+      "after": "ba-paint-after.png",
+      "beforeAlt": "Placeholder photo standing in for a hood covered in swirl marks under direct light before paint correction",
+      "afterAlt": "Placeholder photo standing in for the same hood with a mirror finish after paint correction",
+      "label": "Paint correction"
+    },
+    {
+      "before": "ba-interior-before.png",
+      "after": "ba-interior-after.png",
+      "beforeAlt": "Placeholder photo standing in for a stained cloth seat and littered footwell before an interior detail",
+      "afterAlt": "Placeholder photo standing in for the same seat and footwell clean and dressed after an interior detail",
+      "label": "Interior reset"
+    },
+    {
+      "before": "ba-wheel-before.png",
+      "after": "ba-wheel-after.png",
+      "beforeAlt": "Placeholder photo standing in for an alloy wheel caked in brake dust before cleaning",
+      "afterAlt": "Placeholder photo standing in for the same alloy wheel clean with dressed tire after cleaning",
+      "label": "Wheels and tires"
+    }
+  ],
+  "gallery": [
+    {
+      "src": "gallery-1.png",
+      "alt": "Placeholder photo standing in for water beading on a freshly sealed hood"
+    },
+    {
+      "src": "gallery-2.png",
+      "alt": "Placeholder photo standing in for a shampooed and vacuumed rear cabin"
+    },
+    {
+      "src": "gallery-3.png",
+      "alt": "Placeholder photo standing in for a restored headlight next to an untreated one"
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "Dropped off a work truck that hadn't been cleaned in two years. Got back something I didn't mind putting a client in.",
+      "author": "Dwayne R."
+    },
+    {
+      "quote": "The paint correction on my black sedan was the difference between trading it in and keeping it. No swirls in direct sun.",
+      "author": "Alicia M."
+    },
+    {
+      "quote": "Priced by vehicle size up front, so there was no surprise when I showed up in a Tahoe instead of a car.",
+      "author": "Sam K."
+    }
+  ],
+  "theme": {
+    "fontPairing": "bold-display",
+    "colorScheme": "bold-accent",
+    "colors": {
+      "primary": "#101418",
+      "accent": "#1f8fd6",
+      "surface": "#f4f6f8",
+      "ink": "#101418"
+    }
+  },
+  "formEndpoint": "https://formspree.io/f/mirrorlinedemo",
+  "booking": {
+    "provider": "Square Appointments",
+    "href": "https://squareup.com/appointments/book/mirrorlinedemo",
+    "note": "A deposit holds the slot and comes off the final price."
+  },
+  "map": {
+    "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d0!2d-86.3077!3d32.3668!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sMontgomery%2C+AL!5e0!3m2!1sen!2sus",
+    "title": "Map to Mirrorline Auto Detail"
+  },
+  "social": {
+    "instagram": "https://instagram.com/mirrorlinedetail",
+    "google": "https://g.page/mirrorlinedetail",
+    "facebook": "https://facebook.com/mirrorlinedetail"
+  },
+  "seo": {
+    "title": "Mirrorline Auto Detail - Montgomery Car Detailing",
+    "description": "Auto detailing in Montgomery, AL. Maintenance washes, full interior and exterior details, and paint correction, priced up front by vehicle size."
+  },
+  "launched": false
+}
