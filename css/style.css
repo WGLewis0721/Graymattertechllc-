@@ -227,6 +227,8 @@ p { color: var(--gm-ink-60); }
 .contact-layout { display: grid; grid-template-columns: 1fr; gap: 3rem; }
 @media (min-width: 900px) { .contact-layout { grid-template-columns: 1.8fr 1fr; } }
 .contact-form-wrap { background: var(--gm-white); border: 1px solid var(--gm-line); border-radius: var(--gm-radius-card); padding: 2.5rem; }
+.form-submit-error { margin-top: 1rem; padding: 1rem; border: 1px solid var(--gm-coral); border-radius: 10px; background: rgba(225, 91, 74, 0.08); color: var(--gm-ink); font-size: 0.9rem; }
+.form-submit-error a { color: var(--gm-blue-dark); font-weight: 700; }
 .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem; }
 .form-group label { font-size: 0.9rem; font-weight: 500; color: var(--gm-ink-60); }
 .form-group input,
