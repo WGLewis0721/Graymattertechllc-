@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Tech Fit to Completion — how Gray Matter works with clients, from telling us what you need through a fit check, recommendation, build, and ongoing support." />
-  <title>Our Process | Tech Fit to Completion | Gray Matter LLC</title>
+  <meta name="description" content="How Gray Matter works, from first conversation to finished solution: fit check, business review, plain-language recommendation, written scope and price, build, test, launch, and support." />
+  <title>How We Work: Tech Fit to Completion | Gray Matter LLC</title>
   <link rel="canonical" href="https://wglewis0721.github.io/Graymattertechllc-/process.html" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Our Process | Tech Fit to Completion | Gray Matter LLC" />
@@ -33,22 +33,64 @@
   }
   </script>
 </head>
-<body>
+<body data-root="">
 
   <!-- NAVBAR -->
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="container nav-container">
       <a href="index.html" class="nav-logo"><img src="assets/gray-matter-media-package/brand/approved-reference/gm-logo-horizontal-approved.png" width="1132" height="270" alt="Gray Matter — Digital and Technology Solutions" /></a>
       <ul class="nav-links" role="list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="process.html">How We Work</a></li>
-        <li><a href="cloud-consulting.html">Cloud Consulting</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
+        <li class="has-mega">
+          <button type="button" class="mega-toggle" aria-expanded="false" aria-controls="solutions-menu">Solutions <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+          <div class="mega-panel" id="solutions-menu" data-open="false">
+            <div class="mega-grid">
+              <div class="mega-col">
+                <h6>Grow</h6>
+                <ul role="list">
+                  <li><a href="services/business-websites.html">Business Websites</a></li>
+                  <li><a href="services/business-opportunity-finder.html">Business Opportunity Finder</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Save Time</h6>
+                <ul role="list">
+                  <li><a href="services/workflow-automation.html">Workflow Automation</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Protect</h6>
+                <ul role="list">
+                  <li><a href="services/business-security.html">Business Security</a></li>
+                  <li><a href="services/backup-recovery.html">Backup &amp; Recovery</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Work Better</h6>
+                <ul role="list">
+                  <li><a href="services/work-from-anywhere.html">Work From Anywhere</a></li>
+                  <li><a href="services/technology-cost-cleanup.html">Technology Cost Cleanup</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Get Help</h6>
+                <ul role="list">
+                  <li><a href="services/business-technology-checkup.html">Business Technology Checkup</a></li>
+                  <li><a href="services/technology-partner.html">Technology Partner</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="mega-foot">
+              <a href="services.html">All Services <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              <a href="industries.html">Who We Help <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              <a href="pricing.html">Website Packages <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </li>
+        <li><a href="process.html">How It Works</a></li>
+        <li><a href="portfolio.html">Work</a></li>
         <li><a href="pricing.html">Pricing</a></li>
-        <li><a href="agreement.html">Agreement</a></li>
-        <li><a href="sops.html">SOPs</a></li>
-        <li><a href="contact.html" class="btn btn-primary btn-sm">Contact</a></li>
+        <li><a href="cloud-consulting.html">Cloud Consulting</a></li>
+        <li><a href="contact.html" class="btn btn-primary btn-sm">Tell Us What You Need</a></li>
       </ul>
       <button class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -56,15 +98,38 @@
     </div>
     <nav class="mobile-nav" aria-label="Mobile navigation">
       <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="process.html">How We Work</a>
-      <a href="cloud-consulting.html">Cloud Consulting</a>
-      <a href="portfolio.html">Portfolio</a>
+      <div class="mnav-group">
+        <button type="button" class="mnav-toggle" aria-expanded="false" aria-controls="mnav-solutions">Solutions <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+        <div class="mnav-panel" id="mnav-solutions" data-open="false">
+          <h6>Grow</h6>
+          <a href="services/business-websites.html">Business Websites</a>
+          <a href="services/business-opportunity-finder.html">Business Opportunity Finder</a>
+          <h6>Save Time</h6>
+          <a href="services/workflow-automation.html">Workflow Automation</a>
+          <h6>Protect</h6>
+          <a href="services/business-security.html">Business Security</a>
+          <a href="services/backup-recovery.html">Backup &amp; Recovery</a>
+          <h6>Work Better</h6>
+          <a href="services/work-from-anywhere.html">Work From Anywhere</a>
+          <a href="services/technology-cost-cleanup.html">Technology Cost Cleanup</a>
+          <h6>Get Help</h6>
+          <a href="services/business-technology-checkup.html">Business Technology Checkup</a>
+          <a href="services/technology-partner.html">Technology Partner</a>
+          <h6>Browse</h6>
+          <a href="services.html">All Services</a>
+          <a href="industries.html">Who We Help</a>
+        </div>
+      </div>
+      <a href="process.html">How It Works</a>
+      <a href="portfolio.html">Work</a>
       <a href="pricing.html">Pricing</a>
+      <a href="cloud-consulting.html">Cloud Consulting</a>
       <a href="agreement.html">Agreement</a>
       <a href="sops.html">SOPs</a>
-      <a href="contact.html">Contact</a>
+      <a href="contact.html">Tell Us What You Need</a>
     </nav>
+  </nav>
+
   </nav>
 
   <!-- PAGE HEADER -->
@@ -75,8 +140,11 @@
       </nav>
       <span class="section-label">The Gray Matter Process</span>
       <h1>Tech Fit to Completion</h1>
-      <p>You don't have to know exactly what you need. Tell us the problem or opportunity, and we'll help you find the right fit — then take it all the way through to a finished, working solution.</p>
-    </div>
+      <p class="lede" style="margin-left:auto;margin-right:auto;">You tell us what you want your business to do. We check that we&rsquo;re the right people for it, recommend something you can actually understand, build it, and stay reachable afterwards. Ten stages, no surprises.</p>
+      <div class="hero-actions" style="justify-content:center;margin-top:2rem;">
+        <a href="contact.html" class="btn btn-primary btn-lg">Tell Us What You Need <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <a href="services.html" class="btn btn-outline btn-lg">See All Services</a>
+      </div>
   </header>
 
   <!-- ROADMAP -->
@@ -97,91 +165,101 @@
 
         <li class="roadmap-step fade-up">
           <div class="roadmap-step-num">1</div>
-          <div class="roadmap-card">
+          <div class="roadmap-card" tabindex="0">
             <span class="roadmap-label">Initial Fit</span>
             <h3>Start the Conversation</h3>
             <p>You explain your business, your goals, what's frustrating you, or an opportunity you want to explore. We ask a few questions to confirm we're a good fit to help. If we're not, we'll tell you.</p>
+            <p class="roadmap-detail">You leave with: a straight answer on whether this is something we should take on.</p>
           </div>
         </li>
 
         <li class="roadmap-step fade-up">
           <div class="roadmap-step-num">2</div>
-          <div class="roadmap-card">
+          <div class="roadmap-card" tabindex="0">
             <span class="roadmap-label">Understand</span>
             <h3>Understand What's Really Going On</h3>
             <p>We take a closer look at your current process, technology, and customer journey, and talk through what result you actually want — not just the tool you assumed you needed.</p>
+            <p class="roadmap-detail">You leave with: us understanding your business, not just your request.</p>
           </div>
         </li>
 
         <li class="roadmap-step fade-up">
           <div class="roadmap-step-num">3</div>
-          <div class="roadmap-card">
+          <div class="roadmap-card" tabindex="0">
             <span class="roadmap-label">Recommend</span>
             <h3>Get a Clear Recommendation</h3>
             <p>We recommend the service, package, or combination of services that actually fits your situation — explained in plain English, with the reasoning behind it.</p>
+            <p class="roadmap-detail">You leave with: a written recommendation you can understand without looking anything up.</p>
           </div>
         </li>
 
         <li class="roadmap-step fade-up">
           <div class="roadmap-step-num">4</div>
-          <div class="roadmap-card">
+          <div class="roadmap-card" tabindex="0">
             <span class="roadmap-label">Select</span>
             <h3>Choose the Right Fit</h3>
             <p>You choose the specific plan, package, or scope from the recommendation — including any add-ons that make sense for where your business is right now.</p>
+            <p class="roadmap-detail">You leave with: a scope you chose, not one you were sold.</p>
           </div>
         </li>
 
         <li class="roadmap-step fade-up">
           <div class="roadmap-step-num">5</div>
-          <div class="roadmap-card">
+          <div class="roadmap-card" tabindex="0">
             <span class="roadmap-label">Agree</span>
             <h3>Confirm Scope and Cost</h3>
             <p>We confirm exactly what will be delivered, the timeline, who's responsible for what, and the price — in writing, before any work begins.</p>
+            <p class="roadmap-detail">You leave with: the price, the timeline, and who does what &mdash; in writing.</p>
           </div>
         </li>
 
         <li class="roadmap-step fade-up">
           <div class="roadmap-step-num">6</div>
-          <div class="roadmap-card">
+          <div class="roadmap-card" tabindex="0">
             <span class="roadmap-label">Implement</span>
             <h3>We Do the Work</h3>
             <p>Gray Matter completes the agreed work, with regular updates along the way so you're never left wondering what's happening.</p>
+            <p class="roadmap-detail">You leave with: regular updates while the work is happening.</p>
           </div>
         </li>
 
         <li class="roadmap-step fade-up">
           <div class="roadmap-step-num">7</div>
-          <div class="roadmap-card">
+          <div class="roadmap-card" tabindex="0">
             <span class="roadmap-label">Test</span>
             <h3>Confirm It Works</h3>
             <p>We verify that everything works the way it's supposed to, then walk through it with you so you can see and approve it before it goes live.</p>
+            <p class="roadmap-detail">You leave with: proof it works, walked through with you.</p>
           </div>
         </li>
 
         <li class="roadmap-step fade-up">
           <div class="roadmap-step-num">8</div>
-          <div class="roadmap-card">
+          <div class="roadmap-card" tabindex="0">
             <span class="roadmap-label">Handoff / Launch</span>
             <h3>Put It Into Use</h3>
             <p>We put the solution into use and hand it off with whatever documentation, access, or training you need to run it with confidence.</p>
+            <p class="roadmap-detail">You leave with: access, documentation, and the confidence to run it.</p>
           </div>
         </li>
 
         <li class="roadmap-step fade-up">
           <div class="roadmap-step-num">9</div>
-          <div class="roadmap-card">
+          <div class="roadmap-card" tabindex="0">
             <span class="roadmap-label">Support</span>
             <h3>Stay on Track</h3>
             <p>We follow up after launch and stay available for questions, fixes, or small requests while everything settles into regular use.</p>
+            <p class="roadmap-detail">You leave with: someone to call while it settles into normal use.</p>
           </div>
         </li>
 
         <li class="roadmap-step fade-up">
           <div class="roadmap-step-num">10</div>
-          <div class="roadmap-card">
+          <div class="roadmap-card" tabindex="0">
             <span class="roadmap-label">Complete / Continue</span>
             <h3>Close Out or Keep Going</h3>
             <p>The project wraps up as delivered, or — only where it would genuinely help — we continue as your ongoing technology partner. Never presented as an upsell.</p>
+            <p class="roadmap-detail">You leave with: a finished project &mdash; or an ongoing partner, only where it genuinely helps.</p>
           </div>
         </li>
 
@@ -197,20 +275,20 @@
           <span class="section-label">What to Expect</span>
           <h2 class="section-title" style="margin-bottom:1.25rem;">How We'll Work Together</h2>
           <ul style="display:flex;flex-direction:column;gap:0.75rem;">
-            <li style="display:flex;align-items:flex-start;gap:0.6rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);margin-top:0.3rem;"></i> Straight answers about whether something is a good fit — even if that means pointing you elsewhere.</li>
-            <li style="display:flex;align-items:flex-start;gap:0.6rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);margin-top:0.3rem;"></i> A written plan before any work begins, so the timeline and price are clear up front.</li>
-            <li style="display:flex;align-items:flex-start;gap:0.6rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);margin-top:0.3rem;"></i> Regular updates while work is happening — no disappearing for weeks at a time.</li>
-            <li style="display:flex;align-items:flex-start;gap:0.6rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);margin-top:0.3rem;"></i> A walkthrough when work is done, not just a link and an invoice.</li>
+            <li style="display:flex;align-items:flex-start;gap:0.6rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);margin-top:0.3rem;" aria-hidden="true"></i> Straight answers about whether something is a good fit — even if that means pointing you elsewhere.</li>
+            <li style="display:flex;align-items:flex-start;gap:0.6rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);margin-top:0.3rem;" aria-hidden="true"></i> A written plan before any work begins, so the timeline and price are clear up front.</li>
+            <li style="display:flex;align-items:flex-start;gap:0.6rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);margin-top:0.3rem;" aria-hidden="true"></i> Regular updates while work is happening — no disappearing for weeks at a time.</li>
+            <li style="display:flex;align-items:flex-start;gap:0.6rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);margin-top:0.3rem;" aria-hidden="true"></i> A walkthrough when work is done, not just a link and an invoice.</li>
           </ul>
         </div>
         <div class="fade-up">
           <span class="section-label">What We Need From You</span>
           <h2 class="section-title" style="margin-bottom:1.25rem;">Helping Us Move Faster</h2>
           <ul style="display:flex;flex-direction:column;gap:0.75rem;">
-            <li style="display:flex;align-items:flex-start;gap:0.6rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);margin-top:0.3rem;"></i> A clear picture of the problem or opportunity you're trying to solve.</li>
-            <li style="display:flex;align-items:flex-start;gap:0.6rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);margin-top:0.3rem;"></i> Access to relevant accounts, systems, or information when it's needed.</li>
-            <li style="display:flex;align-items:flex-start;gap:0.6rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);margin-top:0.3rem;"></i> One point of contact who can answer questions and make decisions.</li>
-            <li style="display:flex;align-items:flex-start;gap:0.6rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);margin-top:0.3rem;"></i> Timely feedback during reviews so timelines stay on track.</li>
+            <li style="display:flex;align-items:flex-start;gap:0.6rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);margin-top:0.3rem;" aria-hidden="true"></i> A clear picture of the problem or opportunity you're trying to solve.</li>
+            <li style="display:flex;align-items:flex-start;gap:0.6rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);margin-top:0.3rem;" aria-hidden="true"></i> Access to relevant accounts, systems, or information when it's needed.</li>
+            <li style="display:flex;align-items:flex-start;gap:0.6rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);margin-top:0.3rem;" aria-hidden="true"></i> One point of contact who can answer questions and make decisions.</li>
+            <li style="display:flex;align-items:flex-start;gap:0.6rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);margin-top:0.3rem;" aria-hidden="true"></i> Timely feedback during reviews so timelines stay on track.</li>
           </ul>
         </div>
       </div>
@@ -224,7 +302,7 @@
         <span class="section-label">Not Sure Where to Start?</span>
         <h2>Have a Technology Problem But Not Sure What You Need?</h2>
         <p>That's exactly where the process starts. Tell us about your business, what you're trying to accomplish, what's getting in the way, or ask about a specific service — and we'll figure out the right next step together.</p>
-        <a href="contact.html" class="btn btn-primary btn-lg">Start a Conversation <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="contact.html" class="btn btn-primary btn-lg">Start a Conversation <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </section>
@@ -238,9 +316,9 @@
         <p class="section-subtitle">Browse the services this process builds toward, or see examples of finished work.</p>
       </div>
       <div class="text-center" style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
-        <a href="services.html" class="btn btn-outline">View All Services <i class="fa-solid fa-arrow-right"></i></a>
-        <a href="cloud-consulting.html" class="btn btn-outline">Cloud &amp; Technology Consulting <i class="fa-solid fa-arrow-right"></i></a>
-        <a href="portfolio.html" class="btn btn-outline">See Finished Projects <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="services.html" class="btn btn-outline">View All Services <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <a href="cloud-consulting.html" class="btn btn-outline">Cloud &amp; Technology Consulting <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <a href="portfolio.html" class="btn btn-outline">See Finished Projects <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </section>
@@ -252,23 +330,25 @@
         <div class="footer-brand">
           <a href="index.html" class="nav-logo"><img src="assets/gray-matter-media-package/brand/approved-reference/gm-logo-horizontal-approved.png" width="1132" height="270" alt="Gray Matter — Digital and Technology Solutions" loading="lazy" /></a>
           <p>Digital and technology solutions — from tech fit to completion — for businesses, entrepreneurs, and technical organizations.</p>
+          <p class="footer-locale">Gray Matter LLC &middot; Montgomery, Alabama &middot; serving local and remote clients</p>
         </div>
         <div class="footer-col">
-          <h5>Navigate</h5>
+          <p class="footer-col-title">Navigate</p>
           <ul role="list">
             <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="process.html">How We Work</a></li>
-            <li><a href="cloud-consulting.html">Cloud Consulting</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="services.html">All Services</a></li>
+            <li><a href="industries.html">Who We Help</a></li>
+            <li><a href="process.html">How It Works</a></li>
+            <li><a href="portfolio.html">Work</a></li>
             <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="cloud-consulting.html">Cloud Consulting</a></li>
             <li><a href="agreement.html">Agreement</a></li>
             <li><a href="sops.html">SOPs</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h5>Services</h5>
+          <p class="footer-col-title">Services</p>
           <ul role="list">
             <li><a href="services/business-technology-checkup.html">Business Technology Checkup</a></li>
             <li><a href="services/business-websites.html">Business Websites</a></li>
@@ -282,22 +362,31 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h5>Connect</h5>
-          <div class="social-links">
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <p class="footer-col-title">Contact</p>
+          <ul role="list">
+            <li><a href="mailto:graymattertechllc@gmail.com">graymattertechllc@gmail.com</a></li>
+            <li><a href="tel:+13346522601">334-652-2601</a></li>
+          </ul>
+          <div class="social-links" style="margin-top:1rem;">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
           </div>
-          <p style="margin-top:1rem;font-size:0.85rem;color:rgba(255,255,255,0.55);">graymattertechllc@gmail.com</p>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2024 Gray Matter LLC. All rights reserved.</p>
+        <p>&copy; 2026 Gray Matter LLC. All rights reserved.</p>
         <p>Built with purpose, launched with precision.</p>
       </div>
     </div>
   </footer>
 
+  <!-- PERSISTENT MOBILE CTA -->
+  <div class="mobile-cta-bar" data-visible="false">
+    <a href="contact.html" class="btn btn-primary">Tell Us What You Need <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+  </div>
+
+  <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

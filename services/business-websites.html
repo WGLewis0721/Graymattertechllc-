@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Professional small business website design with booking, payments, reviews, and lead follow-up — built to turn visitors into customers." />
-  <title>Business Websites | Get Found. Get Contacted. | Gray Matter LLC</title>
+  <meta name="description" content="Small business website design with online booking, quote requests, payments, galleries, and Google setup. Serving Montgomery, Alabama and remote clients nationwide." />
+  <title>Small Business Website Design in Montgomery, AL | Gray Matter LLC</title>
   <link rel="canonical" href="https://wglewis0721.github.io/Graymattertechllc-/services/business-websites.html" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Business Websites | Get Found. Get Contacted. | Gray Matter LLC" />
@@ -74,22 +74,64 @@
 }
   </script>
 </head>
-<body>
+<body data-root="../">
 
   <!-- NAVBAR -->
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="container nav-container">
       <a href="../index.html" class="nav-logo"><img src="../assets/gray-matter-media-package/brand/approved-reference/gm-logo-horizontal-approved.png" width="1132" height="270" alt="Gray Matter — Digital and Technology Solutions" /></a>
       <ul class="nav-links" role="list">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../services.html">Services</a></li>
-        <li><a href="../process.html">How We Work</a></li>
-        <li><a href="../cloud-consulting.html">Cloud Consulting</a></li>
-        <li><a href="../portfolio.html">Portfolio</a></li>
+        <li class="has-mega">
+          <button type="button" class="mega-toggle" aria-expanded="false" aria-controls="solutions-menu">Solutions <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+          <div class="mega-panel" id="solutions-menu" data-open="false">
+            <div class="mega-grid">
+              <div class="mega-col">
+                <h6>Grow</h6>
+                <ul role="list">
+                  <li><a href="../services/business-websites.html">Business Websites</a></li>
+                  <li><a href="../services/business-opportunity-finder.html">Business Opportunity Finder</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Save Time</h6>
+                <ul role="list">
+                  <li><a href="../services/workflow-automation.html">Workflow Automation</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Protect</h6>
+                <ul role="list">
+                  <li><a href="../services/business-security.html">Business Security</a></li>
+                  <li><a href="../services/backup-recovery.html">Backup &amp; Recovery</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Work Better</h6>
+                <ul role="list">
+                  <li><a href="../services/work-from-anywhere.html">Work From Anywhere</a></li>
+                  <li><a href="../services/technology-cost-cleanup.html">Technology Cost Cleanup</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Get Help</h6>
+                <ul role="list">
+                  <li><a href="../services/business-technology-checkup.html">Business Technology Checkup</a></li>
+                  <li><a href="../services/technology-partner.html">Technology Partner</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="mega-foot">
+              <a href="../services.html">All Services <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              <a href="../industries.html">Who We Help <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              <a href="../pricing.html">Website Packages <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </li>
+        <li><a href="../process.html">How It Works</a></li>
+        <li><a href="../portfolio.html">Work</a></li>
         <li><a href="../pricing.html">Pricing</a></li>
-        <li><a href="../agreement.html">Agreement</a></li>
-        <li><a href="../sops.html">SOPs</a></li>
-        <li><a href="../contact.html" class="btn btn-primary btn-sm">Contact</a></li>
+        <li><a href="../cloud-consulting.html">Cloud Consulting</a></li>
+        <li><a href="../contact.html?service=business-websites&amp;goal=get-more-customers" class="btn btn-primary btn-sm">Tell Us What You Need</a></li>
       </ul>
       <button class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -97,15 +139,38 @@
     </div>
     <nav class="mobile-nav" aria-label="Mobile navigation">
       <a href="../index.html">Home</a>
-      <a href="../services.html">Services</a>
-      <a href="../process.html">How We Work</a>
-      <a href="../cloud-consulting.html">Cloud Consulting</a>
-      <a href="../portfolio.html">Portfolio</a>
+      <div class="mnav-group">
+        <button type="button" class="mnav-toggle" aria-expanded="false" aria-controls="mnav-solutions">Solutions <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+        <div class="mnav-panel" id="mnav-solutions" data-open="false">
+          <h6>Grow</h6>
+          <a href="../services/business-websites.html">Business Websites</a>
+          <a href="../services/business-opportunity-finder.html">Business Opportunity Finder</a>
+          <h6>Save Time</h6>
+          <a href="../services/workflow-automation.html">Workflow Automation</a>
+          <h6>Protect</h6>
+          <a href="../services/business-security.html">Business Security</a>
+          <a href="../services/backup-recovery.html">Backup &amp; Recovery</a>
+          <h6>Work Better</h6>
+          <a href="../services/work-from-anywhere.html">Work From Anywhere</a>
+          <a href="../services/technology-cost-cleanup.html">Technology Cost Cleanup</a>
+          <h6>Get Help</h6>
+          <a href="../services/business-technology-checkup.html">Business Technology Checkup</a>
+          <a href="../services/technology-partner.html">Technology Partner</a>
+          <h6>Browse</h6>
+          <a href="../services.html">All Services</a>
+          <a href="../industries.html">Who We Help</a>
+        </div>
+      </div>
+      <a href="../process.html">How It Works</a>
+      <a href="../portfolio.html">Work</a>
       <a href="../pricing.html">Pricing</a>
+      <a href="../cloud-consulting.html">Cloud Consulting</a>
       <a href="../agreement.html">Agreement</a>
       <a href="../sops.html">SOPs</a>
-      <a href="../contact.html">Contact</a>
+      <a href="../contact.html?service=business-websites&amp;goal=get-more-customers">Tell Us What You Need</a>
     </nav>
+  </nav>
+
   </nav>
 
   <!-- PAGE HEADER -->
@@ -114,14 +179,175 @@
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <a href="../index.html">Home</a> <span aria-hidden="true">/</span> <a href="../services.html">Services</a> <span aria-hidden="true">/</span> <span aria-current="page">Business Websites</span>
       </nav>
-      <span class="section-label"><i class="fa-solid fa-desktop"></i> Get Found. Get Contacted.</span>
-      <h1>Business Websites</h1>
-      <p>A professional website built so customers can find your business, understand what you offer, and easily call, book, request a quote, pay, or buy.</p>
+      <span class="section-label"><i class="fa-solid fa-desktop" aria-hidden="true"></i> Get Found. Get Contacted.</span>
+      <h1>Your Website Should Do More Than Look Good</h1>
+      <p class="lede" style="margin-left:auto;margin-right:auto;">Give customers one place to find you, trust you, and take the next step — whether that&rsquo;s calling, booking, requesting a quote, or paying you.</p>
+      <div class="hero-actions" style="justify-content:center;margin-top:2rem;">
+        <a href="../contact.html?service=business-websites&amp;goal=get-more-customers" class="btn btn-primary btn-lg">Build My Website <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <a href="#what-you-get" class="btn btn-outline btn-lg">See What&rsquo;s Included</a>
+      </div>
     </div>
   </header>
 
+  <!-- WEBSITE CONFIGURATOR -->
+  <section class="section-pad section-paper" id="configure">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Build the Brief</span>
+        <h2 class="section-title">What Should Customers Be Able to Do?</h2>
+        <p class="section-subtitle">Pick everything that applies. Your summary and recommended setup fill in as you go — nothing is submitted until you say so.</p>
+      </div>
+
+      <div class="config-layout">
+        <div>
+          <div class="chip-set" data-chipset="websiteActions" role="group" aria-label="What customers should be able to do on your website"></div>
+          <p style="margin-top:1.5rem;">Most small business websites need some mix of these: call you, book an appointment, request a quote, get directions, view services, see pricing, pay, buy, apply, upload information, choose a team member, or view your work.</p>
+          <p class="disclaimer" style="margin-top:1.25rem;"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Not sure yet? Skip this and just describe the business. Working out what belongs on the site is part of the job.</p>
+        </div>
+
+        <aside class="config-summary" data-summary-for="websiteActions" data-summary-mode="website" aria-live="polite">
+          <h3>Your website should help customers:</h3>
+          <p class="summary-empty" data-summary-empty>Nothing picked yet. Choose what customers should be able to do and this fills in.</p>
+          <ul class="summary-list" data-summary-list hidden></ul>
+          <div data-summary-setup hidden>
+            <div class="summary-divider"></div>
+            <span class="summary-setup">Recommended setup</span>
+            <p class="summary-base">Business Website</p>
+            <ul class="addon-list" data-summary-addons></ul>
+          </div>
+          <a class="btn btn-primary" data-summary-cta href="../contact.html?service=business-websites&amp;goal=get-more-customers">Talk About My Website <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="section-pad section-white" id="packages">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Website Packages</span>
+        <h2 class="section-title">Pick the Starting Point That Sounds Like You</h2>
+        <p class="section-subtitle">Every package is a starting point, not a cage. Anything can be added later.</p>
+      </div>
+
+      <div class="pricing-grid swipe-row">
+
+        <div class="pricing-card fade-up">
+          <p class="plan-label">Starter</p>
+          <p class="plan-name">Essential Site</p>
+          <p class="plan-price">$250 <span>&ndash; $350</span></p>
+          <p class="pkg-forwho">&ldquo;I need a professional website.&rdquo;</p>
+          <p class="pkg-outcome">Customers can find you, understand what you do, and get in touch.</p>
+          <ul class="plan-features">
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Up to 3 pages</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Mobile-friendly design</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Contact form</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Social links</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Basic search setup</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Delivered in 5&ndash;7 days</li>
+          </ul>
+          <div class="plan-cta">
+            <a href="../contact.html?service=business-websites&amp;goal=get-found" class="btn btn-outline" style="width:100%;justify-content:center;">Start With Essential</a>
+          </div>
+        </div>
+
+        <div class="pricing-card featured fade-up">
+          <p class="plan-label">Business</p>
+          <p class="plan-name">Business Site</p>
+          <p class="plan-price">$500 <span>&ndash; $800</span></p>
+          <p class="pkg-forwho">&ldquo;I want customers to contact or book me.&rdquo;</p>
+          <p class="pkg-outcome">Customers can browse services, see pricing, and book without calling.</p>
+          <ul class="plan-features">
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Up to 6 custom pages</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Online booking</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Inquiry and quote form</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Services and pricing</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Photo gallery</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Search and analytics setup</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Delivered in 7&ndash;14 days</li>
+          </ul>
+          <details class="pkg-more">
+            <summary>What else is in this tier</summary>
+            <ul>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> 2 revision rounds</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Google Business Profile setup</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Business email setup</li>
+            </ul>
+          </details>
+          <div class="plan-cta">
+            <a href="../contact.html?service=business-websites&amp;goal=get-more-customers" class="btn btn-primary" style="width:100%;justify-content:center;">Start With Business</a>
+          </div>
+        </div>
+
+        <div class="pricing-card fade-up">
+          <p class="plan-label">Growth</p>
+          <p class="plan-name">Full Platform</p>
+          <p class="plan-price">$1,000 <span>+</span></p>
+          <p class="pkg-forwho">&ldquo;I want my website connected to how my business runs.&rdquo;</p>
+          <p class="pkg-outcome">The website feeds the rest of your business instead of sitting beside it.</p>
+          <ul class="plan-features">
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Unlimited pages</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Booking and payments</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Online store or digital products</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Follow-up automation</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Lead capture</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Analytics and conversion tracking</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Delivered in 2&ndash;4 weeks</li>
+          </ul>
+          <details class="pkg-more">
+            <summary>What else is in this tier</summary>
+            <ul>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Custom design work</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Email marketing integration</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> 30-day post-launch support</li>
+            </ul>
+          </details>
+          <div class="plan-cta">
+            <a href="../contact.html?service=business-websites&amp;goal=save-time" class="btn btn-outline" style="width:100%;justify-content:center;">Talk About Growth</a>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="disclaimer" style="margin:2.5rem auto 0;"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Project-based one-time fees. Domain, hosting, and third-party service fees are separate. Full terms and the plan comparison are on the <a href="../pricing.html">pricing page</a>.</p>
+    </div>
+  </section>
+
+  <!-- BEFORE / AFTER -->
+  <section class="section-pad section-paper">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">What Changes</span>
+        <h2 class="section-title">Invisible &rarr; Found</h2>
+        <p class="section-subtitle">A general transformation, not a specific client result.</p>
+      </div>
+      <article class="ba-block fade-up" data-ba-block style="max-width:900px;margin:0 auto;">
+        <div class="ba-pair">
+          <div class="ba-side ba-before">
+            <span class="ba-label"><i class="fa-solid fa-circle-minus" aria-hidden="true"></i> Before</span>
+            <ul>
+              <li><i class="fa-solid fa-xmark" aria-hidden="true"></i> Customers find a social profile, not a business</li>
+              <li><i class="fa-solid fa-xmark" aria-hidden="true"></i> Pricing questions come in one at a time</li>
+              <li><i class="fa-solid fa-xmark" aria-hidden="true"></i> Booking happens in DMs, after hours</li>
+            </ul>
+          </div>
+          <div class="ba-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
+          <div class="ba-side ba-after">
+            <span class="ba-label"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> After</span>
+            <ul>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> One professional place that shows up in search</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Services and pricing answered before they ask</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Customers book themselves, any time</li>
+            </ul>
+          </div>
+        </div>
+        <p class="ba-result"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i> <span><strong>Business result:</strong> customers can find you and take action without messaging you first.</span></p>
+      </article>
+    </div>
+  </section>
+
   <!-- WHAT THIS SOLVES -->
-  <section class="section-pad" style="background:var(--gm-paper);">
+  <section class="section-pad section-white" id="what-you-get">
     <div class="container">
       <div class="grid-2" style="gap:2.5rem;align-items:start;">
         <div class="fade-up">
@@ -137,21 +363,21 @@
           <span class="section-label">What's Included</span>
           <h2 class="section-title" style="margin-bottom:1.25rem;">What You Get</h2>
           <ul style="display:flex;flex-direction:column;gap:0.65rem;">
-          <li><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Mobile-friendly, professional design</li>
-          <li><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Online booking or appointment requests</li>
-          <li><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Payments, quote requests, or an online store</li>
-          <li><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Photo galleries and customer reviews</li>
-          <li><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Google Business Profile setup</li>
-          <li><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Business email setup</li>
-          <li><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Lead capture and follow-up</li>
-          <li><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Basic analytics so you know what's working</li>
-          <li><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Ongoing care and update options</li>
+          <li><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Mobile-friendly, professional design</li>
+          <li><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Online booking or appointment requests</li>
+          <li><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Payments, quote requests, or an online store</li>
+          <li><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Photo galleries and customer reviews</li>
+          <li><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Google Business Profile setup</li>
+          <li><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Business email setup</li>
+          <li><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Lead capture and follow-up</li>
+          <li><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Basic analytics so you know what's working</li>
+          <li><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Ongoing care and update options</li>
           </ul>
         </div>
       </div>
 
       <div class="text-center" style="margin-top:3rem;">
-        <a href="../contact.html?service=business-websites" class="btn btn-primary btn-lg">Start My Website <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="../contact.html?service=business-websites&amp;goal=get-more-customers" class="btn btn-primary btn-lg">Start My Website <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         <a href="../process.html" class="btn btn-outline btn-lg" style="margin-left:1rem;">See How It Works</a>
       </div>
     </div>
@@ -166,18 +392,31 @@
       </div>
       <div class="grid-2" style="gap:1.5rem;max-width:760px;margin:0 auto;">
         <a href="workflow-automation.html" class="card fade-up" style="display:block;">
-          <div class="card-icon"><i class="fa-solid fa-diagram-project"></i></div>
+          <div class="card-icon"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i></div>
           <h3>Workflow Automation</h3>
           <p>Stop doing the same manual tasks over and over.</p>
         </a>
         <a href="business-opportunity-finder.html" class="card fade-up" style="display:block;">
-          <div class="card-icon"><i class="fa-solid fa-bullseye"></i></div>
+          <div class="card-icon"><i class="fa-solid fa-bullseye" aria-hidden="true"></i></div>
           <h3>Business Opportunity Finder</h3>
           <p>Find the businesses and contracts that are the best fit for what you sell.</p>
         </a>
       </div>
       <div class="text-center" style="margin-top:2.5rem;">
-        <a href="../services.html" class="btn btn-outline">View All Services <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="../services.html" class="btn btn-outline">View All Services <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="cta-banner final-cta">
+    <div class="container">
+      <span class="section-label">One Next Step</span>
+      <h2>Ready to Build Your Website?</h2>
+      <p>Tell us what you want customers to be able to do. We&rsquo;ll tell you what it takes and what it costs.</p>
+      <div class="btn-actions">
+        <a href="../contact.html?service=business-websites&amp;goal=get-more-customers" class="btn btn-primary btn-lg">Build My Website <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <a href="../process.html" class="btn btn-outline btn-lg">See How It Works</a>
       </div>
     </div>
   </section>
@@ -189,52 +428,63 @@
         <div class="footer-brand">
           <a href="../index.html" class="nav-logo"><img src="../assets/gray-matter-media-package/brand/approved-reference/gm-logo-horizontal-approved.png" width="1132" height="270" alt="Gray Matter — Digital and Technology Solutions" loading="lazy" /></a>
           <p>Digital and technology solutions — from tech fit to completion — for businesses, entrepreneurs, and technical organizations.</p>
+          <p class="footer-locale">Gray Matter LLC &middot; Montgomery, Alabama &middot; serving local and remote clients</p>
         </div>
         <div class="footer-col">
-          <h5>Navigate</h5>
+          <p class="footer-col-title">Navigate</p>
           <ul role="list">
             <li><a href="../index.html">Home</a></li>
-            <li><a href="../services.html">Services</a></li>
-            <li><a href="../process.html">How We Work</a></li>
-            <li><a href="../cloud-consulting.html">Cloud Consulting</a></li>
-            <li><a href="../portfolio.html">Portfolio</a></li>
+            <li><a href="../services.html">All Services</a></li>
+            <li><a href="../industries.html">Who We Help</a></li>
+            <li><a href="../process.html">How It Works</a></li>
+            <li><a href="../portfolio.html">Work</a></li>
             <li><a href="../pricing.html">Pricing</a></li>
+            <li><a href="../cloud-consulting.html">Cloud Consulting</a></li>
             <li><a href="../agreement.html">Agreement</a></li>
             <li><a href="../sops.html">SOPs</a></li>
-            <li><a href="../contact.html">Contact</a></li>
+            <li><a href="../contact.html?service=business-websites&amp;goal=get-more-customers">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h5>Services</h5>
+          <p class="footer-col-title">Services</p>
           <ul role="list">
-            <li><a href="business-technology-checkup.html">Business Technology Checkup</a></li>
-            <li><a href="business-websites.html">Business Websites</a></li>
-            <li><a href="workflow-automation.html">Workflow Automation</a></li>
-            <li><a href="backup-recovery.html">Backup &amp; Recovery</a></li>
-            <li><a href="business-security.html">Business Security</a></li>
-            <li><a href="work-from-anywhere.html">Work From Anywhere</a></li>
-            <li><a href="technology-cost-cleanup.html">Technology Cost Cleanup</a></li>
-            <li><a href="technology-partner.html">Technology Partner</a></li>
-            <li><a href="business-opportunity-finder.html">Business Opportunity Finder</a></li>
+            <li><a href="../services/business-technology-checkup.html">Business Technology Checkup</a></li>
+            <li><a href="../services/business-websites.html">Business Websites</a></li>
+            <li><a href="../services/workflow-automation.html">Workflow Automation</a></li>
+            <li><a href="../services/backup-recovery.html">Backup &amp; Recovery</a></li>
+            <li><a href="../services/business-security.html">Business Security</a></li>
+            <li><a href="../services/work-from-anywhere.html">Work From Anywhere</a></li>
+            <li><a href="../services/technology-cost-cleanup.html">Technology Cost Cleanup</a></li>
+            <li><a href="../services/technology-partner.html">Technology Partner</a></li>
+            <li><a href="../services/business-opportunity-finder.html">Business Opportunity Finder</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h5>Connect</h5>
-          <div class="social-links">
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <p class="footer-col-title">Contact</p>
+          <ul role="list">
+            <li><a href="mailto:graymattertechllc@gmail.com">graymattertechllc@gmail.com</a></li>
+            <li><a href="tel:+13346522601">334-652-2601</a></li>
+          </ul>
+          <div class="social-links" style="margin-top:1rem;">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
           </div>
-          <p style="margin-top:1rem;font-size:0.85rem;color:rgba(255,255,255,0.55);">graymattertechllc@gmail.com</p>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2024 Gray Matter LLC. All rights reserved.</p>
+        <p>&copy; 2026 Gray Matter LLC. All rights reserved.</p>
         <p>Built with purpose, launched with precision.</p>
       </div>
     </div>
   </footer>
 
+  <!-- PERSISTENT MOBILE CTA -->
+  <div class="mobile-cta-bar" data-visible="false">
+    <a href="../contact.html?service=business-websites&amp;goal=get-more-customers" class="btn btn-primary">Tell Us What You Need <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+  </div>
+
+  <script src="../js/data.js"></script>
   <script src="../js/main.js"></script>
 </body>
 </html>

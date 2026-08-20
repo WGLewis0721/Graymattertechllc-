@@ -33,22 +33,64 @@
   }
   </script>
 </head>
-<body>
+<body data-root="">
 
   <!-- NAVBAR -->
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="container nav-container">
       <a href="index.html" class="nav-logo"><img src="assets/gray-matter-media-package/brand/approved-reference/gm-logo-horizontal-approved.png" width="1132" height="270" alt="Gray Matter — Digital and Technology Solutions" /></a>
       <ul class="nav-links" role="list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="process.html">How We Work</a></li>
-        <li><a href="cloud-consulting.html">Cloud Consulting</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
+        <li class="has-mega">
+          <button type="button" class="mega-toggle" aria-expanded="false" aria-controls="solutions-menu">Solutions <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+          <div class="mega-panel" id="solutions-menu" data-open="false">
+            <div class="mega-grid">
+              <div class="mega-col">
+                <h6>Grow</h6>
+                <ul role="list">
+                  <li><a href="services/business-websites.html">Business Websites</a></li>
+                  <li><a href="services/business-opportunity-finder.html">Business Opportunity Finder</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Save Time</h6>
+                <ul role="list">
+                  <li><a href="services/workflow-automation.html">Workflow Automation</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Protect</h6>
+                <ul role="list">
+                  <li><a href="services/business-security.html">Business Security</a></li>
+                  <li><a href="services/backup-recovery.html">Backup &amp; Recovery</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Work Better</h6>
+                <ul role="list">
+                  <li><a href="services/work-from-anywhere.html">Work From Anywhere</a></li>
+                  <li><a href="services/technology-cost-cleanup.html">Technology Cost Cleanup</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Get Help</h6>
+                <ul role="list">
+                  <li><a href="services/business-technology-checkup.html">Business Technology Checkup</a></li>
+                  <li><a href="services/technology-partner.html">Technology Partner</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="mega-foot">
+              <a href="services.html">All Services <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              <a href="industries.html">Who We Help <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              <a href="pricing.html">Website Packages <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </li>
+        <li><a href="process.html">How It Works</a></li>
+        <li><a href="portfolio.html">Work</a></li>
         <li><a href="pricing.html">Pricing</a></li>
-        <li><a href="agreement.html">Agreement</a></li>
-        <li><a href="sops.html">SOPs</a></li>
-        <li><a href="contact.html" class="btn btn-primary btn-sm">Contact</a></li>
+        <li><a href="cloud-consulting.html">Cloud Consulting</a></li>
+        <li><a href="contact.html" class="btn btn-primary btn-sm">Tell Us What You Need</a></li>
       </ul>
       <button class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -56,15 +98,38 @@
     </div>
     <nav class="mobile-nav" aria-label="Mobile navigation">
       <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="process.html">How We Work</a>
-      <a href="cloud-consulting.html">Cloud Consulting</a>
-      <a href="portfolio.html">Portfolio</a>
+      <div class="mnav-group">
+        <button type="button" class="mnav-toggle" aria-expanded="false" aria-controls="mnav-solutions">Solutions <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+        <div class="mnav-panel" id="mnav-solutions" data-open="false">
+          <h6>Grow</h6>
+          <a href="services/business-websites.html">Business Websites</a>
+          <a href="services/business-opportunity-finder.html">Business Opportunity Finder</a>
+          <h6>Save Time</h6>
+          <a href="services/workflow-automation.html">Workflow Automation</a>
+          <h6>Protect</h6>
+          <a href="services/business-security.html">Business Security</a>
+          <a href="services/backup-recovery.html">Backup &amp; Recovery</a>
+          <h6>Work Better</h6>
+          <a href="services/work-from-anywhere.html">Work From Anywhere</a>
+          <a href="services/technology-cost-cleanup.html">Technology Cost Cleanup</a>
+          <h6>Get Help</h6>
+          <a href="services/business-technology-checkup.html">Business Technology Checkup</a>
+          <a href="services/technology-partner.html">Technology Partner</a>
+          <h6>Browse</h6>
+          <a href="services.html">All Services</a>
+          <a href="industries.html">Who We Help</a>
+        </div>
+      </div>
+      <a href="process.html">How It Works</a>
+      <a href="portfolio.html">Work</a>
       <a href="pricing.html">Pricing</a>
+      <a href="cloud-consulting.html">Cloud Consulting</a>
       <a href="agreement.html">Agreement</a>
       <a href="sops.html">SOPs</a>
-      <a href="contact.html">Contact</a>
+      <a href="contact.html">Tell Us What You Need</a>
     </nav>
+  </nav>
+
   </nav>
 
   <!-- PAGE HEADER -->
@@ -73,7 +138,7 @@
       <nav class="breadcrumbs" aria-label="Breadcrumb" style="justify-content:center;display:flex;">
         <a href="index.html">Home</a>&nbsp;<span aria-hidden="true">/</span>&nbsp;<span aria-current="page">Cloud Consulting</span>
       </nav>
-      <span class="section-label"><i class="fa-solid fa-cloud"></i> Cloud &amp; Technology</span>
+      <span class="section-label"><i class="fa-solid fa-cloud" aria-hidden="true"></i> Cloud &amp; Technology</span>
       <h1>Cloud Consulting &amp; 1099 Services</h1>
       <p>Experienced cloud and IT consulting available for contract engagements, 1099 project work, and advisory roles. Remote or on-site — AWS, Azure, GCP, security, DevOps, and more.</p>
       <p style="margin-top:1rem;font-size:0.9rem;">Running a small business instead of hiring a technical contractor? See our <a href="services.html" style="color:var(--gm-blue);font-weight:600;">small business services</a>.</p>
@@ -95,66 +160,66 @@
 
         <!-- Cloud Infrastructure -->
         <div class="service-card fade-up" id="cloud-infrastructure">
-          <div class="card-icon"><i class="fa-solid fa-cloud"></i></div>
+          <div class="card-icon"><i class="fa-solid fa-cloud" aria-hidden="true"></i></div>
           <h3>Cloud Infrastructure</h3>
           <p>Cloud architecture design, migration support, and infrastructure management for AWS, Azure, and GCP environments. Whether you need a hands-on contractor or advisory support, I'm available for project-based and ongoing engagements.</p>
           <ul style="margin-top:0.5rem;display:flex;flex-direction:column;gap:0.5rem;">
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Cloud architecture &amp; design review</li>
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Migration planning &amp; execution (lift-and-shift, re-platform)</li>
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Infrastructure as Code (Terraform, CloudFormation)</li>
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Cost optimization &amp; right-sizing</li>
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> High availability &amp; disaster recovery planning</li>
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Available for 1099 / contract work</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Cloud architecture &amp; design review</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Migration planning &amp; execution (lift-and-shift, re-platform)</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Infrastructure as Code (Terraform, CloudFormation)</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Cost optimization &amp; right-sizing</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> High availability &amp; disaster recovery planning</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Available for 1099 / contract work</li>
           </ul>
-          <a href="contact.html" class="btn btn-primary">Discuss a Cloud Infrastructure Contract <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="contact.html" class="btn btn-primary">Discuss a Cloud Infrastructure Contract <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </div>
 
         <!-- Cloud Security -->
         <div class="service-card fade-up" id="security">
-          <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="card-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
           <h3>Cloud Security Consulting</h3>
           <p>Security assessments, hardening, and compliance consulting for cloud environments. I help organizations identify gaps, implement controls, and build security-first cloud postures — available as a 1099 contractor or advisory consultant.</p>
           <ul style="margin-top:0.5rem;display:flex;flex-direction:column;gap:0.5rem;">
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Cloud security posture assessments (CSPM)</li>
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> IAM policy review &amp; least-privilege hardening</li>
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Compliance gap analysis (SOC 2, NIST, CIS Benchmarks)</li>
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Threat detection &amp; incident response planning</li>
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Network security &amp; VPC configuration review</li>
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Available for 1099 / contract work</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Cloud security posture assessments (CSPM)</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> IAM policy review &amp; least-privilege hardening</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Compliance gap analysis (SOC 2, NIST, CIS Benchmarks)</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Threat detection &amp; incident response planning</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Network security &amp; VPC configuration review</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Available for 1099 / contract work</li>
           </ul>
-          <a href="contact.html" class="btn btn-primary">Discuss a Security Contract <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="contact.html" class="btn btn-primary">Discuss a Security Contract <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </div>
 
         <!-- Technology Consulting -->
         <div class="service-card fade-up" id="technology-consulting">
-          <div class="card-icon"><i class="fa-solid fa-server"></i></div>
+          <div class="card-icon"><i class="fa-solid fa-server" aria-hidden="true"></i></div>
           <h3>Technology Consulting &amp; Support</h3>
           <p>General technology consulting for businesses navigating cloud adoption, system modernization, or technology strategy decisions. Ideal for small-to-mid-size teams that need senior-level thinking without a full-time hire.</p>
           <ul style="margin-top:0.5rem;display:flex;flex-direction:column;gap:0.5rem;">
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Technology roadmap &amp; strategic advisory</li>
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Vendor evaluation &amp; tool selection</li>
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> System integration &amp; workflow automation</li>
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Cloud onboarding &amp; team enablement training</li>
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Infrastructure audit &amp; documentation</li>
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Available for 1099 / contract work</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Technology roadmap &amp; strategic advisory</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Vendor evaluation &amp; tool selection</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> System integration &amp; workflow automation</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Cloud onboarding &amp; team enablement training</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Infrastructure audit &amp; documentation</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Available for 1099 / contract work</li>
           </ul>
-          <a href="contact.html" class="btn btn-primary">Discuss a Technology Consulting Contract <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="contact.html" class="btn btn-primary">Discuss a Technology Consulting Contract <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </div>
 
         <!-- DevOps / Automation -->
         <div class="service-card fade-up" id="devops">
-          <div class="card-icon"><i class="fa-solid fa-gears"></i></div>
+          <div class="card-icon"><i class="fa-solid fa-gears" aria-hidden="true"></i></div>
           <h3>DevOps &amp; Automation</h3>
           <p>CI/CD pipeline setup, workflow automation, and DevOps consulting for teams looking to ship faster and more reliably. Available for contract engagements to augment your existing engineering team or lead a specific initiative.</p>
           <ul style="margin-top:0.5rem;display:flex;flex-direction:column;gap:0.5rem;">
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> CI/CD pipeline design &amp; implementation</li>
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Container orchestration (Docker, Kubernetes)</li>
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Automated testing &amp; deployment strategies</li>
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Monitoring, alerting &amp; observability setup</li>
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> GitOps &amp; release management workflows</li>
-            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);"></i> Available for 1099 / contract work</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> CI/CD pipeline design &amp; implementation</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Container orchestration (Docker, Kubernetes)</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Automated testing &amp; deployment strategies</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Monitoring, alerting &amp; observability setup</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> GitOps &amp; release management workflows</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--gm-ink-60);"><i class="fa-solid fa-check" style="color:var(--gm-blue);" aria-hidden="true"></i> Available for 1099 / contract work</li>
           </ul>
-          <a href="contact.html" class="btn btn-primary">Discuss a DevOps Contract <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="contact.html" class="btn btn-primary">Discuss a DevOps Contract <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </div>
 
       </div>
@@ -171,11 +236,11 @@
         <p class="rate-range-value">$125&ndash;$225<span>/ hr</span></p>
         <p class="rate-range-note">Estimated range based on current market rates for comparable cloud, security, and DevOps contract work — your exact rate is confirmed for your specific scope during a free discovery call.</p>
         <ul class="rate-range-list">
-          <li><i class="fa-solid fa-check"></i> <strong>Short-term specialist projects</strong> — billed hourly</li>
-          <li><i class="fa-solid fa-check"></i> <strong>Ongoing 1099 contract work</strong> — hourly or a negotiated retainer</li>
-          <li><i class="fa-solid fa-check"></i> <strong>Defined-scope engagements</strong> (e.g. a specific migration or audit) — fixed project quote available</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> <strong>Short-term specialist projects</strong> — billed hourly</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> <strong>Ongoing 1099 contract work</strong> — hourly or a negotiated retainer</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> <strong>Defined-scope engagements</strong> (e.g. a specific migration or audit) — fixed project quote available</li>
         </ul>
-        <a href="contact.html" class="btn btn-primary btn-lg">Get a Scoped Estimate <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="contact.html" class="btn btn-primary btn-lg">Get a Scoped Estimate <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </section>
@@ -190,17 +255,17 @@
       </div>
       <div class="grid-3 swipe-row" style="margin-top:1rem;">
         <div class="card fade-up">
-          <div class="card-icon"><i class="fa-solid fa-comments"></i></div>
+          <div class="card-icon"><i class="fa-solid fa-comments" aria-hidden="true"></i></div>
           <h3>1. Discovery Call</h3>
           <p>We start with a free consultation to understand your project scope, timeline, and technical requirements. No commitment needed.</p>
         </div>
         <div class="card fade-up">
-          <div class="card-icon"><i class="fa-solid fa-file-contract"></i></div>
+          <div class="card-icon"><i class="fa-solid fa-file-contract" aria-hidden="true"></i></div>
           <h3>2. Scoped Proposal</h3>
           <p>I'll send a clear proposal outlining deliverables, timeline, and rate — hourly or fixed-project. Flexible terms to fit your engagement model.</p>
         </div>
         <div class="card fade-up">
-          <div class="card-icon"><i class="fa-solid fa-rocket"></i></div>
+          <div class="card-icon"><i class="fa-solid fa-rocket" aria-hidden="true"></i></div>
           <h3>3. Execution &amp; Delivery</h3>
           <p>I integrate with your existing team and tools, provide regular updates, and deliver quality work on schedule. Fully remote or on-site as needed.</p>
         </div>
@@ -218,22 +283,22 @@
       </div>
       <div class="grid-4 swipe-row" style="margin-top:1rem;">
         <div class="card fade-up" style="text-align:center;">
-          <div class="card-icon" style="margin:0 auto 1rem;"><i class="fa-brands fa-aws"></i></div>
+          <div class="card-icon" style="margin:0 auto 1rem;"><i class="fa-brands fa-aws" aria-hidden="true"></i></div>
           <h3>AWS</h3>
           <p>EC2, S3, Lambda, RDS, IAM, CloudFormation, VPC, EKS, and more.</p>
         </div>
         <div class="card fade-up" style="text-align:center;">
-          <div class="card-icon" style="margin:0 auto 1rem;"><i class="fa-solid fa-microsoft" style="color:var(--gm-blue);font-size:1.3rem;"></i></div>
+          <div class="card-icon" style="margin:0 auto 1rem;"><i class="fa-solid fa-microsoft" style="color:var(--gm-blue);font-size:1.3rem;" aria-hidden="true"></i></div>
           <h3>Azure</h3>
           <p>Azure AD, App Services, AKS, Virtual Networks, Azure DevOps, and Defender.</p>
         </div>
         <div class="card fade-up" style="text-align:center;">
-          <div class="card-icon" style="margin:0 auto 1rem;"><i class="fa-solid fa-cloud"></i></div>
+          <div class="card-icon" style="margin:0 auto 1rem;"><i class="fa-solid fa-cloud" aria-hidden="true"></i></div>
           <h3>Google Cloud</h3>
           <p>GKE, Cloud Run, BigQuery, Pub/Sub, VPC, IAM, and Cloud Security Command Center.</p>
         </div>
         <div class="card fade-up" style="text-align:center;">
-          <div class="card-icon" style="margin:0 auto 1rem;"><i class="fa-solid fa-code-branch"></i></div>
+          <div class="card-icon" style="margin:0 auto 1rem;"><i class="fa-solid fa-code-branch" aria-hidden="true"></i></div>
           <h3>DevOps Tools</h3>
           <p>Terraform, Docker, Kubernetes, GitHub Actions, Jenkins, Datadog, and more.</p>
         </div>
@@ -251,17 +316,17 @@
       </div>
       <div class="grid-3 swipe-row" style="margin-top:1rem;">
         <div class="card fade-up">
-          <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+          <div class="card-icon"><i class="fa-solid fa-bolt" aria-hidden="true"></i></div>
           <h3>Fast Onboarding</h3>
           <p>I ramp up quickly, integrate with your existing workflows, and start delivering from day one — no lengthy knowledge-transfer periods.</p>
         </div>
         <div class="card fade-up">
-          <div class="card-icon"><i class="fa-solid fa-handshake"></i></div>
+          <div class="card-icon"><i class="fa-solid fa-handshake" aria-hidden="true"></i></div>
           <h3>Direct &amp; Transparent</h3>
           <p>You work directly with me — clear scope, honest timelines, and no agency markup. What you see is what you get.</p>
         </div>
         <div class="card fade-up">
-          <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="card-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
           <h3>Security-First Mindset</h3>
           <p>Every cloud engagement includes a security lens. I don't just build infrastructure — I build it to be safe, compliant, and resilient.</p>
         </div>
@@ -276,7 +341,7 @@
       <h2>Ready to Bring Me Onto Your Team?</h2>
       <p>Whether you need a cloud architect for a migration project, a security consultant for a compliance audit, or a DevOps engineer to build your pipeline — let's talk.</p>
       <div class="btn-actions">
-        <a href="contact.html" class="btn btn-primary btn-lg">Start the Conversation <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="contact.html" class="btn btn-primary btn-lg">Start the Conversation <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         <a href="process.html" class="btn btn-outline btn-lg">See Our Process</a>
         <a href="services.html" class="btn btn-outline btn-lg">View All Services</a>
       </div>
@@ -290,23 +355,25 @@
         <div class="footer-brand">
           <a href="index.html" class="nav-logo"><img src="assets/gray-matter-media-package/brand/approved-reference/gm-logo-horizontal-approved.png" width="1132" height="270" alt="Gray Matter — Digital and Technology Solutions" loading="lazy" /></a>
           <p>Digital and technology solutions — from tech fit to completion — for businesses, entrepreneurs, and technical organizations.</p>
+          <p class="footer-locale">Gray Matter LLC &middot; Montgomery, Alabama &middot; serving local and remote clients</p>
         </div>
         <div class="footer-col">
-          <h5>Navigate</h5>
+          <p class="footer-col-title">Navigate</p>
           <ul role="list">
             <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="process.html">How We Work</a></li>
-            <li><a href="cloud-consulting.html">Cloud Consulting</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="services.html">All Services</a></li>
+            <li><a href="industries.html">Who We Help</a></li>
+            <li><a href="process.html">How It Works</a></li>
+            <li><a href="portfolio.html">Work</a></li>
             <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="cloud-consulting.html">Cloud Consulting</a></li>
             <li><a href="agreement.html">Agreement</a></li>
             <li><a href="sops.html">SOPs</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h5>Services</h5>
+          <p class="footer-col-title">Services</p>
           <ul role="list">
             <li><a href="services/business-technology-checkup.html">Business Technology Checkup</a></li>
             <li><a href="services/business-websites.html">Business Websites</a></li>
@@ -320,22 +387,31 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h5>Connect</h5>
-          <div class="social-links">
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <p class="footer-col-title">Contact</p>
+          <ul role="list">
+            <li><a href="mailto:graymattertechllc@gmail.com">graymattertechllc@gmail.com</a></li>
+            <li><a href="tel:+13346522601">334-652-2601</a></li>
+          </ul>
+          <div class="social-links" style="margin-top:1rem;">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
           </div>
-          <p style="margin-top:1rem;font-size:0.85rem;color:rgba(255,255,255,0.55);">graymattertechllc@gmail.com</p>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2024 Gray Matter LLC. All rights reserved.</p>
+        <p>&copy; 2026 Gray Matter LLC. All rights reserved.</p>
         <p>Built with purpose, launched with precision.</p>
       </div>
     </div>
   </footer>
 
+  <!-- PERSISTENT MOBILE CTA -->
+  <div class="mobile-cta-bar" data-visible="false">
+    <a href="contact.html" class="btn btn-primary">Tell Us What You Need <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+  </div>
+
+  <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
