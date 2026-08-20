@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Start a project with Gray Matter — web design, booking systems, e-commerce, automation, or cloud and technology consulting. Based in Montgomery, Alabama, serving clients nationwide." />
-  <title>Contact | Gray Matter — Digital &amp; Technology Solutions</title>
+  <meta name="description" content="Tell Gray Matter what needs to change — websites, booking, automation, backups, security, or ongoing technology help. Nothing starts until you approve the scope, price, and timeline. Montgomery, Alabama and remote clients." />
+  <title>Tell Us What You Need | Gray Matter LLC &mdash; Montgomery, AL</title>
   <link rel="canonical" href="https://wglewis0721.github.io/Graymattertechllc-/contact.html" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Contact | Gray Matter — Digital &amp; Technology Solutions" />
@@ -19,26 +19,65 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/funnel.css" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/gray-matter-media-package/brand/approved-reference/gm-favicon-approved-32.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="assets/gray-matter-media-package/brand/approved-reference/gm-icon-approved-192.png" />
   <link rel="apple-touch-icon" href="assets/gray-matter-media-package/brand/approved-reference/gm-apple-touch-approved-180.png" />
 </head>
-<body>
+<body data-root="">
 
   <!-- NAVBAR -->
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="container nav-container">
       <a href="index.html" class="nav-logo"><img src="assets/gray-matter-media-package/brand/approved-reference/gm-logo-horizontal-approved.png" width="1132" height="270" alt="Gray Matter — Digital and Technology Solutions" /></a>
       <ul class="nav-links" role="list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="process.html">How We Work</a></li>
+        <li class="has-mega">
+          <button type="button" class="mega-toggle" aria-expanded="false" aria-controls="solutions-menu">Solutions <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+          <div class="mega-panel" id="solutions-menu" data-open="false">
+            <div class="mega-grid">
+              <div class="mega-col">
+                <h6>Grow</h6>
+                <ul role="list">
+                  <li><a href="services/business-websites.html">Business Websites</a></li>
+                  <li><a href="services/business-opportunity-finder.html">Business Opportunity Finder</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Save Time &amp; Money</h6>
+                <ul role="list">
+                  <li><a href="services/workflow-automation.html">Workflow Automation</a></li>
+                  <li><a href="services/process-documentation.html">Process &amp; Documentation</a></li>
+                  <li><a href="services/work-from-anywhere.html">Work From Anywhere</a></li>
+                  <li><a href="services/technology-cost-cleanup.html">Technology Cost Cleanup</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Protect</h6>
+                <ul role="list">
+                  <li><a href="services/business-security.html">Business Security</a></li>
+                  <li><a href="services/backup-recovery.html">Backup &amp; Recovery</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Handle It For Me</h6>
+                <ul role="list">
+                  <li><a href="services/business-technology-checkup.html">Business Technology Checkup</a></li>
+                  <li><a href="services/technology-partner.html">Technology Partner</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="mega-foot">
+              <a href="index.html#build-my-plan">Build My Plan <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              <a href="services.html">All Services <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              <a href="industries.html">Who We Help <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              <a href="pricing.html">Website Packages <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </li>
+        <li><a href="process.html">How It Works</a></li>
         <li><a href="cloud-consulting.html">Cloud Consulting</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="pricing.html">Pricing</a></li>
-        <li><a href="agreement.html">Agreement</a></li>
-        <li><a href="sops.html">SOPs</a></li>
-        <li><a href="contact.html" class="btn btn-primary btn-sm">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="btn btn-primary btn-sm">Tell Us What You Need</a></li>
       </ul>
       <button class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -46,23 +85,46 @@
     </div>
     <nav class="mobile-nav" aria-label="Mobile navigation">
       <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="process.html">How We Work</a>
+      <div class="mnav-group">
+        <button type="button" class="mnav-toggle" aria-expanded="false" aria-controls="mnav-solutions">Solutions <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+        <div class="mnav-panel" id="mnav-solutions" data-open="false">
+          <a href="index.html#build-my-plan">Build My Plan</a>
+          <h6>Grow</h6>
+          <a href="services/business-websites.html">Business Websites</a>
+          <a href="services/business-opportunity-finder.html">Business Opportunity Finder</a>
+          <h6>Save Time &amp; Money</h6>
+          <a href="services/workflow-automation.html">Workflow Automation</a>
+          <a href="services/process-documentation.html">Process &amp; Documentation</a>
+          <a href="services/work-from-anywhere.html">Work From Anywhere</a>
+          <a href="services/technology-cost-cleanup.html">Technology Cost Cleanup</a>
+          <h6>Protect</h6>
+          <a href="services/business-security.html">Business Security</a>
+          <a href="services/backup-recovery.html">Backup &amp; Recovery</a>
+          <h6>Handle It For Me</h6>
+          <a href="services/business-technology-checkup.html">Business Technology Checkup</a>
+          <a href="services/technology-partner.html">Technology Partner</a>
+          <h6>Browse</h6>
+          <a href="services.html">All Services</a>
+          <a href="industries.html">Who We Help</a>
+          <a href="pricing.html">Website Packages</a>
+        </div>
+      </div>
+      <a href="process.html">How It Works</a>
       <a href="cloud-consulting.html">Cloud Consulting</a>
-      <a href="portfolio.html">Portfolio</a>
+      <a href="about.html">About</a>
       <a href="pricing.html">Pricing</a>
       <a href="agreement.html">Agreement</a>
       <a href="sops.html">SOPs</a>
-      <a href="contact.html">Contact</a>
+      <a href="contact.html">Tell Us What You Need</a>
     </nav>
   </nav>
 
   <!-- PAGE HEADER -->
   <header class="page-header text-center">
     <div class="container">
-      <span class="section-label">Get in Touch</span>
-      <h1>Let's Build Something</h1>
-      <p>Have a project in mind, need cloud consulting support, or just want to explore your options? Fill out the form and I'll get back to you within 24 hours.</p>
+      <span class="section-label">Start the Conversation</span>
+      <h1>Tell Us What You&rsquo;re Trying to Accomplish</h1>
+      <p class="lede" style="margin-left:auto;margin-right:auto;">Describe the goal in your own words. You don&rsquo;t need to know what the solution is called, what it costs, or which technology it uses — that&rsquo;s our part.</p>
     </div>
   </header>
 
@@ -73,36 +135,83 @@
 
         <!-- CONTACT FORM -->
         <div class="contact-form-wrap fade-up">
-          <h2 style="font-size:1.4rem;margin-bottom:0.5rem;">Project Inquiry</h2>
-          <p style="margin-bottom:2rem;font-size:0.95rem;">Tell me about your business and what you're looking to build. The more detail, the better.</p>
 
-          <form id="contact-form" novalidate>
+          <!-- Filled in by js/plan-intake.js when the visitor arrives from
+               the solution menu with a plan. Stays hidden otherwise. -->
+          <div data-plan-intake hidden></div>
+
+          <h2 style="font-size:1.4rem;margin-bottom:0.5rem;">Tell Us About Your Business</h2>
+          <p style="margin-bottom:2rem;font-size:0.95rem;">Everything below is in plain language. Answer what you can and leave the rest &mdash; we&rsquo;ll fill in the gaps together.</p>
+
+          <form id="contact-form" action="https://formsubmit.co/ajax/graymattertechllc@gmail.com" method="POST" novalidate>
+
+            <input type="hidden" name="_subject" value="New Gray Matter website inquiry" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;" />
+
+            <!-- Structured plan fields. Empty unless the visitor built a plan
+                 in the solution menu; js/plan-intake.js fills them in. -->
+            <input type="hidden" name="plan_goal" value="" />
+            <input type="hidden" name="plan_starting_point" value="" />
+            <input type="hidden" name="plan_options" value="" />
+            <input type="hidden" name="plan_answers" value="" />
+            <input type="hidden" name="plan_price" value="" />
+            <input type="hidden" name="plan_timeline" value="" />
+            <input type="hidden" name="plan_next_step" value="" />
+
+            <fieldset class="goal-fieldset">
+              <legend>What are you trying to accomplish?</legend>
+              <p class="field-help">Pick the one that&rsquo;s closest. Not sure is a valid answer.</p>
+              <div class="chip-set" data-goal-chips role="group" aria-label="What you are trying to accomplish"></div>
+              <input type="hidden" id="goal" name="goal" />
+              <!-- Filled in when the visitor arrives from a "how far do you
+                   want to go" card on the recommendation panel. -->
+              <input type="hidden" id="level" name="level" />
+            </fieldset>
 
             <div class="form-group">
-              <label for="name">Full Name <span style="color:var(--gm-coral);">*</span></label>
-              <input type="text" id="name" name="name" placeholder="e.g. Jordan Smith" required />
-              <span class="form-error-msg">Please enter your full name.</span>
+              <label for="name">Your Name <span style="color:var(--gm-coral-ink);">*</span></label>
+              <input type="text" id="name" name="name" autocomplete="name" placeholder="e.g. Jordan Smith" required />
+              <span class="form-error-msg">Please enter your name.</span>
             </div>
 
             <div class="form-group">
-              <label for="email">Email Address <span style="color:var(--gm-coral);">*</span></label>
-              <input type="email" id="email" name="email" placeholder="you@example.com" required />
+              <label for="business">Business Name <span style="color:var(--gm-ink-55);font-size:0.8rem;">(optional)</span></label>
+              <input type="text" id="business" name="business" autocomplete="organization" placeholder="e.g. Smith &amp; Co. Detailing" />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address <span style="color:var(--gm-coral-ink);">*</span></label>
+              <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required />
               <span class="form-error-msg">Please enter a valid email address.</span>
             </div>
 
             <div class="form-group">
               <label for="phone">Phone Number <span style="color:var(--gm-ink-55);font-size:0.8rem;">(optional)</span></label>
-              <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" />
+              <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(555) 000-0000" />
             </div>
 
             <div class="form-group">
-              <label for="service">Service Interested In <span style="color:var(--gm-coral);">*</span></label>
-              <select id="service" name="service" required>
-                <option value="" disabled selected>Select a service…</option>
+              <label for="description">What&rsquo;s Going On? <span style="color:var(--gm-coral-ink);">*</span></label>
+              <textarea id="description" name="description" placeholder="Describe the problem, the goal, or just the thing that keeps annoying you. Everyday language is fine." required></textarea>
+              <span class="form-error-msg">Please tell us a little about it.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="success">What Would Success Look Like? <span style="color:var(--gm-ink-55);font-size:0.8rem;">(optional)</span></label>
+              <textarea id="success" name="success" style="min-height:90px;" placeholder="e.g. Customers book themselves and I stop answering the same question all day."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="service">Service You Have in Mind <span style="color:var(--gm-ink-55);font-size:0.8rem;">(optional)</span></label>
+              <select id="service" name="service">
+                <option value="" disabled selected>Select a service&hellip;</option>
                 <optgroup label="Small Business Services">
                   <option value="business-technology-checkup">Business Technology Checkup</option>
                   <option value="business-websites">Business Websites</option>
                   <option value="workflow-automation">Workflow Automation</option>
+                  <option value="process-documentation">Process &amp; Documentation Systems</option>
                   <option value="backup-recovery">Backup &amp; Recovery</option>
                   <option value="business-security">Business Security</option>
                   <option value="work-from-anywhere">Work From Anywhere</option>
@@ -116,21 +225,14 @@
                   <option value="devops">DevOps &amp; Automation</option>
                   <option value="technology-consulting">Technology Consulting (Contract)</option>
                 </optgroup>
-                <option value="not-sure">Not Sure Yet — Help Me Decide</option>
+                <option value="not-sure">Not Sure Yet &mdash; Help Me Decide</option>
               </select>
-              <span class="form-error-msg">Please select a service.</span>
             </div>
 
             <div class="form-group">
-              <label for="description">Project Description <span style="color:var(--gm-coral);">*</span></label>
-              <textarea id="description" name="description" placeholder="Tell me about your business, what you need, and any goals or deadlines you have in mind…" required></textarea>
-              <span class="form-error-msg">Please describe your project.</span>
-            </div>
-
-            <div class="form-group">
-              <label for="referral">How Did You Hear About Me? <span style="color:var(--gm-ink-55);font-size:0.8rem;">(optional)</span></label>
+              <label for="referral">How Did You Hear About Us? <span style="color:var(--gm-ink-55);font-size:0.8rem;">(optional)</span></label>
               <select id="referral" name="referral">
-                <option value="" disabled selected>Select one…</option>
+                <option value="" disabled selected>Select one&hellip;</option>
                 <option value="instagram">Instagram</option>
                 <option value="facebook">Facebook</option>
                 <option value="google">Google Search</option>
@@ -141,14 +243,21 @@
             </div>
 
             <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;margin-top:0.5rem;">
-              Send My Inquiry <i class="fa-solid fa-paper-plane"></i>
+              Send My Inquiry <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
             </button>
+
+            <p class="field-help" style="margin-top:0.85rem;">Your information is used only to review and respond to this inquiry.</p>
+            <div class="form-submit-error" id="form-submit-error" role="alert" aria-live="assertive" hidden>
+              <strong>Your inquiry was not sent.</strong> Please try again, email
+              <a href="mailto:graymattertechllc@gmail.com">graymattertechllc@gmail.com</a>,
+              or call <a href="tel:+13346522601">334-652-2601</a>.
+            </div>
 
           </form>
 
           <!-- SUCCESS MESSAGE -->
           <div class="form-success" id="form-success" role="alert" aria-live="polite">
-            <i class="fa-solid fa-circle-check"></i>
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
             <h3>Message Sent!</h3>
             <p>Thanks for reaching out. I'll review your project details and get back to you within 24 hours. Keep an eye on your inbox!</p>
           </div>
@@ -162,7 +271,7 @@
             <span class="section-label" style="margin-bottom:1.25rem;display:block;">Contact Info</span>
 
             <div class="contact-detail">
-              <div class="icon-wrap"><i class="fa-solid fa-envelope"></i></div>
+              <div class="icon-wrap"><i class="fa-solid fa-envelope" aria-hidden="true"></i></div>
               <div>
                 <h4>Email</h4>
                 <a href="mailto:graymattertechllc@gmail.com">graymattertechllc@gmail.com</a>
@@ -170,7 +279,7 @@
             </div>
 
             <div class="contact-detail" style="margin-top:1.25rem;">
-              <div class="icon-wrap"><i class="fa-solid fa-phone"></i></div>
+              <div class="icon-wrap"><i class="fa-solid fa-phone" aria-hidden="true"></i></div>
               <div>
                 <h4>Phone</h4>
                 <a href="tel:+13346522601">334-652-2601</a>
@@ -178,7 +287,7 @@
             </div>
 
             <div class="contact-detail" style="margin-top:1.25rem;">
-              <div class="icon-wrap"><i class="fa-solid fa-clock"></i></div>
+              <div class="icon-wrap"><i class="fa-solid fa-clock" aria-hidden="true"></i></div>
               <div>
                 <h4>Response Time</h4>
                 <p>Within 24 hours, Monday – Friday</p>
@@ -186,7 +295,7 @@
             </div>
 
             <div class="contact-detail" style="margin-top:1.25rem;">
-              <div class="icon-wrap"><i class="fa-solid fa-globe"></i></div>
+              <div class="icon-wrap"><i class="fa-solid fa-globe" aria-hidden="true"></i></div>
               <div>
                 <h4>Location</h4>
                 <p>Montgomery, Alabama — web &amp; digital clients local and remote; cloud &amp; technology consulting available nationwide</p>
@@ -200,44 +309,34 @@
             <h4 style="margin-bottom:1rem;">What Happens Next</h4>
             <ul style="display:flex;flex-direction:column;gap:1rem;">
               <li style="display:flex;align-items:flex-start;gap:0.75rem;">
-                <span style="width:26px;height:26px;background:rgba(53,106,230,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--gm-blue);flex-shrink:0;">1</span>
+                <span style="width:26px;height:26px;background:rgba(53,106,230,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--gm-blue-dark);flex-shrink:0;">1</span>
                 <div>
                   <p style="font-size:0.85rem;font-weight:600;color:var(--gm-ink);margin-bottom:0.15rem;">I Review Your Inquiry</p>
                   <p style="font-size:0.82rem;">Within 24 hours I'll read through your project details and prepare questions.</p>
                 </div>
               </li>
               <li style="display:flex;align-items:flex-start;gap:0.75rem;">
-                <span style="width:26px;height:26px;background:rgba(53,106,230,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--gm-blue);flex-shrink:0;">2</span>
+                <span style="width:26px;height:26px;background:rgba(53,106,230,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--gm-blue-dark);flex-shrink:0;">2</span>
                 <div>
                   <p style="font-size:0.85rem;font-weight:600;color:var(--gm-ink);margin-bottom:0.15rem;">Discovery Call or Email</p>
                   <p style="font-size:0.82rem;">We'll have a quick call or email exchange to nail down your goals, timeline, and budget.</p>
                 </div>
               </li>
               <li style="display:flex;align-items:flex-start;gap:0.75rem;">
-                <span style="width:26px;height:26px;background:rgba(53,106,230,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--gm-blue);flex-shrink:0;">3</span>
+                <span style="width:26px;height:26px;background:rgba(53,106,230,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--gm-blue-dark);flex-shrink:0;">3</span>
                 <div>
                   <p style="font-size:0.85rem;font-weight:600;color:var(--gm-ink);margin-bottom:0.15rem;">Proposal &amp; Agreement</p>
                   <p style="font-size:0.82rem;">I'll send over a project proposal, pricing, and client agreement to sign before we begin.</p>
                 </div>
               </li>
               <li style="display:flex;align-items:flex-start;gap:0.75rem;">
-                <span style="width:26px;height:26px;background:rgba(53,106,230,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--gm-blue);flex-shrink:0;">4</span>
+                <span style="width:26px;height:26px;background:rgba(53,106,230,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--gm-blue-dark);flex-shrink:0;">4</span>
                 <div>
                   <p style="font-size:0.85rem;font-weight:600;color:var(--gm-ink);margin-bottom:0.15rem;">We Build &amp; Deliver</p>
                   <p style="font-size:0.82rem;">Work begins, and your solution goes live on schedule — see our <a href="process.html" style="color:var(--gm-blue);">full process</a> for details.</p>
                 </div>
               </li>
             </ul>
-          </div>
-
-          <!-- SOCIAL LINKS -->
-          <div>
-            <h4 style="margin-bottom:1rem;">Follow Along</h4>
-            <div class="social-links">
-              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            </div>
           </div>
 
         </div>
@@ -253,27 +352,30 @@
         <div class="footer-brand">
           <a href="index.html" class="nav-logo"><img src="assets/gray-matter-media-package/brand/approved-reference/gm-logo-horizontal-approved.png" width="1132" height="270" alt="Gray Matter — Digital and Technology Solutions" loading="lazy" /></a>
           <p>Digital and technology solutions — from tech fit to completion — for businesses, entrepreneurs, and technical organizations.</p>
+          <p class="footer-locale">Gray Matter LLC &middot; Montgomery, Alabama &middot; serving local and remote clients</p>
         </div>
         <div class="footer-col">
-          <h5>Navigate</h5>
+          <p class="footer-col-title">Navigate</p>
           <ul role="list">
             <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="process.html">How We Work</a></li>
-            <li><a href="cloud-consulting.html">Cloud Consulting</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="services.html">All Services</a></li>
+            <li><a href="industries.html">Who We Help</a></li>
+            <li><a href="process.html">How It Works</a></li>
+            <li><a href="about.html">About</a></li>
             <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="cloud-consulting.html">Cloud Consulting</a></li>
             <li><a href="agreement.html">Agreement</a></li>
             <li><a href="sops.html">SOPs</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h5>Services</h5>
+          <p class="footer-col-title">Services</p>
           <ul role="list">
             <li><a href="services/business-technology-checkup.html">Business Technology Checkup</a></li>
             <li><a href="services/business-websites.html">Business Websites</a></li>
             <li><a href="services/workflow-automation.html">Workflow Automation</a></li>
+            <li><a href="services/process-documentation.html">Process &amp; Documentation Systems</a></li>
             <li><a href="services/backup-recovery.html">Backup &amp; Recovery</a></li>
             <li><a href="services/business-security.html">Business Security</a></li>
             <li><a href="services/work-from-anywhere.html">Work From Anywhere</a></li>
@@ -283,22 +385,28 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h5>Connect</h5>
-          <div class="social-links">
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          </div>
-          <p style="margin-top:1rem;font-size:0.85rem;color:rgba(255,255,255,0.55);">graymattertechllc@gmail.com</p>
+          <p class="footer-col-title">Contact</p>
+          <ul role="list">
+            <li><a href="mailto:graymattertechllc@gmail.com">graymattertechllc@gmail.com</a></li>
+            <li><a href="tel:+13346522601">334-652-2601</a></li>
+          </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2024 Gray Matter LLC. All rights reserved.</p>
+        <p>&copy; 2026 Gray Matter LLC. All rights reserved.</p>
         <p>Built with purpose, launched with precision.</p>
       </div>
     </div>
   </footer>
 
+  <!-- PERSISTENT MOBILE CTA -->
+  <div class="mobile-cta-bar" data-visible="false">
+    <a href="contact.html" class="btn btn-primary">Tell Us What You Need <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+  </div>
+
+  <script src="js/data.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/funnel-data.js"></script>
+  <script src="js/plan-intake.js"></script>
 </body>
 </html>

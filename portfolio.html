@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Gray Matter LLC portfolio — real client project screenshots will be added here as work is completed and cleared for display." />
-  <title>Portfolio | Gray Matter LLC</title>
+  <meta name="description" content="Completed client work from Gray Matter LLC, published with permission. No invented case studies, no stock photography standing in for real projects." />
+  <meta name="robots" content="noindex,follow" />
+  <title>Work &amp; Case Studies | Gray Matter LLC</title>
   <link rel="canonical" href="https://wglewis0721.github.io/Graymattertechllc-/portfolio.html" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Portfolio | Gray Matter LLC" />
@@ -23,22 +24,60 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/gray-matter-media-package/brand/approved-reference/gm-icon-approved-192.png" />
   <link rel="apple-touch-icon" href="assets/gray-matter-media-package/brand/approved-reference/gm-apple-touch-approved-180.png" />
 </head>
-<body>
+<body data-root="">
 
   <!-- NAVBAR -->
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="container nav-container">
       <a href="index.html" class="nav-logo"><img src="assets/gray-matter-media-package/brand/approved-reference/gm-logo-horizontal-approved.png" width="1132" height="270" alt="Gray Matter — Digital and Technology Solutions" /></a>
       <ul class="nav-links" role="list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="process.html">How We Work</a></li>
+        <li class="has-mega">
+          <button type="button" class="mega-toggle" aria-expanded="false" aria-controls="solutions-menu">Solutions <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+          <div class="mega-panel" id="solutions-menu" data-open="false">
+            <div class="mega-grid">
+              <div class="mega-col">
+                <h6>Grow</h6>
+                <ul role="list">
+                  <li><a href="services/business-websites.html">Business Websites</a></li>
+                  <li><a href="services/business-opportunity-finder.html">Business Opportunity Finder</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Save Time &amp; Money</h6>
+                <ul role="list">
+                  <li><a href="services/workflow-automation.html">Workflow Automation</a></li>
+                  <li><a href="services/process-documentation.html">Process &amp; Documentation</a></li>
+                  <li><a href="services/work-from-anywhere.html">Work From Anywhere</a></li>
+                  <li><a href="services/technology-cost-cleanup.html">Technology Cost Cleanup</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Protect</h6>
+                <ul role="list">
+                  <li><a href="services/business-security.html">Business Security</a></li>
+                  <li><a href="services/backup-recovery.html">Backup &amp; Recovery</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Handle It For Me</h6>
+                <ul role="list">
+                  <li><a href="services/business-technology-checkup.html">Business Technology Checkup</a></li>
+                  <li><a href="services/technology-partner.html">Technology Partner</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="mega-foot">
+              <a href="index.html#build-my-plan">Build My Plan <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              <a href="services.html">All Services <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              <a href="industries.html">Who We Help <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              <a href="pricing.html">Website Packages <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </li>
+        <li><a href="process.html">How It Works</a></li>
         <li><a href="cloud-consulting.html">Cloud Consulting</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="pricing.html">Pricing</a></li>
-        <li><a href="agreement.html">Agreement</a></li>
-        <li><a href="sops.html">SOPs</a></li>
-        <li><a href="contact.html" class="btn btn-primary btn-sm">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="btn btn-primary btn-sm">Tell Us What You Need</a></li>
       </ul>
       <button class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -46,32 +85,109 @@
     </div>
     <nav class="mobile-nav" aria-label="Mobile navigation">
       <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="process.html">How We Work</a>
+      <div class="mnav-group">
+        <button type="button" class="mnav-toggle" aria-expanded="false" aria-controls="mnav-solutions">Solutions <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+        <div class="mnav-panel" id="mnav-solutions" data-open="false">
+          <a href="index.html#build-my-plan">Build My Plan</a>
+          <h6>Grow</h6>
+          <a href="services/business-websites.html">Business Websites</a>
+          <a href="services/business-opportunity-finder.html">Business Opportunity Finder</a>
+          <h6>Save Time &amp; Money</h6>
+          <a href="services/workflow-automation.html">Workflow Automation</a>
+          <a href="services/process-documentation.html">Process &amp; Documentation</a>
+          <a href="services/work-from-anywhere.html">Work From Anywhere</a>
+          <a href="services/technology-cost-cleanup.html">Technology Cost Cleanup</a>
+          <h6>Protect</h6>
+          <a href="services/business-security.html">Business Security</a>
+          <a href="services/backup-recovery.html">Backup &amp; Recovery</a>
+          <h6>Handle It For Me</h6>
+          <a href="services/business-technology-checkup.html">Business Technology Checkup</a>
+          <a href="services/technology-partner.html">Technology Partner</a>
+          <h6>Browse</h6>
+          <a href="services.html">All Services</a>
+          <a href="industries.html">Who We Help</a>
+          <a href="pricing.html">Website Packages</a>
+        </div>
+      </div>
+      <a href="process.html">How It Works</a>
       <a href="cloud-consulting.html">Cloud Consulting</a>
-      <a href="portfolio.html">Portfolio</a>
+      <a href="about.html">About</a>
       <a href="pricing.html">Pricing</a>
       <a href="agreement.html">Agreement</a>
       <a href="sops.html">SOPs</a>
-      <a href="contact.html">Contact</a>
+      <a href="contact.html">Tell Us What You Need</a>
     </nav>
   </nav>
 
   <!-- PAGE HEADER -->
   <header class="page-header text-center">
     <div class="container">
-      <span class="section-label">Portfolio</span>
-      <h1>Portfolio Coming Soon</h1>
-      <p>Gray Matter LLC is a new build. This page will show real, completed client work — with screenshots and permission to display them — as projects wrap up. Nothing shown below is a finished project.</p>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Work</span>
+      </nav>
+      <span class="section-label">The Work</span>
+      <h1>Real Projects, Published When They&rsquo;re Real</h1>
+      <p class="lede" style="margin-left:auto;margin-right:auto;">Gray Matter LLC is a new build. This page shows completed client work &mdash; with screenshots and permission to display them &mdash; as projects wrap up. Nothing here is invented, and nothing below is a finished project.</p>
+      <div class="hero-actions" style="justify-content:center;margin-top:2rem;">
+        <a href="contact.html" class="btn btn-primary btn-lg">Tell Us What You Need <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <a href="industries.html" class="btn btn-outline btn-lg">See Who We Help</a>
+      </div>
     </div>
   </header>
 
-  <!-- PORTFOLIO PLACEHOLDER SECTION -->
-  <section class="section-pad" style="background:var(--gm-paper);">
+  <!-- CASE STUDIES (rendered from js/data.js) -->
+  <section class="section-pad section-paper">
     <div class="container">
+      <div class="text-center">
+        <span class="section-label">Case Studies</span>
+        <h2 class="section-title">Published Work</h2>
+      </div>
+      <div class="cs-grid" data-case-studies></div>
+      <div class="portfolio-placeholder" data-case-studies-empty style="max-width:780px;">
+        <span class="placeholder-tag">No published case studies yet</span>
+        <p style="max-width:560px;margin:0 auto 1.5rem;">Rather than fill this page with stock photography and invented client names, it stays empty until there is real work to show. The first published project will appear here.</p>
+        <a href="contact.html" class="btn btn-primary">Be the First Project Featured <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT A CASE STUDY WILL CONTAIN -->
+  <section class="section-pad section-white">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">The Format</span>
+        <h2 class="section-title">What Each Case Study Will Show</h2>
+        <p class="section-subtitle">The same eleven things every time, so you can compare projects instead of reading marketing copy.</p>
+      </div>
+      <div class="cs-template fade-up">
+        <ol>
+          <li>Client and industry</li>
+          <li>The problem, in their words</li>
+          <li>Before &mdash; how it worked previously</li>
+          <li>The goal they wanted to reach</li>
+          <li>What Gray Matter built</li>
+          <li>After &mdash; how it works now</li>
+          <li>The business result</li>
+          <li>Services used</li>
+          <li>Screenshots of the finished work</li>
+          <li>A testimonial, where the client gives one</li>
+          <li>A way to start something similar</li>
+        </ol>
+        <p class="disclaimer" style="margin-top:2rem;"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> No metrics will be published that cannot be evidenced, and no case study will appear without the client&rsquo;s permission.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYOUT TEMPLATES -->
+  <section class="section-pad section-paper">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Presentation</span>
+        <h2 class="section-title">How the Screenshots Will Be Shown</h2>
+      </div>
       <div class="portfolio-placeholder fade-up" style="max-width:100%;">
-        <span class="placeholder-tag">Layout Templates — Not Real Projects</span>
-        <p style="max-width:560px;margin:0 auto 2rem;">The frames below are the browser and mobile templates real project screenshots will be placed into. They're shown empty on purpose — no fictional client names, no stock photography standing in for finished work.</p>
+        <span class="placeholder-tag">Layout templates &mdash; not real projects</span>
+        <p style="max-width:560px;margin:0 auto 2rem;">The frames below are the browser and mobile templates real project screenshots will be placed into. They&rsquo;re shown empty on purpose &mdash; no fictional client names, no stock photography standing in for finished work.</p>
         <div class="frame-row">
           <img src="assets/gray-matter/portfolio/gm-browser-frame.svg" alt="" loading="lazy" style="width:420px;max-width:100%;" />
           <img src="assets/gray-matter/portfolio/gm-mobile-frame.svg" alt="" loading="lazy" style="width:160px;max-width:100%;" />
@@ -84,14 +200,14 @@
   </section>
 
   <!-- CTA BANNER -->
-  <section class="cta-banner">
+  <section class="cta-banner final-cta">
     <div class="container">
       <span class="section-label">Your Project Next</span>
       <h2>Be the First Project Featured Here</h2>
-      <p>Let's build something you're proud to show off. Reach out and let's talk about your vision.</p>
+      <p>Tell us what needs to change. If it&rsquo;s a fit, we&rsquo;ll build it &mdash; and, with your permission, show it here.</p>
       <div class="btn-actions">
-        <a href="contact.html" class="btn btn-primary btn-lg">Start a Project <i class="fa-solid fa-arrow-right"></i></a>
-        <a href="pricing.html" class="btn btn-outline btn-lg">View Pricing</a>
+        <a href="contact.html" class="btn btn-primary btn-lg">Tell Us What You Need <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <a href="pricing.html" class="btn btn-outline btn-lg">See Website Packages</a>
       </div>
     </div>
   </section>
@@ -103,27 +219,30 @@
         <div class="footer-brand">
           <a href="index.html" class="nav-logo"><img src="assets/gray-matter-media-package/brand/approved-reference/gm-logo-horizontal-approved.png" width="1132" height="270" alt="Gray Matter — Digital and Technology Solutions" loading="lazy" /></a>
           <p>Digital and technology solutions — from tech fit to completion — for businesses, entrepreneurs, and technical organizations.</p>
+          <p class="footer-locale">Gray Matter LLC &middot; Montgomery, Alabama &middot; serving local and remote clients</p>
         </div>
         <div class="footer-col">
-          <h5>Navigate</h5>
+          <p class="footer-col-title">Navigate</p>
           <ul role="list">
             <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="process.html">How We Work</a></li>
-            <li><a href="cloud-consulting.html">Cloud Consulting</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="services.html">All Services</a></li>
+            <li><a href="industries.html">Who We Help</a></li>
+            <li><a href="process.html">How It Works</a></li>
+            <li><a href="about.html">About</a></li>
             <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="cloud-consulting.html">Cloud Consulting</a></li>
             <li><a href="agreement.html">Agreement</a></li>
             <li><a href="sops.html">SOPs</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h5>Services</h5>
+          <p class="footer-col-title">Services</p>
           <ul role="list">
             <li><a href="services/business-technology-checkup.html">Business Technology Checkup</a></li>
             <li><a href="services/business-websites.html">Business Websites</a></li>
             <li><a href="services/workflow-automation.html">Workflow Automation</a></li>
+            <li><a href="services/process-documentation.html">Process &amp; Documentation Systems</a></li>
             <li><a href="services/backup-recovery.html">Backup &amp; Recovery</a></li>
             <li><a href="services/business-security.html">Business Security</a></li>
             <li><a href="services/work-from-anywhere.html">Work From Anywhere</a></li>
@@ -133,22 +252,26 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h5>Connect</h5>
-          <div class="social-links">
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          </div>
-          <p style="margin-top:1rem;font-size:0.85rem;color:rgba(255,255,255,0.55);">graymattertechllc@gmail.com</p>
+          <p class="footer-col-title">Contact</p>
+          <ul role="list">
+            <li><a href="mailto:graymattertechllc@gmail.com">graymattertechllc@gmail.com</a></li>
+            <li><a href="tel:+13346522601">334-652-2601</a></li>
+          </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2024 Gray Matter LLC. All rights reserved.</p>
+        <p>&copy; 2026 Gray Matter LLC. All rights reserved.</p>
         <p>Built with purpose, launched with precision.</p>
       </div>
     </div>
   </footer>
 
+  <!-- PERSISTENT MOBILE CTA -->
+  <div class="mobile-cta-bar" data-visible="false">
+    <a href="contact.html" class="btn btn-primary">Tell Us What You Need <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+  </div>
+
+  <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

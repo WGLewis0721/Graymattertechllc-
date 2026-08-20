@@ -1,81 +1,177 @@
-# Copilot Instructions for Gray Matter LLC Website
+# Copilot Instructions for the Gray Matter LLC Website
 
-## Project Overview
+## Project overview
 
-This is the official business website for **Gray Matter LLC**, a digital solutions and technology consulting company. The site showcases web design services, booking systems, e-commerce, and cloud/IT consulting (including 1099 contract engagements).
+The official business website for **Gray Matter LLC**, a digital and
+technology solutions company. The site serves two distinct buyers:
 
-## Tech Stack
+1. **Small businesses** — via a guided menu funnel on the homepage. Plain
+   language only.
+2. **Technical organizations** — via `cloud-consulting.html`. AWS,
+   infrastructure, Terraform, DevOps, and contract language belongs here and
+   nowhere else.
 
-- **Pure HTML5, CSS3, Vanilla JavaScript** — zero frameworks, zero build tools, zero npm dependencies
-- **Google Fonts** — Syne (headings) + DM Sans (body) loaded via CDN
-- **Font Awesome 6** — icons loaded via CDN
-- Fully static files — no compilation or bundling required
+Never mix the two vocabularies.
 
-## File Structure
+`docs/ARCHITECTURE.md` is the authoritative description of the direction,
+the funnel state model, the pricing rules, and the checkout rules. **Read it
+before changing anything in the funnel.** `README.md` is the orientation and
+file map.
+
+## Tech stack
+
+- **HTML5, CSS3, vanilla JavaScript** — zero frameworks, zero build tools,
+  zero npm dependencies
+- **Google Fonts** — Manrope (headings) + Inter (body) via CDN
+- **Font Awesome 6** — icons via CDN
+- Fully static; GitHub Pages, `main` branch, `/` root
+
+## File structure
 
 ```
 /
-├── index.html        # Home page
-├── services.html     # Services page
-├── portfolio.html    # Portfolio page with filterable project grid
-├── pricing.html      # Pricing page with three-tier plans and FAQ accordion
-├── contact.html      # Contact/inquiry form
-├── agreement.html    # Client agreement / service terms
+├── index.html              # home — hosts the guided menu funnel (#build-my-plan)
+├── services.html  process.html  about.html  cloud-consulting.html
+├── pricing.html   contact.html  agreement.html  portfolio.html  sops.html
+├── industries.html  industries/   # nine industry pages
+├── services/                      # ten service detail pages
 ├── css/
-│   └── style.css     # All styles (single stylesheet)
-└── js/
-    └── main.js       # All JavaScript (single script)
+│   ├── style.css           # site styles and design tokens
+│   └── funnel.css          # funnel styles (index.html and contact.html only)
+├── js/
+│   ├── data.js             # site content architecture
+│   ├── main.js             # site behaviour
+│   ├── funnel-data.js      # FUNNEL CONFIGURATION — edit the menu here
+│   ├── funnel.js           # funnel behaviour and state machine
+│   └── plan-intake.js      # receives a built plan on contact.html
+└── docs/                   # ARCHITECTURE.md and screenshots
 ```
 
-## Design System
+## Design system
 
-Always use these CSS custom property values when adding or modifying styles:
+Always use these custom properties:
 
-| Token            | Value              |
-|------------------|--------------------|
-| Base background  | `#0f172a` (deep navy) |
-| Surface          | `#1e293b`          |
-| Accent           | `#14b8a6` (teal)   |
-| Accent light     | `#5eead4`          |
-| Text             | `#f8fafc`          |
-| Text muted       | `#94a3b8`          |
+| Token            | Value                       |
+|------------------|-----------------------------|
+| `--gm-paper`     | `#F7F4ED` (page background) |
+| `--gm-ink`       | `#152238` (text, dark panels) |
+| `--gm-blue`      | `#2F64D6` (accent)          |
+| `--gm-sky`       | `#EDF1F8` (supporting surface, defined in `funnel.css`) |
+| `--gm-mint`      | `#B8E1D0`                   |
+| `--gm-gold`      | `#F3C969`                   |
+| `--gm-coral`     | `#E9785D`                   |
+| `--gm-line`      | `#D5DBE4` (borders)         |
 
-## Code Style Conventions
+Headings use Manrope; body copy uses Inter. Use the approved logo assets in
+`assets/gray-matter-media-package/brand/approved-reference/` — never
+generate or substitute another logo. Do not use a founder photograph; the
+site uses the real founder credentials and neutral icon treatments.
 
-- **HTML**: Use semantic HTML5 elements (`<section>`, `<article>`, `<nav>`, `<main>`, `<footer>`, etc.). Indent with 2 spaces.
-- **CSS**: Follow the existing single-file approach in `css/style.css`. Use CSS custom properties (variables) for colors and reuse existing utility classes before adding new ones. Mobile-first responsive design using a 1 → 2 → 3/4 column grid progression.
-- **JavaScript**: Vanilla JS only — no jQuery or other libraries. Keep all JS in `js/main.js`. Use `const`/`let` (no `var`). Prefer `addEventListener` over inline event handlers.
-- Do **not** introduce build tools, package managers, or JavaScript frameworks.
+## Code style
 
-## Running Locally
+- **HTML**: semantic elements, 2-space indent. Navigation and footer markup
+  is duplicated per page — that is the established pattern here. Change it
+  with a scripted, uniform edit across every page, never by hand on one.
+- **CSS**: use the tokens and existing utility classes before adding new
+  ones. Mobile-first, 1 → 2 → 3/4 column progression. Site styles go in
+  `css/style.css`; funnel styles go in `css/funnel.css`. Do not start a
+  third stylesheet or a second design system.
+- **JavaScript**: vanilla only. Site behaviour in `js/main.js`; funnel
+  behaviour in `js/funnel.js`; funnel content in `js/funnel-data.js`.
+  Keep configuration and behaviour separate — `funnel.js` must own no
+  business copy. Use `addEventListener`, never inline handlers.
+- Do **not** introduce build tools, package managers, frameworks, or a
+  carousel library.
 
-No build step required. Open any `.html` file directly in a browser, or serve the root with a simple static server:
+## Key behaviours to preserve
+
+- **Guided menu funnel** (`[data-funnel]` on `index.html`): outcome →
+  starting point → compatible options → plan drawer. State lives in memory,
+  `sessionStorage['gm-funnel-v1']`, and the URL query string. Nothing
+  reloads the page. Fast lanes (I Know What I Need, Recommend It for Me, My
+  Plan, Start Now) stay available at every step.
+- **Option compatibility**: `GM_FUNNEL.allows(planId, optionId)` is the only
+  gate. Website options must never appear while configuring security or
+  backup, including via a hand-edited URL.
+- **Plan drawer**: modal — backdrop, `aria-modal`, focus loop, Escape to
+  close. It is the only element allowed to loop focus.
+- **Toggles**: `<button role="switch">` with accurate `aria-checked`; the
+  checked state also draws a tick, never colour alone; every change is
+  announced through the polite live region.
+- **Swipe rails**: native `overflow-x` + CSS `scroll-snap`. Never call
+  `preventDefault` on touch events, never add a gesture library. Arrow keys
+  move focus between cards; visible prev/next buttons appear from 768px.
+- **Responsive navbar**: hamburger on mobile, collapsible Solutions groups,
+  scroll-activated background, active-link highlighting.
+- **Contact form**: FormSubmit AJAX with required-field checks, email regex,
+  and an explicit success confirmation — a failed request must never show a
+  success state. The structured `plan_*` hidden fields are filled by
+  `js/plan-intake.js`.
+- **Configurators** on service pages: `[data-chipset="<collection>"]` renders
+  chips from a `GM_DATA` collection; `[data-summary-for]` renders the live
+  summary.
+- **Reduced motion**, **44px touch targets**, **visible focus styles**, and
+  **no horizontal page scroll** are requirements, not preferences.
+
+## Content rules
+
+- **Never invent business facts.** No client names, testimonials, metrics,
+  prices, turnaround times, certifications, popularity claims, or guarantees
+  that were not supplied.
+- `pricing.html` is the only place that sets prices. The funnel reuses those
+  exact published values and **never totals add-ons** — a total is a quote.
+- Anything without approved public pricing shows
+  *"Price confirmed after a quick fit check"* and
+  *"Timeline confirmed after a quick fit check"*.
+- Only present something as an option when it adds separate scope, extra
+  volume, ongoing labour, hardware, or another system. Ordinary required
+  website functionality is an inclusion, not an upsell. A function limited
+  to one package must be described as belonging to that package.
+- Use restrained guidance labels ("Recommended for your plan", "Good for
+  teams", "Best for important files", "Optional ongoing protection"). Do not
+  mark every option as recommended. "Most Complete" is allowed; "Best" and
+  "Most Popular" are not, unless real sales data supports them.
+- Avoid internal words in customer-facing copy: "selections",
+  "configuration", "SKU", "integration architecture", "solution matrix".
+- Example figures (the cost-cleanup bill, the checkup report card) must
+  carry an "illustrative" label and a disclaimer.
+- SEO-critical copy must also exist as static HTML, not only as
+  JS-rendered content.
+- Add new funnel content to `js/funnel-data.js`; add new site content to
+  `js/data.js`. Components read from them.
+
+## Payments
+
+There is no payment processing in this repository. `GM_FUNNEL.checkout.links`
+in `js/funnel-data.js` is the only place a real payment or deposit URL
+belongs. Every entry ships empty; while empty, the primary action is
+**Send My Plan** through the inquiry form. Never build a fake checkout,
+never imply a payment was received, and never invent a Stripe, Square, or
+PayPal link. Never present a checkbox as a legally verified electronic
+signature — link to `agreement.html` instead.
+
+## Testing and validation
+
+There is no automated test suite in the repository. Validate changes by
+serving the root and checking:
 
 ```bash
-# Using Python
 python3 -m http.server 8080
-
-# Using Node.js
-npx serve .
 ```
 
-## Key Behaviors to Preserve
-
-- **Responsive navbar**: hamburger menu for mobile, scroll-activated background, active page highlighting via `data-page` attributes.
-- **Scroll-triggered animations**: fade-up effects powered by `IntersectionObserver` in `main.js`.
-- **Portfolio filter**: client-side category filtering with no page reload.
-- **FAQ accordion**: single-open accordion on the pricing page.
-- **Contact form validation**: required field checks, email regex, and animated success message.
-
-## Testing & Validation
-
-There is no automated test suite. Validate changes by:
-
-1. Opening the affected `.html` file(s) in a browser (or `python3 -m http.server 8080`).
-2. Checking all pages at both mobile (≤768 px) and desktop widths.
-3. Verifying the navbar, animations, portfolio filter, FAQ accordion, and contact form still work correctly after any JS changes.
-4. Running the HTML through the [W3C Validator](https://validator.w3.org/) for structural changes.
+1. Every internal link and anchor still resolves.
+2. Mobile navigation, the Solutions mega menu, and the contact form work.
+3. A failed form request shows the error block, never success.
+4. Each outcome leads to the correct starting points, and each starting
+   point exposes only compatible options.
+5. Toggles update the plan immediately and announce the change.
+6. Back navigation and reload restore funnel state.
+7. Keyboard-only users can complete the funnel.
+8. No console errors; no horizontal page scroll at 320–1440px.
+9. `prefers-reduced-motion` is respected.
+10. Structural HTML changes pass the [W3C Validator](https://validator.w3.org/).
 
 ## Deployment
 
-The site is hosted on **GitHub Pages** (branch: `main`, root folder `/`). Merging to `main` automatically redeploys. No CI pipeline is required.
+GitHub Pages (branch `main`, root `/`). `.nojekyll` prevents Jekyll
+processing. Merging to `main` redeploys. No CI pipeline.
