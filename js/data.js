@@ -275,6 +275,67 @@
     { id: 'custom', label: 'A Custom Area', icon: 'fa-draw-polygon' }
   ];
 
+
+  /* --- SERVICE-PAGE OPTION SETS -------------------------------
+     Part 2 standard: every service page lets the visitor say which
+     part of the problem is theirs, and carries that into the inquiry
+     form. Same chip + summary components as the website and automation
+     configurators — one interaction model across the whole site.
+  ---------------------------------------------------------------- */
+  var checkupConcerns = [
+    { id: 'website', label: 'My website', icon: 'fa-desktop', summary: 'Whether your website is doing its job' },
+    { id: 'backups', label: 'My backups', icon: 'fa-hard-drive', summary: 'Whether your files are actually protected' },
+    { id: 'security', label: 'Who has access', icon: 'fa-lock', summary: 'Who can reach your accounts and information' },
+    { id: 'manual-work', label: 'Repetitive work', icon: 'fa-diagram-project', summary: 'Which routine tasks could run themselves' },
+    { id: 'costs', label: 'What I\u2019m paying', icon: 'fa-receipt', summary: 'What you\u2019re spending and what you could stop' },
+    { id: 'everything', label: 'Honestly, all of it', icon: 'fa-circle-question', summary: 'A full review, since nothing has been looked at' }
+  ];
+
+  var backupAssets = [
+    { id: 'customers', label: 'Customer records', icon: 'fa-address-book', summary: 'Customer records kept safe' },
+    { id: 'photos', label: 'Photos of my work', icon: 'fa-images', summary: 'Work photos kept safe' },
+    { id: 'contracts', label: 'Contracts', icon: 'fa-file-signature', summary: 'Signed contracts kept safe' },
+    { id: 'financial', label: 'Financial documents', icon: 'fa-file-invoice-dollar', summary: 'Invoices and tax records kept safe' },
+    { id: 'files', label: 'Business files', icon: 'fa-folder-open', summary: 'Quotes, templates, and working files kept safe' },
+    { id: 'email', label: 'Email history', icon: 'fa-envelope', summary: 'Your email paper trail kept safe' }
+  ];
+
+  var securityRisks = [
+    { id: 'former-staff', label: 'A former employee still has access', icon: 'fa-user-slash', summary: 'Old access removed' },
+    { id: 'shared-password', label: 'Everyone shares one password', icon: 'fa-key', summary: 'Shared logins replaced with individual access' },
+    { id: 'email', label: 'My business email isn\u2019t protected', icon: 'fa-envelope-open', summary: 'Business email locked down' },
+    { id: 'device', label: 'A laptop or phone could go missing', icon: 'fa-laptop', summary: 'Lost devices stop being a crisis' },
+    { id: 'customer-data', label: 'Customer information is lying around', icon: 'fa-address-card', summary: 'Customer information kept where it belongs' },
+    { id: 'social', label: 'Business social accounts', icon: 'fa-hashtag', summary: 'Business accounts recoverable and controlled' }
+  ];
+
+  var remoteNeeds = [
+    { id: 'files', label: 'Get to my files', icon: 'fa-folder-open', summary: 'Your files reachable from anywhere' },
+    { id: 'email', label: 'Get to my email', icon: 'fa-envelope', summary: 'Email on whatever device you have' },
+    { id: 'apps', label: 'Use my business tools', icon: 'fa-toolbox', summary: 'Your business tools available off-site' },
+    { id: 'team', label: 'Share with my team', icon: 'fa-user-group', summary: 'Employees get what they need, and only that' },
+    { id: 'jobsite', label: 'Work from job sites', icon: 'fa-truck', summary: 'The job site works like the office' },
+    { id: 'travel', label: 'Work while traveling', icon: 'fa-plane', summary: 'Travel stops pausing the business' }
+  ];
+
+  var costAreas = [
+    { id: 'software', label: 'Software subscriptions', icon: 'fa-cubes', summary: 'Every subscription listed and checked' },
+    { id: 'hosting', label: 'Website and domains', icon: 'fa-globe', summary: 'Hosting and domains reviewed' },
+    { id: 'storage', label: 'Cloud storage', icon: 'fa-cloud', summary: 'Storage plans right-sized' },
+    { id: 'phone', label: 'Phone and internet', icon: 'fa-phone', summary: 'Phone and internet plans reviewed' },
+    { id: 'old-accounts', label: 'Old accounts nobody uses', icon: 'fa-ghost', summary: 'Forgotten accounts closed' },
+    { id: 'unknown', label: 'I genuinely don\u2019t know', icon: 'fa-circle-question', summary: 'A full list of what leaves your account each month' }
+  ];
+
+  var partnerTasks = [
+    { id: 'website', label: 'Website updates', icon: 'fa-desktop', summary: 'Website changes handled' },
+    { id: 'accounts', label: 'Account and email problems', icon: 'fa-user-lock', summary: 'Account and email problems handled' },
+    { id: 'onboarding', label: 'Setting up new employees', icon: 'fa-user-plus', summary: 'New employee setup handled' },
+    { id: 'backups', label: 'Keeping backups working', icon: 'fa-hard-drive', summary: 'Backups checked so you don\u2019t have to' },
+    { id: 'security', label: 'Security questions', icon: 'fa-lock', summary: 'Someone to answer the security questions' },
+    { id: 'decisions', label: 'Choosing new tools', icon: 'fa-compass-drafting', summary: 'A second opinion before you buy' }
+  ];
+
   /* --- TRANSFORMATIONS (before → after) -------------------------
      Generic transformations, not client results. Every one of these
      describes a category of change, never a measured outcome.
@@ -493,6 +554,12 @@
     websiteActions: websiteActions,
     websiteBaseAddons: websiteBaseAddons,
     automationTasks: automationTasks,
+    checkupConcerns: checkupConcerns,
+    backupAssets: backupAssets,
+    securityRisks: securityRisks,
+    remoteNeeds: remoteNeeds,
+    costAreas: costAreas,
+    partnerTasks: partnerTasks,
     opportunityTargets: opportunityTargets,
     opportunityAreas: opportunityAreas,
     transformations: transformations,
