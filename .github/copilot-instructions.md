@@ -21,9 +21,13 @@ This is the official business website for **Gray Matter LLC**, a digital solutio
 ├── pricing.html      # Pricing page with three-tier plans and FAQ accordion
 ├── contact.html      # Contact/inquiry form
 ├── agreement.html    # Client agreement / service terms
+├── industries.html   # Who We Help index
+├── industries/       # Industry pages
+├── services/         # Nine productized service pages
 ├── css/
 │   └── style.css     # All styles (single stylesheet)
 └── js/
+    ├── data.js       # Content architecture — services, outcomes, industries, case studies
     └── main.js       # All JavaScript (single script)
 ```
 
@@ -31,14 +35,17 @@ This is the official business website for **Gray Matter LLC**, a digital solutio
 
 Always use these CSS custom property values when adding or modifying styles:
 
-| Token            | Value              |
-|------------------|--------------------|
-| Base background  | `#0f172a` (deep navy) |
-| Surface          | `#1e293b`          |
-| Accent           | `#14b8a6` (teal)   |
-| Accent light     | `#5eead4`          |
-| Text             | `#f8fafc`          |
-| Text muted       | `#94a3b8`          |
+| Token            | Value                     |
+|------------------|---------------------------|
+| `--gm-paper`     | `#F7F4ED` (page background) |
+| `--gm-ink`       | `#152238` (text, dark panels) |
+| `--gm-blue`      | `#2F64D6` (accent)        |
+| `--gm-mint`      | `#B8E1D0`                 |
+| `--gm-gold`      | `#F3C969`                 |
+| `--gm-coral`     | `#E9785D`                 |
+| `--gm-line`      | `#D5DBE4` (borders)       |
+
+Headings use Manrope; body copy uses Inter.
 
 ## Code Style Conventions
 
@@ -66,6 +73,16 @@ npx serve .
 - **Portfolio filter**: client-side category filtering with no page reload.
 - **FAQ accordion**: single-open accordion on the pricing page.
 - **Contact form validation**: required field checks, email regex, and animated success message.
+- **Outcome chooser**: `[data-outcome-grid]` renders goal cards from `GM_DATA.outcomes`; selecting one reveals `[data-reco-panel]` in place.
+- **Configurators**: `[data-chipset="<collection>"]` renders selectable chips from a `GM_DATA` collection; `[data-summary-for]` renders the live summary.
+- **CTA context routing**: calls to action pass `?service=` and `?goal=` (and `?wants=` from configurators) into `contact.html`.
+
+## Content Rules
+
+- **Never invent business facts.** No client names, testimonials, metrics, prices, turnaround times, certifications, or guarantees that were not supplied. Use a clearly labelled placeholder or omit.
+- Example figures (the cost-cleanup bill, the checkup report card) must carry an "illustrative" label and a disclaimer.
+- Add new services/outcomes/industries to `js/data.js` first; components read from it.
+- SEO-critical copy must also exist as static HTML, not only as JS-rendered content.
 
 ## Testing & Validation
 

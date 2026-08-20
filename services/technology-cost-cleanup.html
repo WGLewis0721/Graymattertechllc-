@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Technology cost optimization for small business — find unused subscriptions, redundant tools, and unnecessary cloud spending." />
-  <title>Technology Cost Cleanup | Stop Overpaying | Gray Matter LLC</title>
+  <meta name="description" content="Technology cost review for small business: find unused licenses, duplicate software, and forgotten subscriptions, then right-size what you keep." />
+  <title>Cut Small Business Software &amp; Subscription Costs | Gray Matter LLC</title>
   <link rel="canonical" href="https://wglewis0721.github.io/Graymattertechllc-/services/technology-cost-cleanup.html" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Technology Cost Cleanup | Stop Overpaying | Gray Matter LLC" />
@@ -74,22 +74,64 @@
 }
   </script>
 </head>
-<body>
+<body data-root="../">
 
   <!-- NAVBAR -->
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="container nav-container">
       <a href="../index.html" class="nav-logo"><img src="../assets/gray-matter-media-package/brand/approved-reference/gm-logo-horizontal-approved.png" width="1132" height="270" alt="Gray Matter — Digital and Technology Solutions" /></a>
       <ul class="nav-links" role="list">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../services.html">Services</a></li>
-        <li><a href="../process.html">How We Work</a></li>
-        <li><a href="../cloud-consulting.html">Cloud Consulting</a></li>
-        <li><a href="../portfolio.html">Portfolio</a></li>
+        <li class="has-mega">
+          <button type="button" class="mega-toggle" aria-expanded="false" aria-controls="solutions-menu">Solutions <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+          <div class="mega-panel" id="solutions-menu" data-open="false">
+            <div class="mega-grid">
+              <div class="mega-col">
+                <h6>Grow</h6>
+                <ul role="list">
+                  <li><a href="../services/business-websites.html">Business Websites</a></li>
+                  <li><a href="../services/business-opportunity-finder.html">Business Opportunity Finder</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Save Time</h6>
+                <ul role="list">
+                  <li><a href="../services/workflow-automation.html">Workflow Automation</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Protect</h6>
+                <ul role="list">
+                  <li><a href="../services/business-security.html">Business Security</a></li>
+                  <li><a href="../services/backup-recovery.html">Backup &amp; Recovery</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Work Better</h6>
+                <ul role="list">
+                  <li><a href="../services/work-from-anywhere.html">Work From Anywhere</a></li>
+                  <li><a href="../services/technology-cost-cleanup.html">Technology Cost Cleanup</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Get Help</h6>
+                <ul role="list">
+                  <li><a href="../services/business-technology-checkup.html">Business Technology Checkup</a></li>
+                  <li><a href="../services/technology-partner.html">Technology Partner</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="mega-foot">
+              <a href="../services.html">All Services <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              <a href="../industries.html">Who We Help <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              <a href="../pricing.html">Website Packages <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </li>
+        <li><a href="../process.html">How It Works</a></li>
+        <li><a href="../portfolio.html">Work</a></li>
         <li><a href="../pricing.html">Pricing</a></li>
-        <li><a href="../agreement.html">Agreement</a></li>
-        <li><a href="../sops.html">SOPs</a></li>
-        <li><a href="../contact.html" class="btn btn-primary btn-sm">Contact</a></li>
+        <li><a href="../cloud-consulting.html">Cloud Consulting</a></li>
+        <li><a href="../contact.html?service=technology-cost-cleanup&amp;goal=save-money" class="btn btn-primary btn-sm">Tell Us What You Need</a></li>
       </ul>
       <button class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -97,15 +139,38 @@
     </div>
     <nav class="mobile-nav" aria-label="Mobile navigation">
       <a href="../index.html">Home</a>
-      <a href="../services.html">Services</a>
-      <a href="../process.html">How We Work</a>
-      <a href="../cloud-consulting.html">Cloud Consulting</a>
-      <a href="../portfolio.html">Portfolio</a>
+      <div class="mnav-group">
+        <button type="button" class="mnav-toggle" aria-expanded="false" aria-controls="mnav-solutions">Solutions <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+        <div class="mnav-panel" id="mnav-solutions" data-open="false">
+          <h6>Grow</h6>
+          <a href="../services/business-websites.html">Business Websites</a>
+          <a href="../services/business-opportunity-finder.html">Business Opportunity Finder</a>
+          <h6>Save Time</h6>
+          <a href="../services/workflow-automation.html">Workflow Automation</a>
+          <h6>Protect</h6>
+          <a href="../services/business-security.html">Business Security</a>
+          <a href="../services/backup-recovery.html">Backup &amp; Recovery</a>
+          <h6>Work Better</h6>
+          <a href="../services/work-from-anywhere.html">Work From Anywhere</a>
+          <a href="../services/technology-cost-cleanup.html">Technology Cost Cleanup</a>
+          <h6>Get Help</h6>
+          <a href="../services/business-technology-checkup.html">Business Technology Checkup</a>
+          <a href="../services/technology-partner.html">Technology Partner</a>
+          <h6>Browse</h6>
+          <a href="../services.html">All Services</a>
+          <a href="../industries.html">Who We Help</a>
+        </div>
+      </div>
+      <a href="../process.html">How It Works</a>
+      <a href="../portfolio.html">Work</a>
       <a href="../pricing.html">Pricing</a>
+      <a href="../cloud-consulting.html">Cloud Consulting</a>
       <a href="../agreement.html">Agreement</a>
       <a href="../sops.html">SOPs</a>
-      <a href="../contact.html">Contact</a>
+      <a href="../contact.html?service=technology-cost-cleanup&amp;goal=save-money">Tell Us What You Need</a>
     </nav>
+  </nav>
+
   </nav>
 
   <!-- PAGE HEADER -->
@@ -114,14 +179,52 @@
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <a href="../index.html">Home</a> <span aria-hidden="true">/</span> <a href="../services.html">Services</a> <span aria-hidden="true">/</span> <span aria-current="page">Technology Cost Cleanup</span>
       </nav>
-      <span class="section-label"><i class="fa-solid fa-money-bill-trend-up"></i> Stop Overpaying</span>
-      <h1>Technology Cost Cleanup</h1>
-      <p>We review your software, hosting, and subscriptions to find unnecessary spending and simplify your technology stack.</p>
+      <span class="section-label"><i class="fa-solid fa-receipt" aria-hidden="true"></i> Stop Overpaying</span>
+      <h1>What Are You Paying For That Nobody Uses?</h1>
+      <p class="lede" style="margin-left:auto;margin-right:auto;">Subscriptions pile up quietly. We go through what&rsquo;s actually being charged, what&rsquo;s being used, and what can go.</p>
+      <div class="hero-actions" style="justify-content:center;margin-top:2rem;">
+        <a href="../contact.html?service=technology-cost-cleanup&amp;goal=save-money" class="btn btn-primary btn-lg">Review My Technology Costs <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <a href="#what-you-get" class="btn btn-outline btn-lg">See What&rsquo;s Included</a>
+      </div>
     </div>
   </header>
 
+  <!-- MOCK BILL -->
+  <section class="section-pad section-paper">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">What a Review Looks Like</span>
+        <h2 class="section-title">Waste &rarr; Savings</h2>
+        <p class="section-subtitle">Here&rsquo;s the shape of the answer you get back.</p>
+      </div>
+
+      <div class="mock-bill fade-up">
+        <div class="bill-head">
+          <span>Current technology</span>
+          <span class="illustrative-tag">Example numbers</span>
+        </div>
+        <p class="bill-total" style="margin-top:0.75rem;">$1,240 <span style="font-size:1rem;font-weight:400;color:var(--gm-ink-55);">/ month</span></p>
+        <ul>
+          <li>Unused licenses <span>$180</span></li>
+          <li>Duplicate software <span>$120</span></li>
+          <li>Old accounts <span>$60</span></li>
+        </ul>
+        <div class="bill-savings">
+          <strong>Potential savings</strong>
+          <span class="bill-total">$360 <span style="font-size:0.95rem;font-weight:400;">/ mo</span></span>
+        </div>
+      </div>
+
+      <p class="disclaimer" style="margin:2rem auto 0;"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> The figures above are illustrative only &mdash; they show the format of the review, not a promised saving. Your result depends entirely on what you&rsquo;re currently paying for.</p>
+
+      <div class="text-center" style="margin-top:2.5rem;">
+        <a href="../contact.html?service=technology-cost-cleanup&amp;goal=save-money" class="btn btn-primary btn-lg">Review My Technology Costs <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </section>
+
   <!-- WHAT THIS SOLVES -->
-  <section class="section-pad" style="background:var(--gm-paper);">
+  <section class="section-pad section-white" id="what-you-get">
     <div class="container">
       <div class="grid-2" style="gap:2.5rem;align-items:start;">
         <div class="fade-up">
@@ -147,7 +250,7 @@
       </div>
 
       <div class="text-center" style="margin-top:3rem;">
-        <a href="../contact.html?service=technology-cost-cleanup" class="btn btn-primary btn-lg">Review My Tech Spending <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="../contact.html?service=technology-cost-cleanup&amp;goal=save-money" class="btn btn-primary btn-lg">Review My Tech Spending <i class="fa-solid fa-arrow-right"></i></a>
         <a href="../process.html" class="btn btn-outline btn-lg" style="margin-left:1rem;">See How It Works</a>
       </div>
     </div>
@@ -178,6 +281,19 @@
     </div>
   </section>
 
+  <!-- CLOSING CTA -->
+  <section class="cta-banner final-cta">
+    <div class="container">
+      <span class="section-label">One Next Step</span>
+      <h2>Find Out What You&rsquo;re Actually Paying</h2>
+      <p>No obligation to cancel anything. You just get to see it clearly first.</p>
+      <div class="btn-actions">
+        <a href="../contact.html?service=technology-cost-cleanup&amp;goal=save-money" class="btn btn-primary btn-lg">Review My Technology Costs <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <a href="../process.html" class="btn btn-outline btn-lg">See How It Works</a>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <div class="container">
@@ -185,52 +301,63 @@
         <div class="footer-brand">
           <a href="../index.html" class="nav-logo"><img src="../assets/gray-matter-media-package/brand/approved-reference/gm-logo-horizontal-approved.png" width="1132" height="270" alt="Gray Matter — Digital and Technology Solutions" loading="lazy" /></a>
           <p>Digital and technology solutions — from tech fit to completion — for businesses, entrepreneurs, and technical organizations.</p>
+          <p class="footer-locale">Gray Matter LLC &middot; Montgomery, Alabama &middot; serving local and remote clients</p>
         </div>
         <div class="footer-col">
-          <h5>Navigate</h5>
+          <p class="footer-col-title">Navigate</p>
           <ul role="list">
             <li><a href="../index.html">Home</a></li>
-            <li><a href="../services.html">Services</a></li>
-            <li><a href="../process.html">How We Work</a></li>
-            <li><a href="../cloud-consulting.html">Cloud Consulting</a></li>
-            <li><a href="../portfolio.html">Portfolio</a></li>
+            <li><a href="../services.html">All Services</a></li>
+            <li><a href="../industries.html">Who We Help</a></li>
+            <li><a href="../process.html">How It Works</a></li>
+            <li><a href="../portfolio.html">Work</a></li>
             <li><a href="../pricing.html">Pricing</a></li>
+            <li><a href="../cloud-consulting.html">Cloud Consulting</a></li>
             <li><a href="../agreement.html">Agreement</a></li>
             <li><a href="../sops.html">SOPs</a></li>
-            <li><a href="../contact.html">Contact</a></li>
+            <li><a href="../contact.html?service=technology-cost-cleanup&amp;goal=save-money">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h5>Services</h5>
+          <p class="footer-col-title">Services</p>
           <ul role="list">
-            <li><a href="business-technology-checkup.html">Business Technology Checkup</a></li>
-            <li><a href="business-websites.html">Business Websites</a></li>
-            <li><a href="workflow-automation.html">Workflow Automation</a></li>
-            <li><a href="backup-recovery.html">Backup &amp; Recovery</a></li>
-            <li><a href="business-security.html">Business Security</a></li>
-            <li><a href="work-from-anywhere.html">Work From Anywhere</a></li>
-            <li><a href="technology-cost-cleanup.html">Technology Cost Cleanup</a></li>
-            <li><a href="technology-partner.html">Technology Partner</a></li>
-            <li><a href="business-opportunity-finder.html">Business Opportunity Finder</a></li>
+            <li><a href="../services/business-technology-checkup.html">Business Technology Checkup</a></li>
+            <li><a href="../services/business-websites.html">Business Websites</a></li>
+            <li><a href="../services/workflow-automation.html">Workflow Automation</a></li>
+            <li><a href="../services/backup-recovery.html">Backup &amp; Recovery</a></li>
+            <li><a href="../services/business-security.html">Business Security</a></li>
+            <li><a href="../services/work-from-anywhere.html">Work From Anywhere</a></li>
+            <li><a href="../services/technology-cost-cleanup.html">Technology Cost Cleanup</a></li>
+            <li><a href="../services/technology-partner.html">Technology Partner</a></li>
+            <li><a href="../services/business-opportunity-finder.html">Business Opportunity Finder</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h5>Connect</h5>
-          <div class="social-links">
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <p class="footer-col-title">Contact</p>
+          <ul role="list">
+            <li><a href="mailto:graymattertechllc@gmail.com">graymattertechllc@gmail.com</a></li>
+            <li><a href="tel:+13346522601">334-652-2601</a></li>
+          </ul>
+          <div class="social-links" style="margin-top:1rem;">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
           </div>
-          <p style="margin-top:1rem;font-size:0.85rem;color:rgba(255,255,255,0.55);">graymattertechllc@gmail.com</p>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2024 Gray Matter LLC. All rights reserved.</p>
+        <p>&copy; 2026 Gray Matter LLC. All rights reserved.</p>
         <p>Built with purpose, launched with precision.</p>
       </div>
     </div>
   </footer>
 
+  <!-- PERSISTENT MOBILE CTA -->
+  <div class="mobile-cta-bar" data-visible="false">
+    <a href="../contact.html?service=technology-cost-cleanup&amp;goal=save-money" class="btn btn-primary">Tell Us What You Need <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+  </div>
+
+  <script src="../js/data.js"></script>
   <script src="../js/main.js"></script>
 </body>
 </html>

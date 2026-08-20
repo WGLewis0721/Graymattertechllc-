@@ -33,22 +33,64 @@
   }
   </script>
 </head>
-<body>
+<body data-root="">
 
   <!-- NAVBAR -->
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="container nav-container">
       <a href="index.html" class="nav-logo"><img src="assets/gray-matter-media-package/brand/approved-reference/gm-logo-horizontal-approved.png" width="1132" height="270" alt="Gray Matter — Digital and Technology Solutions" /></a>
       <ul class="nav-links" role="list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="process.html">How We Work</a></li>
-        <li><a href="cloud-consulting.html">Cloud Consulting</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
+        <li class="has-mega">
+          <button type="button" class="mega-toggle" aria-expanded="false" aria-controls="solutions-menu">Solutions <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+          <div class="mega-panel" id="solutions-menu" data-open="false">
+            <div class="mega-grid">
+              <div class="mega-col">
+                <h6>Grow</h6>
+                <ul role="list">
+                  <li><a href="services/business-websites.html">Business Websites</a></li>
+                  <li><a href="services/business-opportunity-finder.html">Business Opportunity Finder</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Save Time</h6>
+                <ul role="list">
+                  <li><a href="services/workflow-automation.html">Workflow Automation</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Protect</h6>
+                <ul role="list">
+                  <li><a href="services/business-security.html">Business Security</a></li>
+                  <li><a href="services/backup-recovery.html">Backup &amp; Recovery</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Work Better</h6>
+                <ul role="list">
+                  <li><a href="services/work-from-anywhere.html">Work From Anywhere</a></li>
+                  <li><a href="services/technology-cost-cleanup.html">Technology Cost Cleanup</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6>Get Help</h6>
+                <ul role="list">
+                  <li><a href="services/business-technology-checkup.html">Business Technology Checkup</a></li>
+                  <li><a href="services/technology-partner.html">Technology Partner</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="mega-foot">
+              <a href="services.html">All Services <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              <a href="industries.html">Who We Help <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              <a href="pricing.html">Website Packages <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </li>
+        <li><a href="process.html">How It Works</a></li>
+        <li><a href="portfolio.html">Work</a></li>
         <li><a href="pricing.html">Pricing</a></li>
-        <li><a href="agreement.html">Agreement</a></li>
-        <li><a href="sops.html">SOPs</a></li>
-        <li><a href="contact.html" class="btn btn-primary btn-sm">Contact</a></li>
+        <li><a href="cloud-consulting.html">Cloud Consulting</a></li>
+        <li><a href="contact.html" class="btn btn-primary btn-sm">Tell Us What You Need</a></li>
       </ul>
       <button class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -56,15 +98,38 @@
     </div>
     <nav class="mobile-nav" aria-label="Mobile navigation">
       <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="process.html">How We Work</a>
-      <a href="cloud-consulting.html">Cloud Consulting</a>
-      <a href="portfolio.html">Portfolio</a>
+      <div class="mnav-group">
+        <button type="button" class="mnav-toggle" aria-expanded="false" aria-controls="mnav-solutions">Solutions <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+        <div class="mnav-panel" id="mnav-solutions" data-open="false">
+          <h6>Grow</h6>
+          <a href="services/business-websites.html">Business Websites</a>
+          <a href="services/business-opportunity-finder.html">Business Opportunity Finder</a>
+          <h6>Save Time</h6>
+          <a href="services/workflow-automation.html">Workflow Automation</a>
+          <h6>Protect</h6>
+          <a href="services/business-security.html">Business Security</a>
+          <a href="services/backup-recovery.html">Backup &amp; Recovery</a>
+          <h6>Work Better</h6>
+          <a href="services/work-from-anywhere.html">Work From Anywhere</a>
+          <a href="services/technology-cost-cleanup.html">Technology Cost Cleanup</a>
+          <h6>Get Help</h6>
+          <a href="services/business-technology-checkup.html">Business Technology Checkup</a>
+          <a href="services/technology-partner.html">Technology Partner</a>
+          <h6>Browse</h6>
+          <a href="services.html">All Services</a>
+          <a href="industries.html">Who We Help</a>
+        </div>
+      </div>
+      <a href="process.html">How It Works</a>
+      <a href="portfolio.html">Work</a>
       <a href="pricing.html">Pricing</a>
+      <a href="cloud-consulting.html">Cloud Consulting</a>
       <a href="agreement.html">Agreement</a>
       <a href="sops.html">SOPs</a>
-      <a href="contact.html">Contact</a>
+      <a href="contact.html">Tell Us What You Need</a>
     </nav>
+  </nav>
+
   </nav>
 
   <!-- PAGE HEADER -->
@@ -290,23 +355,25 @@
         <div class="footer-brand">
           <a href="index.html" class="nav-logo"><img src="assets/gray-matter-media-package/brand/approved-reference/gm-logo-horizontal-approved.png" width="1132" height="270" alt="Gray Matter — Digital and Technology Solutions" loading="lazy" /></a>
           <p>Digital and technology solutions — from tech fit to completion — for businesses, entrepreneurs, and technical organizations.</p>
+          <p class="footer-locale">Gray Matter LLC &middot; Montgomery, Alabama &middot; serving local and remote clients</p>
         </div>
         <div class="footer-col">
-          <h5>Navigate</h5>
+          <p class="footer-col-title">Navigate</p>
           <ul role="list">
             <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="process.html">How We Work</a></li>
-            <li><a href="cloud-consulting.html">Cloud Consulting</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="services.html">All Services</a></li>
+            <li><a href="industries.html">Who We Help</a></li>
+            <li><a href="process.html">How It Works</a></li>
+            <li><a href="portfolio.html">Work</a></li>
             <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="cloud-consulting.html">Cloud Consulting</a></li>
             <li><a href="agreement.html">Agreement</a></li>
             <li><a href="sops.html">SOPs</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h5>Services</h5>
+          <p class="footer-col-title">Services</p>
           <ul role="list">
             <li><a href="services/business-technology-checkup.html">Business Technology Checkup</a></li>
             <li><a href="services/business-websites.html">Business Websites</a></li>
@@ -320,22 +387,31 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h5>Connect</h5>
-          <div class="social-links">
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <p class="footer-col-title">Contact</p>
+          <ul role="list">
+            <li><a href="mailto:graymattertechllc@gmail.com">graymattertechllc@gmail.com</a></li>
+            <li><a href="tel:+13346522601">334-652-2601</a></li>
+          </ul>
+          <div class="social-links" style="margin-top:1rem;">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
           </div>
-          <p style="margin-top:1rem;font-size:0.85rem;color:rgba(255,255,255,0.55);">graymattertechllc@gmail.com</p>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2024 Gray Matter LLC. All rights reserved.</p>
+        <p>&copy; 2026 Gray Matter LLC. All rights reserved.</p>
         <p>Built with purpose, launched with precision.</p>
       </div>
     </div>
   </footer>
 
+  <!-- PERSISTENT MOBILE CTA -->
+  <div class="mobile-cta-bar" data-visible="false">
+    <a href="contact.html" class="btn btn-primary">Tell Us What You Need <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+  </div>
+
+  <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
