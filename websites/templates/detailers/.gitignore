@@ -1,0 +1,18 @@
+# secrets — never commit these (see docs/SECURITY.md)
+.env
+.env.local
+.env.*.local
+
+# dependencies
+node_modules/
+
+# build output
+dist/
+.astro/
+
+# generated client projects (spun up by scripts/new-client.sh, live outside this repo in practice)
+clients/
+
+# editor/OS noise
+.DS_Store
+*.log

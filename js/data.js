@@ -370,6 +370,30 @@
       services: ['business-websites', 'workflow-automation', 'technology-partner']
     },
     {
+      slug: 'entrepreneurs',
+      name: 'Entrepreneurs & Solo Founders',
+      icon: 'fa-rocket',
+      need: 'Explain the offer, build trust, and let people act on it.',
+      url: 'industries/entrepreneurs.html',
+      services: ['business-websites', 'workflow-automation', 'business-opportunity-finder']
+    },
+    {
+      slug: 'food-trucks',
+      name: 'Food Trucks & Mobile Food',
+      icon: 'fa-truck',
+      need: 'Find today’s location, read the menu, book catering.',
+      url: 'industries/food-trucks.html',
+      services: ['business-websites', 'workflow-automation', 'technology-partner']
+    },
+    {
+      slug: 'cleaning-services',
+      name: 'Cleaning & Turnover Services',
+      icon: 'fa-spray-can-sparkles',
+      need: 'See what’s included, trust the result, request a quote.',
+      url: 'industries/cleaning-services.html',
+      services: ['business-websites', 'workflow-automation', 'business-security']
+    },
+    {
       slug: 'professional-services',
       name: 'Professional Services',
       icon: 'fa-briefcase',

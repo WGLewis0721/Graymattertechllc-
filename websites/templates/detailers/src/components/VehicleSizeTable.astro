@@ -1,0 +1,283 @@
+---
+// VehicleSizeTable — vertical-specific to detailers. A price *matrix*:
+// every package tier crossed with every vehicle size. No other vertical
+// in this library prices one service against multiple units of the same
+// axis — barbers' PriceList is a flat `ServiceCard` grid (one price per
+// service), hospitality's `ServiceChecklist` is task-forward with no
+// price at all. A matrix is a genuinely different shape, so it stays
+// local here rather than being forced into shared/ (docs/ENGINEERING.md,
+// principle 7).
+//
+// Two renderings of the same data, one visible at a time:
+//   - Narrow: one card per tier, sizes listed inside it. No horizontal
+//     scroll, ever — a price table that needs sideways dragging on a
+//     phone is the single most common way this pattern fails.
+//   - Wide (>= 48rem): a real <table>, because at that width a matrix
+//     genuinely is tabular and screen readers should hear it as one.
+// The narrow rendering is aria-hidden and the wide one is display:none
+// below the breakpoint, so assistive tech is never offered both.
+interface Tier {
+  name: string;
+  description?: string;
+  duration?: string;
+  /** One price per entry in `sizes`, same order. */
+  prices: string[];
+  includes: string[];
+}
+
+interface Props {
+  sizes: string[];
+  tiers: Tier[];
+  /** Name of the tier to visually emphasize, e.g. the most-booked one. */
+  featured?: string;
+}
+
+const { sizes, tiers, featured } = Astro.props;
+
+// A tier whose price count doesn't match the size count would silently
+// render a ragged row. content.schema.json constrains both arrays to the
+// same 2-4 bounds but cannot express "equal length", so it's checked
+// here, at build time, where it fails loudly instead.
+for (const tier of tiers) {
+  if (tier.prices.length !== sizes.length) {
+    throw new Error(
+      `VehicleSizeTable: tier "${tier.name}" has ${tier.prices.length} price(s) ` +
+        `but there are ${sizes.length} vehicle size(s). They must match, in order.`
+    );
+  }
+}
+---
+
+<div class="vst">
+  <!-- Narrow: card per tier -->
+  <ul class="vst__cards">
+    {
+      tiers.map((tier) => (
+        <li class:list={['vst__card', { 'vst__card--featured': tier.name === featured }]}>
+          <div class="vst__card-head">
+            <h3 class="vst__name">{tier.name}</h3>
+            {tier.duration && <p class="vst__duration">{tier.duration}</p>}
+          </div>
+          {tier.description && <p class="vst__desc">{tier.description}</p>}
+          <ul class="vst__prices">
+            {sizes.map((size, i) => (
+              <li class="vst__price-row">
+                <span class="vst__size">{size}</span>
+                <span class="vst__price">{tier.prices[i]}</span>
+              </li>
+            ))}
+          </ul>
+          <ul class="vst__includes">
+            {tier.includes.map((item) => (
+              <li>
+                <span class="vst__check" aria-hidden="true">✓</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))
+    }
+  </ul>
+
+  <!-- Wide: the same data as one table -->
+  <div class="vst__table-wrap">
+    <table class="vst__table">
+      <caption class="vst__caption">Detailing packages, priced by vehicle size</caption>
+      <thead>
+        <tr>
+          <th scope="col">Package</th>
+          {sizes.map((size) => <th scope="col">{size}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {
+          tiers.map((tier) => (
+            <tr class:list={{ 'vst__row--featured': tier.name === featured }}>
+              <th scope="row">
+                <span class="vst__name">{tier.name}</span>
+                {tier.duration && <span class="vst__duration">{tier.duration}</span>}
+                {tier.description && <span class="vst__desc">{tier.description}</span>}
+                <ul class="vst__includes">
+                  {tier.includes.map((item) => (
+                    <li>
+                      <span class="vst__check" aria-hidden="true">✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </th>
+              {tier.prices.map((price) => (
+                <td class="vst__price">{price}</td>
+              ))}
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<style>
+  /* --- shared bits --- */
+  .vst__name {
+    font-size: var(--text-lg);
+    font-weight: var(--weight-bold);
+    display: block;
+  }
+
+  .vst__duration {
+    display: block;
+    font-size: var(--text-xs);
+    color: var(--color-ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .vst__desc {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-regular);
+    color: var(--color-ink-muted);
+    margin-top: var(--space-3xs);
+  }
+
+  .vst__price {
+    font-weight: var(--weight-bold);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .vst__includes {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+    margin-top: var(--space-xs);
+  }
+
+  .vst__includes li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2xs);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-regular);
+    color: var(--color-ink-muted);
+  }
+
+  .vst__check {
+    flex: 0 0 auto;
+    color: var(--color-accent);
+    font-weight: var(--weight-bold);
+  }
+
+  /* --- narrow: cards --- */
+  .vst__cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .vst__card {
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface-raised);
+  }
+
+  .vst__card--featured {
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-md);
+  }
+
+  .vst__card-head {
+    margin-bottom: var(--space-2xs);
+  }
+
+  .vst__prices {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+    margin-top: var(--space-xs);
+    padding-top: var(--space-xs);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .vst__price-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-sm);
+  }
+
+  .vst__size {
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+  }
+
+  .vst__table-wrap {
+    display: none;
+  }
+
+  /* --- wide: table --- */
+  @media (min-width: 48rem) {
+    .vst__cards {
+      display: none;
+    }
+
+    .vst__table-wrap {
+      display: block;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      background: var(--color-surface-raised);
+      overflow: hidden;
+    }
+
+    .vst__table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .vst__caption {
+      padding: var(--space-sm) var(--space-md) 0;
+      text-align: left;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-ink-muted);
+    }
+
+    .vst__table th,
+    .vst__table td {
+      padding: var(--space-sm) var(--space-md);
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .vst__table thead th {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-ink-muted);
+      font-weight: var(--weight-medium);
+    }
+
+    .vst__table tbody tr:last-child th,
+    .vst__table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .vst__table tbody th {
+      width: 45%;
+      font-weight: var(--weight-regular);
+    }
+
+    .vst__table td {
+      font-size: var(--text-lg);
+      white-space: nowrap;
+    }
+
+    .vst__row--featured {
+      background: var(--color-surface-alt);
+    }
+  }
+</style>
