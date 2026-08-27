@@ -254,6 +254,11 @@
       label: 'Send Invoices Without Me',
       detail: 'Invoicing and scheduling steps run on their own schedule.'
     },
+    'flow-ai-command-center': {
+      label: 'Bring My AI Tools Into One Place',
+      detail: 'ChatGPT, Claude, Gemini, and the other AI tools you use get organized into one simple system with a clear role for each.',
+      guide: 'Good for AI-heavy teams'
+    },
 
     /* --- process & documentation --------------------------------- */
     'doc-checklists': {
@@ -427,7 +432,7 @@
       price: FIT_PRICE,
       timeline: FIT_TIME,
       includes: ['We map the repeat work first', 'One routine handed to a system', 'Connected to the tools you already use'],
-      options: ['flow-social-orders', 'flow-confirmations', 'flow-followups', 'flow-reviews', 'flow-records', 'flow-invoices'],
+      options: ['flow-social-orders', 'flow-ai-command-center', 'flow-confirmations', 'flow-followups', 'flow-reviews', 'flow-records', 'flow-invoices'],
       checkoutMode: 'fit-check'
     },
     {

@@ -271,7 +271,9 @@
     { id: 'scheduling', label: 'Scheduling', icon: 'fa-calendar-days', summary: 'Customers book their own slot' },
     { id: 'reminders', label: 'Sending reminders', icon: 'fa-bell', summary: 'Reminders go out before appointments' },
     { id: 'reviews', label: 'Requesting reviews', icon: 'fa-star', summary: 'Review requests send after the job' },
-    { id: 'reports', label: 'Creating reports', icon: 'fa-chart-column', summary: 'Reports build themselves' }
+    { id: 'reports', label: 'Creating reports', icon: 'fa-chart-column', summary: 'Reports build themselves' },
+    { id: 'ai-tools', label: 'Juggling too many AI tools', icon: 'fa-robot', summary: 'Your AI tools land in one organized system' },
+    { id: 'ai-routing', label: 'Knowing which AI to use for what', icon: 'fa-route', summary: 'Each job goes to the AI that’s actually good at it' }
   ];
 
   /* --- OPPORTUNITY FINDER OPTIONS ------------------------------- */
