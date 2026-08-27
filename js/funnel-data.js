@@ -229,6 +229,11 @@
     },
 
     /* --- workflow automation ------------------------------------- */
+    'flow-social-orders': {
+      label: 'Turn Facebook & Instagram Messages Into Tracked Orders',
+      detail: 'Customers and orders from your social inbox get captured, tracked, and followed up on. You keep talking to customers yourself.',
+      guide: 'Good for social-first businesses'
+    },
     'flow-confirmations': {
       label: 'Send Confirmations for Me',
       detail: 'Appointment confirmations and reminders go out without you touching them.'
@@ -414,7 +419,7 @@
       id: 'workflow-time-saver',
       goal: 'operate',
       name: 'Workflow Time-Saver',
-      result: 'Automate repetitive administrative work.',
+      result: 'Automate follow-up, scheduling, order tracking, and customer updates.',
       icon: 'fa-diagram-project',
       service: 'workflow-automation',
       serviceName: 'Workflow Automation',
@@ -422,7 +427,7 @@
       price: FIT_PRICE,
       timeline: FIT_TIME,
       includes: ['We map the repeat work first', 'One routine handed to a system', 'Connected to the tools you already use'],
-      options: ['flow-confirmations', 'flow-followups', 'flow-reviews', 'flow-records', 'flow-invoices'],
+      options: ['flow-social-orders', 'flow-confirmations', 'flow-followups', 'flow-reviews', 'flow-records', 'flow-invoices'],
       checkoutMode: 'fit-check'
     },
     {

@@ -264,6 +264,8 @@
   var automationTasks = [
     { id: 'confirmations', label: 'Sending confirmations', icon: 'fa-envelope-circle-check', summary: 'Confirmations send themselves' },
     { id: 'follow-up', label: 'Following up', icon: 'fa-reply', summary: 'Follow-ups go out on time' },
+    { id: 'social-orders', label: 'Taking orders in Facebook or Instagram messages', icon: 'fa-comments', summary: 'Orders from social media land in one tracked list' },
+    { id: 'order-status', label: 'Keeping track of order status', icon: 'fa-list-check', summary: 'Every order shows where it stands, start to finish' },
     { id: 'copying', label: 'Copying customer information', icon: 'fa-copy', summary: 'Customer details land where they belong' },
     { id: 'spreadsheets', label: 'Updating spreadsheets', icon: 'fa-table', summary: 'Records update themselves' },
     { id: 'scheduling', label: 'Scheduling', icon: 'fa-calendar-days', summary: 'Customers book their own slot' },
