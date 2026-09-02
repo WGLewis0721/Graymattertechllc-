@@ -4,7 +4,7 @@ A static, multi-page business website for **Gray Matter LLC**, a digital and
 technology solutions company serving small businesses, entrepreneurs, and
 technical organizations.
 
-https://wglewis0721.github.io/Graymattertechllc-/
+https://graymatterdigitalsolutions.com/
 
 > **Tell us what needs to change. We figure out the technology.**
 > Grow. Save. Protect. Get it handled.
