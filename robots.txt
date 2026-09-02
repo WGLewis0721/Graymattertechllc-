@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://wglewis0721.github.io/Graymattertechllc-/sitemap.xml
+Sitemap: https://graymatterdigitalsolutions.com/sitemap.xml
