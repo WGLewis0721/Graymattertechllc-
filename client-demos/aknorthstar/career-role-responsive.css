@@ -1,0 +1,7 @@
+.mobile-apply{display:none}
+@media(max-width:900px){
+  .role-hero:before{content:none!important}
+  .role-hero-inner:after{content:none!important}
+  .role-hero-inner{cursor:default!important;padding-bottom:28px!important}
+  .mobile-apply{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:18px;min-height:52px;border-radius:8px;background:linear-gradient(180deg,#a8162c,#811020);color:#fff;font-weight:800;font-size:17px;box-shadow:0 8px 20px rgba(86,7,20,.25)}
+}
