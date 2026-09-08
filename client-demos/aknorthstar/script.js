@@ -11,6 +11,27 @@ document.querySelector('#contactForm').addEventListener('submit',e=>{
   window.location.href=`mailto:bd@aknorthstar.com?subject=${subject}&body=${body}`;
 });
 
+const roleRoutes={
+  'Systems Engineer':'systems-engineer',
+  'Cybersecurity Engineer':'cybersecurity-engineer',
+  'Software Engineer':'software-engineer',
+  'DevSecOps Engineer':'devsecops-engineer'
+};
+document.querySelectorAll('.job-card').forEach(card=>{
+  const title=card.querySelector('h4')?.textContent.trim();
+  const slug=roleRoutes[title];
+  const link=card.querySelector('.job-apply');
+  if(slug&&link){
+    link.href=`career-role.html?role=${slug}`;
+    link.removeAttribute('target');
+    link.removeAttribute('rel');
+    link.innerHTML='Learn More <span>→</span>';
+    link.setAttribute('aria-label',`Learn more about the ${title} concept role`);
+  }
+});
+const careersNote=document.querySelector('.careers-note p');
+if(careersNote)careersNote.textContent='Learn More opens an ANR-styled role detail concept. Apply Now on each role page opens Alaska Northstar Resources’ live careers page for current openings and application details.';
+
 const sections=[...document.querySelectorAll('main section[id]')];
 const navs=[...document.querySelectorAll('.nav-links a[href^="#"]')];
 const obs=new IntersectionObserver(entries=>{
