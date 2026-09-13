@@ -34,7 +34,7 @@
       outcome: 'Get a plain-language review of what’s working, what’s risky, and what to fix first.',
       helps: ['See what you already have', 'Spot what’s at risk', 'Find wasted spend', 'Get a first-things-first plan'],
       cta: 'Review My Technology',
-      url: 'services/business-technology-checkup.html',
+      url: 'services/business-technology-checkup',
       interest: 'business-technology-checkup'
     },
     {
@@ -47,7 +47,7 @@
       outcome: 'Give customers one professional place to understand your business and take the next step.',
       helps: ['View your services', 'See pricing', 'Book an appointment', 'Request a quote'],
       cta: 'Build My Website',
-      url: 'services/business-websites.html',
+      url: 'services/business-websites',
       interest: 'business-websites'
     },
     {
@@ -60,7 +60,7 @@
       outcome: 'Let the routine parts of your business happen without you.',
       helps: ['Send confirmations', 'Move customer information', 'Trigger follow-ups', 'Send reminders'],
       cta: 'Help Me Save Time',
-      url: 'services/workflow-automation.html',
+      url: 'services/workflow-automation',
       interest: 'workflow-automation'
     },
     {
@@ -73,7 +73,7 @@
       outcome: 'Turn scattered procedures into one system people can actually use.',
       helps: ['Train new people faster', 'Delegate without re-explaining', 'Keep results consistent', 'Stop depending on one person'],
       cta: 'Organize My Documentation',
-      url: 'services/process-documentation.html',
+      url: 'services/process-documentation',
       interest: 'process-documentation'
     },
     {
@@ -86,7 +86,7 @@
       outcome: 'Keep a protected copy of what your business can’t afford to lose.',
       helps: ['Protect customer records', 'Protect contracts and photos', 'Recover after a device fails', 'Keep working after a bad day'],
       cta: 'Protect My Files',
-      url: 'services/backup-recovery.html',
+      url: 'services/backup-recovery',
       interest: 'backup-recovery'
     },
     {
@@ -99,7 +99,7 @@
       outcome: 'Lock down the accounts, devices, and information that matter.',
       helps: ['Remove access people shouldn’t have', 'Stop shared passwords', 'Protect business email', 'Protect customer information'],
       cta: 'Protect My Business',
-      url: 'services/business-security.html',
+      url: 'services/business-security',
       interest: 'business-security'
     },
     {
@@ -112,7 +112,7 @@
       outcome: 'Reach your files, email, and tools from the office, home, or the road.',
       helps: ['Get to your files anywhere', 'Work securely off-site', 'Share with employees', 'Stop depending on one machine'],
       cta: 'Work From Anywhere',
-      url: 'services/work-from-anywhere.html',
+      url: 'services/work-from-anywhere',
       interest: 'work-from-anywhere'
     },
     {
@@ -125,7 +125,7 @@
       outcome: 'See what you’re paying for, and stop paying for what you don’t use.',
       helps: ['List every subscription', 'Find duplicates', 'Close old accounts', 'Right-size what you keep'],
       cta: 'Review My Technology Costs',
-      url: 'services/technology-cost-cleanup.html',
+      url: 'services/technology-cost-cleanup',
       interest: 'technology-cost-cleanup'
     },
     {
@@ -138,7 +138,7 @@
       outcome: 'Have one place to call when technology gets in the way.',
       helps: ['Handle day-to-day issues', 'Keep accounts and backups healthy', 'Make technology decisions with you', 'Plan what’s next'],
       cta: 'Talk About Ongoing Support',
-      url: 'services/technology-partner.html',
+      url: 'services/technology-partner',
       interest: 'technology-partner'
     },
     {
@@ -151,7 +151,7 @@
       outcome: 'Get a researched list of businesses and opportunities worth pursuing.',
       helps: ['Target the right businesses', 'Focus on your service area', 'Find contract opportunities', 'Know who to contact'],
       cta: 'Find Opportunities',
-      url: 'services/business-opportunity-finder.html',
+      url: 'services/business-opportunity-finder',
       interest: 'business-opportunity-finder'
     }
   ];
@@ -649,7 +649,7 @@
       name: 'Barbers & Salons',
       icon: 'fa-scissors',
       need: 'Find the shop, see the work, book a chair.',
-      url: 'industries/barbers-salons.html',
+      url: 'industries/barbers-salons',
       services: ['business-websites', 'workflow-automation']
     },
     {
@@ -657,7 +657,7 @@
       name: 'Detailers',
       icon: 'fa-car',
       need: 'See packages, understand pricing, book a slot.',
-      url: 'industries/detailers.html',
+      url: 'industries/detailers',
       services: ['business-websites', 'workflow-automation']
     },
     {
@@ -665,7 +665,7 @@
       name: 'Contractors & Home Services',
       icon: 'fa-helmet-safety',
       need: 'See past work, trust the crew, request a quote.',
-      url: 'industries/contractors.html',
+      url: 'industries/contractors',
       services: ['business-websites', 'workflow-automation', 'business-opportunity-finder']
     },
     {
@@ -673,7 +673,7 @@
       name: 'Real Estate Professionals',
       icon: 'fa-house',
       need: 'Find you, trust you, and reach you fast.',
-      url: 'industries/real-estate.html',
+      url: 'industries/real-estate',
       services: ['business-websites', 'workflow-automation']
     },
     {
@@ -681,7 +681,7 @@
       name: 'Appointment Businesses',
       icon: 'fa-calendar-check',
       need: 'Pick a service, pick a time, get a reminder.',
-      url: 'industries/appointment-businesses.html',
+      url: 'industries/appointment-businesses',
       services: ['business-websites', 'workflow-automation', 'technology-partner']
     },
     {
@@ -689,7 +689,7 @@
       name: 'Entrepreneurs & Solo Founders',
       icon: 'fa-rocket',
       need: 'Explain the offer, build trust, and let people act on it.',
-      url: 'industries/entrepreneurs.html',
+      url: 'industries/entrepreneurs',
       services: ['business-websites', 'workflow-automation', 'business-opportunity-finder']
     },
     {
@@ -697,7 +697,7 @@
       name: 'Food Trucks & Mobile Food',
       icon: 'fa-truck',
       need: 'Find today’s location, read the menu, book catering.',
-      url: 'industries/food-trucks.html',
+      url: 'industries/food-trucks',
       services: ['business-websites', 'workflow-automation', 'technology-partner']
     },
     {
@@ -705,7 +705,7 @@
       name: 'Cleaning & Turnover Services',
       icon: 'fa-spray-can-sparkles',
       need: 'See what’s included, trust the result, request a quote.',
-      url: 'industries/cleaning-services.html',
+      url: 'industries/cleaning-services',
       services: ['business-websites', 'workflow-automation', 'business-security']
     },
     {
@@ -713,7 +713,7 @@
       name: 'Professional Services',
       icon: 'fa-briefcase',
       need: 'Understand the service, share documents, get started.',
-      url: 'industries/professional-services.html',
+      url: 'industries/professional-services',
       services: ['business-websites', 'business-security', 'backup-recovery']
     }
   ];
@@ -819,7 +819,7 @@
     var qs = [];
     if (serviceSlug) qs.push('service=' + encodeURIComponent(serviceSlug));
     if (goal) qs.push('goal=' + encodeURIComponent(goal));
-    return url('contact.html') + (qs.length ? '?' + qs.join('&') : '');
+    return url('contact') + (qs.length ? '?' + qs.join('&') : '');
   }
 
   global.GM_DATA = {

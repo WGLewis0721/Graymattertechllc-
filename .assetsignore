@@ -1,2 +1,10 @@
 .git
 .wrangler
+
+# Internal-only: not part of the public site, and never linked from it.
+# Excluding these keeps internal docs and the separate template-library
+# tooling out of Google's index and off the public crawl surface.
+README.md
+wrangler.jsonc
+docs/
+websites/

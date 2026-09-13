@@ -30,11 +30,15 @@
     });
   }
 
-  // Set active nav link based on current page
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  // Set active nav link based on current page. Resolve each link's href
+  // against the current location so it works regardless of relative depth
+  // or trailing slash; skip in-page anchors, which never mark a nav item current.
+  const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
   document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(link => {
     const href = link.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+    if (!href || href.indexOf('#') !== -1) return;
+    const linkPath = new URL(href, window.location.href).pathname.replace(/\/$/, '') || '/';
+    if (linkPath === currentPath) {
       link.classList.add('active');
     }
   });

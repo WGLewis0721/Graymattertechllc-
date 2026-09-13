@@ -96,7 +96,7 @@
         ? '<p class="plan-intake-upgrade"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> ' +
           esc(money.upgradeReason) + '</p>'
         : '') +
-      '<p class="plan-intake-change"><a href="' + esc((document.body.dataset.root || '') + 'index.html#build-my-plan') +
+      '<p class="plan-intake-change"><a href="' + esc((document.body.dataset.root || '') + './#build-my-plan') +
         '">Change my choices</a></p>' +
     '</div>';
   mount.hidden = false;

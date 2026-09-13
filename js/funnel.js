@@ -550,7 +550,7 @@
       params.set('ans', answerKeys.map(function (k) { return k + ':' + state.answers[k]; }).join(','));
     }
     params.set('next', nextStep || 'start');
-    return url('contact.html') + '?' + params.toString();
+    return url('contact') + '?' + params.toString();
   }
 
   function drawerBody() {
@@ -616,7 +616,7 @@
         '<button type="button" class="btn btn-outline" data-change-choices>Change My Choices</button>' +
       '</div>' +
       '<p class="drawer-terms">Work is carried out under the ' +
-        '<a href="' + esc(url('agreement.html')) + '">client agreement</a>. Sending a plan is a request, not a signature.</p>';
+        '<a href="' + esc(url('agreement')) + '">client agreement</a>. Sending a plan is a request, not a signature.</p>';
   }
 
   function renderDrawer() {
