@@ -1,0 +1,74 @@
+name: SEO canonical cleanup
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/seo-cleanup.yml
+
+permissions:
+  contents: write
+
+jobs:
+  normalize-homepage-url:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Normalize homepage canonical and sitemap URL
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          homepage = Path('index.html')
+          text = homepage.read_text(encoding='utf-8')
+
+          canonical_old = '<link rel="canonical" href="https://graymatterdigitalsolutions.com/index.html" />'
+          canonical_new = '<link rel="canonical" href="https://graymatterdigitalsolutions.com/" />'
+          og_old = '<meta property="og:url" content="https://graymatterdigitalsolutions.com/index.html" />'
+          og_new = '<meta property="og:url" content="https://graymatterdigitalsolutions.com/" />'
+
+          if canonical_old not in text:
+              raise SystemExit('Expected homepage canonical was not found; refusing to make an ambiguous edit.')
+          if og_old not in text:
+              raise SystemExit('Expected homepage og:url was not found; refusing to make an ambiguous edit.')
+
+          text = text.replace(canonical_old, canonical_new, 1)
+          text = text.replace(og_old, og_new, 1)
+          homepage.write_text(text, encoding='utf-8')
+
+          sitemap = Path('sitemap.xml')
+          xml = sitemap.read_text(encoding='utf-8')
+          old_loc = '<loc>https://graymatterdigitalsolutions.com/index.html</loc>'
+          new_loc = '<loc>https://graymatterdigitalsolutions.com/</loc>'
+          if old_loc not in xml:
+              raise SystemExit('Expected homepage sitemap URL was not found; refusing to make an ambiguous edit.')
+          xml = xml.replace(old_loc, new_loc, 1)
+          sitemap.write_text(xml, encoding='utf-8')
+          PY
+
+      - name: Verify cleanup
+        shell: bash
+        run: |
+          grep -F '<link rel="canonical" href="https://graymatterdigitalsolutions.com/" />' index.html
+          grep -F '<meta property="og:url" content="https://graymatterdigitalsolutions.com/" />' index.html
+          grep -F '<loc>https://graymatterdigitalsolutions.com/</loc>' sitemap.xml
+          ! grep -F 'https://graymatterdigitalsolutions.com/index.html' sitemap.xml
+
+      - name: Commit cleanup to main
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html sitemap.xml
+          if git diff --cached --quiet; then
+            echo "No cleanup changes needed."
+            exit 0
+          fi
+          git commit -m "SEO cleanup: normalize homepage canonical"
+          git push origin HEAD:main
