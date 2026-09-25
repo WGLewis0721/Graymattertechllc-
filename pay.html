@@ -103,8 +103,8 @@
           <h3>Payment Method</h3>
           <p><i class="fa-regular fa-credit-card"></i> Secure checkout through Gray Matter's configured payment provider.</p>
         </div>
-        <button class="pay-primary pay-now" id="pay-now" type="button" disabled><i class="fa-solid fa-lock"></i> Secure Payment</button>
-        <p class="checkout-status" id="checkout-status">We'll verify the invoice and use the approved amount before payment. Card details are never stored on this website.</p>
+        <a class="pay-primary pay-now" id="request-payment" href="mailto:graymattertechllc@gmail.com?subject=Gray%20Matter%20Payment%20Request"><i class="fa-regular fa-envelope"></i> Request Payment Instructions</a>\n        <button class="pay-primary pay-now" id="pay-now" type="button" hidden disabled><i class="fa-solid fa-lock"></i> Pay Securely with Stripe or Link</button>
+        <p class="checkout-status" id="checkout-status">Send your invoice or project reference and Gray Matter will reply with payment instructions for the verified amount due. Online card and Link checkout will appear here once enabled.</p>
       </section>
 
       <div class="pay-trust">
