@@ -39,8 +39,8 @@
     },
     {
       slug: 'business-websites',
-      name: 'Business Websites',
-      short: 'Business Website',
+      name: 'Website Solutions',
+      short: 'Website Solution',
       icon: 'fa-desktop',
       art: 'assets/gray-matter/services/gm-service-business-websites.svg',
       problem: 'I need customers to find me and take action.',
