@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pay a Gray Matter Digital Solutions invoice or service securely online." />
+  <title>Pay an Invoice or Service | Gray Matter Digital Solutions</title>
+  <link rel="canonical" href="https://graymatterdigitalsolutions.com/pay.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/pay.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/gray-matter-media-package/brand/approved-reference/gm-favicon-approved-32.png" />
+</head>
+<body data-root="">
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo"><img src="assets/gray-matter-media-package/brand/approved-reference/gm-logo-horizontal-approved.png" width="1132" height="270" alt="Gray Matter Digital Solutions" /></a>
+      <ul class="nav-links" role="list">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="process.html">How It Works</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="pay.html" class="active">Pay</a></li>
+        <li><a href="contact.html" class="btn btn-primary btn-sm">Tell Us What You Need</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="index.html">Home</a><a href="services.html">Services</a><a href="process.html">How It Works</a><a href="about.html">About</a><a href="pay.html" class="active">Pay</a><a href="contact.html">Tell Us What You Need</a>
+    </nav>
+  </nav>
+
+  <main class="pay-page">
+    <section class="pay-hero">
+      <div class="container">
+        <span class="pay-kicker">Client Payment Portal</span>
+        <h1>Pay an Invoice or Service</h1>
+        <p>Fast. Secure. Simple.</p>
+        <p class="pay-intro">Choose the service you're paying for or upload the invoice you received from Gray Matter Digital Solutions.</p>
+      </div>
+    </section>
+
+    <section class="container pay-shell" aria-label="Payment portal">
+      <div class="pay-choice-grid">
+        <article class="pay-card">
+          <div class="pay-icon"><i class="fa-regular fa-credit-card"></i></div>
+          <h2>Select a Service</h2>
+          <p>Choose the service you're paying for and enter your invoice or project details.</p>
+          <label for="pay-service">Service</label>
+          <select id="pay-service">
+            <option value="">Select a service…</option>
+            <option>Website Solutions</option>
+            <option>Workflow Automation</option>
+            <option>Business Technology Checkup</option>
+            <option>Business Security</option>
+            <option>Backup & Recovery</option>
+            <option>Work From Anywhere</option>
+            <option>Technology Cost Cleanup</option>
+            <option>Ongoing Technology Partner</option>
+            <option>Business Opportunity Finder</option>
+            <option>Other / Custom Work</option>
+          </select>
+          <label for="project-number">Invoice or Project Number</label>
+          <input id="project-number" type="text" placeholder="e.g. GM-2026-0042" autocomplete="off" />
+          <label for="business-name">Business Name <span>(optional)</span></label>
+          <input id="business-name" type="text" placeholder="Your business" autocomplete="organization" />
+          <button class="pay-primary" id="service-continue" type="button">Continue <i class="fa-solid fa-arrow-right"></i></button>
+        </article>
+
+        <div class="pay-or" aria-hidden="true">OR</div>
+
+        <article class="pay-card">
+          <div class="pay-icon"><i class="fa-regular fa-file-lines"></i></div>
+          <h2>Upload Your Invoice</h2>
+          <p>Upload the invoice you received from Gray Matter Digital Solutions and we'll use it to identify the payment.</p>
+          <label class="invoice-drop" id="invoice-drop" for="invoice-file">
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+            <strong>Drag and drop your invoice here</strong>
+            <span>or</span>
+            <span class="file-button">Choose a File</span>
+            <small>PDF, JPG or PNG · 10 MB max</small>
+          </label>
+          <input id="invoice-file" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" hidden />
+          <div class="invoice-selected" id="invoice-selected" hidden>
+            <i class="fa-regular fa-file-lines"></i><div><strong id="invoice-file-name"></strong><span id="invoice-file-size"></span></div><button type="button" id="invoice-remove" aria-label="Remove invoice"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+          <div class="pay-note"><i class="fa-solid fa-circle-info"></i><span>Your invoice must be from Gray Matter Digital Solutions. The invoice record, not the uploaded file, determines the amount due.</span></div>
+          <button class="pay-primary" id="invoice-continue" type="button" disabled>Review Invoice <i class="fa-solid fa-arrow-right"></i></button>
+        </article>
+      </div>
+
+      <section class="review-panel" id="review-panel" hidden aria-live="polite">
+        <div class="review-step"><span>2</span><div><small>Review & Pay</small><h2 id="review-heading">Payment details</h2></div></div>
+        <dl class="review-details">
+          <div><dt>Service</dt><dd id="review-service">—</dd></div>
+          <div><dt>Invoice / Project #</dt><dd id="review-number">—</dd></div>
+          <div><dt>Business</dt><dd id="review-business">—</dd></div>
+          <div class="amount-row"><dt>Amount Due</dt><dd id="review-amount">Confirmed from invoice</dd></div>
+        </dl>
+        <div class="payment-methods">
+          <h3>Payment Method</h3>
+          <p><i class="fa-regular fa-credit-card"></i> Secure checkout through Gray Matter's configured payment provider.</p>
+        </div>
+        <button class="pay-primary pay-now" id="pay-now" type="button" disabled><i class="fa-solid fa-lock"></i> Secure Payment</button>
+        <p class="checkout-status" id="checkout-status">We'll verify the invoice and use the approved amount before payment. Card details are never stored on this website.</p>
+      </section>
+
+      <div class="pay-trust">
+        <div><i class="fa-solid fa-lock"></i><p><strong>Secure Payments</strong><span>Processed through a trusted payment provider.</span></p></div>
+        <div><i class="fa-regular fa-clock"></i><p><strong>Fast & Easy</strong><span>Get it done in just a few clicks.</span></p></div>
+        <div><i class="fa-solid fa-shield-halved"></i><p><strong>Your Information Is Safe</strong><span>We never store your card details.</span></p></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script src="js/payment-config.js"></script>
+  <script src="js/pay.js"></script>
+</body>
+</html>
