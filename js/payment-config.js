@@ -1,7 +1,9 @@
 /* Gray Matter payment configuration.
-   Add only verified HTTPS checkout URLs from the approved payment provider.
-   The portal never accepts or stores card data directly. */
+   Stripe/Link stays hidden until enabled AND a verified HTTPS checkout URL is set.
+   Never commit secret keys here. */
 window.GM_PAYMENT = {
+  stripeEnabled: false,
   checkoutUrl: '',
-  invoiceLookupUrl: ''
+  invoiceLookupUrl: '',
+  paymentInstructionsEmail: 'graymattertechllc@gmail.com'
 };
