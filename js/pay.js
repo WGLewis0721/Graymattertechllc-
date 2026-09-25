@@ -2,7 +2,7 @@
 'use strict';
 const $=id=>document.getElementById(id);
 const service=$('pay-service'), number=$('project-number'), business=$('business-name');
-const panel=$('review-panel'), pay=$('pay-now'), status=$('checkout-status');
+const panel=$('review-panel'), pay=$('pay-now'), request=$('request-payment'), status=$('checkout-status');
 const file=$('invoice-file'), drop=$('invoice-drop'), selected=$('invoice-selected');
 const cfg=window.GM_PAYMENT||{};
 
@@ -14,10 +14,17 @@ function showReview(source){
   $('review-amount').textContent='Confirmed from invoice';
   panel.hidden=false;
   const url=(cfg.checkoutUrl||'').trim();
-  pay.disabled=!/^https:\/\//i.test(url);
-  status.textContent=pay.disabled
-    ? 'Payment provider is not connected yet. Gray Matter will verify the invoice and approved amount before enabling checkout.'
-    : 'Secure checkout opens with Gray Matter’s configured payment provider. Card details are never stored on this website.';
+  const stripeReady=cfg.stripeEnabled===true && /^https:\/\//i.test(url);
+  pay.hidden=!stripeReady;
+  pay.disabled=!stripeReady;
+  request.hidden=stripeReady;
+  const ref=number.value.trim() || (file.files[0] ? file.files[0].name : 'invoice/payment');
+  const subject=encodeURIComponent('Gray Matter payment request - '+ref);
+  const body=encodeURIComponent('Hello Gray Matter,\n\nI am ready to pay.\n\nService: '+(serviceName||'Please confirm')+'\nInvoice / Project: '+ref+'\nBusiness: '+(business.value.trim()||'')+'\n\nPlease send payment instructions for the verified amount due.');
+  request.href='mailto:'+(cfg.paymentInstructionsEmail||'graymattertechllc@gmail.com')+'?subject='+subject+'&body='+body;
+  status.textContent=stripeReady
+    ? 'Secure checkout opens with Stripe. Eligible customers can use Link. Card details are never stored on this website.'
+    : 'Send your invoice or project reference and Gray Matter will reply with payment instructions for the verified amount due. Online Stripe and Link checkout is currently hidden.';
   panel.scrollIntoView({behavior:'smooth',block:'center'});
 }
 $('service-continue').addEventListener('click',()=>{
