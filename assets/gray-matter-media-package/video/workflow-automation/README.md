@@ -50,4 +50,4 @@ Alt text: *Animated promo. Floating chat bubbles swirl with the words "Drowning 
 bash ../template/build.sh .
 ```
 
-This rewrites both MP4s from `clips/`. To change text or timing, edit `../template/build_overlay.py` (copy is at the top) and rebuild.
+This rewrites both MP4s from `clips/`. All the text, timing, sound effects and music cut points are in `promo.json`; edit it and rebuild.

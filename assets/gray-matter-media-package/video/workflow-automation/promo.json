@@ -1,0 +1,33 @@
+{
+  "intro": {"duration": 3.6, "kicker": "INTRODUCING", "title": "Workflow Automation"},
+  "scenes": [
+    {"duration": 3.6, "type": "words", "text": "Drowning in DMs?", "at": 0.6, "step": 0.3},
+    {"duration": 3.6, "type": "swap", "a": "Manual", "a_at": 3.85, "strike_at": 4.7, "b": "Automatic.", "b_at": 5.5},
+    {"duration": 3.6, "type": "accent", "left": "You approve.", "right": "It sends.", "at": 7.75, "accent_at": 10.08}
+  ],
+  "line_y": 554,
+  "end_card": {
+    "duration": 6.0,
+    "tagline": ["Tell us what needs to change.", "We figure out the technology."],
+    "contact": "graymatterdigitalsolutions.com · (334) 652-2601"
+  },
+  "music": {
+    "title": "Trap Beat by AtlasAudio (pixabay.com/music/beats-trap-beat-590006), 100 BPM",
+    "url": "https://cdn.pixabay.com/download/audio/2026/08/21/audio_ca564f6d7a.mp3",
+    "file": "trap-beat.mp3",
+    "intro_from": 6.661,
+    "body_from": 15.061,
+    "resolve": 14.4
+  },
+  "sfx": [
+    {"kind": "pings", "times": [0.35, 0.95, 1.3, 1.65, 1.9, 2.15, 2.35, 2.55, 2.7, 2.85]},
+    {"kind": "riser", "t": 3.1},
+    {"kind": "chime", "t": 3.95, "f": 1046.5},
+    {"kind": "chime", "t": 4.7, "f": 1318.5},
+    {"kind": "chime", "t": 5.5, "f": 1568.0},
+    {"kind": "chime", "t": 6.45, "f": 2093.0},
+    {"kind": "click", "t": 10.08},
+    {"kind": "chime", "t": 10.1, "f": 1567.98, "decay": 0.4, "gain": 0.12},
+    {"kind": "bell", "t": 1.2, "intro": true}
+  ]
+}

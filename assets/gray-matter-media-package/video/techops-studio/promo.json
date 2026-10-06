@@ -1,0 +1,125 @@
+{
+  "intro": {
+    "duration": 3.6,
+    "kicker": "MEET GRAY MATTER",
+    "title": "Your TechOps Studio"
+  },
+  "scenes": [
+    {
+      "duration": 3.6,
+      "type": "words",
+      "text": "It should work better.",
+      "at": 0.6,
+      "step": 0.3
+    },
+    {
+      "duration": 3.6,
+      "type": "swap",
+      "size": 80,
+      "a": "Don't know the fix yet?",
+      "a_at": 3.85,
+      "strike_at": null,
+      "b": "That's our job.",
+      "b_at": 5.4
+    },
+    {
+      "duration": 6.0,
+      "type": "sequence",
+      "kicker": "TECHOPS MEANS",
+      "kicker_at": 7.5,
+      "items": [
+        [
+          "Websites.",
+          8.4
+        ],
+        [
+          "Systems.",
+          9.0
+        ],
+        [
+          "Automation.",
+          9.6
+        ],
+        [
+          "Operations.",
+          10.2
+        ],
+        [
+          "Technology.",
+          11.1
+        ]
+      ]
+    }
+  ],
+  "line_y": 327,
+  "vertical_footage_y": 330,
+  "end_card": {
+    "duration": 6.0,
+    "line": "Websites · Systems · Automation · Operations · Technology",
+    "tagline": [
+      "Tell us what needs to change.",
+      "We figure out the technology."
+    ],
+    "contact": "graymatterdigitalsolutions.com · (334) 652-2601"
+  },
+  "music": {
+    "title": "Trap Beat by AtlasAudio (pixabay.com/music/beats-trap-beat-590006), 100 BPM",
+    "url": "https://cdn.pixabay.com/download/audio/2026/08/21/audio_ca564f6d7a.mp3",
+    "file": "trap-beat.mp3",
+    "intro_from": 6.661,
+    "body_from": 15.061,
+    "resolve": 16.8
+  },
+  "sfx": [
+    {
+      "kind": "crackle",
+      "times": [
+        0.5,
+        1.15,
+        1.8,
+        2.5
+      ],
+      "gain": 0.25
+    },
+    {
+      "kind": "riser",
+      "t": 4.3
+    },
+    {
+      "kind": "chime",
+      "t": 5.4,
+      "f": 1568.0,
+      "gain": 0.14
+    },
+    {
+      "kind": "chime",
+      "t": 8.4,
+      "f": 1046.5
+    },
+    {
+      "kind": "chime",
+      "t": 9.0,
+      "f": 1174.7
+    },
+    {
+      "kind": "chime",
+      "t": 9.6,
+      "f": 1318.5
+    },
+    {
+      "kind": "chime",
+      "t": 10.2,
+      "f": 1568.0
+    },
+    {
+      "kind": "chime",
+      "t": 11.1,
+      "f": 2093.0
+    },
+    {
+      "kind": "bell",
+      "t": 1.2,
+      "intro": true
+    }
+  ]
+}

@@ -4,7 +4,7 @@ Brand introduction. Promo 1 sold one service. This one says what Gray Matter *is
 
 - **Format:** square 1080x1080 and vertical 1080x1920, about 22.8s, built on the promo 1 template so the two read as one series
 - **Look:** the same locked style prefix, navy/cobalt/mint palette, intro card, dark end card, 100 BPM beat grid
-- **Status:** plan only. Nothing generated, no credits spent (balance 28.81).
+- **Status:** built. See [README.md](README.md) for the final files. Changes from this plan: clips were made with Kling 3.0 pro (the credits on hand did not cover Seedance), and scene 3 sits on the icons as they appear.
 
 ---
 
