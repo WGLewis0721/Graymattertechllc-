@@ -12,8 +12,10 @@ Scene types:
                                               {"a", "a_at", "strike_at"|null, "b", "b_at"}
   accent  a line whose second half turns mint at a moment in the clip
                                               {"left", "right", "at", "accent_at"}
-  sequence  a small kicker over a big word that changes on cue
-                                              {"kicker", "kicker_at"?, "items": [[word, at], ...]}
+  sequence  a small kicker over a big word that changes on cue; optional "marks" put a
+            mint underline under the thing each word names (square-frame x, y per item)
+                                              {"kicker", "kicker_at"?, "items": [[word, at], ...],
+                                               "marks"?: [[x, y], ...]}
 Any scene may set "size" (px, default 84) for its type.
 
 Storyboard rules: one line of type per scene, no hard cuts, real logo only (recoloured,
@@ -32,6 +34,7 @@ cfg = json.load(open(os.path.join(PROMO, "promo.json")))
 BRAND = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "brand", "approved-reference")
 
 FPS, W = 24, 1080
+BEAT = cfg.get("beat", 0.6)  # seconds per beat of the promo's music
 INTRO = cfg["intro"]["duration"]
 SCENES = cfg["scenes"]
 STARTS = np.cumsum([0] + [s["duration"] for s in SCENES]).tolist()
@@ -201,15 +204,15 @@ def intro(t):
     c = CARD_BG.copy()
     al, dy = rise(t, 0.2)
     put(c, MARK_IMG, (W - MARK_W) / 2, CARD_DY + 350 + dy, al)
-    al, dy = rise(t, 0.6)
+    al, dy = rise(t, BEAT)
     put(c, INTRO_KICK, (W - INTRO_KICK.width) / 2, CARD_DY + 550 + dy, al)
-    p = ease_out(prog(t, 1.2, 1.7))  # title lands on beat 3, resolving out of a soft blur
+    p = ease_out(prog(t, 2 * BEAT, 2 * BEAT + 0.5))  # title lands on beat 3, resolving out of a soft blur
     if p > 0:
         im, pad, tw = text_layer(INTRO_TITLE, H1(), PAPER, False)
         if p < 1:
             im = im.filter(ImageFilter.GaussianBlur((1 - p) * 12))
         put(c, im, W / 2 - tw / 2 - pad, CARD_DY + 610 - pad + (1 - p) * 20, p)
-    s = ease_out(prog(t, 1.8, 2.25))  # cobalt rule (the logo's underline) draws out from centre on beat 4
+    s = ease_out(prog(t, 3 * BEAT, 3 * BEAT + 0.45))  # cobalt rule (the logo's underline) draws out from centre on beat 4
     if s > 0:
         tw = H1().getlength(INTRO_TITLE)
         y = CARD_DY + 730
@@ -293,6 +296,15 @@ def scene_sequence(c, t, s, end, Y):
         al, dy = rise(t, at, out_a, out_b, dist=22)
         if al > 0:
             centered(c, word, f, PAPER if nxt is not None else MINT, Y, al, dy)
+            if s.get("marks"):
+                mx, my = s["marks"][i]
+                grow = ease_out(prog(t, at, at + 0.3))
+                ln = blank()
+                seg = [(mx - 36 * grow, VOFF + my), (mx + 36 * grow, VOFF + my)]
+                ImageDraw.Draw(ln).line(seg, fill=MINT + (255,), width=12)
+                ln = ln.filter(ImageFilter.GaussianBlur(7))
+                ImageDraw.Draw(ln).line(seg, fill=MINT + (255,), width=4)
+                put(c, ln, 0, 0, al)
 
 
 DRAW = {"words": scene_words, "swap": scene_swap, "accent": scene_accent, "sequence": scene_sequence}

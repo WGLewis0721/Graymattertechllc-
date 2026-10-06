@@ -17,10 +17,12 @@ Short promos for Gray Matter, all built from the same template so the series mat
 
    | Model | Cost per 4s clip | Used for |
    |---|---|---|
-   | Seedance 2.5 (480p draft, then 1080p final) | 12 + 48 | Promo 1 |
-   | Kling 3.0 pro, 1080p | 7 | Promo 2 |
+   | Seedance 2.5 (480p draft, then 1080p final) | 12 + 48 | Promos 1 and 2 |
+   | Kling 3.0 pro, 1080p | 7 | Budget option |
 
-2. **Save the clips** as `<promo>/clips/s1.mp4`, `s2.mp4` and so on, one per scene. If a clip has something the promo can't use, `template/reframe_clip.py` can trim its start and push in slowly to frame it out (promo 2's clip 3 is the example).
+   Seedance takes start and end images only in `mode: omni_reference`. Anchoring neighbouring clips on a shared frame (one clip's end image is the next clip's start image) lets all of a promo's clips render at once and still flow into each other.
+
+2. **Save the clips** as `<promo>/clips/s1.mp4`, `s2.mp4` and so on, one per scene. `template/reframe_clip.py` fixes framing in editing: it can push in slowly to frame out something a model added, or start a clip zoomed in to match the previous clip's last frame and pull back (promo 2's clip 2 is the example).
 
 3. **Write `<promo>/promo.json`.** It holds the intro card text, each scene's length and on-screen text, the end card, the music cut points and the sound effects. Copy the nearest existing one and edit it.
 
@@ -33,11 +35,11 @@ Short promos for Gray Matter, all built from the same template so the series mat
   - `words`: the line appears word by word
   - `swap`: one line is replaced by another, optionally struck out first
   - `accent`: half of the line turns mint on cue
-  - `sequence`: one word at a time under a small label
+  - `sequence`: one word at a time under a small label, optionally underlining the thing each word names
 - `template/sfx.py` makes the sound effects listed in `promo.json`.
 - `template/assemble.py` dissolves the clips together and lays the text, cards and audio on top.
-- `template/reframe_clip.py` trims a clip and pushes in on it without jitter.
+- `template/reframe_clip.py` trims a clip and eases its framing (push in or pull back) without jitter.
 
-Everything is timed to a 100 BPM grid (0.6s per beat), so cuts land on the beat. The intro card is 3.6s, scenes are whole bars or beats, and the end card is 6.0s. In the vertical cut, the scene text sits at y=1160, inside the area Reels and Stories leave clear. `vertical_footage_y` in `promo.json` moves the footage up or down if it crowds the text.
+Everything is timed to the music's beat grid (`beat` in `promo.json`, seconds per beat; promo 1 is 100 BPM, promo 2 is 90 BPM), so cuts land on the beat. The intro card and scenes are whole numbers of beats, and the intro card's animation follows the beat. Pass `MUSIC_FILE=/path/to/track.mp3` to build with a local copy of the music; `mix_gain_db` trims a dense track down to about -14 LUFS. In the vertical cut, the scene text sits at y=1160, inside the area Reels and Stories leave clear. `vertical_footage_y` in `promo.json` moves the footage up or down if it crowds the text.
 
 Rules from the storyboard: one line of text per scene, no hard cuts, the real logo only (recoloured for dark backgrounds, never redrawn), and contact details exactly as on the website.
