@@ -914,3 +914,11 @@ textarea:focus-visible,
   .ladder-card:hover { transform: none; }
   .finder-progress span { transition: none; }
 }
+/* Five-up list without the step arrows (About: What TechOps Means) */
+.process-mini.process-mini-plain .pm-step::after { display: none; }
+.process-mini-plain .pm-num { width: 40px; height: 40px; font-size: 1rem; }
+.process-mini-plain h3 a { color: inherit; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
+/* Stretch each link over its whole card so the tap target is the card, not just the word */
+.process-mini-plain h3 a::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
+.process-mini-plain .pm-step:focus-within { outline: 2px solid var(--gm-blue); outline-offset: 2px; }
+.process-mini-plain h3 a:hover { color: var(--gm-blue); }

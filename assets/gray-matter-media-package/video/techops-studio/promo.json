@@ -1,0 +1,148 @@
+{
+  "beat": 0.66681,
+  "intro": {
+    "duration": 4.001,
+    "kicker": "MEET GRAY MATTER",
+    "title": "Your TechOps Studio"
+  },
+  "scenes": [
+    {
+      "duration": 4.001,
+      "type": "words",
+      "text": "It should work better.",
+      "at": 0.667,
+      "step": 0.333
+    },
+    {
+      "duration": 4.001,
+      "type": "swap",
+      "size": 80,
+      "a": "Don't know the fix yet?",
+      "a_at": 4.334,
+      "strike_at": null,
+      "b": "That's our job.",
+      "b_at": 6.001
+    },
+    {
+      "duration": 6.001,
+      "type": "sequence",
+      "kicker": "TECHOPS MEANS",
+      "kicker_at": 8.002,
+      "items": [
+        [
+          "Websites.",
+          8.669
+        ],
+        [
+          "Systems.",
+          9.669
+        ],
+        [
+          "Automation.",
+          10.669
+        ],
+        [
+          "Operations.",
+          11.669
+        ],
+        [
+          "Technology.",
+          12.669
+        ]
+      ],
+      "marks": [
+        [
+          217,
+          668
+        ],
+        [
+          379,
+          668
+        ],
+        [
+          541,
+          668
+        ],
+        [
+          702,
+          668
+        ],
+        [
+          864,
+          668
+        ]
+      ]
+    }
+  ],
+  "line_y": 457,
+  "vertical_footage_y": 330,
+  "end_card": {
+    "duration": 6.001,
+    "line": "Websites · Systems · Automation · Operations · Technology",
+    "tagline": [
+      "Tell us what needs to change.",
+      "We figure out the technology."
+    ],
+    "contact": "graymatterdigitalsolutions.com · (334) 652-2601"
+  },
+  "music": {
+    "title": "Hip Hop - Upbeat by MusicForPeople (pixabay.com, track 491996), 90 BPM",
+    "file": "hiphop-upbeat.mp3",
+    "intro_from": 52.139,
+    "body_from": 56.14,
+    "resolve": 18.671,
+    "mix_gain_db": -2.5
+  },
+  "sfx": [
+    {
+      "kind": "crackle",
+      "times": [
+        0.667,
+        1.334,
+        2.0,
+        2.667
+      ],
+      "gain": 0.25
+    },
+    {
+      "kind": "riser",
+      "t": 5.101
+    },
+    {
+      "kind": "chime",
+      "t": 6.001,
+      "f": 1568.0,
+      "gain": 0.14
+    },
+    {
+      "kind": "chime",
+      "t": 8.669,
+      "f": 1046.5
+    },
+    {
+      "kind": "chime",
+      "t": 9.669,
+      "f": 1174.7
+    },
+    {
+      "kind": "chime",
+      "t": 10.669,
+      "f": 1318.5
+    },
+    {
+      "kind": "chime",
+      "t": 11.669,
+      "f": 1568.0
+    },
+    {
+      "kind": "chime",
+      "t": 12.669,
+      "f": 2093.0
+    },
+    {
+      "kind": "bell",
+      "t": 1.334,
+      "intro": true
+    }
+  ]
+}
