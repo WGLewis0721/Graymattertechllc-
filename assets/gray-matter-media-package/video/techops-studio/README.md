@@ -1,6 +1,6 @@
 # Promo 2: Gray Matter, Your TechOps Studio
 
-Brand introduction. It says what Gray Matter is and gives "TechOps studio" a meaning: websites, systems, automation, operations and technology, handled in one place. The plan it was built from is in [plan.md](plan.md).
+Brand introduction. It says what Gray Matter is and gives "TechOps studio" a meaning: websites, systems, automation, operations and security, handled in one place. The plan it was built from is in [plan.md](plan.md).
 
 ## Files to post
 
@@ -15,9 +15,9 @@ Both are H.264 + AAC, 24 fps, about -14 LUFS. Every line of text is burned in, s
 
 > Gray Matter is a TechOps studio for businesses that know something needs to work better, but don't necessarily know what the fix looks like yet.
 >
-> Websites. Systems. Automation. Operations. Technology.
+> Websites. Systems. Automation. Operations. Security.
 >
-> TechOps is the technology side of how your business runs, handled in one place: the website your customers see, the systems and automations behind it, and the everyday tech that keeps it all working.
+> TechOps is the technology side of how your business runs, handled in one place: the website your customers see, the systems and automations behind it, and the everyday operations and security that keep it all working.
 >
 > You tell us what needs to change. We figure out the technology, build it, test it, and hand it over. Nothing starts until you approve the scope, price and timeline.
 >
@@ -25,7 +25,7 @@ Both are H.264 + AAC, 24 fps, about -14 LUFS. Every line of text is burned in, s
 
 The link goes to the "What TechOps Means" section of the About page, which explains each of the five words and links to the matching service.
 
-Alt text: *Animated brand video. A title card reads "Meet Gray Matter, Your TechOps Studio". A glowing knot of threads twists with the words "It should work better.", then unravels into straight lanes of light as "Don't know the fix yet?" becomes "That's our job." Five icons appear below the lanes, and the words Websites, Systems, Automation, Operations and Technology appear one by one under "TechOps means", each underlining its icon. It ends on the Gray Matter logo, the five words, the tagline "Tell us what needs to change. We figure out the technology.", the website and the phone number.*
+Alt text: *Animated brand video. A title card reads "Meet Gray Matter, Your TechOps Studio". A glowing knot of threads twists with the words "It should work better.", then unravels into straight lanes of light as "Don't know the fix yet?" becomes "That's our job." Five icons appear below the lanes, and the words Websites, Systems, Automation, Operations and Security appear one by one under "TechOps means", each underlining its icon. It ends on the Gray Matter logo, the five words, the tagline "Tell us what needs to change. We figure out the technology.", the website and the phone number.*
 
 ## Timeline
 
@@ -34,7 +34,7 @@ Alt text: *Animated brand video. A title card reads "Meet Gray Matter, Your Tech
 | 0.0-4.0 | Title card | Brain mark, "Meet Gray Matter", "Your TechOps Studio" (over the song's calm bars) |
 | 4.0-8.0 | The feeling | "It should work better." (the music builds) |
 | 8.0-12.0 | The turn | "Don't know the fix yet?" swaps to "That's our job." |
-| 12.0-18.0 | What TechOps means | The bass drops back in. "TechOps means", then Websites. Systems. Automation. Operations. Technology., one every 1.5 beats with a rising chime and a mint underline under its icon |
+| 12.0-18.0 | What TechOps means | The bass drops back in. "TechOps means", then Websites. Systems. Automation. Operations. Security., one every 1.5 beats with a rising chime and a mint underline under its icon |
 | 18.0-24.0 | End card | Logo, the five words, tagline, website and phone; the music resolves on a downbeat and ends just before the cut |
 
 ## Sources
