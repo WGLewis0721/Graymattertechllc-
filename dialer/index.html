@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>Power Dialer | Gray Matter Internal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="./dialer.css">
+  <script src="./config.js" defer></script>
+  <script type="module" src="./dialer.js"></script>
+</head>
+<body>
+  <header class="dialer-header">
+    <div class="dialer-brand"><span class="brand-mark" aria-hidden="true">G.</span><div><strong>GRAY MATTER</strong><span>Private sales workspace</span></div></div>
+    <div class="header-right"><span class="status-indicator" id="connection-status">Not connected</span><a href="../index.html">Website</a><button id="lock-button" class="subtle-button" type="button" hidden>Lock</button></div>
+  </header>
+  <main class="dialer-shell">
+    <section id="login-panel" class="login-panel" aria-labelledby="login-heading">
+      <div class="eyebrow">INTERNAL TOOLS / OUTBOUND</div>
+      <h1 id="login-heading">Your next conversation starts here.</h1>
+      <p>Manage leads, make browser-based calls, and record the next step. No personal contacts or calling credentials live in the public website.</p>
+      <form id="login-form" class="login-card">
+        <label for="api-key">Operator access key</label>
+        <input id="api-key" type="password" placeholder="Enter your private access key" autocomplete="off" required>
+        <button class="button button-primary" type="submit">Unlock workspace</button>
+        <p class="small-muted">The key stays in this browser tab's memory. It is never saved to local storage.</p>
+      </form>
+      <div class="notice" id="setup-notice" hidden>The calling API has not been configured. See <code>dialer/README.md</code> to connect Cloudflare and Twilio.</div>
+    </section>
+
+    <section id="workspace" hidden aria-label="Power dialer workspace">
+      <div class="workspace-title"><div><div class="eyebrow">OUTBOUND COMMAND CENTER</div><h1>Power Dialer</h1><p>One contact at a time. Every conversation accounted for.</p></div><button id="refresh-button" class="button button-secondary" type="button">Refresh contacts</button></div>
+      <div class="stats-grid">
+        <article class="stat-card"><span>Contacts</span><strong id="stat-total">0</strong></article>
+        <article class="stat-card"><span>Cleared to call</span><strong id="stat-cleared">0</strong></article>
+        <article class="stat-card"><span>In queue</span><strong id="stat-queue">0</strong></article>
+        <article class="stat-card"><span>Follow-ups</span><strong id="stat-followups">0</strong></article>
+      </div>
+      <div class="work-grid">
+        <section class="surface contacts-surface" aria-labelledby="contacts-heading">
+          <div class="surface-heading"><div><span class="eyebrow">01 / PIPELINE</span><h2 id="contacts-heading">Contacts</h2></div><span class="pill" id="queue-count">0 in queue</span></div>
+          <div class="toolbar"><label class="search-wrap"><span class="sr-only">Search contacts</span><input id="contact-search" type="search" placeholder="Search name, business, phone"></label><select id="contact-filter" aria-label="Filter contacts"><option value="all">All contacts</option><option value="queue">Ready queue</option><option value="pending">Needs review</option><option value="dnc">Do not call</option></select></div>
+          <div id="contact-list" class="contact-list" role="list" aria-label="Contacts"></div>
+          <div class="import-tools">
+            <details><summary>Add a contact</summary><form id="contact-form" class="inline-form">
+              <label>Contact name<input name="name" maxlength="100" required></label>
+              <label>Business<input name="company" maxlength="120"></label>
+              <label>Phone (US)<input name="phone" type="tel" placeholder="3345550123" required></label>
+              <label>Source<input name="source" maxlength="200" placeholder="Where this lead came from"></label>
+              <label>Local time zone<select name="timezone"><option value="">Select when reviewing</option><option value="America/New_York">Eastern</option><option value="America/Chicago">Central</option><option value="America/Denver">Mountain</option><option value="America/Phoenix">Arizona</option><option value="America/Los_Angeles">Pacific</option><option value="America/Anchorage">Alaska</option><option value="Pacific/Honolulu">Hawaii</option></select></label>
+              <button class="button button-secondary" type="submit">Add to review list</button>
+            </form></details>
+            <details><summary>Import CSV</summary><div class="import-inline"><p class="small-muted">Headers: <code>name,company,phone,source,timezone</code>. Imports are blocked from calling until individually reviewed. Maximum 200 rows per upload.</p><input id="csv-file" type="file" accept=".csv,text/csv"><button id="import-button" class="button button-secondary" type="button">Import contacts</button></div></details>
+          </div>
+        </section>
+        <section class="surface call-surface" aria-labelledby="call-heading">
+          <div class="surface-heading"><div><span class="eyebrow">02 / CALL DESK</span><h2 id="call-heading">Current contact</h2></div><span id="call-state" class="pill">Standing by</span></div>
+          <div id="no-contact" class="empty-state">Select a contact from the list to see their details.</div>
+          <div id="contact-details" hidden>
+            <div class="contact-avatar" id="selected-initials">GM</div>
+            <h3 id="selected-name"></h3><p id="selected-company"></p><a id="selected-phone" class="selected-phone" href="#"></a>
+            <div class="details-grid"><div><span>Stage</span><strong id="selected-stage"></strong></div><div><span>Local time</span><strong id="selected-local-time"></strong></div><div><span>Source</span><strong id="selected-source"></strong></div><div><span>Follow-up</span><strong id="selected-followup"></strong></div></div>
+            <div id="eligibility-panel" class="eligibility-panel" hidden>
+              <h4>Review before calling</h4><p>Confirm this is a lawful business outreach number, check applicable suppression lists, and choose the contact's actual time zone. Do not approve mobile, residential, or protected numbers without an appropriate legal basis.</p>
+              <label>Contact time zone<select id="review-timezone"><option value="">Choose time zone</option><option value="America/New_York">Eastern</option><option value="America/Chicago">Central</option><option value="America/Denver">Mountain</option><option value="America/Phoenix">Arizona</option><option value="America/Los_Angeles">Pacific</option><option value="America/Anchorage">Alaska</option><option value="Pacific/Honolulu">Hawaii</option></select></label>
+              <label>Verification / lawful basis notes<textarea id="eligibility-note" rows="3" maxlength="500" placeholder="Where the number came from, DNC screening, business line verification..."></textarea></label>
+              <label class="check-label"><input id="review-confirm" type="checkbox"> I have reviewed the calling rules and verified this contact is eligible.</label>
+              <button id="approve-button" class="button button-secondary" type="button">Clear to call</button>
+            </div>
+            <div class="call-actions"><button id="dial-button" class="button button-primary" type="button">Call contact</button><button id="hangup-button" class="button button-danger" type="button" disabled>Hang up</button><button id="next-button" class="button button-secondary" type="button">Next contact</button></div>
+            <div class="session-control"><label class="check-label"><input id="auto-next" type="checkbox"> Dial next eligible contact after saving an outcome</label><p class="small-muted">Auto-next is off by default. Only one number is called at a time, and every call requires an outcome before advancing.</p></div>
+            <div class="disposition"><h4>Call outcome</h4><form id="outcome-form"><label for="outcome">Result</label><select id="outcome" required><option value="">Choose a result</option><option value="connected">Connected</option><option value="no_answer">No answer</option><option value="voicemail">Voicemail</option><option value="callback">Call back</option><option value="not_interested">Not interested</option><option value="do_not_call">Do not call</option></select><label for="call-notes">Notes</label><textarea id="call-notes" rows="3" maxlength="2000" placeholder="What happened? What is the next action?"></textarea><label for="followup-date">Follow-up date (optional)</label><input id="followup-date" type="date"><button id="save-outcome" class="button button-secondary" type="submit">Save outcome</button></form></div>
+          </div>
+        </section>
+      </div>
+      <p class="legal-footnote">Only call numbers you have legally cleared. Honor Do Not Call requests immediately, follow applicable telemarketing requirements, and verify local calling hours. No prerecorded messages or call recording are included.</p>
+    </section>
+    <div id="feedback" role="status" aria-live="polite" class="feedback" hidden></div>
+  </main>
+</body>
+</html>

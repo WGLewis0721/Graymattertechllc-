@@ -1,0 +1,18 @@
+name: Dialer checks
+on:
+  pull_request:
+    paths:
+      - 'dialer/**'
+      - '.github/workflows/dialer-check.yml'
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check dialer/dialer.js
+      - run: node --check dialer/api/worker.js
+      - run: node --test dialer/api/worker.test.mjs
