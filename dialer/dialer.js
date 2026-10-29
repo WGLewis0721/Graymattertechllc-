@@ -122,7 +122,6 @@ function renderDetails() {
   $("selected-name").textContent = c.name;
   $("selected-company").textContent = c.company || "Business not specified";
   $("selected-phone").textContent = c.phone;
-  $("selected-phone").href = "tel:" + c.phone;
   $("selected-stage").textContent = statusLabel(c);
   $("selected-source").textContent = c.source || "Not provided";
   $("selected-followup").textContent = c.follow_up_at || "Not scheduled";
