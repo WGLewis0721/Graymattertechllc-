@@ -1,0 +1,7 @@
+# Keep local secrets and environment-specific deploy configuration out of Git.
+api/wrangler.toml
+api/.dev.vars
+api/.dev.vars.*
+api/.env
+api/.env.*
+**/node_modules/
