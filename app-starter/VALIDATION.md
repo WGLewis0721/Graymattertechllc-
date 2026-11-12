@@ -1,12 +1,29 @@
-# Starter validation
+# App Starter | Validation
 
-Run on a checkout of the Gray Matter business repository:
+## Generator regression tests
 
-    bash -n app-starter/scripts/new-app.sh
-    bash app-starter/scripts/new-app.sh web SampleWeb /tmp/gm-app-test
-    cd /tmp/gm-app-test/SampleWeb && npm install && npm run test && npm run build
-    bash app-starter/scripts/new-app.sh ios SampleIOS /tmp/gm-app-test
+From the business repository checkout:
 
-On macOS: inside SampleIOS, run xcodegen generate --spec project.yml and XCTest through Xcode. Alternatively connect to Codemagic for unsigned Simulator compilation.
+~~~bash
+bash -n app-starter/scripts/new-app.sh
+python3 -m unittest discover -s app-starter/tests -p 'test_*.py' -v
+~~~
 
-These tests should be run for the generated project before relying on it. A full production build, deployment, device UX and App Store approval have not been verified. No commercial backend, auth, account deletion or payments are included.
+The tests cover exact named-screen scaffolding for a website, unchanged native iOS support, duplicate screen rejection, invalid website/iOS combinations, incomplete brief/design gate failures, successful structural gates given simulated evidence, missing implementation and silent removal of a requested page.
+
+The parent repository workflow .github/workflows/app-starter-validation.yml runs these checks on changes to the generator and templates.
+
+## Per-product stages
+
+~~~bash
+python3 scripts/check-design.py --stage plan
+python3 scripts/check-design.py --stage design
+python3 scripts/check-design.py --stage build
+python3 scripts/check-design.py --stage release
+~~~
+
+The generated GitHub workflow tests the design stage for PRs and main-branch pushes. The repository owner must configure branch protection separately to prevent bypassing it.
+
+**Limits:** The structural checker confirms documented files and evidence paths, not image quality, accurate business facts, reachable routes, payment correctness or functioning interactions. Simulated test artifacts used by this repository's regression tests are not proof of a generated client's product.
+
+For real products, separately run npm builds/tests and browser E2E checks, or Xcode/XCTest and physical-device UI/accessibility checks. This repository change does **not** establish App Store acceptance, a deployed product or production readiness.
