@@ -12,6 +12,16 @@ Target: [ ] Web  [ ] iPhone/iPad  [ ] Both
 - Value proposition in one sentence:
 - Explicitly out of scope:
 
+## Required screens and design deliverables
+- Exact owner-requested screen names in order (also pass with --screens):
+- Each screen's primary action and expected real result:
+- Existing client/product identity that must be preserved:
+- Explicitly out-of-scope pages and any owner-approved deferrals:
+- Brand Board and UI Kit approval owner:
+- Design proof, component source, working-screen and QA evidence required:
+
+Every new product follows [DESIGN_TO_BUILD_CONTRACT.md](../DESIGN_TO_BUILD_CONTRACT.md). Do not omit a requested screen.
+
 ## First complete journey
 1. User opens:
 2. User does:
