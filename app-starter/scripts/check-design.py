@@ -32,6 +32,10 @@ def audit(root: Path, stage: str):
         path = (root / rel).resolve()
         if not path.is_relative_to(root) or not path.is_file() or path.stat().st_size == 0:
             errors.append(f"Missing, empty or out-of-project {label}: {rel}")
+            return
+        if label in ("brand_board_proofs", "ui_kit_proofs") or label.endswith("design_proofs"):
+            if path.suffix.lower() not in (".svg", ".png", ".jpg", ".jpeg", ".webp", ".html", ".pdf"):
+                errors.append(f"Visual proof for {label} must be SVG, PNG, JPG, WebP, HTML or PDF: {rel}")
 
     raw = read("design/screens.json")
     if raw is None:
