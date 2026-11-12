@@ -1,6 +1,6 @@
 # Native iPhone / iPad App Development
 
-**Default native stack:** Swift + SwiftUI, system accessibility, Apple platform conventions and native persistence. React UI catalog resources are **inspiration**, not SwiftUI packages.
+**Default native stack:** Swift + SwiftUI, system accessibility, Apple platform conventions and native persistence. React UI catalog resources are **inspiration**, not SwiftUI packages. Optional native sources are cataloged in [NATIVE_UI_REFERENCES.md](NATIVE_UI_REFERENCES.md), and the detailed [motion/haptic/device test guide](TACTILE_MOTION_AND_DEVICE_QA.md) adapts useful methods from Spread.
 
 ## Design and architecture
 
@@ -11,6 +11,10 @@
 - Choose local-first vs server-first deliberately. For sync, specify offline writes, merge/conflict handling, retries, account transitions and deletion.
 - A flying card is a visual interaction; persistent deletion and undo remain separately testable actions.
 - Set product-specific design tokens and graphical assets. Prefer native patterns unless a custom control produces clear user value.
+
+## Editorial visual identity
+
+For collections of distinctive, premium cards, use [EDITORIAL_CARD_AND_ARTWORK.md](EDITORIAL_CARD_AND_ARTWORK.md): separate clean background imagery from live dynamic labels, action controls, authoritative state and validated persistence. Keep a replaceable asset registry and fallbacks; do not ship a full flattened mockup as a native control.
 
 ## Interaction standard
 

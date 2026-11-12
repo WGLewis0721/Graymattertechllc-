@@ -38,6 +38,10 @@ React + TypeScript + Vite, with an accessible responsive local-storage task demo
 
 SwiftUI + a local task store, XcodeGen and XCTest. A Codemagic configuration performs unsigned Simulator compilation only. Configure signing, a unique bundle ID and App Store delivery separately.
 
+## Advanced design guidance from Spread
+
+The starter copies the central app-design folder into each new app. That now includes [UX/design-spec reviews](../app-design/UX_REVIEW_AND_SPEC_PROTOCOL.md), [editorial card and image-layer rules](../app-design/EDITORIAL_CARD_AND_ARTWORK.md), [native tactile motion and device acceptance](../app-design/TACTILE_MOTION_AND_DEVICE_QA.md), and [optional SwiftUI references](../app-design/NATIVE_UI_REFERENCES.md). These are reference methods, not preinstalled components, libraries or Spread-branded assets.
+
 ## Before a real launch
 
 Fill out [PROJECT_BRIEF](../app-design/templates/PROJECT_BRIEF.md), choose a platform playbook, and complete the [release checklist](../app-design/templates/RELEASE_CHECKLIST.md).
