@@ -39,6 +39,16 @@ Launch domain:
 - Mobile navigation and page layout:
 - Motion and accessibility requirements:
 
+## Required pages and design deliverables
+- Exact owner-requested page list in order (also pass with --screens):
+- Each page's primary action, entry and exit:
+- Approved client logo, colors, typography and content to preserve:
+- Brand Board and UI Kit approval owner:
+- Required visual mockups, actual pages and QA proof:
+- Explicit out-of-scope sections:
+
+The [Design-to-Build Contract](../DESIGN_TO_BUILD_CONTRACT.md) requires every requested page to be visually designed, implemented and tested. Do not treat a placeholder as a working screen.
+
 ## Pages, sections and functionality
 - Approved page/section list:
 - Core hero message and CTA:

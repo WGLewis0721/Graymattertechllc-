@@ -6,6 +6,8 @@
 
 This guide is for **client sites, service websites, landing pages, and marketing websites**. Use [WEB_PLAYBOOK.md](WEB_PLAYBOOK.md) for application architecture and [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) for cross-platform principles. Existing production-repo rules still take precedence.
 
+**New websites created from the starter:** [Design-to-Build Contract](DESIGN_TO_BUILD_CONTRACT.md) requires a rendered brand board, UI kit, individual visual designs and actual working pages for every screen named with --screens. The references below inform those mandatory deliverables; they do not replace them.
+
 ## Step 0: Define the website job
 
 Fill in [the website brief](templates/WEBSITE_BRIEF.md) before making screens. Record who the website serves, the single most important action (book, call, buy, inquire, subscribe), approved services/content, user questions, integrations, and how success will be measured.

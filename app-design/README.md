@@ -4,6 +4,10 @@
 
 **Important:** This folder is documentation, not a runnable starter app. The parent repository is the live, static Gray Matter business website; its HTML/CSS/JavaScript must not be replaced with React or SwiftUI because of the references here.
 
+## Mandatory deliverables for every new product
+
+**[Design-to-Build Contract](DESIGN_TO_BUILD_CONTRACT.md):** A visual brand board, a real UI kit, an individual design for every user-requested screen/page, functional implementation of all screens, and actual QA evidence are mandatory for new projects. The [app starter](https://github.com/WGLewis0721/Graymattertechllc-/tree/main/app-starter) creates the brief, screen manifest, design files and structural gates. The AI coding/design agent must create the actual visuals and working code. No silent screen omissions.
+
 ## New app: follow these steps
 
 1. Copy [templates/PROJECT_BRIEF.md](templates/PROJECT_BRIEF.md) into the new product repository and fill in the problem, audience, first useful outcome, platform, business model, and constraints.
@@ -20,6 +24,7 @@
 | --- | --- |
 | [LIBRARY_CATALOG.md](LIBRARY_CATALOG.md) | 13 screenshot resources, links, best uses, compatibility and selection |
 | [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) | Graphic design, research, branding, UX, motion, accessibility |
+| [DESIGN_TO_BUILD_CONTRACT.md](DESIGN_TO_BUILD_CONTRACT.md) | Mandatory brand board, UI kit, named-screen design/build and verification gates |
 | [UX_REVIEW_AND_SPEC_PROTOCOL.md](UX_REVIEW_AND_SPEC_PROTOCOL.md) | UX laws, design reviews, documentation authority and S/M/L specs |
 | [EDITORIAL_CARD_AND_ARTWORK.md](EDITORIAL_CARD_AND_ARTWORK.md) | Premium editorial card anatomy, art composition, live data separation |
 | [CREATIVE_ASSET_PRODUCTION.md](CREATIVE_ASSET_PRODUCTION.md) | Editable AI-assisted visuals, source facts, layered retouching, rights and export QA |
@@ -34,6 +39,11 @@
 | [SECURITY_AND_RELEASE.md](SECURITY_AND_RELEASE.md) | Privacy, permissions, money, resilience, QA and release gates |
 | [AI_WORKFLOW.md](AI_WORKFLOW.md) | Reusable prompts and agent rules |
 | [templates/PROJECT_BRIEF.md](templates/PROJECT_BRIEF.md) | Product intake |
+| [templates/BRAND_BOARD.md](templates/BRAND_BOARD.md) | Brand identity and actual visual proof |
+| [templates/UI_KIT.md](templates/UI_KIT.md) | Reusable components, tokens and gallery proof |
+| [templates/SCREEN_MAP.md](templates/SCREEN_MAP.md) | Complete navigation, states and requested screen coverage |
+| [templates/SCREEN_SPEC.md](templates/SCREEN_SPEC.md) | Individual screen visual and acceptance contract |
+| [templates/DESIGN_QA.md](templates/DESIGN_QA.md) | QA evidence and sign-off |
 | [templates/WEBSITE_BRIEF.md](templates/WEBSITE_BRIEF.md) | Client website requirements, design references and content approval |
 | [templates/FEATURE_SPEC.md](templates/FEATURE_SPEC.md) | Feature acceptance criteria |
 | [templates/DESIGN_CHANGE_SPEC.md](templates/DESIGN_CHANGE_SPEC.md) | Medium/large design change options, constraints, device QA and rollback |

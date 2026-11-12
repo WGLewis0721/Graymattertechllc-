@@ -1,62 +1,57 @@
-# Gray Matter App Starter
+# Gray Matter App Starter | Design-to-Build
 
-A clean starting point for **React/TypeScript web apps** and **native SwiftUI iPhone/iPad apps**. The existing [app-design library](../app-design/README.md) remains the single reference for design, components, accessibility, architecture, AI prompts, security and release checklists.
+Start a new React/TypeScript website or app, or a native SwiftUI iOS app, with required design deliverables.
 
-The source stays separate from Gray Matter's production website. **Nothing in this directory is installed or executed by the website.**
+**New requirement:** Every new project must produce a real visual **Brand Board**, **UI Kit**, **Screen Map**, an individual design for **every screen you request**, working integrated screens, and test evidence. See [Design-to-Build Contract](../app-design/DESIGN_TO_BUILD_CONTRACT.md).
 
-## Generate a new product
+This starter is isolated from Gray Matter's production static business website.
 
-From a local clone of this business repository:
+## Generate with the exact screens you want
 
-    bash app-starter/scripts/new-app.sh web MyApp ~/Projects
+Run from a local clone of this business repository:
 
-or:
+~~~bash
+bash app-starter/scripts/new-app.sh web HausWebsite ./projects --kind website --screens 'Home,Menu,Ordering,Events,Contact'
+bash app-starter/scripts/new-app.sh ios CollectionApp ./projects --kind app --screens 'Onboarding,Home,Collection,Details,Settings'
+~~~
 
-    bash app-starter/scripts/new-app.sh ios MyApp ~/Projects
+The old command without --screens still works and creates a default **Tasks** demo. Duplicate screen names and overwriting existing projects are rejected.
 
-The generator copies only the chosen platform, its own settings, and the shared app-design library into a new project. It does not copy the website or Git history and refuses to overwrite an existing folder.
+## What gets generated
 
-## Website design workflow
+| Location | Required purpose |
+| --- | --- |
+| design/BRIEF.md | Client or product brief, requiring approval |
+| design/BRAND_BOARD.md | Brand identity brief; actual visual proof required |
+| design/UI_KIT.md | Component states/tokens; visual proof and working components required |
+| design/SCREEN_MAP.md | Complete user journeys and navigation |
+| design/requested-screens.json | Original exact requested screen list; drift checked |
+| design/screens.json | Live screen inventory, design/source/test paths and status |
+| design/screens/<id>.md | One individual spec per requested screen |
+| design/QA.md | Build, interaction, accessibility and release evidence |
+| scripts/check-design.py | Structural gates for plan/design/build/release |
+| .github/workflows/design-gates.yml | PR/push design-stage structural check |
+| app-design/ | Shared graphic, UX, coding, security and QA library |
 
-For client-facing or marketing websites, use [the reference-driven ChatGPT website workflow](../app-design/WEBSITE_DESIGN_WORKFLOW.md) and [client website brief](../app-design/templates/WEBSITE_BRIEF.md). The app-starter generator already copies the full app-design library into new projects, so there is no separate copy to maintain here.
+**The initial React/SwiftUI task list is a demo, not the completed screens.** A design/coding agent must work through the [full product assignment](../app-design/AI_WORKFLOW.md#copyable-prompt-build-an-entire-new-product) and produce real artwork, reusable components, page designs and code. A manifest entry alone creates no UI.
 
-## Web project
+## Validate
 
-    cd ~/Projects/MyApp
-    npm install
-    npm run test
-    npm run build
-    npm run dev
+From the newly generated product folder:
 
-React + TypeScript + Vite, with an accessible responsive local-storage task demonstration. shadcn/ui, Base UI, Radix, Sonner, Vaul, and gallery effects are **opt-in**. Choose intentionally from the catalog; they are not needed for the starting experience.
+~~~bash
+python3 scripts/check-design.py --stage plan
+python3 scripts/check-design.py --stage design
+python3 scripts/check-design.py --stage build
+python3 scripts/check-design.py --stage release
+~~~
 
-## Native iOS project
+Fresh products intentionally fail these gates until deliverables and evidence exist. They are structural checks, not proof that UI looks good or code works. The GitHub Action runs the design gate; branch protection is separate.
 
-    cd ~/Projects/MyApp
-    xcodegen generate --spec project.yml
-    open MyApp.xcodeproj
+## Run the starter demo
 
-SwiftUI + a local task store, XcodeGen and XCTest. A Codemagic configuration performs unsigned Simulator compilation only. Configure signing, a unique bundle ID and App Store delivery separately.
+**Web:** Run npm install, npm run test, npm run build and npm run dev inside the generated web folder.
 
-## Advanced design guidance from Spread
+**iOS:** Configure a unique bundle ID, run xcodegen generate --spec project.yml on macOS, then open the generated project in Xcode. Codemagic compiles an unsigned simulator build only.
 
-The starter copies the central app-design folder into each new app. That now includes [UX/design-spec reviews](../app-design/UX_REVIEW_AND_SPEC_PROTOCOL.md), [editorial card and image-layer rules](../app-design/EDITORIAL_CARD_AND_ARTWORK.md), [native tactile motion and device acceptance](../app-design/TACTILE_MOTION_AND_DEVICE_QA.md), and [optional SwiftUI references](../app-design/NATIVE_UI_REFERENCES.md). These are reference methods, not preinstalled components, libraries or Spread-branded assets.
-
-## Reusable Arooma design lessons
-
-The shared design library now includes [creative asset production and rights](../app-design/CREATIVE_ASSET_PRODUCTION.md), [verified cinematic media](../app-design/ANIMATED_MEDIA_PIPELINE.md), [object-first native UX](../app-design/OBJECT_FIRST_NATIVE_PATTERNS.md) and [UI automation evidence](../app-design/UI_AUTOMATION_AND_EVIDENCE.md). A [new asset manifest](../app-design/templates/ASSET_JOB_MANIFEST.md) records approved originals, AI-generated components, media versions and permissions. These are reference instructions, not preinstalled dependencies or copies of Arooma's proprietary product art.
-
-## Before a real launch
-
-Fill out [PROJECT_BRIEF](../app-design/templates/PROJECT_BRIEF.md), choose a platform playbook, and complete the [release checklist](../app-design/templates/RELEASE_CHECKLIST.md).
-
-**These are demos, not production-ready applications.** There is no user authentication, cloud backend, sensitive-data persistence, subscriptions, entitlements, signed release or payment processing.
-
-## Contents
-
-- web/ = React web starter
-- ios/ = native SwiftUI starter
-- scripts/new-app.sh = create an independent, single-platform project
-- ../app-design/ = reusable design/development knowledge, maintained once
-
-Verification: See VALIDATION.md.
+Never claim customer accounts, payment processing, deployment, or real inquiry forms are ready unless separately implemented and tested. See [VALIDATION.md](VALIDATION.md).
