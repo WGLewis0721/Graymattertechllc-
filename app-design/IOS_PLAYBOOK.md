@@ -2,6 +2,8 @@
 
 **Default native stack:** Swift + SwiftUI, system accessibility, Apple platform conventions and native persistence. React UI catalog resources are **inspiration**, not SwiftUI packages. Optional native sources are cataloged in [NATIVE_UI_REFERENCES.md](NATIVE_UI_REFERENCES.md), and the detailed [motion/haptic/device test guide](TACTILE_MOTION_AND_DEVICE_QA.md) adapts useful methods from Spread.
 
+**New Gray Matter starter projects:** The [Design-to-Build Contract](DESIGN_TO_BUILD_CONTRACT.md) requires a rendered Brand Board, SwiftUI UI Kit and a designed and implemented screen for every owner-requested destination. The generator tracks them via --screens; the task-list view is only a starter demo.
+
 ## Design and architecture
 
 - Apple HIG: https://developer.apple.com/design/human-interface-guidelines/

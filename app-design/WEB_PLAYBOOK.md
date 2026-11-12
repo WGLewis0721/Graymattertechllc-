@@ -4,6 +4,8 @@
 
 For a new **client, service or marketing website**, start with [WEBSITE_DESIGN_WORKFLOW.md](WEBSITE_DESIGN_WORKFLOW.md) and [templates/WEBSITE_BRIEF.md](templates/WEBSITE_BRIEF.md) before prompting ChatGPT to build pages. Design references and approved visuals must lead to real usable interfaces, not just attractive mockups.
 
+**New Gray Matter starter projects:** Follow the [Design-to-Build Contract](DESIGN_TO_BUILD_CONTRACT.md), including a rendered Brand Board, rendered UI Kit and a designed and implemented page for every requested screen. The generator tracks pages via --screens. Its task list is demonstration code only.
+
 ## Choose the right project type
 
 | Need | Default starting point |
