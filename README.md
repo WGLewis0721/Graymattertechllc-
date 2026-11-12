@@ -164,7 +164,7 @@ Jekyll. Merging to `main` redeploys; there is no CI pipeline.
 
 ## App design and development library
 
-**[Reusable App Design & Development Library](app-design/README.md)** is a practical reference for new Gray Matter web/SaaS and SwiftUI apps. It includes a verified 13-source UI catalog, design and motion standards, platform playbooks, security and release guidance, AI coding prompts, and reusable product/feature/release templates.
+**[Reusable App Design & Development Library](app-design/README.md)** is a practical reference for new Gray Matter web/SaaS and SwiftUI apps. It also includes a [reference-driven ChatGPT website design workflow](app-design/WEBSITE_DESIGN_WORKFLOW.md) and [client website brief](app-design/templates/WEBSITE_BRIEF.md). It includes a verified 13-source UI catalog, design and motion standards, platform playbooks, security and release guidance, AI coding prompts, and reusable product/feature/release templates.
 
 This is **documentation only**. The business website remains static HTML/CSS/JS with no component libraries installed. For a new app, copy **app-design/** into an independently scaffolded project or create a dedicated app-starter template.
 

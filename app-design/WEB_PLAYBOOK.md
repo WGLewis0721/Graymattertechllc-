@@ -2,6 +2,8 @@
 
 **Do not run these commands in the current business-site repository.** It intentionally uses HTML/CSS/vanilla JS and no npm dependencies. The following is guidance for **new, independent React-based projects**.
 
+For a new **client, service or marketing website**, start with [WEBSITE_DESIGN_WORKFLOW.md](WEBSITE_DESIGN_WORKFLOW.md) and [templates/WEBSITE_BRIEF.md](templates/WEBSITE_BRIEF.md) before prompting ChatGPT to build pages. Design references and approved visuals must lead to real usable interfaces, not just attractive mockups.
+
 ## Choose the right project type
 
 | Need | Default starting point |

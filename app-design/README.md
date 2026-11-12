@@ -8,7 +8,7 @@
 
 1. Copy [templates/PROJECT_BRIEF.md](templates/PROJECT_BRIEF.md) into the new product repository and fill in the problem, audience, first useful outcome, platform, business model, and constraints.
 2. Choose a product path: [Web / SaaS](WEB_PLAYBOOK.md), [Native iPhone / iPad](IOS_PLAYBOOK.md), or both with a deliberate shared API.
-3. Create a unique [design system](DESIGN_SYSTEM.md): typography, colors, graphic identity, states, navigation, animation, and interaction behavior.
+3. Create a unique [design system](DESIGN_SYSTEM.md): typography, colors, graphic identity, states, navigation, animation, and interaction behavior. For client and marketing websites, follow [the ChatGPT website workflow](WEBSITE_DESIGN_WORKFLOW.md) first.
 4. Use the [13-source UI catalog](LIBRARY_CATALOG.md) to pick only the components justified by real screens. React components do **not** become SwiftUI components.
 5. Implement one complete vertical slice with **real persistence** and error handling, then expand. Give an AI coder the [workflow prompts](AI_WORKFLOW.md).
 6. Check [security, payments, testing, and launch gates](SECURITY_AND_RELEASE.md). Use the [release evidence checklist](templates/RELEASE_CHECKLIST.md).
@@ -21,10 +21,12 @@
 | [LIBRARY_CATALOG.md](LIBRARY_CATALOG.md) | 13 screenshot resources, links, best uses, compatibility and selection |
 | [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) | Graphic design, research, branding, UX, motion, accessibility |
 | [WEB_PLAYBOOK.md](WEB_PLAYBOOK.md) | React + TypeScript choices, component stack, data, tests and deploy |
+| [WEBSITE_DESIGN_WORKFLOW.md](WEBSITE_DESIGN_WORKFLOW.md) | Reference-driven AI website design, imagery, building, refinement and QA |
 | [IOS_PLAYBOOK.md](IOS_PLAYBOOK.md) | SwiftUI, Apple UX, gestures, Codemagic and App Store |
 | [SECURITY_AND_RELEASE.md](SECURITY_AND_RELEASE.md) | Privacy, permissions, money, resilience, QA and release gates |
 | [AI_WORKFLOW.md](AI_WORKFLOW.md) | Reusable prompts and agent rules |
 | [templates/PROJECT_BRIEF.md](templates/PROJECT_BRIEF.md) | Product intake |
+| [templates/WEBSITE_BRIEF.md](templates/WEBSITE_BRIEF.md) | Client website requirements, design references and content approval |
 | [templates/FEATURE_SPEC.md](templates/FEATURE_SPEC.md) | Feature acceptance criteria |
 | [templates/DECISION_LOG.md](templates/DECISION_LOG.md) | One record for approved decisions |
 | [templates/RELEASE_CHECKLIST.md](templates/RELEASE_CHECKLIST.md) | Release proof and sign-off |
@@ -35,7 +37,7 @@ A fork of **this** repo contains Gray Matter's entire business website and Git h
 
 For a clean starting point, the better long-term option is a **separate app-starter template repository** with this folder and platform-specific starter projects. GitHub's **Use this template** creates a new history; a fork retains the parent history: https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template
 
-**Today:** Create a fresh project of the right kind (React or SwiftUI) and copy this **app-design/** folder into it. This preserves useful knowledge without importing a production marketing website.
+**Today:** Use the existing [app starter generator](../app-starter/README.md) to create a clean React or SwiftUI project with this folder included, or copy **app-design/** into another properly scaffolded project. This avoids importing the production marketing website.
 
 ## Standards
 

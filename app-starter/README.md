@@ -16,6 +16,10 @@ or:
 
 The generator copies only the chosen platform, its own settings, and the shared app-design library into a new project. It does not copy the website or Git history and refuses to overwrite an existing folder.
 
+## Website design workflow
+
+For client-facing or marketing websites, use [the reference-driven ChatGPT website workflow](../app-design/WEBSITE_DESIGN_WORKFLOW.md) and [client website brief](../app-design/templates/WEBSITE_BRIEF.md). The app-starter generator already copies the full app-design library into new projects, so there is no separate copy to maintain here.
+
 ## Web project
 
     cd ~/Projects/MyApp
