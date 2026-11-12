@@ -175,3 +175,7 @@ python3 -m http.server 8080
 
 GitHub Pages (branch `main`, root `/`). `.nojekyll` prevents Jekyll
 processing. Merging to `main` redeploys. No CI pipeline.
+
+## Separate app-development reference library
+
+**app-design/** contains reusable guidance for **future independent** React/SaaS and SwiftUI product repositories. Read **app-design/README.md** when asked to prepare a new app. Do **not** apply its frameworks or dependencies to this live, zero-framework Gray Matter business website; the website-specific instructions above remain authoritative.

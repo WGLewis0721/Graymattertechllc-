@@ -161,3 +161,9 @@ Jekyll. Merging to `main` redeploys; there is no CI pipeline.
   fit-check wording (listed in `docs/ARCHITECTURE.md` §8).
 - Real checkout or deposit links for the two website plans.
 - Real, approved case studies for `GM_DATA.caseStudies`.
+
+## App design and development library
+
+**[Reusable App Design & Development Library](app-design/README.md)** is a practical reference for new Gray Matter web/SaaS and SwiftUI apps. It includes a verified 13-source UI catalog, design and motion standards, platform playbooks, security and release guidance, AI coding prompts, and reusable product/feature/release templates.
+
+This is **documentation only**. The business website remains static HTML/CSS/JS with no component libraries installed. For a new app, copy **app-design/** into an independently scaffolded project or create a dedicated app-starter template.
