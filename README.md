@@ -168,6 +168,8 @@ Jekyll. Merging to `main` redeploys; there is no CI pipeline.
 
 This is **documentation only**. The business website remains static HTML/CSS/JS with no component libraries installed. For a new app, copy **app-design/** into an independently scaffolded project or create a dedicated app-starter template.
 
+Reusable [Spread-derived design practices](app-design/UX_REVIEW_AND_SPEC_PROTOCOL.md) cover editorial artwork, tactile interactions, adaptive device testing, vetted native references and stricter design specifications. They are documentation-only and do not alter the live website.
+
 ## Reusable Web and iOS App Starters
 
 [App Starter](app-starter/README.md) includes separate React/TypeScript and native SwiftUI examples, a clean new-project generator, testing guidance and Codemagic compile configuration. It reuses [app-design/](app-design/README.md) as the single design and development knowledge library. These sources are isolated from the production marketing website and do not add frameworks to it.

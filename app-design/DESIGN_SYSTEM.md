@@ -2,6 +2,8 @@
 
 Build a **product** that feels deliberately designed, not a pile of attractive library components. Use for web and native apps.
 
+For deeper reusable reviews imported from Spread, see [UX review and spec protocol](UX_REVIEW_AND_SPEC_PROTOCOL.md), [editorial cards and art](EDITORIAL_CARD_AND_ARTWORK.md) and [tactile interaction and device QA](TACTILE_MOTION_AND_DEVICE_QA.md). These supplement, not override, the actual product's approved UI and data rules.
+
 ## 1. Define the job before the art
 
 Document: intended user, current pain, primary action, first useful result, measurable success, failure/offline experience and reason to return. Map **Open → Understand → Act → Receive feedback → Return**. A feature that doesn't serve that loop needs justification.
@@ -63,6 +65,6 @@ Check small and large phones, tablet, landscape/rotation, keyboard shown, text s
 - Motion/gesture specification including haptics and reduced-motion behavior.
 - Real screenshots/video of each major interaction; empty/error states included.
 - Asset source and license list. No false claims or placeholder graphics at release.
-- [FEATURE_SPEC template](templates/FEATURE_SPEC.md) with acceptance evidence.
+- [FEATURE_SPEC template](templates/FEATURE_SPEC.md) with acceptance evidence, or [DESIGN_CHANGE_SPEC](templates/DESIGN_CHANGE_SPEC.md) for a new screen or a consequential redesign.
 
 **Done means** the user can clearly complete the task, the interface stays coherent on devices and in failure states, and no major developer behavior is left to guesswork.

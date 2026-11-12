@@ -6,8 +6,8 @@ For Claude Code, Codex, Copilot or another coding/design agent. External skills,
 
 1. New product's filled [PROJECT_BRIEF](templates/PROJECT_BRIEF.md).
 2. [README](README.md), [DESIGN_SYSTEM](DESIGN_SYSTEM.md) and the relevant platform playbook.
-3. Actual target repository source, dependency lockfile, tests, current release and decision log.
-4. [LIBRARY_CATALOG](LIBRARY_CATALOG.md) for a concrete UI need.
+3. Actual target repository source, dependency lockfile, tests, current release and decision log. For nontrivial redesigns, use [UX_REVIEW_AND_SPEC_PROTOCOL.md](UX_REVIEW_AND_SPEC_PROTOCOL.md) and the [DESIGN_CHANGE_SPEC template](templates/DESIGN_CHANGE_SPEC.md); for small routine fixes, keep the process lean.
+4. [LIBRARY_CATALOG](LIBRARY_CATALOG.md) or [NATIVE_UI_REFERENCES](NATIVE_UI_REFERENCES.md) for a concrete UI need. When interaction/visual artwork is involved, consult [TACTILE_MOTION_AND_DEVICE_QA](TACTILE_MOTION_AND_DEVICE_QA.md) or [EDITORIAL_CARD_AND_ARTWORK](EDITORIAL_CARD_AND_ARTWORK.md).
 5. [SECURITY_AND_RELEASE](SECURITY_AND_RELEASE.md) and release checklist.
 
 **Scope:** These documents are for a **new product**. The Gray Matter corporate website remains a no-framework static site under its own **.github/copilot-instructions.md**.

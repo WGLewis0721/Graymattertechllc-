@@ -1,6 +1,6 @@
 # UI Library Catalog | 13 Resources from the Video
 
-Verified November 11, 2026. These are primarily **React/web UI** sources. **None is a drop-in native SwiftUI dependency.** Their usefulness is different: some provide accessible behavior, others notifications or drawers, while others are visual galleries.
+Verified November 11, 2026. These are primarily **React/web UI** sources. **None is a drop-in native SwiftUI dependency.** For optional native SwiftUI examples and additional web accessibility/motion resources collected from Spread, see [NATIVE_UI_REFERENCES.md](NATIVE_UI_REFERENCES.md). Their usefulness is different: some provide accessible behavior, others notifications or drawers, while others are visual galleries.
 
 ## A. Foundational libraries: pick one primitive base
 
