@@ -102,6 +102,8 @@ def main():
             "status": "planned",
         })
     (design / "screens.json").write_text(json.dumps(inventory, indent=2) + "\n", encoding="utf-8")
+    request = {"project": args.name, "requested": [{"id": sid, "name": label} for sid, label in screens]}
+    (design / "requested-screens.json").write_text(json.dumps(request, indent=2) + "\n", encoding="utf-8")
     print(f"Scaffolded design contract for {len(screens)} required screens in {design}")
 
 

@@ -41,6 +41,8 @@ class DesignWorkflowTests(unittest.TestCase):
             manifest = json.loads(manifest_path.read_text())
             self.assertEqual([v["name"] for v in manifest["screens"]],
                              ["Home", "Menu", "Ordering", "Events", "Contact"])
+            req = json.loads((dest / "design/requested-screens.json").read_text())
+            self.assertEqual([v["name"] for v in req["requested"]], ["Home", "Menu", "Ordering", "Events", "Contact"])
             self.assertTrue((dest / ".github/workflows/design-gates.yml").is_file())
             self.assertTrue((dest / "app-design/DESIGN_TO_BUILD_CONTRACT.md").is_file())
             self.assertNotEqual(self.invoke(sys.executable, str(CHECK), "--stage", "plan", "--root", str(dest)).returncode, 0)
@@ -81,6 +83,12 @@ class DesignWorkflowTests(unittest.TestCase):
             failed = self.invoke(sys.executable, str(CHECK), "--stage", "build", "--root", str(dest))
             self.assertNotEqual(failed.returncode, 0)
             self.assertIn("src/screens/Events.tsx", failed.stdout)
+            # Silent removal of a user-requested page must fail even when other files exist.
+            manifest["screens"].pop(3)
+            manifest_path.write_text(json.dumps(manifest))
+            drift = self.invoke(sys.executable, str(CHECK), "--stage", "plan", "--root", str(dest))
+            self.assertNotEqual(drift.returncode, 0)
+            self.assertIn("Screen inventory drifted", drift.stdout)
 
     def test_ios_scaffold_and_default_screen(self):
         with tempfile.TemporaryDirectory() as td:

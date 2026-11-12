@@ -44,6 +44,18 @@ def audit(root: Path, stage: str):
         return ["design/screens.json must be a version 1 object"]
     if not isinstance(manifest.get("screens"), list) or not manifest["screens"]:
         return ["design/screens.json must list at least one screen"]
+    requested_raw = read("design/requested-screens.json")
+    if requested_raw is not None:
+        try:
+            requested = json.loads(requested_raw)
+            expected = requested.get("requested", [])
+            actual = [{"id": item.get("id"), "name": item.get("name")}
+                      for item in manifest["screens"] if isinstance(item, dict)]
+            if expected != actual:
+                errors.append("Screen inventory drifted from design/requested-screens.json. Restore requested screens or record an owner-approved scope change in both files")
+        except (json.JSONDecodeError, AttributeError, TypeError):
+            errors.append("Invalid design/requested-screens.json")
+
 
     brief = read("design/BRIEF.md")
     if brief is not None and MARKER in brief:
@@ -84,6 +96,7 @@ def audit(root: Path, stage: str):
 
     ids = set()
     names = set()
+    screen_proofs = set()
     for i, item in enumerate(manifest["screens"], 1):
         if not isinstance(item, dict):
             errors.append(f"Screen #{i} must be an object")
@@ -118,6 +131,9 @@ def audit(root: Path, stage: str):
             else:
                 for file in proofs:
                     proof(file, f"screen {sid} design_proofs")
+                    if isinstance(file, str) and file in screen_proofs:
+                        errors.append(f"Screen {sid}: visual design proof reused by another screen: {file}")
+                    screen_proofs.add(file)
         status = item.get("status")
         if status not in STATUSES:
             errors.append(f"Screen {sid}: invalid status {status!r}")
