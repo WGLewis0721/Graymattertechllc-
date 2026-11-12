@@ -69,6 +69,12 @@ def main():
         content = (args.templates / template).read_text(encoding="utf-8")
         (design / target).write_text(render(content, args.name, args.platform, args.kind), encoding="utf-8")
 
+    brief_name = "WEBSITE_BRIEF.md" if args.kind == "website" else "PROJECT_BRIEF.md"
+    brief_body = (args.templates / brief_name).read_text(encoding="utf-8")
+    (design / "BRIEF.md").write_text(
+        "<!-- [[FILL]] Complete and approve this brief before design starts. -->\n"
+        + brief_body.replace("[APP NAME]", args.name).replace("[BUSINESS / PROJECT]", args.name),
+        encoding="utf-8")
     spec = (args.templates / "SCREEN_SPEC.md").read_text(encoding="utf-8")
     inventory = {
         "schema_version": 1,

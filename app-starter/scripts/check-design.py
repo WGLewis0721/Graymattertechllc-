@@ -45,6 +45,10 @@ def audit(root: Path, stage: str):
     if not isinstance(manifest.get("screens"), list) or not manifest["screens"]:
         return ["design/screens.json must list at least one screen"]
 
+    brief = read("design/BRIEF.md")
+    if brief is not None and MARKER in brief:
+        errors.append("design/BRIEF.md is not completed or approved")
+
     for rel in ("design/BRAND_BOARD.md", "design/UI_KIT.md", "design/SCREEN_MAP.md", "design/QA.md"):
         body = read(rel)
         if stage != "plan" and rel != "design/QA.md" and body is not None:

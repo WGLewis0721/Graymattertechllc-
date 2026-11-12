@@ -43,6 +43,9 @@ class DesignWorkflowTests(unittest.TestCase):
                              ["Home", "Menu", "Ordering", "Events", "Contact"])
             self.assertTrue((dest / ".github/workflows/design-gates.yml").is_file())
             self.assertTrue((dest / "app-design/DESIGN_TO_BUILD_CONTRACT.md").is_file())
+            self.assertNotEqual(self.invoke(sys.executable, str(CHECK), "--stage", "plan", "--root", str(dest)).returncode, 0)
+            brief = dest / "design/BRIEF.md"
+            brief.write_text(brief.read_text().replace("[[FILL]]", "Owner approved"))
             self.assertEqual(self.invoke(sys.executable, str(CHECK), "--stage", "plan", "--root", str(dest)).returncode, 0)
             self.assertNotEqual(self.invoke(sys.executable, str(CHECK), "--stage", "design", "--root", str(dest)).returncode, 0)
 
@@ -88,6 +91,9 @@ class DesignWorkflowTests(unittest.TestCase):
             self.assertEqual(manifest["platform"], "ios")
             self.assertEqual([s["name"] for s in manifest["screens"]], ["Tasks"])
             self.assertIn("DemoIOS", (dest / "project.yml").read_text())
+            self.assertNotEqual(self.invoke(sys.executable, str(CHECK), "--stage", "plan", "--root", str(dest)).returncode, 0)
+            brief = dest / "design/BRIEF.md"
+            brief.write_text(brief.read_text().replace("[[FILL]]", "Owner approved"))
             self.assertEqual(self.invoke(sys.executable, str(CHECK), "--stage", "plan", "--root", str(dest)).returncode, 0)
             self.assertNotEqual(self.invoke(sys.executable, str(CHECK), "--stage", "release", "--root", str(dest)).returncode, 0)
 
