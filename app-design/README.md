@@ -42,7 +42,7 @@ A fork of **this** repo contains Gray Matter's entire business website and Git h
 
 For a clean starting point, the better long-term option is a **separate app-starter template repository** with this folder and platform-specific starter projects. GitHub's **Use this template** creates a new history; a fork retains the parent history: https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template
 
-**Today:** Use the existing [app starter generator](../app-starter/README.md) to create a clean React or SwiftUI project with this folder included, or copy **app-design/** into another properly scaffolded project. This avoids importing the production marketing website.
+**Today:** Use the existing [app starter generator](https://github.com/WGLewis0721/Graymattertechllc-/tree/main/app-starter) to create a clean React or SwiftUI project with this folder included, or copy **app-design/** into another properly scaffolded project. This avoids importing the production marketing website.
 
 ## Origin of the Spread-derived additions
 
