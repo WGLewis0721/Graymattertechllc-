@@ -170,6 +170,8 @@ This is **documentation only**. The business website remains static HTML/CSS/JS 
 
 Reusable [Spread-derived design practices](app-design/UX_REVIEW_AND_SPEC_PROTOCOL.md) cover editorial artwork, tactile interactions, adaptive device testing, vetted native references and stricter design specifications. They are documentation-only and do not alter the live website.
 
+Reusable [Arooma-derived creative production methods](app-design/CREATIVE_ASSET_PRODUCTION.md) cover layered AI artwork, source/licensing manifests, [genuine cinematic media](app-design/ANIMATED_MEDIA_PIPELINE.md), [object-first native interactions](app-design/OBJECT_FIRST_NATIVE_PATTERNS.md) and [UI automation evidence](app-design/UI_AUTOMATION_AND_EVIDENCE.md). They are reference-only; Arooma's brand assets and the live Gray Matter website remain unchanged.
+
 ## Reusable Web and iOS App Starters
 
 [App Starter](app-starter/README.md) includes separate React/TypeScript and native SwiftUI examples, a clean new-project generator, testing guidance and Codemagic compile configuration. It reuses [app-design/](app-design/README.md) as the single design and development knowledge library. These sources are isolated from the production marketing website and do not add frameworks to it.

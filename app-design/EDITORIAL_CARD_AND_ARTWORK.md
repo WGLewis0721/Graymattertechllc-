@@ -2,7 +2,7 @@
 
 **Purpose:** Build distinctive, high-quality card collections while keeping information, accessibility, interactions and saved data truthful. Adapted from Spread's [editorial card art direction](https://github.com/WGLewis0721/spread-app/blob/main/docs/design/planner/SPREAD_LIFE_CARD_ART_DIRECTION.md), [art handoff](https://github.com/WGLewis0721/spread-app/blob/main/docs/design/planner/CLAUDE_EDITORIAL_ART_HANDOFF.md) and [UI kit](https://github.com/WGLewis0721/spread-app/blob/main/docs/design/ui-kit/UI_KIT.md).
 
-Spread's exact categories, stored hours, brand assets and changing Life-card implementation requirements are **not** universal templates.
+Spread's exact categories, stored hours, brand assets and changing Life-card implementation requirements are **not** universal templates. For professional **layered, editable production** of the underlying illustrations, source facts, photography and licensing, see [CREATIVE_ASSET_PRODUCTION.md](CREATIVE_ASSET_PRODUCTION.md), adapted from Arooma. For actual animated illustrations, use [ANIMATED_MEDIA_PIPELINE.md](ANIMATED_MEDIA_PIPELINE.md).
 
 ## A card family, not disconnected posters
 

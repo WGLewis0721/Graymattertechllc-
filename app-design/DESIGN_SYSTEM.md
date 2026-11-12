@@ -2,7 +2,7 @@
 
 Build a **product** that feels deliberately designed, not a pile of attractive library components. Use for web and native apps.
 
-For deeper reusable reviews imported from Spread, see [UX review and spec protocol](UX_REVIEW_AND_SPEC_PROTOCOL.md), [editorial cards and art](EDITORIAL_CARD_AND_ARTWORK.md) and [tactile interaction and device QA](TACTILE_MOTION_AND_DEVICE_QA.md). These supplement, not override, the actual product's approved UI and data rules.
+For deeper reusable reviews imported from Spread, see [UX review and spec protocol](UX_REVIEW_AND_SPEC_PROTOCOL.md), [editorial cards and art](EDITORIAL_CARD_AND_ARTWORK.md) and [tactile interaction and device QA](TACTILE_MOTION_AND_DEVICE_QA.md). Arooma-derived guidance adds [asset production](CREATIVE_ASSET_PRODUCTION.md), [verified animation](ANIMATED_MEDIA_PIPELINE.md) and [object-first native patterns](OBJECT_FIRST_NATIVE_PATTERNS.md). These supplement, not override, the actual product's approved UI and data rules.
 
 ## 1. Define the job before the art
 

@@ -42,6 +42,10 @@ SwiftUI + a local task store, XcodeGen and XCTest. A Codemagic configuration per
 
 The starter copies the central app-design folder into each new app. That now includes [UX/design-spec reviews](../app-design/UX_REVIEW_AND_SPEC_PROTOCOL.md), [editorial card and image-layer rules](../app-design/EDITORIAL_CARD_AND_ARTWORK.md), [native tactile motion and device acceptance](../app-design/TACTILE_MOTION_AND_DEVICE_QA.md), and [optional SwiftUI references](../app-design/NATIVE_UI_REFERENCES.md). These are reference methods, not preinstalled components, libraries or Spread-branded assets.
 
+## Reusable Arooma design lessons
+
+The shared design library now includes [creative asset production and rights](../app-design/CREATIVE_ASSET_PRODUCTION.md), [verified cinematic media](../app-design/ANIMATED_MEDIA_PIPELINE.md), [object-first native UX](../app-design/OBJECT_FIRST_NATIVE_PATTERNS.md) and [UI automation evidence](../app-design/UI_AUTOMATION_AND_EVIDENCE.md). A [new asset manifest](../app-design/templates/ASSET_JOB_MANIFEST.md) records approved originals, AI-generated components, media versions and permissions. These are reference instructions, not preinstalled dependencies or copies of Arooma's proprietary product art.
+
 ## Before a real launch
 
 Fill out [PROJECT_BRIEF](../app-design/templates/PROJECT_BRIEF.md), choose a platform playbook, and complete the [release checklist](../app-design/templates/RELEASE_CHECKLIST.md).
