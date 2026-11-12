@@ -1,0 +1,45 @@
+name: GrayMatterStarter
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: '17.0'
+configs:
+  Debug: debug
+  Release: release
+settings:
+  base:
+    SWIFT_VERSION: '5.0'
+    IPHONEOS_DEPLOYMENT_TARGET: '17.0'
+targets:
+  GrayMatterStarter:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.graymatterstarter
+        TARGETED_DEVICE_FAMILY: '1,2'
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        CURRENT_PROJECT_VERSION: '1'
+        MARKETING_VERSION: '0.1.0'
+  GrayMatterStarterTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: Tests
+    dependencies:
+      - target: GrayMatterStarter
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+schemes:
+  GrayMatterStarter:
+    build:
+      targets:
+        GrayMatterStarter: all
+    test:
+      targets:
+        - GrayMatterStarterTests
