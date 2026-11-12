@@ -12,6 +12,10 @@ For Claude Code, Codex, Copilot or another coding/design agent. External skills,
 
 **Scope:** These documents are for a **new product**. The Gray Matter corporate website remains a no-framework static site under its own **.github/copilot-instructions.md**.
 
+## Website-specific workflow
+
+For a client website or marketing page, read [WEBSITE_DESIGN_WORKFLOW.md](WEBSITE_DESIGN_WORKFLOW.md) and complete [templates/WEBSITE_BRIEF.md](templates/WEBSITE_BRIEF.md) before coding. That document includes design-reference evaluation, visual-asset preparation, a reusable ChatGPT build prompt, iterative refinement and production QA. Use it alongside, not in place of, the existing repository's rules.
+
 ## Copyable prompt: start a product
 
 > Read the filled PROJECT_BRIEF, app-design README, DESIGN_SYSTEM and relevant WEB_PLAYBOOK or IOS_PLAYBOOK. Inspect the actual target repo before proposing changes. Identify its current framework and dependencies, source-of-truth data, CI and known-good release. Propose the smallest complete user journey and implement it end-to-end with real persistence, loading/empty/error states, accessibility, correct authorization and tests. Use existing components before adding packages; select one primitive base for new React apps. No isolated prototype. Document files changed, exact test evidence, unresolved problems and next release gate. Do not fabricate test results or deploy claims.
