@@ -12,6 +12,10 @@
 - **Resilience:** Backups plus tested restore, graceful offline/degraded modes, monitoring, idempotent mutations, error tracking and rollback.
 - **Compliance:** Review privacy policy, commercial code/font/asset licenses, Apple rules and actual claims made to users.
 
+## Creative asset and UI-evidence gate
+
+For product imagery, generated graphics and third-party photos, use [CREATIVE_ASSET_PRODUCTION.md](CREATIVE_ASSET_PRODUCTION.md) and [templates/ASSET_JOB_MANIFEST.md](templates/ASSET_JOB_MANIFEST.md) to track approved copy, image source, rights, published scope and removal fallback. An AI transformation or a brand disclaimer does not automatically grant distribution rights. For cinematic media, check actual decoded motion and packaged video with [ANIMATED_MEDIA_PIPELINE.md](ANIMATED_MEDIA_PIPELINE.md). For end-to-end UI failures, distinguish test script, accessibility hierarchy, timing and app bugs using [UI_AUTOMATION_AND_EVIDENCE.md](UI_AUTOMATION_AND_EVIDENCE.md).
+
 ## Engineering release gate
 
 - [ ] No secrets, customer data or unauthorized external service credentials in Git.

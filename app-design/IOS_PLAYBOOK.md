@@ -16,6 +16,8 @@
 
 For collections of distinctive, premium cards, use [EDITORIAL_CARD_AND_ARTWORK.md](EDITORIAL_CARD_AND_ARTWORK.md): separate clean background imagery from live dynamic labels, action controls, authoritative state and validated persistence. Keep a replaceable asset registry and fallbacks; do not ship a full flattened mockup as a native control.
 
+For selected-object collections or decks, refer to [OBJECT_FIRST_NATIVE_PATTERNS.md](OBJECT_FIRST_NATIVE_PATTERNS.md). For generated cinematic backgrounds or motion artwork, follow [ANIMATED_MEDIA_PIPELINE.md](ANIMATED_MEDIA_PIPELINE.md). For repeatable UI evidence including accessibility-tree and screenshot failures, see [UI_AUTOMATION_AND_EVIDENCE.md](UI_AUTOMATION_AND_EVIDENCE.md).
+
 ## Interaction standard
 
 For cards, rails, radial controls and side drawers document **touch → response → movement → settle → persisted outcome**. Haptics should correspond to meaningful detents/actions. Tests must cover interrupted, slow and fast swipes; gestures competing with system edge/back navigation; dynamic content; return from background and app restart.

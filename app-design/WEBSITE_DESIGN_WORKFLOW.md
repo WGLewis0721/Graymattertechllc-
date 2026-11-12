@@ -41,6 +41,8 @@ Customize the scene and style for each brand. Keep lighting, composition, color,
 
 **Accuracy rule:** Do not present AI-generated models as actual employees/customers, fabricated product photography as real merchandise, or synthetic before-and-after images as real results. Use authorized photography for factual depictions. Record source, permissions, and required attribution. Heading text and CTA belong in accessible HTML, not embedded in a hero image.
 
+Use [CREATIVE_ASSET_PRODUCTION.md](CREATIVE_ASSET_PRODUCTION.md) and its [asset job manifest](templates/ASSET_JOB_MANIFEST.md) for a more rigorous production path when your website needs several original photographs, layered composites, approved product variants or client/third-party rights tracking.
+
 ## Step 3: Build with ChatGPT using concrete inputs
 
 Give ChatGPT:
