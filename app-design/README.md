@@ -12,6 +12,10 @@ The [complete workflow](UPGRADE_AND_CORRECTIVE_WORKFLOW.md) now covers both new 
 
 **[Design-to-Build Contract](DESIGN_TO_BUILD_CONTRACT.md):** A visual brand board, a real UI kit, an individual design for every user-requested screen/page, functional implementation of all screens, and actual QA evidence are mandatory for new projects. The [app starter](https://github.com/WGLewis0721/Graymattertechllc-/tree/main/app-starter) creates the brief, screen manifest, design files and structural gates. The AI coding/design agent must create the actual visuals and working code. No silent screen omissions.
 
+## Existing client website: first audit, then design
+
+For a website that already exists, start with the [Client Site Design System Audit](CLIENT_SITE_DESIGN_SYSTEM_AUDIT.md), compare against the [WD Auto Detailing case study](case-studies/WD_AUTO_DETAILING_SITE_SYSTEM.md), and complete the [Brand Kit and Iconography template](templates/BRAND_KIT_AND_ICONOGRAPHY.md) alongside the existing [Brand Board](templates/BRAND_BOARD.md) and [UI Kit](templates/UI_KIT.md). Preserve the client's approved branding and actual runtime stack. **Templates are not finished visual proof**; render a board, icon gallery and component states and attach evidence before approval. These audits are appropriate for existing static HTML/CSS/JS websites as well as modern frameworks.
+
 ## New app: follow these steps
 
 1. Copy [templates/PROJECT_BRIEF.md](templates/PROJECT_BRIEF.md) into the new product repository and fill in the problem, audience, first useful outcome, platform, business model, and constraints.
