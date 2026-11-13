@@ -21,7 +21,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Install wireframe renderer dependency
+        run: python3 -m pip install -r app-starter/scripts/requirements-design.txt
       - name: Check bash syntax
-        run: bash -n app-starter/scripts/new-app.sh
+        run: |
+          bash -n app-starter/scripts/new-app.sh
+          bash -n app-starter/scripts/upgrade-site.sh
+          python3 -m py_compile app-starter/scripts/*.py
       - name: Run web and iOS design generation tests
         run: python3 -m unittest discover -s app-starter/tests -p 'test_*.py' -v
