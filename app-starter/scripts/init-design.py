@@ -3,6 +3,7 @@
 import argparse
 import json
 import re
+import shutil
 from pathlib import Path
 
 MARKER = "[[FILL]]"
@@ -41,6 +42,8 @@ def main():
     parser.add_argument("--platform", choices=("web", "ios"), required=True)
     parser.add_argument("--kind", choices=("app", "website"), default="app")
     parser.add_argument("--check-only", action="store_true")
+    parser.add_argument("--mode", choices=("new", "upgrade"), default="new")
+    parser.add_argument("--reference", type=Path, help="Existing screenshot for upgrade mode")
     parser.add_argument("--dest", type=Path)
     parser.add_argument("--templates", type=Path)
     args = parser.parse_args()
@@ -50,6 +53,11 @@ def main():
         parser.error(str(exc))
     if args.kind == "website" and args.platform != "web":
         parser.error("Websites require the web platform. Use --kind app for native iOS")
+    if args.mode == "upgrade":
+        if args.kind != "website" or args.platform != "web":
+            parser.error("Upgrade mode currently supports existing websites (web) only")
+        if not args.reference or not args.reference.is_file() or args.reference.suffix.lower() not in (".png", ".jpg", ".jpeg", ".webp"):
+            parser.error("Upgrade mode requires an existing PNG/JPG/WebP screenshot via --reference")
     if args.check_only:
         print(f"Valid {args.platform} {args.kind}: {len(screens)} named screens")
         return
@@ -65,6 +73,9 @@ def main():
         ("UI_KIT.md", "UI_KIT.md"),
         ("SCREEN_MAP.md", "SCREEN_MAP.md"),
         ("DESIGN_QA.md", "QA.md"),
+        ("PREBUILD_PLAN.md", "PREBUILD_PLAN.md"),
+        ("REFERENCES.md", "REFERENCES.md"),
+        ("CORRECTIVE_ACTION.md", "CORRECTIVE_ACTION.md"),
     ):
         content = (args.templates / template).read_text(encoding="utf-8")
         (design / target).write_text(render(content, args.name, args.platform, args.kind), encoding="utf-8")
@@ -78,6 +89,10 @@ def main():
     spec = (args.templates / "SCREEN_SPEC.md").read_text(encoding="utf-8")
     inventory = {
         "schema_version": 1,
+        "mode": args.mode,
+        "baseline_screenshots": [],
+        "after_screenshots": [],
+        "comparison_images": [],
         "project": args.name,
         "kind": args.kind,
         "platform": args.platform,
@@ -87,7 +102,7 @@ def main():
         "release_evidence": [],
         "screens": [],
     }
-    for slug, label in screens:
+    for position, (slug, label) in enumerate(screens):
         path = design / "screens" / f"{slug}.md"
         path.write_text(render(spec, args.name, args.platform, args.kind, label), encoding="utf-8")
         inventory["screens"].append({
@@ -100,11 +115,34 @@ def main():
             "implementation_files": [],
             "test_evidence": [],
             "status": "planned",
+            "existing_page": args.mode == "upgrade" and position == 0,
+            "after_screenshots": [],
+            "comparison_images": [],
         })
+    (design / "references.json").write_text(json.dumps({"sources": []}, indent=2) + "\n", encoding="utf-8")
+    (design / "corrections.json").write_text(json.dumps({"issues": []}, indent=2) + "\n", encoding="utf-8")
+    layouts = design / "wireframes"
+    layouts.mkdir()
+    for slug, label in screens:
+        sections = [
+            {"kind": "hero", "label": f"{label}: heading, value proposition and CTA", "height": 210},
+            {"kind": "content", "label": "Primary user content or form", "height": 210},
+            {"kind": "media", "label": "Supporting content and details", "height": 180},
+            {"kind": "cta", "label": "Next action or confirmation", "height": 90},
+        ]
+        (layouts / f"{slug}.json").write_text(json.dumps({"screen_id": slug, "sections": sections}, indent=2) + "\n")
+    if args.mode == "upgrade":
+        before = design / "evidence" / "before"
+        before.mkdir(parents=True)
+        target = before / f"original{args.reference.suffix.lower()}"
+        shutil.copy2(args.reference, target)
+        inventory["baseline_screenshots"] = [target.relative_to(dest).as_posix()]
+        audit = (args.templates / "UPGRADE_AUDIT.md").read_text(encoding="utf-8")
+        (design / "UPGRADE_AUDIT.md").write_text(render(audit, args.name, args.platform, args.kind), encoding="utf-8")
     (design / "screens.json").write_text(json.dumps(inventory, indent=2) + "\n", encoding="utf-8")
     request = {"project": args.name, "requested": [{"id": sid, "name": label} for sid, label in screens]}
     (design / "requested-screens.json").write_text(json.dumps(request, indent=2) + "\n", encoding="utf-8")
-    print(f"Scaffolded design contract for {len(screens)} required screens in {design}")
+    print(f"Scaffolded {args.mode} design contract for {len(screens)} required screens in {design}")
 
 
 if __name__ == "__main__":
