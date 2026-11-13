@@ -1,5 +1,7 @@
 # App Starter | Validation
 
+Install Pillow (the renderer dependency): `python3 -m pip install -r app-starter/scripts/requirements-design.txt`. The tests cover real PNG/SVG exports, exact screen inventories, native iOS, pre-build source registers, screenshot upgrades, before/after comparisons and correction tracking.
+
 ## Generator regression tests
 
 From the business repository checkout:

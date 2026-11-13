@@ -33,6 +33,7 @@ script_dir="$(cd "$(dirname "$0")" && pwd)"
 root="$(cd "$script_dir/.." && pwd)"
 docs="$root/../app-design"
 if [[ ! -d "$docs/templates" ]]; then echo "Expected app-design/ next to app-starter/" >&2; exit 3; fi
+python3 -c "from PIL import Image; print('Pillow available for PNG wireframe export')" || { echo "Install Pillow first: python3 -m pip install Pillow" >&2; exit 3; }
 python3 "$script_dir/init-design.py" --check-only --name "$name" --platform "$platform" --kind "$kind" --screens "$screens"
 mkdir -p "$out"
 out="$(cd "$out" && pwd)"
@@ -43,9 +44,12 @@ cp -R "$root/$platform/." "$dest/"
 cp -R "$docs" "$dest/app-design"
 cp "$root/.editorconfig" "$root/.gitignore" "$dest/"
 mkdir -p "$dest/scripts" "$dest/.github/workflows"
-cp "$root/scripts/check-design.py" "$dest/scripts/check-design.py"
+for script in check-design.py render-wireframes.py compare-screenshots.py open-correction.py requirements-design.txt; do
+  cp "$root/scripts/$script" "$dest/scripts/$script"
+done
 cp "$root/project-automation/design-gates.yml" "$dest/.github/workflows/design-gates.yml"
 python3 "$script_dir/init-design.py" --dest "$dest" --templates "$docs/templates" --name "$name" --platform "$platform" --kind "$kind" --screens "$screens"
+python3 "$dest/scripts/render-wireframes.py" --root "$dest"
 if [[ "$platform" == "web" ]]; then
   slug="$(printf '%s' "$name" | tr '[:upper:]' '[:lower:]')"
   sed -i.bak "s/gray-matter-web-starter/$slug/g" "$dest/package.json"
@@ -55,8 +59,8 @@ if [[ "$platform" == "web" ]]; then
 
 This project is a **starter demonstration, not a finished website/app**. The baseline task UI is a demo and does not implement your requested screens.
 
-1. Read app-design/DESIGN_TO_BUILD_CONTRACT.md and design/SCREEN_MAP.md.
-2. Complete design/BRAND_BOARD.md, design/UI_KIT.md and each design/screens/*.md with actual visual proofs.
+1. Complete design/BRIEF.md, PREBUILD_PLAN.md, REFERENCES.md and references.json before coding.
+2. Review generated DRAFT PNG/SVG wireframes, then create real Brand Board, UI Kit and each screen's actual design proof.
 3. Implement **every requested screen** from design/screens.json as working app code, using real navigation and shared components.
 4. Run: python3 scripts/check-design.py --stage design (then build and release as evidence is collected).
 5. Run: npm install; npm run test; npm run build; npm run dev.
@@ -74,7 +78,7 @@ else
 This is a **starter demonstration**, not a completed product. The baseline SwiftUI task screen is a demo, not the requested screen list.
 
 1. Read app-design/DESIGN_TO_BUILD_CONTRACT.md and design/SCREEN_MAP.md.
-2. Deliver design/BRAND_BOARD.md, design/UI_KIT.md and all screen proofs, then implement each in SwiftUI.
+2. Review draft PNG/SVG wireframes. Deliver actual visual Brand Board, UI Kit and screen proofs, then implement each in SwiftUI.
 3. Check: python3 scripts/check-design.py --stage design (then build and release with real evidence).
 4. Replace the example bundle ID in project.yml. Run xcodegen generate --spec project.yml on macOS and open $name.xcodeproj.
 5. Run XCTest and real-device acceptance. Codemagic is unsigned Simulator compile only.

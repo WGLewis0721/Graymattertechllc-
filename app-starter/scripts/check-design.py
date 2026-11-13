@@ -1,179 +1,229 @@
 #!/usr/bin/env python3
-"""Structural gates for required design artifacts. Not a substitute for visual/human or automated app tests."""
+"""Conservative structural gates for research, wireframes, build and corrective QA."""
 import argparse
 import json
 import re
 import sys
 from pathlib import Path
 
-MARKER = "[[FILL]]"
-STATUSES = ["planned", "designed", "implemented", "verified"]
+MARKER = '[[FILL]]'
+STATUSES = ['planned', 'designed', 'implemented', 'verified']
+IMAGE_EXTS = {'.png', '.jpg', '.jpeg', '.webp', '.svg', '.html', '.pdf'}
 
 
 def audit(root: Path, stage: str):
     errors = []
-    design = root / "design"
 
     def read(rel):
         path = root / rel
         if not path.is_file():
-            errors.append(f"Missing required file: {rel}")
+            errors.append(f'Missing required file: {rel}')
             return None
         try:
-            return path.read_text(encoding="utf-8")
+            return path.read_text(encoding='utf-8')
         except UnicodeError:
-            errors.append(f"Unreadable UTF-8 file: {rel}")
+            errors.append(f'Unreadable text file: {rel}')
             return None
 
-    def proof(rel, label):
-        if not isinstance(rel, str) or not rel.strip():
-            errors.append(f"Invalid file reference for {label}")
-            return
-        path = (root / rel).resolve()
-        if not path.is_relative_to(root) or not path.is_file() or path.stat().st_size == 0:
-            errors.append(f"Missing, empty or out-of-project {label}: {rel}")
-            return
-        if label in ("brand_board_proofs", "ui_kit_proofs") or label.endswith("design_proofs"):
-            if path.suffix.lower() not in (".svg", ".png", ".jpg", ".jpeg", ".webp", ".html", ".pdf"):
-                errors.append(f"Visual proof for {label} must be SVG, PNG, JPG, WebP, HTML or PDF: {rel}")
-
-    raw = read("design/screens.json")
-    if raw is None:
-        return errors
-    try:
-        manifest = json.loads(raw)
-    except json.JSONDecodeError as exc:
-        return [f"Invalid design/screens.json: {exc}"]
-    if not isinstance(manifest, dict) or manifest.get("schema_version") != 1:
-        return ["design/screens.json must be a version 1 object"]
-    if not isinstance(manifest.get("screens"), list) or not manifest["screens"]:
-        return ["design/screens.json must list at least one screen"]
-    requested_raw = read("design/requested-screens.json")
-    if requested_raw is not None:
+    def load_json(rel):
+        content = read(rel)
+        if content is None:
+            return None
         try:
-            requested = json.loads(requested_raw)
-            expected = requested.get("requested", [])
-            actual = [{"id": item.get("id"), "name": item.get("name")}
-                      for item in manifest["screens"] if isinstance(item, dict)]
-            if expected != actual:
-                errors.append("Screen inventory drifted from design/requested-screens.json. Restore requested screens or record an owner-approved scope change in both files")
-        except (json.JSONDecodeError, AttributeError, TypeError):
-            errors.append("Invalid design/requested-screens.json")
+            return json.loads(content)
+        except json.JSONDecodeError as exc:
+            errors.append(f'Invalid JSON: {rel}: {exc}')
+            return None
 
+    def proof(rel, label, visual=False):
+        if not isinstance(rel, str) or not rel.strip():
+            errors.append(f'Invalid {label} reference')
+            return
+        target = (root / rel).resolve()
+        if not target.is_relative_to(root) or not target.is_file() or target.stat().st_size == 0:
+            errors.append(f'Missing, empty or out-of-project {label}: {rel}')
+            return
+        if visual and target.suffix.lower() not in IMAGE_EXTS:
+            errors.append(f'Visual {label} must be image/SVG/HTML/PDF: {rel}')
+        if target.suffix.lower() == '.png' and target.read_bytes()[:8] != b'\x89PNG\r\n\x1a\n':
+            errors.append(f'Invalid PNG signature for {label}: {rel}')
 
-    brief = read("design/BRIEF.md")
-    if brief is not None and MARKER in brief:
-        errors.append("design/BRIEF.md is not completed or approved")
+    def refs(values, label, visual=False, required=True):
+        if not isinstance(values, list) or (required and not values):
+            errors.append(f'{label} requires valid evidence path(s)')
+        else:
+            for v in values:
+                proof(v, label, visual=visual)
 
-    for rel in ("design/BRAND_BOARD.md", "design/UI_KIT.md", "design/SCREEN_MAP.md", "design/QA.md"):
+    manifest = load_json('design/screens.json')
+    if not isinstance(manifest, dict) or manifest.get('schema_version') != 1:
+        return errors + ['design/screens.json must contain a schema version 1 object']
+    screens = manifest.get('screens')
+    if not isinstance(screens, list) or not screens:
+        return errors + ['At least one screen is required']
+    requested = load_json('design/requested-screens.json')
+    if isinstance(requested, dict):
+        actual = [{'id': s.get('id'), 'name': s.get('name')} for s in screens if isinstance(s, dict)]
+        if requested.get('requested') != actual:
+            errors.append('Screen inventory drifted from design/requested-screens.json; restore it or document owner-approved scope change')
+    else:
+        errors.append('Original requested screen list missing or invalid')
+    mode = manifest.get('mode', 'new')
+    if mode not in ('new', 'upgrade'):
+        errors.append('Invalid project mode')
+
+    for rel in ('design/BRIEF.md', 'design/PREBUILD_PLAN.md', 'design/REFERENCES.md'):
         body = read(rel)
-        if stage != "plan" and rel != "design/QA.md" and body is not None:
-            if MARKER in body:
-                errors.append(f"Incomplete required design document: {rel}")
-    if stage == "release":
-        qa = read("design/QA.md")
-        if qa is not None and (MARKER in qa or "- [ ]" in qa):
-            errors.append("design/QA.md must explain completed or N/A checks; it still has open items")
-
-    if stage != "plan":
-        for key in ("brand_board_proofs", "ui_kit_proofs"):
-            values = manifest.get(key)
-            if not isinstance(values, list) or not values:
-                errors.append(f"{key} requires at least one actual visual artifact")
+        if body is not None and MARKER in body:
+            errors.append(f'Incomplete pre-build spec or research document: {rel}')
+    register = load_json('design/references.json')
+    if not isinstance(register, dict) or not isinstance(register.get('sources'), list) or not register['sources']:
+        errors.append('design/references.json requires at least one documented source/inspiration')
+    else:
+        for index, source in enumerate(register['sources'], 1):
+            if not isinstance(source, dict):
+                errors.append(f'Reference #{index} is not an object')
+                continue
+            for key in ('title', 'category', 'why_use', 'what_not_to_copy', 'license_or_terms', 'checked_on'):
+                if not isinstance(source.get(key), str) or not source[key].strip() or MARKER in source[key]:
+                    errors.append(f'Reference #{index} missing {key}')
+            url = source.get('url')
+            local = source.get('path')
+            if isinstance(url, str) and re.match(r'^https?://[^\s]+$', url):
+                pass
+            elif isinstance(local, str) and local:
+                proof(local, f'reference #{index}')
             else:
-                for file in values:
-                    proof(file, key)
-    if stage in ("build", "release"):
-        sources = manifest.get("ui_kit_implementation_files")
-        if not isinstance(sources, list) or not sources:
-            errors.append("ui_kit_implementation_files must list real shared component/token source files")
-        else:
-            for file in sources:
-                proof(file, "ui_kit_implementation_files")
-    if stage == "release":
-        ev = manifest.get("release_evidence")
-        if not isinstance(ev, list) or not ev:
-            errors.append("release_evidence must contain real build, test and accessibility records")
-        else:
-            for file in ev:
-                proof(file, "release_evidence")
+                errors.append(f'Reference #{index} needs original HTTPS URL or local source path')
+            if source.get('inspected') is not True:
+                errors.append(f'Reference #{index} must be inspected before plan approval')
 
-    ids = set()
-    names = set()
-    screen_proofs = set()
-    for i, item in enumerate(manifest["screens"], 1):
-        if not isinstance(item, dict):
-            errors.append(f"Screen #{i} must be an object")
+    if mode == 'upgrade':
+        audit_text = read('design/UPGRADE_AUDIT.md')
+        if audit_text is not None and MARKER in audit_text:
+            errors.append('Upgrade audit must document source code and screenshot limitations')
+        refs(manifest.get('baseline_screenshots'), 'baseline_screenshots', visual=True)
+
+    for rel in ('design/BRAND_BOARD.md', 'design/UI_KIT.md', 'design/SCREEN_MAP.md', 'design/QA.md',
+                'design/CORRECTIVE_ACTION.md'):
+        body = read(rel)
+        if stage != 'plan' and rel not in ('design/QA.md', 'design/CORRECTIVE_ACTION.md') and body is not None and MARKER in body:
+            errors.append(f'Incomplete required design document: {rel}')
+    if stage == 'release':
+        qa = read('design/QA.md')
+        if qa is not None and (MARKER in qa or '- [ ]' in qa):
+            errors.append('design/QA.md contains unreviewed acceptance requirements')
+
+    if stage != 'plan':
+        refs(manifest.get('brand_board_proofs'), 'brand_board_proofs', visual=True)
+        refs(manifest.get('ui_kit_proofs'), 'ui_kit_proofs', visual=True)
+    if stage in ('build', 'release'):
+        refs(manifest.get('ui_kit_implementation_files'), 'ui_kit_implementation_files')
+    if stage == 'release':
+        refs(manifest.get('release_evidence'), 'release_evidence')
+        if mode == 'upgrade':
+            refs(manifest.get('after_screenshots'), 'after_screenshots', visual=True)
+            refs(manifest.get('comparison_images'), 'comparison_images', visual=True)
+
+    seen_ids = set()
+    seen_names = set()
+    visual_proofs = set()
+    for i, s in enumerate(screens, 1):
+        if not isinstance(s, dict):
+            errors.append(f'Screen #{i} is not an object')
             continue
-        sid = item.get("id")
-        name = item.get("name")
-        if not isinstance(sid, str) or not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", sid):
-            errors.append(f"Screen #{i} needs a safe lowercase ID")
+        sid, name = s.get('id'), s.get('name')
+        if not isinstance(sid, str) or not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', sid):
+            errors.append(f'Screen #{i} needs safe lowercase ID')
             continue
-        if sid in ids:
-            errors.append(f"Duplicate screen ID: {sid}")
-        ids.add(sid)
-        if not isinstance(name, str) or not name.strip() or name in names:
-            errors.append(f"Invalid or duplicate screen name at #{i}")
-        else:
-            names.add(name)
-        spec = item.get("spec")
-        if spec != f"design/screens/{sid}.md":
-            errors.append(f"Screen {sid}: spec must be design/screens/{sid}.md")
-        else:
-            content = read(spec)
-            if stage != "plan" and content is not None and MARKER in content:
-                errors.append(f"Screen {sid}: incomplete specification")
-        if stage != "plan":
-            for key in ("purpose", "route_or_destination"):
-                value = item.get(key)
-                if not isinstance(value, str) or not value.strip() or MARKER in value:
-                    errors.append(f"Screen {sid}: missing {key}")
-            proofs = item.get("design_proofs")
-            if not isinstance(proofs, list) or not proofs:
-                errors.append(f"Screen {sid}: needs a visual screen design proof")
-            else:
+        if sid in seen_ids:
+            errors.append(f'Duplicate screen ID: {sid}')
+        seen_ids.add(sid)
+        if not isinstance(name, str) or not name.strip() or name in seen_names:
+            errors.append(f'Invalid or duplicate screen name: {sid}')
+        seen_names.add(name)
+        spec = f'design/screens/{sid}.md'
+        if s.get('spec') != spec:
+            errors.append(f'Screen {sid}: incorrect spec path')
+        body = read(spec)
+        if stage != 'plan' and body is not None and MARKER in body:
+            errors.append(f'Screen {sid}: incomplete specification')
+
+        # Draft wireframes are real generated artifacts but do not count as approved design proofs.
+        wire = load_json(f'design/wireframes/{sid}.json')
+        if not isinstance(wire, dict) or wire.get('screen_id') != sid or not isinstance(wire.get('sections'), list):
+            errors.append(f'Screen {sid}: missing structured wireframe source')
+        for size in ('desktop', 'mobile'):
+            for ext in ('png', 'svg'):
+                path = f'design/wireframes/exports/{sid}-{size}.{ext}'
+                proof(path, f'wireframe {sid} {size}', visual=True)
+        status = s.get('status')
+        if status not in STATUSES or STATUSES.index(status) < STATUSES.index(
+                {'plan':'planned','design':'designed','build':'implemented','release':'verified'}[stage]):
+            errors.append(f'Screen {sid}: status {status!r} below {stage} gate')
+        if stage != 'plan':
+            for key in ('purpose', 'route_or_destination'):
+                val = s.get(key)
+                if not isinstance(val, str) or not val.strip() or MARKER in val:
+                    errors.append(f'Screen {sid}: missing {key}')
+            proofs = s.get('design_proofs')
+            refs(proofs, f'screen {sid} design_proofs', visual=True)
+            if isinstance(proofs, list):
                 for file in proofs:
-                    proof(file, f"screen {sid} design_proofs")
-                    if isinstance(file, str) and file in screen_proofs:
-                        errors.append(f"Screen {sid}: visual design proof reused by another screen: {file}")
-                    screen_proofs.add(file)
-        status = item.get("status")
-        if status not in STATUSES:
-            errors.append(f"Screen {sid}: invalid status {status!r}")
-        elif STATUSES.index(status) < STATUSES.index({"plan":"planned","design":"designed","build":"implemented","release":"verified"}[stage]):
-            errors.append(f"Screen {sid}: {status} is below {stage} gate")
-        if stage in ("build", "release"):
-            source_files = item.get("implementation_files")
-            if not isinstance(source_files, list) or not source_files:
-                errors.append(f"Screen {sid}: implementation_files must list real source files")
-            else:
-                for file in source_files:
-                    proof(file, f"screen {sid} implementation_files")
-        if stage == "release":
-            ev = item.get("test_evidence")
-            if not isinstance(ev, list) or not ev:
-                errors.append(f"Screen {sid}: no tested navigation/interaction evidence")
-            else:
-                for file in ev:
-                    proof(file, f"screen {sid} test_evidence")
+                    if isinstance(file, str) and file in visual_proofs:
+                        errors.append(f'Screen {sid}: duplicate screen design proof {file}')
+                    if isinstance(file, str):
+                        visual_proofs.add(file)
+        if stage in ('build', 'release'):
+            refs(s.get('implementation_files'), f'screen {sid} implementation_files')
+        if stage == 'release':
+            refs(s.get('test_evidence'), f'screen {sid} test_evidence')
+            if mode == 'upgrade' and s.get('existing_page'):
+                refs(s.get('after_screenshots'), f'screen {sid} after_screenshots', visual=True)
+                refs(s.get('comparison_images'), f'screen {sid} comparison_images', visual=True)
+
+    corrections = load_json('design/corrections.json')
+    if not isinstance(corrections, dict) or not isinstance(corrections.get('issues'), list):
+        errors.append('Missing correction register: design/corrections.json')
+    else:
+        ids = set()
+        for i, issue in enumerate(corrections['issues'], 1):
+            if not isinstance(issue, dict) or not issue.get('id') or issue['id'] in ids:
+                errors.append(f'Invalid or duplicate correction #{i}')
+                continue
+            ids.add(issue['id'])
+            spec = issue.get('spec', '')
+            if not isinstance(spec, str) or not spec.startswith('design/corrections/'):
+                errors.append(f'Invalid correction spec for {issue["id"]}')
+                continue
+            content = read(spec)
+            refs(issue.get('observed_evidence'), f'correction {issue["id"]} observed_evidence')
+            if stage == 'release':
+                if issue.get('status') != 'closed':
+                    errors.append(f'Unresolved correction blocks release: {issue["id"]}')
+                else:
+                    if not isinstance(content, str) or MARKER in content:
+                        errors.append(f'Closed correction still has incomplete spec: {issue["id"]}')
+                    refs(issue.get('changed_files'), f'correction {issue["id"]} changed_files')
+                    refs(issue.get('regression_evidence'), f'correction {issue["id"]} regression_evidence')
+                    if not isinstance(issue.get('reviewer_approval'), str) or len(issue['reviewer_approval'].strip()) < 5:
+                        errors.append(f'Closed correction missing reviewer approval: {issue["id"]}')
     return errors
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--stage", choices=("plan", "design", "build", "release"), default="design")
-    parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parent.parent)
-    args = parser.parse_args()
-    root = args.root.resolve()
-    errors = audit(root, args.stage)
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--stage', choices=('plan','design','build','release'), default='design')
+    p.add_argument('--root', type=Path, default=Path(__file__).resolve().parent.parent)
+    args = p.parse_args()
+    errors = audit(args.root.resolve(), args.stage)
     if errors:
-        print(f"FAIL {args.stage.upper()} gate ({len(errors)} issue(s)):")
+        print(f'FAIL {args.stage.upper()} gate ({len(errors)} issue(s))')
         for error in errors:
-            print(f"  - {error}")
+            print('  -', error)
         sys.exit(1)
-    print(f"PASS {args.stage.upper()} structural gate. This does NOT prove visual quality, runtime behavior or release readiness.")
+    print(f'PASS {args.stage.upper()} structural gate. Manual visual and functional verification remain required.')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

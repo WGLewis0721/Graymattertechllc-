@@ -6,6 +6,20 @@ Start a new React/TypeScript website or app, or a native SwiftUI iOS app, with r
 
 This starter is isolated from Gray Matter's production static business website.
 
+## Install the PNG wireframe renderer
+
+```bash
+python3 -m pip install -r app-starter/scripts/requirements-design.txt
+```
+
+## Upgrade an existing website using a screenshot
+
+```bash
+bash app-starter/scripts/upgrade-site.sh ./existing-client-site --name ClientSite --screens 'Home,Services,Contact' --reference ./screenshots/original.png
+```
+
+This **preserves the existing website's code**, creates an audited baseline and exports draft SVG and PNG wireframes. It refuses to overwrite an existing design folder or validator. Review screenshots for confidential information before committing them to a public repository. See [Create / Upgrade / Export / Correct](../app-design/UPGRADE_AND_CORRECTIVE_WORKFLOW.md).
+
 ## Generate with the exact screens you want
 
 Run from a local clone of this business repository:
@@ -16,6 +30,8 @@ bash app-starter/scripts/new-app.sh ios CollectionApp ./projects --kind app --sc
 ~~~
 
 The old command without --screens still works and creates a default **Tasks** demo. Duplicate screen names and overwriting existing projects are rejected.
+
+New projects and upgrades both create a researched `PREBUILD_PLAN.md`, a source/inspiration register (`REFERENCES.md` and `references.json`), a per-screen editable wireframe JSON, desktop/mobile (or iPad/iPhone) SVG and PNG exports, and a `corrections.json` issue register. The pre-build and released phases fail until the required evidence is complete. Draft screenshots do not count as real implemented screens.
 
 ## What gets generated
 

@@ -4,6 +4,16 @@
 
 This contract applies to **new projects created with Gray Matter App Starter**. It does **not** authorize redesigning existing production projects, inventing client facts, deploying to production or copying Spread/Arooma branding.
 
+## New and existing websites: mandatory research and corrective workflow
+
+This contract also covers **screenshot-based upgrades of existing websites**, using the non-destructive [Create, Upgrade, Export and Correct workflow](UPGRADE_AND_CORRECTIVE_WORKFLOW.md). Before editing, inspect the real source and preserve approved working features, business facts, data and branding. A screenshot alone cannot prove functionality.
+
+**Plan gate:** Complete the researched `design/PREBUILD_PLAN.md` and `design/REFERENCES.md` plus machine-readable `design/references.json` with actual inspected sources, specific lessons, rights/costs, and alternatives. Upgrades also require a source-code and screenshot baseline audit.
+
+**Wireframes:** The starter now generates a real **draft PNG and editable SVG** for every named screen (desktop/mobile or iPhone/iPad), backed by per-screen JSON. These generic wireframes are not final layouts or approved design proofs.
+
+**Corrections:** Each user-reported defect gets a root-cause and regression record in `design/corrections.json`. A defect left open or closed without evidence and review blocks the **release** gate. Existing-site after screenshots must be from the running product, not wireframes.
+
 ## Mandatory sequence and acceptance
 
 | Gate | Required artifact | Real completion standard |
