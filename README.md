@@ -174,6 +174,8 @@ Reusable [Arooma-derived creative production methods](app-design/CREATIVE_ASSET_
 
 **New required workflow:** [Design-to-Build Contract](app-design/DESIGN_TO_BUILD_CONTRACT.md) requires a visual brand board, functional UI kit, every requested screen, integrated code and evidence. The [app starter](app-starter/README.md) now accepts named pages via --screens and scaffolds the required designs and validation checks. Scaffolding does not itself build the finished pages.
 
+**New: Create / Upgrade / Export / Correct.** The [expanded design workflow](app-design/UPGRADE_AND_CORRECTIVE_WORKFLOW.md) now includes an approved pre-build plan/spec, inspected sources and inspirations, actual draft SVG/PNG wireframe export, a non-destructive existing-site screenshot audit, before/after PNG comparisons and release-blocking corrective QA. These are isolated starter and library changes; the live Gray Matter business website is untouched.
+
 ## Reusable Web and iOS App Starters
 
 [App Starter](app-starter/README.md) includes separate React/TypeScript and native SwiftUI examples, a clean new-project generator, testing guidance and Codemagic compile configuration. It reuses [app-design/](app-design/README.md) as the single design and development knowledge library. These sources are isolated from the production marketing website and do not add frameworks to it.

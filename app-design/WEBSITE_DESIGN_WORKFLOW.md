@@ -8,6 +8,10 @@ This guide is for **client sites, service websites, landing pages, and marketing
 
 **New websites created from the starter:** [Design-to-Build Contract](DESIGN_TO_BUILD_CONTRACT.md) requires a rendered brand board, UI kit, individual visual designs and actual working pages for every screen named with --screens. The references below inform those mandatory deliverables; they do not replace them.
 
+### Upgrading an existing website
+
+Start with [the screenshot-based upgrade workflow](UPGRADE_AND_CORRECTIVE_WORKFLOW.md). Study the actual repository and existing screenshot, preserve functioning features, write a pre-build specification with verified design references and resources, export editable SVG/PNG wireframes, then implement only the approved redesign. Use actual running-site screenshots for before/after comparisons and log defects in the corrective register. A screenshot by itself cannot reveal hidden business logic or permissions.
+
 ## Step 0: Define the website job
 
 Fill in [the website brief](templates/WEBSITE_BRIEF.md) before making screens. Record who the website serves, the single most important action (book, call, buy, inquire, subscribe), approved services/content, user questions, integrations, and how success will be measured.
