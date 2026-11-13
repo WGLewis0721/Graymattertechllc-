@@ -10,6 +10,9 @@ This guide is for **client sites, service websites, landing pages, and marketing
 
 ### Upgrading an existing website
 
+For a repo that already has assets, fonts and shared components, begin with the [Client Site Design System Audit](CLIENT_SITE_DESIGN_SYSTEM_AUDIT.md) and [Brand Kit & Iconography template](templates/BRAND_KIT_AND_ICONOGRAPHY.md). The [WD Auto Detailing case study](case-studies/WD_AUTO_DETAILING_SITE_SYSTEM.md) shows a concrete, inspected source implementation. Audit what exists before generating new assets. Separate a **documented existing brand** from a **client-approved brand board render** and never infer license approval from a fallback font.
+
+
 Start with [the screenshot-based upgrade workflow](UPGRADE_AND_CORRECTIVE_WORKFLOW.md). Study the actual repository and existing screenshot, preserve functioning features, write a pre-build specification with verified design references and resources, export editable SVG/PNG wireframes, then implement only the approved redesign. Use actual running-site screenshots for before/after comparisons and log defects in the corrective register. A screenshot by itself cannot reveal hidden business logic or permissions.
 
 ## Step 0: Define the website job
