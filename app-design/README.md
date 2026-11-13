@@ -4,6 +4,10 @@
 
 **Important:** This folder is documentation, not a runnable starter app. The parent repository is the live, static Gray Matter business website; its HTML/CSS/JavaScript must not be replaced with React or SwiftUI because of the references here.
 
+## Create, upgrade, export and correct
+
+The [complete workflow](UPGRADE_AND_CORRECTIVE_WORKFLOW.md) now covers both new products **and existing client websites upgraded from a screenshot**. It requires a pre-build plan/spec and research/source register, automatically exports **draft SVG + PNG wireframes** per named screen, and provides a real before/after comparison exporter and release-blocking corrective ticket register. The generator produces draft low-fidelity artwork; an AI designer/coder must still create approved designs and working applications.
+
 ## Mandatory deliverables for every new product
 
 **[Design-to-Build Contract](DESIGN_TO_BUILD_CONTRACT.md):** A visual brand board, a real UI kit, an individual design for every user-requested screen/page, functional implementation of all screens, and actual QA evidence are mandatory for new projects. The [app starter](https://github.com/WGLewis0721/Graymattertechllc-/tree/main/app-starter) creates the brief, screen manifest, design files and structural gates. The AI coding/design agent must create the actual visuals and working code. No silent screen omissions.
@@ -17,6 +21,13 @@
 5. Implement one complete vertical slice with **real persistence** and error handling, then expand. For gestures, art or video, read [tactile QA](TACTILE_MOTION_AND_DEVICE_QA.md), [editorial cards](EDITORIAL_CARD_AND_ARTWORK.md), [creative asset production](CREATIVE_ASSET_PRODUCTION.md), and [animated media](ANIMATED_MEDIA_PIPELINE.md) as needed. Give an AI coder the [workflow prompts](AI_WORKFLOW.md).
 6. Check [security, payments, testing, and launch gates](SECURITY_AND_RELEASE.md). Use the [release evidence checklist](templates/RELEASE_CHECKLIST.md).
 7. Record architecture and UX decisions in [templates/DECISION_LOG.md], and individual feature criteria in [templates/FEATURE_SPEC.md].
+
+### New reference materials
+
+- [Pre-build implementation plan and specification](templates/PREBUILD_PLAN.md)
+- [Research, resources and inspiration register](templates/REFERENCES.md)
+- [Existing website and screenshot audit](templates/UPGRADE_AUDIT.md)
+- [Corrective-action and regression protocol](templates/CORRECTIVE_ACTION.md)
 
 ## Index
 
