@@ -12,6 +12,17 @@ This guide is for **client sites, service websites, landing pages, and marketing
 
 Start with [the screenshot-based upgrade workflow](UPGRADE_AND_CORRECTIVE_WORKFLOW.md). Study the actual repository and existing screenshot, preserve functioning features, write a pre-build specification with verified design references and resources, export editable SVG/PNG wireframes, then implement only the approved redesign. Use actual running-site screenshots for before/after comparisons and log defects in the corrective register. A screenshot by itself cannot reveal hidden business logic or permissions.
 
+### Specialized website types
+
+Some sites need more than the general workflow. Use these in addition to it:
+
+- **A premium, motion-rich single-page promo site:** [IMMERSIVE_SCROLL_HERO_SITES.md](IMMERSIVE_SCROLL_HERO_SITES.md)
+- **Anything that recurs (monthly events, artist rosters, campaigns) or needs a client to choose between looks:** [EDITION_SYSTEM_FRAME_AND_SKIN.md](EDITION_SYSTEM_FRAME_AND_SKIN.md) and [templates/EDITION_BRIEF.md](templates/EDITION_BRIEF.md)
+- **A site that sells tickets or hides something until it is earned:** [GATED_CONTENT_AND_DIGITAL_PASS_PATTERN.md](GATED_CONTENT_AND_DIGITAL_PASS_PATTERN.md)
+- **A site for people who will not be taught (guests, volunteers, a counter):** [ZERO_TRAINING_UX.md](ZERO_TRAINING_UX.md)
+- **The launch layer (share previews, sitemap, security policy, plain pages, a deploy gate) for a new independent static site:** [STATIC_SITE_PLUMBING_AND_DEPLOY_GATE.md](STATIC_SITE_PLUMBING_AND_DEPLOY_GATE.md)
+- **One complete worked example of all of the above:** [CASE_STUDY_LISTENING_ROOM.md](CASE_STUDY_LISTENING_ROOM.md)
+
 ## Step 0: Define the website job
 
 Fill in [the website brief](templates/WEBSITE_BRIEF.md) before making screens. Record who the website serves, the single most important action (book, call, buy, inquire, subscribe), approved services/content, user questions, integrations, and how success will be measured.
@@ -105,6 +116,8 @@ Check before publication:
 - [ ] Titles, descriptions, structured headings and relevant crawlable text are present.
 - [ ] Privacy, data collection, spam protection, domain/HTTPS, access, backups and rollback are addressed where applicable.
 - [ ] The preview is identified as a demo until the site is actually live.
+- [ ] Share preview verified (title, description, a 1200 x 630 image, canonical), sitemap and security files present, and, for a new independent static site, a deploy gate that blocks a bad publish: see [STATIC_SITE_PLUMBING_AND_DEPLOY_GATE.md](STATIC_SITE_PLUMBING_AND_DEPLOY_GATE.md).
+- [ ] Layout checked in a **short** laptop window (about 1366 by 650) and a phone window **with its browser bars** (about 390 by 664), and key actions and footers confirmed not covered: see [WEB_QA_BY_ASSERTION.md](WEB_QA_BY_ASSERTION.md).
 - [ ] A final published-site smoke test and handoff are recorded.
 
 Use [RELEASE_CHECKLIST.md](templates/RELEASE_CHECKLIST.md) for tracked evidence.

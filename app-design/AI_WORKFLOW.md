@@ -12,6 +12,8 @@ For Claude Code, Codex, Copilot or another coding/design agent. External skills,
 
 **Scope:** These documents are for a **new product**. The Gray Matter corporate website remains a no-framework static site under its own **.github/copilot-instructions.md**.
 
+6. For a premium promo site, a recurring-edition product, a ticket or secret-until-earned flow, or a quality-gated static site: [CASE_STUDY_LISTENING_ROOM.md](CASE_STUDY_LISTENING_ROOM.md), then the documents it maps to ([IMMERSIVE_SCROLL_HERO_SITES](IMMERSIVE_SCROLL_HERO_SITES.md), [EDITION_SYSTEM_FRAME_AND_SKIN](EDITION_SYSTEM_FRAME_AND_SKIN.md), [GATED_CONTENT_AND_DIGITAL_PASS_PATTERN](GATED_CONTENT_AND_DIGITAL_PASS_PATTERN.md), [ZERO_TRAINING_UX](ZERO_TRAINING_UX.md), [STATIC_SITE_PLUMBING_AND_DEPLOY_GATE](STATIC_SITE_PLUMBING_AND_DEPLOY_GATE.md)). **Before planning QA, read [WEB_QA_BY_ASSERTION](WEB_QA_BY_ASSERTION.md) and the [BUILD_LESSONS_REGISTER](BUILD_LESSONS_REGISTER.md)** so known defects are guarded from the start.
+
 ## Website-specific workflow
 
 For a client website or marketing page, read [WEBSITE_DESIGN_WORKFLOW.md](WEBSITE_DESIGN_WORKFLOW.md) and complete [templates/WEBSITE_BRIEF.md](templates/WEBSITE_BRIEF.md) before coding. That document includes design-reference evaluation, visual-asset preparation, a reusable ChatGPT build prompt, iterative refinement and production QA. Use it alongside, not in place of, the existing repository's rules.
@@ -34,6 +36,19 @@ For a client website or marketing page, read [WEBSITE_DESIGN_WORKFLOW.md](WEBSIT
 
 > Read [UPGRADE_AND_CORRECTIVE_WORKFLOW.md](UPGRADE_AND_CORRECTIVE_WORKFLOW.md) and [DESIGN_TO_BUILD_CONTRACT.md](DESIGN_TO_BUILD_CONTRACT.md). I want **[NEW PRODUCT / SCREENSHOT-BASED UPGRADE]** of **[REPO]** using **[REFERENCE SCREENSHOT IF UPGRADE]** and these required screens: **[LIST]**. First inspect the current code when upgrading, preserve its functional behavior and create an approved **pre-build plan and specification** and an inspected references/resources register with URLs, what inspired each choice, what must not be copied, licensing, dependencies and acceptance tests. Generate/export individual editable SVG and PNG wireframes for every screen and develop a cohesive actual brand board, UI kit and designed screens. Only then implement functioning code, running tests and accessible mobile layouts. For an upgrade, capture real before/after screenshots and a comparison PNG. If I report something wrong, open a corrective ticket, document root cause, implement a targeted fix, retest and get approval. Do not close unresolved issues or claim deployment without evidence.
 
+## Copyable prompt: premium single-page promo site with recurring editions
+
+> Read [CASE_STUDY_LISTENING_ROOM.md](CASE_STUDY_LISTENING_ROOM.md) and the documents it maps to, then [WEB_QA_BY_ASSERTION.md](WEB_QA_BY_ASSERTION.md) and [BUILD_LESSONS_REGISTER.md](BUILD_LESSONS_REGISTER.md). I want a **[MONTHLY / WEEKLY / PER-ARTIST]** promo site for **[EVENT OR PRODUCT]** in **[CITY]**, built from this source material: **[POST, SCREENSHOT, BRIEF]**. Requirements: one page, **hero only**, scroll-animated to funnel the visitor to **[ONE ACTION]**; customizable per **[ARTIST / EDITION]**, its aesthetic and its **[SCHEDULE / SET LIST]**; a separate **[PAYMENT / TICKET]** page that creates a customer card in the same look; **[SECRET, for example the location]** shown only after purchase.
+>
+> 1. Turn my material into a **numbered requirement list** and map each requirement to an interface decision and a UX law. Use **fictional names only** in anything public; keep real references private.
+> 2. Research relevant sites; record what to borrow and what not to. Define a **frame that never changes and a skin that does**, with the contrast, size and tap guardrails as **numbers**. Generate the brand board from the real configs. Produce **[N] complete looks** and wireframes.
+> 3. Build the engine with a **config object per edition**, a pinned scroll hero, generative art that dims the type side by construction, one filled button on screen, a **static fallback** and `mount()`/`destroy()`. No invented facts or numbers.
+> 4. Verify **by script, not by eye**: scroll states, contrast over live art, sizes, overflow, console, Reduce Motion, a first-screen check at 390 by 664, covered-element and overlap checks at 1366 by 650. Write the assertion for every defect you find.
+> 5. Design the gated flow with a **threat model** (a screenshot cannot be blocked), a simulator first, then the server, then database and concurrency tests. Make it usable by **people who will not be taught**: one headline, one sentence, one button per state; plain-words checks; an operator screen that answers in one color.
+> 6. Add the site plumbing (share previews, sitemap, security policy enforced and tested, plain pages, a styled 404) and a **deploy gate you have seen fail on purpose**. Test the built site under the production sub-path, then the live URL.
+> 7. Build a **client review page** (all looks, an in-place skin switcher that keeps scroll position, generate the customer artifact, favorite and note, nothing sent anywhere) and a short client message that says what is demo.
+> 8. Report pass over total for each check that actually ran, the commit SHA, what is simulated, and what is **[Not tested]** (real phones, screen readers, a real payment sandbox, deployed server). Never claim live or production-ready without evidence.
+
 ## Copyable prompt: start a product
 
 > Read the filled PROJECT_BRIEF, app-design README, DESIGN_SYSTEM and relevant WEB_PLAYBOOK or IOS_PLAYBOOK. Inspect the actual target repo before proposing changes. Identify its current framework and dependencies, source-of-truth data, CI and known-good release. Propose the smallest complete user journey and implement it end-to-end with real persistence, loading/empty/error states, accessibility, correct authorization and tests. Use existing components before adding packages; select one primitive base for new React apps. No isolated prototype. Document files changed, exact test evidence, unresolved problems and next release gate. Do not fabricate test results or deploy claims.
@@ -55,3 +70,6 @@ For a client website or marketing page, read [WEBSITE_DESIGN_WORKFLOW.md](WEBSIT
 - Use reviewable scoped PRs; record the changed files, acceptance proof and rollback strategy.
 - Don't mark a UI as done from a still image or a green build alone.
 - Preserve current release as the golden baseline until a tested change supersedes it.
+- When you find a defect, write the **assertion that would have caught it** in the same change ([WEB_QA_BY_ASSERTION.md](WEB_QA_BY_ASSERTION.md)), and add a row to the lessons register.
+- Check every number you put in a document **against the source at write time** and label it verified; a stale figure is a defect ([BUILD_LESSONS_REGISTER.md](BUILD_LESSONS_REGISTER.md), L-21).
+- A gate or check that has never failed is unproven: break something on purpose and watch it fail.

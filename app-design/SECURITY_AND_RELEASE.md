@@ -16,6 +16,10 @@
 
 For product imagery, generated graphics and third-party photos, use [CREATIVE_ASSET_PRODUCTION.md](CREATIVE_ASSET_PRODUCTION.md) and [templates/ASSET_JOB_MANIFEST.md](templates/ASSET_JOB_MANIFEST.md) to track approved copy, image source, rights, published scope and removal fallback. An AI transformation or a brand disclaimer does not automatically grant distribution rights. For cinematic media, check actual decoded motion and packaged video with [ANIMATED_MEDIA_PIPELINE.md](ANIMATED_MEDIA_PIPELINE.md). For end-to-end UI failures, distinguish test script, accessibility hierarchy, timing and app bugs using [UI_AUTOMATION_AND_EVIDENCE.md](UI_AUTOMATION_AND_EVIDENCE.md).
 
+## Gated content, static-site and scripted-QA gates
+
+For tickets, passes or anything hidden until earned, follow [GATED_CONTENT_AND_DIGITAL_PASS_PATTERN.md](GATED_CONTENT_AND_DIGITAL_PASS_PATTERN.md) and fill the [threat model](templates/GATED_CONTENT_THREAT_MODEL.md). **A screenshot cannot be blocked on the web**; design the leak to be late, traceable, short-lived and insufficient. For a new independent static site, use [STATIC_SITE_PLUMBING_AND_DEPLOY_GATE.md](STATIC_SITE_PLUMBING_AND_DEPLOY_GATE.md) and its [checklist](templates/SITE_PLUMBING_CHECKLIST.md): a Content Security Policy that is **enforced and tested** (not merely present) and a deploy gate **proven to fail** on purpose. Plan browser checks with [WEB_QA_BY_ASSERTION.md](WEB_QA_BY_ASSERTION.md).
+
 ## Engineering release gate
 
 - [ ] No secrets, customer data or unauthorized external service credentials in Git.
@@ -26,6 +30,8 @@ For product imagery, generated graphics and third-party photos, use [CREATIVE_AS
 - [ ] Account recovery/deletion, privacy, support and data retention work as represented.
 - [ ] Failed requests show errors instead of false success; offline and retry paths tested.
 - [ ] Logging, backups, operational ownership and rollback documented.
+- [ ] Gated values (a private address, a code, a download) are absent from every public file and from the page until released, asserted at **every state**; the server refuses forbidden requests even when the UI is bypassed.
+- [ ] Every automated gate was seen to **fail** on a deliberately broken copy before it was trusted.
 
 ## Experience release gate
 
