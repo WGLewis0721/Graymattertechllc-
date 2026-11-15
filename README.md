@@ -179,3 +179,7 @@ Reusable [Arooma-derived creative production methods](app-design/CREATIVE_ASSET_
 ## Reusable Web and iOS App Starters
 
 [App Starter](app-starter/README.md) includes separate React/TypeScript and native SwiftUI examples, a clean new-project generator, testing guidance and Codemagic compile configuration. It reuses [app-design/](app-design/README.md) as the single design and development knowledge library. These sources are isolated from the production marketing website and do not add frameworks to it.
+
+## Essential Agency Starter Kit (Haiku → Fable)
+
+Start with the [Essential Agency Starter Kit](docs/agency-ops/ESSENTIAL_AGENCY_STARTER_KIT.md) for the lean client journey (discovery → quote → approval → delivery → invoice → handoff). Haiku should then follow the [Foundation Handoff](docs/agency-ops/HAIKU_FOUNDATION_HANDOFF.md) to inventory existing assets and prepare only what is missing for Fable. Documentation-only; the live website and production integrations stay unchanged.
