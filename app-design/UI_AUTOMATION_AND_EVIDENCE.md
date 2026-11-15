@@ -11,7 +11,7 @@
 - **End-to-end UI:** real navigation, visible controls, editing, cancellation, return-to-origin, Undo and errors.
 - **Hardware acceptance:** performance, haptics, accessibility speech, interruptions, camera/device sensors and real tactile feel.
 
-Native iOS automation tools may include XCUITest and **Maestro**. Web apps can use Playwright or another maintained browser E2E framework. Use frameworks already configured in the target repo; do not install a new runner into the Gray Matter business website because of this guide.
+Native iOS automation tools may include XCUITest and **Maestro**. Web apps can use Playwright or another maintained browser E2E framework. Use frameworks already configured in the target repo; do not install a new runner into the Gray Matter business website because of this guide. For concrete **web** recipes (viewport matrix, scroll-state assertions, contrast over live art, covered-element and overlap checks, Content Security Policy enforcement, fake-camera tests, negative tests of gates) and the pitfalls that made tests pass for the wrong reason, see [WEB_QA_BY_ASSERTION.md](WEB_QA_BY_ASSERTION.md).
 
 ## 2. Write stable, meaningful flows
 
