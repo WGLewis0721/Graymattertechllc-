@@ -18,6 +18,17 @@ Combines the best Remotion templates with Higgsfield, Kie.ai, Claude, and ChatGP
 - Official Prompt to Motion Graphics: `npx create-video@latest --prompt-to-motion-graphics`
 - Remotion Agent Skills + Claude/ChatGPT for code generation
 
+## Claude / Code-Driven Tools (added from motion-graphics shortlist)
+
+These complement the Remotion bases. Most work best inside Claude Code.
+
+| Repo | Why added |
+|------|-----------|
+| [Vincentwei1021/video-shotcraft](https://github.com/Vincentwei1021/video-shotcraft) | Highest match for clean product launch films. Claude/Codex skill with 100+ shot recipe cards, Remotion templates, 2.5D camera moves, beat-sync, and sound design. Produces editable cinematic promos from real UI screenshots. |
+| [lemomo-ai/lemo-opuscar](https://github.com/lemomo-ai/lemo-opuscar) | Claude Code skill with 99 film styles (each a ready prompt + demo film made entirely in code). Strong for stylized explainers and varied looks without starting from scratch. |
+| [yihui-dev/awesome-opus5-5-videos](https://github.com/yihui-dev/awesome-opus5-5-videos) + [joeseesun/opus-video-prompts](https://github.com/joeseesun/opus-video-prompts) | Curated prompt packs of real Opus 5.5 code-rendered videos. Useful reference for prompting Claude to generate high-quality motion graphics and launch films. |
+| [JohnHeibel/ClaudeAnimationBase](https://github.com/JohnHeibel/ClaudeAnimationBase) | Starter kit for hand-painted cartoon shorts (p5.js + character system). Useful only if you want illustrated/character-driven style instead of clean UI product films. |
+
 ## Full Tool Stack
 
 | Tool | Role |
@@ -26,11 +37,12 @@ Combines the best Remotion templates with Higgsfield, Kie.ai, Claude, and ChatGP
 | **Claude / ChatGPT** | Storyboard, script, scene generation, Remotion code refinement via skills or prompts |
 | **Higgsfield** | Polished generative clips, cinematic presets, lifestyle/product footage, character consistency (web app or MCP) |
 | **Kie.ai** | Same top models (Seedance 2.5, Kling 4.0, Veo, MiniMax, etc.) via cheap pay-as-you-go API for volume or automation |
+| **Video ShotCraft / Lemo Opuscar** | Additional Claude skills for cinematic product videos and stylized code-driven films |
 
 ## Practical Path
 
-1. Fork **product-launch-video** or **remotion-video-templates** as your base.
-2. Use Claude (or ChatGPT) with Remotion Agent Skills / the product-launch skill to generate or refine scenes from a brief + your assets (screenshots, logo, copy).
+1. Fork **product-launch-video**, **remotion-video-templates**, or install **video-shotcraft** skill as your base.
+2. Use Claude (or ChatGPT) with Remotion Agent Skills / product-launch skill / ShotCraft to generate or refine scenes from a brief + your assets (screenshots, logo, copy).
 3. Generate any generative elements (backgrounds, lifestyle shots, extra clips) in **Higgsfield** or via **Kie.ai** API.
 4. Drop those assets into the Remotion project.
 5. Render → post.
@@ -45,12 +57,15 @@ git clone https://github.com/EveryInc/product-launch-video.git
 cd product-launch-video
 npm install
 
-# Then use Claude Code with the included skill
+# Or install the strong product-video skill:
+# npx skills add Vincentwei1021/video-shotcraft
+
+# Then use Claude Code with the skill
 # Or start fresh with official starter:
 # npx create-video@latest --prompt-to-motion-graphics
 ```
 
-See `docs/workflow.md` for detailed steps and prompt examples.
+See `docs/workflow.md` and `docs/recommended-repos.md` for details.
 
 ## License
 
