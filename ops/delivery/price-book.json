@@ -1,0 +1,34 @@
+{
+  "_rule": "Only prices already published on pricing.html appear here. null means 'Price confirmed after a quick fit check': quote it per engagement and never publish a figure the owner has not approved.",
+  "_source": "pricing.html and js/data.js, read 2026-11-16",
+  "currency": "USD",
+  "items": {
+    "website-essential": {"name": "Essential Site (Starter)", "service": "business-websites", "price": 750, "price_type": "from", "timeline": "7-10 business days", "revision_rounds": 1},
+    "website-business": {"name": "Business Site", "service": "business-websites", "price": 1500, "price_type": "from", "timeline": "2-3 weeks", "revision_rounds": 2},
+    "website-growth": {"name": "Full Platform (Growth)", "service": "business-websites", "price": 3000, "price_type": "from", "timeline": "4-6 weeks", "revision_rounds": "unlimited during build phase"},
+    "addon-email-marketing": {"name": "Email Marketing Setup", "service": "business-websites", "price": [300, 600], "price_type": "range"},
+    "addon-seo": {"name": "SEO Audit & Setup", "service": "business-websites", "price": [350, 750], "price_type": "range"},
+    "addon-maintenance": {"name": "Monthly Maintenance", "service": "business-websites", "price": [149, 299], "price_type": "range", "unit": "month"},
+    "addon-copywriting": {"name": "Copywriting", "service": "business-websites", "price": [400, 900], "price_type": "range"},
+    "business-technology-checkup": {"name": "Business Technology Checkup", "service": "business-technology-checkup", "price": null},
+    "workflow-automation": {"name": "Workflow Automation", "service": "workflow-automation", "price": null},
+    "process-documentation": {"name": "Process & Documentation Systems", "service": "process-documentation", "price": null},
+    "backup-recovery": {"name": "Backup & Recovery", "service": "backup-recovery", "price": null},
+    "business-security": {"name": "Business Security", "service": "business-security", "price": null},
+    "work-from-anywhere": {"name": "Work From Anywhere", "service": "work-from-anywhere", "price": null},
+    "technology-cost-cleanup": {"name": "Technology Cost Cleanup", "service": "technology-cost-cleanup", "price": null},
+    "technology-partner": {"name": "Technology Partner", "service": "technology-partner", "price": null},
+    "business-opportunity-finder": {"name": "Business Opportunity Finder", "service": "business-opportunity-finder", "price": null}
+  },
+  "terms": {
+    "_source": "agreement.html",
+    "deposit_percent": 50,
+    "deposit_refundable": false,
+    "balance_due": "on completion, before final files or live launch",
+    "three_payment_option": "40% to initiate, 30% at design approval, 30% at launch, by written agreement",
+    "late_fee": "$25 per week after a 7-day grace period",
+    "feedback_window": "5 business days per revision round",
+    "ownership": "transfers to the client on final payment in full",
+    "payment_methods": "bank transfer, PayPal, Venmo, Cash App, or other agreed method"
+  }
+}
