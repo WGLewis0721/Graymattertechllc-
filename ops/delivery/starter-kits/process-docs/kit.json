@@ -1,0 +1,12 @@
+{
+  "id": "process-docs",
+  "name": "Process & Documentation Starter Kit",
+  "service": "process-documentation",
+  "default_lines": [
+    {"item": "process-documentation", "qty": 1}
+  ],
+  "timeline": "Confirmed after a quick fit check",
+  "reuses": [
+    "services/process-documentation.html"
+  ]
+}

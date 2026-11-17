@@ -1,0 +1,12 @@
+{
+  "id": "automation",
+  "name": "Workflow Automation Starter Kit",
+  "service": "workflow-automation",
+  "default_lines": [
+    {"item": "workflow-automation", "qty": 1}
+  ],
+  "timeline": "Confirmed after a quick fit check",
+  "reuses": [
+    "docs/SOPs/workflow automations/SOCIAL-DM-TO-ORDER-AUTOMATION-SOP.md"
+  ]
+}

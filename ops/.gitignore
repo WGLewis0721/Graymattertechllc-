@@ -1,1 +1,5 @@
 __pycache__/
+# Private data: lead records, campaigns and client engagement folders.
+# This repository is public. These never get committed.
+leads/private/
+delivery/private/

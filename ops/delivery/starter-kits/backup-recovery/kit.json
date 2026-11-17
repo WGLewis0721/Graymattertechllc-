@@ -1,0 +1,17 @@
+{
+  "id": "backup-recovery",
+  "name": "Backup and Recovery Starter Kit",
+  "service": "backup-recovery",
+  "default_lines": [
+    {"item": "backup-recovery", "qty": 1}
+  ],
+  "timeline": "Confirmed after a quick fit check",
+  "reuses": [
+    "services/backup-recovery.html",
+    "services/technology-partner.html",
+    "ops/delivery/price-book.json",
+    "ops/delivery/templates/FIELDS.md",
+    "ops/delivery/starter-kits/KIT_CONTRACT.md",
+    "agreement.html"
+  ]
+}

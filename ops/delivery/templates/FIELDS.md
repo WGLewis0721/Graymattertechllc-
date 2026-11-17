@@ -16,6 +16,7 @@ marked auto; fill the rest by hand. Use only these names.
 | `{{valid_until}}` | auto | Quote expiry date |
 | `{{line_items}}` | auto | Table of items and amounts |
 | `{{total}}` `{{deposit}}` `{{balance}}` | auto | Money, from the line items and agreement terms |
+| `{{due_date}}` `{{amount_due}}` `{{amount_paid}}` `{{invoice_for}}` | auto | Invoice only: due date (issue + 7 days), amount due now, amount already paid, deposit or balance |
 | `{{timeline}}` | auto | From the price book, or "Confirmed after a quick fit check" |
 | `{{revision_rounds}}` | auto | From the price book or the proposal |
 | `{{problem}}` | hand | The problem in the client's words |

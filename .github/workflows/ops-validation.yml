@@ -1,0 +1,25 @@
+name: Validate Ops System
+on:
+  pull_request:
+    paths:
+      - 'ops/**'
+      - 'js/data.js'
+      - 'pricing.html'
+      - '.github/workflows/ops-validation.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'ops/**'
+      - '.github/workflows/ops-validation.yml'
+jobs:
+  validate-ops:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Contract check (content, kits, templates, outreach, privacy)
+        run: python3 ops/tools/check_ops.py
+      - name: Acceptance tests
+        run: python3 -m unittest discover -s ops/tests -v

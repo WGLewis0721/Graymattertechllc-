@@ -1,0 +1,22 @@
+{
+  "id": "website",
+  "name": "Website Starter Kit",
+  "service": "business-websites",
+  "default_lines": [
+    {"item": "website-business", "qty": 1}
+  ],
+  "timeline": "2-3 weeks",
+  "reuses": [
+    "websites/README.md",
+    "websites/docs/INTAKE.md",
+    "websites/docs/DEPLOYMENT.md",
+    "websites/docs/SECURITY.md",
+    "websites/docs/ENGINEERING.md",
+    "websites/templates/README.md",
+    "app-design/WEBSITE_DESIGN_WORKFLOW.md",
+    "app-design/templates/WEBSITE_BRIEF.md",
+    "app-design/templates/BRAND_BOARD.md",
+    "app-design/templates/UI_KIT.md",
+    "app-design/WEB_QA_BY_ASSERTION.md"
+  ]
+}
