@@ -6,21 +6,82 @@
     "protect": "Keep accounts, customer information and files safe and recoverable.",
     "get-it-handled": "Know what you have, what to fix first, and have someone own it."
   },
-  "formats": ["scenario", "checklist", "question", "myth", "before-after", "tip"],
-  "statuses": ["draft", "approved", "queued", "posted", "retired"],
+  "formats": [
+    "scenario",
+    "checklist",
+    "question",
+    "myth",
+    "before-after",
+    "tip"
+  ],
+  "statuses": [
+    "draft",
+    "approved",
+    "queued",
+    "posted",
+    "retired"
+  ],
   "topics": {
-    "T01": {"pillar": "grow", "service": "business-websites", "title": "Customers can't find or book you: Facebook-only or no website"},
-    "T02": {"pillar": "grow", "service": "workflow-automation", "title": "Missed calls and slow replies lose jobs"},
-    "T03": {"pillar": "save-time", "service": "workflow-automation", "title": "No-shows and manual appointment reminders"},
-    "T04": {"pillar": "save-time", "service": "workflow-automation", "title": "Re-typing orders and customer info between apps and DMs"},
-    "T05": {"pillar": "save-money", "service": "technology-cost-cleanup", "title": "Paying for subscriptions and software nobody uses"},
-    "T06": {"pillar": "protect", "service": "business-security", "title": "Shared passwords and ex-employee access"},
-    "T07": {"pillar": "protect", "service": "business-security", "title": "Fake invoices, phishing and business email takeover"},
-    "T08": {"pillar": "protect", "service": "backup-recovery", "title": "Everything important lives on one computer"},
-    "T09": {"pillar": "get-it-handled", "service": "work-from-anywhere", "title": "The business only works from one desk"},
-    "T10": {"pillar": "get-it-handled", "service": "process-documentation", "title": "Everything important is in the owner's head"},
-    "T11": {"pillar": "get-it-handled", "service": "business-technology-checkup", "title": "Not knowing what you actually need"},
-    "T12": {"pillar": "save-time", "service": "technology-partner", "title": "Practical AI for a small business: where it helps and where it doesn't"}
+    "T01": {
+      "pillar": "grow",
+      "service": "business-websites",
+      "title": "Customers can't find or book you: Facebook-only or no website"
+    },
+    "T02": {
+      "pillar": "grow",
+      "service": "workflow-automation",
+      "title": "Missed calls and slow replies lose jobs"
+    },
+    "T03": {
+      "pillar": "save-time",
+      "service": "workflow-automation",
+      "title": "No-shows and manual appointment reminders"
+    },
+    "T04": {
+      "pillar": "save-time",
+      "service": "workflow-automation",
+      "title": "Re-typing orders and customer info between apps and DMs"
+    },
+    "T05": {
+      "pillar": "save-money",
+      "service": "technology-cost-cleanup",
+      "title": "Paying for subscriptions and software nobody uses"
+    },
+    "T06": {
+      "pillar": "protect",
+      "service": "business-security",
+      "title": "Shared passwords and ex-employee access"
+    },
+    "T07": {
+      "pillar": "protect",
+      "service": "business-security",
+      "title": "Fake invoices, phishing and business email takeover"
+    },
+    "T08": {
+      "pillar": "protect",
+      "service": "backup-recovery",
+      "title": "Everything important lives on one computer"
+    },
+    "T09": {
+      "pillar": "get-it-handled",
+      "service": "work-from-anywhere",
+      "title": "The business only works from one desk"
+    },
+    "T10": {
+      "pillar": "get-it-handled",
+      "service": "process-documentation",
+      "title": "Everything important is in the owner's head"
+    },
+    "T11": {
+      "pillar": "get-it-handled",
+      "service": "business-technology-checkup",
+      "title": "Not knowing what you actually need"
+    },
+    "T12": {
+      "pillar": "save-time",
+      "service": "technology-partner",
+      "title": "Practical AI for a small business: where it helps and where it doesn't"
+    }
   },
   "service_images": {
     "business-websites": "assets/gray-matter/social/gm-social-business-websites-square.png",
@@ -28,5 +89,11 @@
     "business-technology-checkup": "assets/gray-matter/social/gm-social-technology-checkup-square.png",
     "technology-partner": "assets/gray-matter/social/gm-social-technology-partner-square.png",
     "_default": "assets/gray-matter/social/gm-social-digital-solutions-square.png"
-  }
+  },
+  "focus_industries": [
+    "barbers-salons",
+    "detailers",
+    "cleaning-services",
+    "contractors"
+  ]
 }

@@ -282,6 +282,7 @@ def pick_queue(posts, done, days, include_drafts):
     for item in pool:
         by_pillar.setdefault(item[0]["pillar"], []).append(item)
     order, queue, used_topics = sorted(by_pillar), [], []
+    focus = set(load_json("pillars.json").get("focus_industries", []))
     i = 0
     while len(queue) < days and any(by_pillar.values()):
         bucket = by_pillar[order[i % len(order)]]
@@ -289,7 +290,8 @@ def pick_queue(posts, done, days, include_drafts):
         if not bucket:
             continue
         recent = used_topics[-3:]
-        choice = min(bucket, key=lambda x: (used_topics.count(x[0]["topic"]), x[0]["topic"] in recent))
+        choice = min(bucket, key=lambda x: (used_topics.count(x[0]["topic"]), x[0]["topic"] in recent,
+                                             x[0]["industry"] not in focus))
         bucket.remove(choice)
         queue.append(choice)
         used_topics.append(choice[0]["topic"])

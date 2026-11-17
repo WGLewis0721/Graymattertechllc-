@@ -143,6 +143,7 @@ def score(lead, c=None):
     if unknown:
         sys.exit(f"unknown signal(s): {', '.join(sorted(unknown))}")
     total = sum(c["signals"][s]["points"] for s in sig)
+    total += int(c.get("priority_segments", {}).get(lead["industry"], 0))
     has_problem = len(lead["problem"].split()) >= 4
     tier = next(t["tier"] for t in c["tiers"]
                 if total >= t["min_score"] and (has_problem or not t["requires_problem"]))
@@ -444,6 +445,21 @@ def cmd_report(_):
             print(f"  {s:<14} {len(by[s])}")
     tiers = {t: sum(1 for r in rows if r["tier"] == t and r["status"] in OPEN) for t in "ABC"}
     print(f"open by tier: A {tiers['A']}  B {tiers['B']}  C {tiers['C']}")
+    targets = cfg().get("weekly_targets", {})
+    since = (dt.date.today() - dt.timedelta(days=7)).isoformat()
+    week = [x for x in acts if x["date"] >= since]
+    done = {
+        "leads_added": sum(1 for r in rows if r["created"] >= since),
+        "first_touches": sum(1 for x in week if x["step"] == "0" and x["outcome"] in {"sent", "called", "voicemail"}),
+        "in_person": sum(1 for x in week if x["channel"] == "in-person"),
+        "calls_booked": sum(1 for x in week if x["outcome"] == "booked"),
+        "proposals": sum(1 for r in rows if r["status"] == "proposal-sent" and r["updated"] >= since),
+    }
+    print("last 7 days vs weekly targets (ops/GTM.md):")
+    for key, value in done.items():
+        goal = targets.get(key)
+        mark = "" if not isinstance(goal, int) else ("  ok" if value >= goal else f"  short by {goal - value}")
+        print(f"  {key:<14} {value:>3} / {goal if goal is not None else '-'}{mark}")
     won = len(by.get("won", []))
     contacted = len({x['lead_id'] for x in acts if x['step'] == '0'})
     if contacted:
