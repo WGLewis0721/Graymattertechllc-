@@ -76,21 +76,23 @@ Give each person their own login. Turn on two-step sign-in for the booking syste
 
 ---
 
-## Day 4 — Last Monday the bank statement had a charge for a booking app nobody has opened since spring.
+## Day 4 — The renewal email came on a Tuesday, the same week the free trial ran out.
 
-**Post ID:** `gm-fb-0013`  
+**Post ID:** `gm-fb-0014`  
 **Image:** `gm-social-digital-solutions-square.png`  
 **Suggested date:** Thu Nov 26, 2026  
 **Approval:** NOT YET APPROVED
 
 ### Post caption
 
-Last Monday the bank statement had a charge for a booking app nobody has opened since spring.
-Your front desk thought the manager was paying it. The manager thought the old stylist set it up. Nobody was sure who could cancel it.
-That is how a small shop ends up paying for tools nobody uses. The charges keep coming a little at a time until someone reads the card statement line by line.
-Pull the last few statements this week. Circle every recurring charge. Next to each one, write who uses it and what it does. If nobody can answer, that is your first cancellation.
+The renewal email came on a Tuesday, the same week the free trial ran out.
+Before you let it renew, check three things yourself.
+Who signed up, and which email address did they use?
+Has anyone opened the tool in the last month?
+Does a tool you already pay for do the same job?
+If you cannot answer all three, find out before it renews. Cancel from the company's own cancellation page, then save the confirmation email. Check your card next month for any charge that keeps coming.
 
-**Facebook CTA:** Not sure where to start? Start with a Business Technology Checkup: https://graymatterdigitalsolutions.com/services/business-technology-checkup.html  
+**Facebook CTA:** Build your plan in a couple of minutes, no call required: https://graymatterdigitalsolutions.com/#build-my-plan  
 **Hashtags:** #GrayMatter #MontgomeryAL #SmallBusiness
 
 ---
@@ -184,67 +186,67 @@ This kind of scam works because the email looks normal. Before you pay any chang
 
 ---
 
-## Day 9 — The renewal email came on a Tuesday, the same week the free trial ran out.
+## Day 9 — Last Monday the bank statement had a charge for a booking app nobody has opened since spring.
 
-**Post ID:** `gm-fb-0014`  
+**Post ID:** `gm-fb-0013`  
 **Image:** `gm-social-digital-solutions-square.png`  
 **Suggested date:** Tue Dec 01, 2026  
 **Approval:** NOT YET APPROVED
 
 ### Post caption
 
-The renewal email came on a Tuesday, the same week the free trial ran out.
-Before you let it renew, check three things yourself.
-Who signed up, and which email address did they use?
-Has anyone opened the tool in the last month?
-Does a tool you already pay for do the same job?
-If you cannot answer all three, find out before it renews. Cancel from the company's own cancellation page, then save the confirmation email. Check your card next month for any charge that keeps coming.
+Last Monday the bank statement had a charge for a booking app nobody has opened since spring.
+Your front desk thought the manager was paying it. The manager thought the old stylist set it up. Nobody was sure who could cancel it.
+That is how a small shop ends up paying for tools nobody uses. The charges keep coming a little at a time until someone reads the card statement line by line.
+Pull the last few statements this week. Circle every recurring charge. Next to each one, write who uses it and what it does. If nobody can answer, that is your first cancellation.
 
-**Facebook CTA:** Build your plan in a couple of minutes, no call required: https://graymatterdigitalsolutions.com/#build-my-plan  
+**Facebook CTA:** Not sure where to start? Start with a Business Technology Checkup: https://graymatterdigitalsolutions.com/services/business-technology-checkup.html  
 **Hashtags:** #GrayMatter #MontgomeryAL #SmallBusiness
 
 ---
 
-## Day 10 — Before: a catering order comes in on Messenger at 9 p.m.
+## Day 10 — Myth: a tool that says it is private is private.
 
-**Post ID:** `gm-fb-0010`  
-**Image:** `gm-social-workflow-automation-square.png`  
+**Post ID:** `gm-fb-0036`  
+**Image:** `gm-social-technology-partner-square.png`  
 **Suggested date:** Wed Dec 02, 2026  
 **Approval:** NOT YET APPROVED
 
 ### Post caption
 
-Before: a catering order comes in on Messenger at 9 p.m.
+Myth: a tool that says it is private is private.
 
-The date, the headcount, the address, and the phone number go into your notes app. Friday morning you copy them into a receipt book, then type them again to confirm. One digit gets flipped, and nobody notices until the truck is already parked.
+What's true is that you have to read what it does with what you type. Does it keep your messages? Does it use them to train its models? Does it share them with other companies?
 
-After: the order is captured once, from the message itself. The date and address go to the same place as your schedule. You get a reminder before you leave, and the customer gets a confirmation without you retyping anything.
+Look for those answers in the terms, not on the homepage. If a company plans to start using your data in a new way, it should tell you clearly and ask first.
 
-Same order, same customer. The copying is what changes.
+Until you know, keep client phone numbers, card details and appointment history out of the box. Use it for drafting the sign on the wall or a thank-you text, not the client file.
 
-**Facebook CTA:** See how it works: https://graymatterdigitalsolutions.com/services/workflow-automation.html  
-**Hashtags:** #GrayMatter #MontgomeryAL #SmallBusiness #Catering
+**Facebook CTA:** Which task would you hand to an AI tool first? Tell us in the comments.  
+**Hashtags:** #GrayMatter #MontgomeryAL #SmallBusiness
 
 ---
 
-## Day 11 — Can you name every app and subscription your business pays for this month?
+## Day 11 — Things to gather before you ask anyone for a quote on new computers or software.
 
-**Post ID:** `gm-fb-0031`  
+**Post ID:** `gm-fb-0032`  
 **Image:** `gm-social-technology-checkup-square.png`  
 **Suggested date:** Thu Dec 03, 2026  
 **Approval:** NOT YET APPROVED
 
 ### Post caption
 
-Can you name every app and subscription your business pays for this month?
+Things to gather before you ask anyone for a quote on new computers or software.
 
-Try it right now, from memory.
+List the devices your crew uses, including phones and the old laptop in the back office.
 
-Most owners get through the big ones and stall on the rest. The website host, the card reader, and the scheduling app from a free trial that quietly became a paid plan. Some of those charges are for tools nobody has opened in a year.
+List the accounts: email, bank, card processor, website, and who owns each login.
 
-That isn't a failure. It happens when a business grows one tool at a time, and each decision made sense on its own.
+Note what happens today when something breaks. Who do you call, and how long can the business run without it?
 
-The useful question is simple: which of these do we actually use every week? The answer shows what to keep, what to cancel, and what is missing.
+Note every monthly charge, even the small ones.
+
+Then ask for quotes. You'll get answers you can compare against your own list instead of guesses. If you can't fill in the list, that's a sign the first step is a review, not a purchase.
 
 **Facebook CTA:** Not sure where to start? Start with a Business Technology Checkup: https://graymatterdigitalsolutions.com/services/business-technology-checkup.html  
 **Hashtags:** #GrayMatter #MontgomeryAL #SmallBusiness

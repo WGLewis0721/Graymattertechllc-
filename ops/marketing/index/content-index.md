@@ -42,6 +42,14 @@ Generated 2026-11-17 by `ops/tools/content.py index`.
 | [gm-fb-0034](../posts/gm-fb-0034.md) | draft | save-time | T12 | technology-partner | before-after | Before: the same reply to the same question, typed again tonight. |
 | [gm-fb-0035](../posts/gm-fb-0035.md) | draft | save-time | T12 | technology-partner | tip | Try this on your next proposal: let an AI tool write the first draft. |
 | [gm-fb-0036](../posts/gm-fb-0036.md) | draft | save-time | T12 | technology-partner | myth | Myth: a tool that says it is private is private. |
+| [gm-fb-0037](../posts/gm-fb-0037.md) | draft | grow | T01 | business-websites | scenario | Thursday, 8:30 a.m., a new client asks for your website. |
+| [gm-fb-0038](../posts/gm-fb-0038.md) | draft | save-time | T03 | workflow-automation | question | A client says "I forgot" for the third time this month. |
+| [gm-fb-0039](../posts/gm-fb-0039.md) | draft | protect | T06 | business-security | myth | Myth: a stylist who quit in March has no access anymore. |
+| [gm-fb-0040](../posts/gm-fb-0040.md) | draft | grow | T01 | business-websites | tip | Ten minutes tonight: put your prices where a stranger can see them. |
+| [gm-fb-0041](../posts/gm-fb-0041.md) | draft | grow | T02 | workflow-automation | before-after | Mid-buff, the phone rings and nobody answers. |
+| [gm-fb-0042](../posts/gm-fb-0042.md) | draft | save-time | T04 | workflow-automation | checklist | Four things to check before you retype a full-detail deposit. |
+| [gm-fb-0043](../posts/gm-fb-0043.md) | draft | grow | T02 | workflow-automation | scenario | Wednesday, 9:05 p.m., an office manager emails for a price. |
+| [gm-fb-0044](../posts/gm-fb-0044.md) | draft | protect | T06 | business-security | before-after | Before: client alarm codes live in a shared note. |
 
 ## Research briefs
 

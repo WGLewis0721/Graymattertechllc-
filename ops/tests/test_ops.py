@@ -148,7 +148,12 @@ class Leads(unittest.TestCase):
         self.add("--business", "Beta (fictional)", "--industry", "barbers-salons", "--city", "Montgomery",
                  "--signals", "no_website", "slow_response", "no_online_booking",
                  "--problem", "Clients cannot book after hours and calls go unanswered")
+        self.add("--business", "Hotel (fictional)", "--industry", "real-estate", "--city", "Montgomery",
+                 "--signals", "no_website", "slow_response", "no_online_booking",
+                 "--problem", "Clients cannot book after hours and calls go unanswered")
         rows = {r["business"]: r for r in csv.DictReader(open(Path(self.tmp) / "leads.csv"))}
+        self.assertGreater(int(rows["Beta (fictional)"]["score"]), int(rows["Hotel (fictional)"]["score"]),
+                           "beachhead segment from GTM.md must outrank an equal lead outside it")
         self.assertEqual(rows["Alpha (fictional)"]["tier"], "C")
         self.assertEqual(rows["Beta (fictional)"]["tier"], "A")
         self.assertEqual(rows["Beta (fictional)"]["service"], "business-websites")
@@ -176,6 +181,8 @@ class Leads(unittest.TestCase):
         run("leads.py", "campaign", "afternoon", "--date", "2026-11-30", env=self.env)
         self.assertNotIn("Echo", (Path(self.tmp) / "campaigns" / "2026-11-30-afternoon.md").read_text())
         self.assertIn("Echo Shop", (Path(self.tmp) / "do-not-contact.txt").read_text())
+        report = run("leads.py", "report", env=self.env).stdout
+        self.assertIn("vs weekly targets", report)
 
 
 class Engagements(unittest.TestCase):

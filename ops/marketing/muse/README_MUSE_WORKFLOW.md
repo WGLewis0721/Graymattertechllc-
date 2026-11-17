@@ -20,6 +20,7 @@ Post 14 Facebook posts, one per day, in Day order. Each post pairs one caption w
 - `gm-social-business-websites-square.png`
 - `gm-social-digital-solutions-square.png`
 - `gm-social-technology-checkup-square.png`
+- `gm-social-technology-partner-square.png`
 - `gm-social-workflow-automation-square.png`
 
 ## Daily workflow

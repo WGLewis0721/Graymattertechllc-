@@ -15,6 +15,8 @@ one specific sentence, and the scoring will not rank it A or B without one.
 | Local news and "now open" posts | New openings, expansions, hiring | Growth moments: setting up accounts, files and access right. |
 | Your own network and past clients | Referrals | Always tier the referral; still record the problem. |
 
+**Start with the beachhead in `ops/GTM.md`: barbers and salons, and detailers.** Those leads score highest automatically.
+
 Industries with a page and starter kit (`served_industry` bonus): barbers and
 salons, detailers, contractors, real estate, appointment businesses, solo
 founders, food trucks, cleaning services, professional services.

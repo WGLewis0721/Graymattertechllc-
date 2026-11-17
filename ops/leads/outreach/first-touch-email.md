@@ -12,7 +12,7 @@ I'm {{sender_name}} with Gray Matter, a technology shop here in Montgomery that 
 
 {{suggestion}}
 
-If that's worth fixing, I can show you what it would look like in fifteen minutes, by phone or in person. If not, no follow-up needed: just reply "no thanks" and I'll leave you be.
+Want me to send you a free 10-minute check of how customers find and book {{business_name}} today? It's five plain lines, no call needed. If not, just reply "no thanks" and I'll leave you be.
 
 {{sender_name}}
 Gray Matter LLC · Montgomery, Alabama · (334) 652-2601
