@@ -1,0 +1,17 @@
+{
+  "id": "business-security",
+  "name": "Business Security Starter Kit",
+  "service": "business-security",
+  "default_lines": [
+    {"item": "business-security", "qty": 1}
+  ],
+  "timeline": "Confirmed after a quick fit check",
+  "reuses": [
+    "services/business-security.html",
+    "services/technology-partner.html",
+    "ops/delivery/price-book.json",
+    "ops/delivery/templates/FIELDS.md",
+    "ops/delivery/starter-kits/KIT_CONTRACT.md",
+    "agreement.html"
+  ]
+}

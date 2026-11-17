@@ -35,6 +35,14 @@ DUP_BODY, DUP_HOOK = 0.30, 0.60
 EMOJI = re.compile("[\U0001F300-\U0001FAFF☀-➿]")
 
 
+def rel(path):
+    """Repository-relative path when inside the repo, else the absolute path."""
+    try:
+        return str(Path(path).resolve().relative_to(ROOT))
+    except ValueError:
+        return str(path)
+
+
 def load_json(name):
     return json.loads((MKT / "data" / name).read_text(encoding="utf-8"))
 
@@ -182,7 +190,7 @@ def validate(quiet=False):
     posts = load_posts()
     for path, meta, body in posts:
         for err in check_post(path, meta, body, cfg, ctas, services, industries):
-            problems.append(f"{path.relative_to(ROOT)}: {err}")
+            problems.append(f"{rel(path)}: {err}")
     seen_hooks = {}
     sh = [(p, m, shingles(b), shingles(m.get("hook", ""), 2)) for p, m, b in posts]
     for i, (p, m, body_sh, hook_sh) in enumerate(sh):
@@ -204,7 +212,7 @@ def validate(quiet=False):
     briefs = load_briefs()
     for path, meta, body in briefs:
         for err in check_brief(path, meta, body, cfg):
-            problems.append(f"{path.relative_to(ROOT)}: {err}")
+            problems.append(f"{rel(path)}: {err}")
     if not quiet:
         for line in problems:
             print("FAIL", line)
@@ -219,11 +227,11 @@ def build_index():
     for path, meta, body in posts:
         status = "posted" if meta["id"] in done else meta["status"]
         rows.append({**{k: meta.get(k, "") for k in POST_FIELDS}, "status": status,
-                     "words": len(words(body)), "path": str(path.relative_to(ROOT)),
+                     "words": len(words(body)), "path": str(rel(path)),
                      "body": body})
     data = {"generated": dt.date.today().isoformat(), "posts": rows,
             "briefs": [{"id": m.get("id"), "title": m.get("title"), "pillar": m.get("pillar"),
-                        "services": m.get("services"), "path": str(p.relative_to(ROOT))}
+                        "services": m.get("services"), "path": str(rel(p))}
                        for p, m, _ in briefs]}
     (INDEX / "content-index.json").write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
     out = ["# Content index", "", f"Generated {data['generated']} by `ops/tools/content.py index`.",
@@ -255,7 +263,7 @@ def search(args):
         if args.status and meta.get("status") != args.status:
             continue
         hits += 1
-        print(f"{path.relative_to(ROOT)}  [{meta.get('pillar')}]  {meta.get('hook') or meta.get('title')}")
+        print(f"{rel(path)}  [{meta.get('pillar')}]  {meta.get('hook') or meta.get('title')}")
     print(f"{hits} match(es)")
 
 
@@ -281,7 +289,7 @@ def pick_queue(posts, done, days, include_drafts):
         if not bucket:
             continue
         recent = used_topics[-3:]
-        choice = next((x for x in bucket if x[0]["topic"] not in recent), bucket[0])
+        choice = min(bucket, key=lambda x: (used_topics.count(x[0]["topic"]), x[0]["topic"] in recent))
         bucket.remove(choice)
         queue.append(choice)
         used_topics.append(choice[0]["topic"])
@@ -363,7 +371,7 @@ def export_muse(args):
         {"generated": dt.date.today().isoformat(), "start": start.isoformat(),
          "approved": unapproved == 0, "images": images, "posts": items}, indent=2) + "\n",
         encoding="utf-8")
-    print(f"exported {len(queue)} posts ({unapproved} unapproved) to {MUSE.relative_to(ROOT)}")
+    print(f"exported {len(queue)} posts ({unapproved} unapproved) to {rel(MUSE)}")
 
 
 def set_status(ids, status):

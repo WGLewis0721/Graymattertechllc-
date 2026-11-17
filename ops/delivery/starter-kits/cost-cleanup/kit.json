@@ -1,0 +1,18 @@
+{
+  "id": "cost-cleanup",
+  "name": "Technology Cost Cleanup Starter Kit",
+  "service": "technology-cost-cleanup",
+  "default_lines": [
+    {"item": "technology-cost-cleanup", "qty": 1}
+  ],
+  "timeline": "Confirmed after a quick fit check",
+  "reuses": [
+    "services/technology-cost-cleanup.html",
+    "services/business-technology-checkup.html",
+    "services/technology-partner.html",
+    "ops/delivery/price-book.json",
+    "ops/delivery/templates/FIELDS.md",
+    "ops/delivery/starter-kits/KIT_CONTRACT.md",
+    "agreement.html"
+  ]
+}

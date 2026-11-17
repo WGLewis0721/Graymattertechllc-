@@ -1,0 +1,20 @@
+{
+  "id": "tech-checkup",
+  "name": "Technology Checkup Starter Kit",
+  "service": "business-technology-checkup",
+  "default_lines": [
+    {"item": "business-technology-checkup", "qty": 1}
+  ],
+  "timeline": "Confirmed after a quick fit check",
+  "reuses": [
+    "services/business-technology-checkup.html",
+    "services/business-security.html",
+    "services/backup-recovery.html",
+    "services/technology-cost-cleanup.html",
+    "services/technology-partner.html",
+    "ops/delivery/price-book.json",
+    "ops/delivery/templates/FIELDS.md",
+    "ops/delivery/starter-kits/KIT_CONTRACT.md",
+    "agreement.html"
+  ]
+}

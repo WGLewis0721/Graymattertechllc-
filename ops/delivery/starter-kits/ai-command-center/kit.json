@@ -1,0 +1,12 @@
+{
+  "id": "ai-command-center",
+  "name": "AI Command Center Starter Kit",
+  "service": "technology-partner",
+  "default_lines": [
+    {"item": "technology-partner", "qty": 1}
+  ],
+  "timeline": "Confirmed after a quick fit check",
+  "reuses": [
+    "docs/SOPs/workflow automations/AI-COMMAND-CENTER-SOP.md"
+  ]
+}

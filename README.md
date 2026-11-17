@@ -181,3 +181,7 @@ Reusable [Listening Room-derived build practices](app-design/CASE_STUDY_LISTENIN
 ## Reusable Web and iOS App Starters
 
 [App Starter](app-starter/README.md) includes separate React/TypeScript and native SwiftUI examples, a clean new-project generator, testing guidance and Codemagic compile configuration. It reuses [app-design/](app-design/README.md) as the single design and development knowledge library. These sources are isolated from the production marketing website and do not add frameworks to it.
+
+## Internal operations (not part of the website)
+
+**[ops/](ops/README.md)** is Gray Matter's internal operating system: a marketing content engine with a Muse posting queue, a lead intelligence system with morning and afternoon outreach campaigns, and a delivery factory with nine service starter kits and a quote-to-handoff template set. Nothing in `ops/` is linked from the site. Lead and client data are kept out of this public repository by design. The AI video pipeline notes formerly in `ai-video-unified` now live in [ops/marketing/video/](ops/marketing/video/README.md).

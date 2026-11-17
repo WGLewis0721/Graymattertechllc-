@@ -1,0 +1,28 @@
+{
+  "_doc": "Opportunity score = sum of signal points present on the lead. Tier needs BOTH the score and a written, specific problem. Edit points here, not in code.",
+  "signals": {
+    "no_website":            {"points": 25, "label": "No website, or Facebook/Instagram is the only web presence", "service": "business-websites"},
+    "site_not_mobile":       {"points": 15, "label": "Website has no mobile viewport or is hard to use on a phone", "service": "business-websites"},
+    "site_no_https":         {"points": 10, "label": "Website does not load over HTTPS", "service": "business-websites"},
+    "no_online_booking":     {"points": 15, "label": "Appointment business with no way to book or request online", "service": "workflow-automation"},
+    "slow_response":         {"points": 20, "label": "Reviews or posts mention missed calls, slow replies, or hard to reach", "service": "workflow-automation"},
+    "manual_orders":         {"points": 15, "label": "Takes orders or quotes by DM, text, or paper", "service": "workflow-automation"},
+    "outdated_site":         {"points": 10, "label": "Site shows old copyright, dead links, closed hours, or stale info", "service": "business-websites"},
+    "security_red_flag":     {"points": 15, "label": "Public sign of an account problem: hacked page, spoofed email, shared login", "service": "business-security"},
+    "growing":               {"points": 10, "label": "Hiring, new location, or recently opened", "service": "business-technology-checkup"},
+    "decision_maker_known":  {"points": 10, "label": "Owner or decision maker identified by name and channel"},
+    "local":                 {"points": 5,  "label": "Montgomery / River Region (in-person visit possible)"},
+    "served_industry":       {"points": 5,  "label": "Industry Gray Matter already has a page and starter kit for"}
+  },
+  "tiers": [
+    {"tier": "A", "min_score": 50, "requires_problem": true},
+    {"tier": "B", "min_score": 30, "requires_problem": true},
+    {"tier": "C", "min_score": 0,  "requires_problem": false}
+  ],
+  "statuses": ["new", "researched", "qualified", "contacted", "replied", "call-booked", "proposal-sent", "won", "lost", "nurture", "do-not-contact"],
+  "cadence_days": [0, 3, 7, 14],
+  "campaigns": {
+    "morning":   {"window": "8:30-10:30 local", "purpose": "First touch to qualified A/B leads not yet contacted", "max": 10},
+    "afternoon": {"window": "1:30-4:00 local",  "purpose": "Follow-ups that are due, replies to answer, calls to place", "max": 15}
+  }
+}

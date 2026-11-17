@@ -22,3 +22,10 @@ The character is the constant. The job and setting change to fit the story. The 
 - `next-steps.md` — Concrete setup checklist
 
 Created from planning session, November 2026.
+## Repository note
+
+This folder supersedes the separate `gray-matter-content-system` repository,
+which held only a placeholder README ("AI character social content system for
+teaching practical model use through everyday situations"). Gray Matter's
+business marketing content (Facebook posts, research, Muse queue) lives in
+`ops/marketing/`; see `ops/README.md`.
