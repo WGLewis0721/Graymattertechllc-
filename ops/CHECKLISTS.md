@@ -114,7 +114,7 @@ Say: **"Weekly review."** Then work through:
 - [ ] **Money:** match payments to invoices. Set aside the tax share your accountant recommends. Review Gray Matter's own subscriptions and cancel unused ones.
 - [ ] **Security and backups** (do for yourself what you sell):
   - [ ] Review who has access to Gray Matter LLC in Drive. Remove anything not needed (e.g. old service accounts).
-  - [ ] Two-step sign-in on in email, Facebook, Instagram, GitHub, Square/bank
+  - [ ] Two-step sign-in is on for email, Facebook, Instagram, GitHub, Square and the bank
   - [ ] Restore one file from backup to prove backups work
 - [ ] **Systems**
   - [ ] "Run the ops checks and mirror the ops folder to Drive."
