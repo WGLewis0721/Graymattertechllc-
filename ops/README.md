@@ -94,7 +94,25 @@ python3 -m unittest discover -s ops/tests -v   # acceptance tests
 
 Both run in CI on every pull request that touches `ops/` (`.github/workflows/ops-validation.yml`).
 
-## Google Drive mirror
+## Google Drive
+
+All Gray Matter files live in the business Drive folder **Gray Matter LLC**
+(owned by graymattertechllc@gmail.com, with William's personal account as Editor):
+
+| What | Drive location |
+|---|---|
+| Mirror of this repo (runbook, templates, kits, research, Muse queue) | Gray Matter LLC / 04 - Operations & SOPs / **Gray Matter Ops (mirror of GitHub)** |
+| Muse posting folder | …/Gray Matter Ops (mirror of GitHub) / **01 - Muse Facebook Queue** |
+| Private lead data (`$GM_LEADS_DIR`) | Gray Matter LLC / 03 - Sales & Clients / Leads & Prospects / **Ops Lead Data (private - do not share)** |
+| Private client folders (`$GM_CLIENTS_DIR`) | Gray Matter LLC / 03 - Sales & Clients / Active Clients / **Ops Client Folders (private - do not share)** |
+
+On the laptop, with Google Drive for desktop, point the tools at the two private
+folders (the path depends on how Drive for desktop names shared folders on your machine):
+
+```bash
+export GM_LEADS_DIR=".../Gray Matter LLC/03 - Sales & Clients/Leads & Prospects/Ops Lead Data (private - do not share)"
+export GM_CLIENTS_DIR=".../Gray Matter LLC/03 - Sales & Clients/Active Clients/Ops Client Folders (private - do not share)"
+```
 
 GitHub is authoritative. Finished resources are copied, without duplicates, to
 the Drive folder **Gray Matter Ops (mirror of GitHub)**. Never edit the Drive
