@@ -13,6 +13,8 @@ gitignored, and `check_ops.py` fails if either is ever tracked. Point both
 variables at a private location (a private repository clone or a synced private
 Drive folder) to back them up.
 
+**Run it on a schedule:** [CHECKLISTS.md](CHECKLISTS.md) has the daily, weekly, bi-weekly and monthly checklists.
+
 **Strategy first:** [GTM.md](GTM.md) sets who we sell to first, the offer ladder, channels, weekly targets and the 90-day plan. The tools below follow it: lead scoring favors its priority segments, the Muse queue favors its focus industries, and `leads.py report` compares each week against its targets.
 
 ```
