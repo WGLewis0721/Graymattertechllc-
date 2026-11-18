@@ -762,6 +762,9 @@ textarea:focus-visible,
 .cs-body dt { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gm-ink-45); }
 .cs-body dd { font-size: 0.9rem; color: var(--gm-ink-60); margin: 0.15rem 0 0; }
 .cs-body .cs-result { color: var(--gm-ink); font-weight: 500; }
+.cs-body .cs-label { font-size: 0.8rem; color: var(--gm-ink); opacity: 0.75; margin: 0.25rem 0 0.75rem; }
+.cs-body .cs-link { display: inline-block; margin-top: 1rem; font-weight: 700; color: var(--gm-blue); text-decoration: none; }
+.cs-body .cs-link:hover, .cs-body .cs-link:focus-visible { text-decoration: underline; }
 .cs-template { max-width: 900px; margin: 0 auto; background: var(--gm-white); border: 1px solid var(--gm-line); border-radius: var(--gm-radius-panel); padding: 2.25rem; }
 .cs-template ol { display: grid; grid-template-columns: 1fr; gap: 0.75rem; counter-reset: cs; list-style: none; }
 @media (min-width: 640px) { .cs-template ol { grid-template-columns: repeat(2, 1fr); } }

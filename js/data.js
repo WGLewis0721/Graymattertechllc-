@@ -731,7 +731,42 @@
        testimonial: { quote, attribution }
      }
   ---------------------------------------------------------------- */
-  var caseStudies = [];
+  var caseStudies = [
+    {
+      slug: 'mirror-finish-mobile-detailing',
+      client: 'Mirror Finish Mobile Detailing',
+      industry: 'Mobile detailing · Founder-owned',
+      label: 'Gray Matter founder\u2019s own business',
+      problem: 'The only website was a one-page Square template still showing a San Francisco address, a 555 phone number and placeholder hours, so customers could not tell where the business worked or what anything cost.',
+      goal: 'Let a car owner in the River Region see their price and book a mobile detail without calling.',
+      before: ['Square template page with placeholder address, phone and hours', 'Prices only inside the booking widget or on social posts', 'No service-area information'],
+      built: ['Mobile-first marketing site', 'Instant price check by town and vehicle', 'Five-step booking flow with live totals', 'Service area for eight River Region towns', 'Text and call buttons on every screen'],
+      after: ['Real service area, phone and packages on one fast page', 'Customers see a price for their vehicle before booking'],
+      result: 'Live at mirrorfinishmgm.com. Customers get a price for their own vehicle before they book. Online payment is not switched on yet.',
+      services: ['business-websites', 'workflow-automation'],
+      image: 'assets/gray-matter/portfolio/gm-case-mirror-finish.jpg',
+      imageAlt: 'Mirror Finish Mobile Detailing homepage with a wheel being washed and a get-your-price form',
+      link: 'https://mirrorfinishmgm.com/',
+      testimonial: null
+    },
+    {
+      slug: 'barbershop-booking-concept',
+      client: '36 Chambers Barbershop',
+      industry: 'Barbershop · Concept build',
+      label: 'Concept build, not a paying client',
+      problem: 'A barbershop that books by phone loses chairs whenever the barber is mid-cut and cannot answer.',
+      goal: 'Show what a barbershop site with real online booking looks like before a shop commits.',
+      before: ['Booking by phone or walk-in only'],
+      built: ['Landing page with services, prices, barbers and hours', 'Online booking app with an admin dashboard', 'Accessible, mobile-first layout'],
+      after: ['Customers pick a service and a time online', 'The owner sees and manages bookings in one place'],
+      result: 'A working demonstration Gray Matter uses to show barbershops the booking flow. Photos are licensed stock images.',
+      services: ['business-websites', 'workflow-automation'],
+      image: 'assets/gray-matter/portfolio/gm-case-barbershop-concept.jpg',
+      imageAlt: 'Barbershop concept homepage with a barber trimming a beard and Book Appointment button',
+      link: 'https://wglewis0721.github.io/36Chambers-Barbershop/',
+      testimonial: null
+    }
+  ];
 
   /* --- WEBSITE PACKAGES -----------------------------------------
      Mirrors the published pricing on pricing.html. Prices are the
