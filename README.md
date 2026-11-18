@@ -185,3 +185,9 @@ Reusable [Listening Room-derived build practices](app-design/CASE_STUDY_LISTENIN
 ## Internal operations (not part of the website)
 
 **[ops/](ops/README.md)** is Gray Matter's internal operating system: a marketing content engine with a Muse posting queue, a lead intelligence system with morning and afternoon outreach campaigns, and a delivery factory with nine service starter kits and a quote-to-handoff template set. Nothing in `ops/` is linked from the site. Lead and client data are kept out of this public repository by design. The AI video pipeline notes formerly in `ai-video-unified` now live in [ops/marketing/video/](ops/marketing/video/README.md).
+
+## Essential Agency Starter Kit (Haiku → Fable)
+
+Start with the [Essential Agency Starter Kit](docs/agency-ops/ESSENTIAL_AGENCY_STARTER_KIT.md) for the lean client journey (discovery → quote → approval → delivery → invoice → handoff). Haiku should then follow the [Foundation Handoff](docs/agency-ops/HAIKU_FOUNDATION_HANDOFF.md) to inventory existing assets and prepare only what is missing for Fable. Documentation-only; the live website and production integrations stay unchanged.
+
+The working tools for that journey (quotes, invoices, starter kits, lead outreach) live in [ops/](ops/README.md); `docs/agency-ops/` holds the earlier planning notes.
