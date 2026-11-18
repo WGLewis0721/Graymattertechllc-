@@ -1,5 +1,7 @@
 # Content repository formats
 
+Caption ranking rules: `CAPTION_RULES.md`.
+
 Everything is one Markdown file with flat `key: value` front matter. No nested
 YAML. Validate with `python3 ops/tools/content.py validate`.
 
@@ -15,9 +17,10 @@ topic: T03                  # key in data/pillars.json topics
 service: workflow-automation  # Gray Matter service slug
 industry: barbers-salons    # industry slug from js/data.js, or any
 format: scenario            # scenario | checklist | question | myth | before-after | tip
+keyword: online booking barbershop   # search phrase; its words must appear in the caption
+question:                   # optional: a real question about their experience, ends with '?'
 hook: The first line of the post, repeated exactly as the body's first line.
 cta: fit-check              # key in data/ctas.json
-cta_question:               # only when cta is comment
 image: assets/gray-matter/social/gm-social-workflow-automation-square.png
 hashtags: #GrayMatter #MontgomeryAL #SmallBusiness
 created: 2026-11-16

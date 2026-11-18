@@ -3,9 +3,12 @@
   "name": "Technology Checkup Starter Kit",
   "service": "business-technology-checkup",
   "default_lines": [
-    {"item": "business-technology-checkup", "qty": 1}
+    {
+      "item": "business-technology-checkup",
+      "qty": 1
+    }
   ],
-  "timeline": "Confirmed after a quick fit check",
+  "timeline": "One 90-minute session plus a written plan",
   "reuses": [
     "services/business-technology-checkup.html",
     "services/business-security.html",
