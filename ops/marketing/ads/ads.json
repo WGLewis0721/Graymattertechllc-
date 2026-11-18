@@ -1,0 +1,205 @@
+{
+  "_doc": "Ad and flier copy. Every claim comes from js/data.js (service problem/outcome/helps) or pricing.html. Render with: node ops/marketing/ads/render.js",
+  "contact": {
+    "site": "graymatterdigitalsolutions.com",
+    "phone": "(334) 652-2601",
+    "place": "Montgomery, Alabama",
+    "place_short": "Montgomery, AL"
+  },
+  "sizes": {
+    "square": [
+      1200,
+      1200
+    ],
+    "portrait": [
+      1080,
+      1350
+    ],
+    "landscape": [
+      1200,
+      627
+    ],
+    "story": [
+      1080,
+      1920
+    ]
+  },
+  "ads": [
+    {
+      "id": "checkup-349",
+      "eyebrow": "Start here",
+      "problem": "Not sure what technology your business actually needs?",
+      "offer": "Business Technology Checkup",
+      "price": "$349 flat",
+      "points": [
+        "One 90-minute session plus a written plan",
+        "Every area marked Working, At risk, or Fix first",
+        "Credited toward any project booked within 30 days"
+      ],
+      "art": "assets/gray-matter/services/gm-service-tech-checkup.svg",
+      "accent": "gold"
+    },
+    {
+      "id": "barbers-booking",
+      "eyebrow": "For barbers & salons",
+      "problem": "Can new clients book a chair without calling you mid-cut?",
+      "offer": "Business Site with online booking",
+      "price": "From $1,500",
+      "points": [
+        "Services and prices customers can see",
+        "Book an appointment without a phone call",
+        "Free 10-minute check of how clients find you"
+      ],
+      "art": "assets/gray-matter/services/gm-service-business-websites.svg",
+      "accent": "mint"
+    },
+    {
+      "id": "detailers-booking",
+      "eyebrow": "For auto detailers",
+      "problem": "Hands full of wax while the phone rings?",
+      "offer": "Business Site with online booking",
+      "price": "From $1,500",
+      "points": [
+        "Packages and prices customers can see",
+        "Customers book a detail without calling",
+        "Free 10-minute check of how customers find you"
+      ],
+      "art": "assets/gray-matter/services/gm-service-business-websites.svg",
+      "accent": "mint"
+    },
+    {
+      "id": "business-security",
+      "eyebrow": "Business Security",
+      "problem": "“I’m not sure who still has access to my business.”",
+      "offer": "Lock down the accounts, devices, and information that matter.",
+      "price": "",
+      "points": [
+        "Remove access people shouldn’t have",
+        "Stop shared passwords",
+        "Protect business email"
+      ],
+      "art": "assets/gray-matter/services/gm-service-business-security.svg",
+      "accent": "coral"
+    },
+    {
+      "id": "backup-recovery",
+      "eyebrow": "Backup & Recovery",
+      "problem": "“Everything important lives on one computer.”",
+      "offer": "Keep a protected copy of what your business can’t afford to lose.",
+      "price": "",
+      "points": [
+        "Protect customer records",
+        "Protect contracts and photos",
+        "Recover after a device fails"
+      ],
+      "art": "assets/gray-matter/services/gm-service-backup-recovery.svg",
+      "accent": "mint"
+    },
+    {
+      "id": "work-from-anywhere",
+      "eyebrow": "Work From Anywhere",
+      "problem": "“My business only works from one computer.”",
+      "offer": "Reach your files, email, and tools from the office, home, or the road.",
+      "price": "",
+      "points": [
+        "Get to your files anywhere",
+        "Work securely off-site",
+        "Stop depending on one machine"
+      ],
+      "art": "assets/gray-matter/services/gm-service-work-anywhere.svg",
+      "accent": "mint"
+    },
+    {
+      "id": "cost-cleanup",
+      "eyebrow": "Technology Cost Cleanup",
+      "problem": "“I’m paying for things nobody uses.”",
+      "offer": "See what you’re paying for, and stop paying for what you don’t use.",
+      "price": "",
+      "points": [
+        "List every subscription",
+        "Find duplicates",
+        "Close old accounts"
+      ],
+      "art": "assets/gray-matter/services/gm-service-cost-cleanup.svg",
+      "accent": "gold"
+    },
+    {
+      "id": "process-documentation",
+      "eyebrow": "Process & Documentation",
+      "problem": "“Everything important is in someone’s head.”",
+      "offer": "Turn scattered procedures into one system people can actually use.",
+      "price": "",
+      "points": [
+        "Train new people faster",
+        "Delegate without re-explaining",
+        "Stop depending on one person"
+      ],
+      "art": "assets/gray-matter/services/gm-service-technology-partner.svg",
+      "accent": "mint"
+    },
+    {
+      "id": "opportunity-finder",
+      "eyebrow": "Business Opportunity Finder",
+      "problem": "“I don’t know who to call next.”",
+      "offer": "Get a researched list of businesses and opportunities worth pursuing.",
+      "price": "",
+      "points": [
+        "Target the right businesses",
+        "Focus on your service area",
+        "Know who to contact"
+      ],
+      "art": "assets/gray-matter/services/gm-service-opportunity-finder.svg",
+      "accent": "gold"
+    }
+  ],
+  "fliers": [
+    {
+      "id": "flier-barbers",
+      "audience": "barbers",
+      "eyebrow": "For Montgomery barbers & salons",
+      "headline": "Can new clients book a chair without calling you mid-cut?",
+      "lede": "Most clients look you up on their phone first. If they can’t see your services, prices, and an open time, they book the shop that shows them.",
+      "qr": "https://graymatterdigitalsolutions.com/?utm_source=flier&utm_medium=print&utm_campaign=barbers#build-my-plan"
+    },
+    {
+      "id": "flier-detailers",
+      "audience": "detailers",
+      "eyebrow": "For River Region auto detailers",
+      "headline": "Hands full of wax while the phone rings?",
+      "lede": "Customers want to see your packages, a price for their vehicle, and an open slot. Give them that, and the booking happens while you work.",
+      "qr": "https://graymatterdigitalsolutions.com/?utm_source=flier&utm_medium=print&utm_campaign=detailers#build-my-plan"
+    }
+  ],
+  "ladder": [
+    {
+      "step": "Free",
+      "name": "10-minute presence check",
+      "detail": "How customers find and book you today, in five plain lines."
+    },
+    {
+      "step": "$349 flat",
+      "name": "Business Technology Checkup",
+      "detail": "90-minute session plus a written plan. Credited toward a project within 30 days."
+    },
+    {
+      "step": "From $1,500",
+      "name": "Business Site",
+      "detail": "Up to 5 pages, online booking, services and pricing, photo gallery."
+    },
+    {
+      "step": "From $750",
+      "name": "Essential Site",
+      "detail": "Up to 3 pages, mobile-friendly, contact form."
+    },
+    {
+      "step": "$149–$299/mo",
+      "name": "Monthly Maintenance",
+      "detail": "Updates, backups, and small changes, handled."
+    }
+  ],
+  "why": [
+    "Local to Montgomery. You deal with the person doing the work.",
+    "Published starting prices, confirmed in writing before work begins.",
+    "Your accounts are yours from day one. The site is yours once it is paid in full."
+  ]
+}
