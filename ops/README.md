@@ -70,7 +70,11 @@ automatically: you review every message and send it from your own inbox, DM or p
 5. **Balance and handoff.** `engage.py invoice <client-slug> balance`, then `HANDOFF.md` and `CLOSEOUT.md`.
 6. Mark the lead `won`: `leads.py update L0007 --status won`.
 
-`engage.py kits` lists every kit with its price and timeline. `engage.py status` lists open engagements.
+`engage.py kits` lists every kit with its price and timeline.
+
+**Hours from commit history:** `python3 ops/tools/git_hours.py <repo> --rate 150` groups commits into work sessions
+(commits under 2 hours apart = one session, plus 30 minutes before each session's first commit) and prices them.
+It counts only time between commits, so treat it as the floor of your time on a build, not the whole job. `engage.py status` lists open engagements.
 
 ## Marketing content
 
