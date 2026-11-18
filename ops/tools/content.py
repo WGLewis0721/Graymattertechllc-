@@ -21,7 +21,7 @@ MKT = ROOT / "ops" / "marketing"
 POSTS, RESEARCH, MUSE, INDEX = MKT / "posts", MKT / "research", MKT / "muse", MKT / "index"
 POSTED_LOG = MKT / "posted-log.csv"
 
-POST_FIELDS = ["id", "status", "platform", "pillar", "topic", "service", "industry",
+POST_FIELDS = ["id", "status", "platform", "pillar", "topic", "service", "industry", "keyword",
                "format", "hook", "cta", "image", "hashtags", "created"]
 BRIEF_FIELDS = ["id", "title", "pillar", "services", "audience", "researched"]
 BRIEF_SECTIONS = ["## The problem in the owner's words", "## What is actually going on",
@@ -31,6 +31,12 @@ BANNED = ["in today's digital", "game-changer", "game changer", "unlock", "lever
           "digital landscape", "are you tired of", "look no further", "it's no secret",
           "elevate", "supercharge", "robust", "empower", "fast-paced", "in this day and age"]
 BODY_WORDS = (45, 130)
+HOOK_MAX = 125  # observed mobile Feed fold before "See more"; see CAPTION_RULES.md
+# Meta demotes engagement bait: explicit asks for likes, shares, comments, tags or votes (CAPTION_RULES.md R2).
+BAIT = re.compile(r"\b(like (this|if)|share (this|if|with)|tag (a|someone|your|a friend)|comment (yes|below|if|\")"
+                  r"|type (yes|1|\")|drop a|smash|follow (us )?for|vote|tell us in the comments|let us know below)\b", re.I)
+CLICKBAIT = ["you won't believe", "this one trick", "the secret", "what happened next", "shocking",
+             "nobody tells you", "will blow your mind"]
 DUP_BODY, DUP_HOOK = 0.30, 0.60
 EMOJI = re.compile("[\U0001F300-\U0001FAFF☀-➿]")
 
@@ -126,8 +132,15 @@ def check_post(path, meta, body, cfg, ctas, services, industries):
         errs.append(f"unknown format '{meta['format']}'")
     if meta["cta"] not in ctas["ctas"]:
         errs.append(f"unknown cta '{meta['cta']}'")
-    if meta["cta"] == "comment" and not meta.get("cta_question", "").endswith("?"):
-        errs.append("cta 'comment' needs cta_question ending in '?'")
+    if len(meta["hook"]) > HOOK_MAX:
+        errs.append(f"hook is {len(meta['hook'])} characters; keep it within {HOOK_MAX} so it shows before 'See more'")
+    question = meta.get("question", "")
+    if question and (not question.endswith("?") or len(question) > 140):
+        errs.append("question must end with '?' and be 140 characters or fewer")
+    kw = [w for w in words(meta["keyword"]) if len(w) > 3]
+    missing = [w for w in kw if w not in words(body + " " + question)]
+    if not kw or missing:
+        errs.append(f"keyword words missing from the caption: {', '.join(missing) or meta['keyword']}")
     if not (ROOT / meta["image"]).is_file():
         errs.append(f"image not found: {meta['image']}")
     tags = meta["hashtags"].split()
@@ -143,7 +156,12 @@ def check_post(path, meta, body, cfg, ctas, services, industries):
     count = len(words(body))
     if not BODY_WORDS[0] <= count <= BODY_WORDS[1]:
         errs.append(f"body is {count} words, needs {BODY_WORDS[0]} to {BODY_WORDS[1]}")
-    low = body.lower()
+    low = (body + " " + question).lower()
+    if BAIT.search(low):
+        errs.append(f"engagement bait: '{BAIT.search(low).group(0)}' (Meta demotes it)")
+    for phrase in CLICKBAIT:
+        if phrase in low:
+            errs.append(f"clickbait phrase '{phrase}'")
     for phrase in BANNED:
         if phrase in low:
             errs.append(f"banned phrase '{phrase}'")
@@ -268,10 +286,18 @@ def search(args):
 
 
 def caption(meta, body, ctas):
+    """Facebook and Instagram text for one post. Order: body, question, CTA, hashtags."""
     cta = ctas["ctas"][meta["cta"]]
     cta = cta.replace("{service_url}", f"{ctas['site']}/services/{meta['service']}.html")
-    cta = cta.replace("{question}", meta.get("cta_question", ""))
-    return body, cta, meta["hashtags"]
+    question = meta.get("question", "")
+    ig_cta = ctas["instagram_ctas"].get(meta["cta"], ctas["instagram_ctas"]["_default"])
+    tags = meta["hashtags"].split()
+    ig_tags = list(dict.fromkeys(tags + ctas["base_hashtags"]))[:5]
+    parts = [body] + ([question] if question else [])
+    fb = "\n\n".join(parts + [cta, " ".join(tags)])
+    ig = "\n\n".join(parts + [ig_cta, " ".join(ig_tags)])
+    return {"body": body, "question": question, "cta": cta, "hashtags": " ".join(tags),
+            "ig_cta": ig_cta, "ig_hashtags": " ".join(ig_tags), "facebook": fb, "instagram": ig}
 
 
 def pick_queue(posts, done, days, include_drafts):
@@ -281,7 +307,9 @@ def pick_queue(posts, done, days, include_drafts):
     by_pillar = {}
     for item in pool:
         by_pillar.setdefault(item[0]["pillar"], []).append(item)
-    order, queue, used_topics = sorted(by_pillar), [], []
+    lead = ["grow", "save-time", "protect", "get-it-handled", "save-money"]  # GTM: lead with getting customers
+    order = sorted(by_pillar, key=lambda k: (lead.index(k) if k in lead else len(lead), k))
+    queue, used_topics = [], []
     focus = set(load_json("pillars.json").get("focus_industries", []))
     i = 0
     while len(queue) < days and any(by_pillar.values()):
@@ -311,41 +339,46 @@ def export_muse(args):
     state = ("APPROVAL QUEUE. Contains drafts the owner has not approved. Do not publish."
              if unapproved else "Approved by the owner in GitHub. Confirm schedule before publishing.")
     items, caps = [], [
-        "# GRAY MATTER — FACEBOOK DAILY CAPTIONS", "",
+        "# GRAY MATTER — FACEBOOK & INSTAGRAM DAILY CAPTIONS", "",
         f"**Status:** {state}  ",
         "**Source of truth:** GitHub `ops/marketing/posts/` (this file is generated; do not edit it here).  ",
         f"**Sequence:** Day 1 through Day {len(queue)}, one post per day starting {start:%a %b %d, %Y}. "
         "Dates are suggestions, not a scheduled automation.", "",
-        "## Platform CTA rules", "",
-        "- **Facebook:** post the caption, then the Facebook CTA as its own paragraph, then the hashtags.",
-        "- Use the caption exactly as written. Do not add statistics, prices, claims or emoji.", ""]
+        "## Platform rules", "",
+        "- **Facebook:** post the **Facebook text** exactly as written. The link in it is meant to be clickable.",
+        "- **Instagram (feed):** post the **Instagram text**. Use it only after confirming the Instagram bio link "
+        "opens https://graymatterdigitalsolutions.com; if it does not, skip Instagram for that day and report it.",
+        "- Use the text exactly as written. Do not add statistics, prices, claims, emoji, or requests to like, "
+        "share, tag or comment (Meta reduces distribution of engagement bait).", ""]
     for n, (meta, body) in enumerate(queue, 1):
         day = start + dt.timedelta(days=n - 1)
-        text, cta, tags = caption(meta, body, ctas)
+        c = caption(meta, body, ctas)
         image = Path(meta["image"]).name
         items.append({"day": n, "date": day.isoformat(), "id": meta["id"], "status": meta["status"],
-                      "platform": "facebook", "pillar": meta["pillar"], "topic": meta["topic"],
-                      "image": image, "image_repo_path": meta["image"], "caption": text,
-                      "cta": cta, "hashtags": tags,
-                      "full_text": f"{text}\n\n{cta}\n\n{tags}"})
+                      "platforms": ["facebook", "instagram"], "pillar": meta["pillar"], "topic": meta["topic"],
+                      "keyword": meta["keyword"], "image": image, "image_repo_path": meta["image"],
+                      "caption": c["body"], "question": c["question"], "cta": c["cta"],
+                      "hashtags": c["hashtags"], "full_text": c["facebook"],
+                      "instagram_text": c["instagram"]})
         caps += ["---", "", f"## Day {n} — {meta['hook']}", "",
                  f"**Post ID:** `{meta['id']}`  ", f"**Image:** `{image}`  ",
                  f"**Suggested date:** {day:%a %b %d, %Y}  ",
                  f"**Approval:** {'approved' if meta['status'] != 'draft' else 'NOT YET APPROVED'}", "",
-                 "### Post caption", "", text, "",
-                 f"**Facebook CTA:** {cta}  ", f"**Hashtags:** {tags}", ""]
+                 "### Facebook text", "", "```", c["facebook"], "```", "",
+                 "### Instagram text", "", "```", c["instagram"], "```", ""]
     images = sorted({i["image"] for i in items})
     flow = [
         "# GRAY MATTER — MUSE SOCIAL POSTING WORKFLOW", "",
         f"**Status:** {state}  ",
-        "**Owner:** Gray Matter LLC. **Channel:** the Gray Matter Facebook page.  ",
+        "**Owner:** Gray Matter LLC. **Channels:** the Gray Matter Facebook page and Instagram profile.  ",
         "**Captions:** `README_DAILY_CAPTIONS.md` in this folder. **Machine-readable copy:** `queue.json`.", "",
         "## Purpose", "",
-        f"Post {len(queue)} Facebook posts, one per day, in Day order. Each post pairs one caption with one "
+        f"Post {len(queue)} posts, one per day, in Day order, to Facebook and Instagram. Each post pairs one caption with one "
         "approved Gray Matter image from this folder. The goal is inquiries from small-business owners "
         "through the Gray Matter website.", "",
         "## Required setup", "",
-        "1. Confirm Muse is connected to the Gray Matter Facebook page, not a personal profile or another page.",
+        "1. Confirm Muse is connected to the Gray Matter Facebook page and Instagram profile, not a personal profile.",
+        "1a. Confirm the Instagram bio link opens https://graymatterdigitalsolutions.com before using any Instagram text.",
         "2. Confirm every image listed below is present in this folder.",
         "3. Confirm the start date, daily time and time zone (America/Chicago) with the owner.",
         "4. Show the owner a preview of every post (image, caption, date) and get approval before "
@@ -354,7 +387,9 @@ def export_muse(args):
         "## Daily workflow", "",
         "1. Check the Facebook page for that day's Post ID or caption. Never double-post.",
         "2. Use the matching image unchanged: no cropping, filters, AI edits or new logos.",
-        "3. Publish caption, then CTA paragraph, then hashtags, exactly as written.",
+        "3. Publish the platform's text block exactly as written (Facebook text on Facebook, Instagram text on Instagram).",
+        "3a. Best window: 11:00-13:00 or 18:00-20:00 America/Chicago, when owners check their phones. Keep the same time each day.",
+        "3b. Reply to every comment within the same day, in a full sentence. Conversations are a ranking signal.",
         "4. Record Post ID, date and time, post URL and outcome. Report failures; do not blindly retry.",
         "5. Send the record back so `ops/marketing/posted-log.csv` can be updated in GitHub. "
         "Posts in that log are never queued again.", "",

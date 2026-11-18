@@ -55,10 +55,27 @@ plus maintenance is $1,500 + 12 × $149 to $299 = **$3,288 to $5,088 in the firs
 year**. Maintenance is the lever: 10 maintained clients bring $1,490 to $2,990
 in every month.
 
-**Decision for the owner:** set a fixed public price for the Business Technology
-Checkup. A known price makes it a second door opener for owners outside the
-beachhead. Until then it stays fit-check priced and the free presence check does
-the job.
+**Business Technology Checkup: $349 flat** (decided 2026-11-18, published on
+`pricing.html`). It covers one 90-minute session plus a written, prioritized plan,
+and is credited toward any project booked within 30 days. It is the second door
+opener, for owners outside the beachhead or with broader problems.
+
+How the price was set, from comparable published offers:
+
+| Comparable | Offer | Price |
+|---|---|---|
+| Eclipse Online (Metro Detroit IT firm) | 120-minute review, written report, 30-minute walkthrough, up to 15 computers | $500 flat [a] |
+| Typical one-time IT assessment (IT consulting pricing guide) | broader assessment | $1,500 – $5,000 [b] |
+| Independent IT consultants, hourly | newer consultants start near $100/hour; typical $150 – $350/hour | [b] |
+
+A solo operator in the Montgomery market, selling to owner-operated blue-collar
+businesses, should come in **below the $500 regional-firm benchmark**. About
+3.5 hours of work (session, report and walkthrough) at roughly $100/hour is
+$349. The 30-day credit removes the "paying twice" objection and turns the
+Checkup into a step toward a project.
+
+Sources: [a] https://eclipse-online.com/it-services/business-technology-assessment/ ·
+[b] https://corsicatech.com/blog/it-consulting-pricing-cost/ (both accessed 2026-11-18).
 
 ## 4. The message
 
@@ -122,14 +139,18 @@ segment. If calls don't close, revisit the offer and price presentation.
 
 | Weeks | Focus | Done when |
 |---|---|---|
-| 1–2 | **Proof and setup.** Turn two finished projects into case studies (written client permission required; `js/data.js` `caseStudies` is empty today). Complete the Gray Matter Google Business Profile. Approve the first two weeks of posts. Research the first 50 beachhead leads. | 2 case studies drafted, 50 leads scored, Muse queue approved |
+| 1–2 | **Proof and setup.** Two case studies are published (done 2026-11-18). Complete the Gray Matter Google Business Profile. Approve the first two weeks of posts. Research the first 50 beachhead leads. | 2 case studies drafted, 50 leads scored, Muse queue approved |
 | 3–6 | **Run the loop.** Morning and afternoon campaigns every weekday, two visits a week, five posts a week. | 4 weeks of activity logged; first review on 2026-12-15 |
 | 7–10 | **Convert and deliver.** Quote with `engage.py`, deliver from the website kit, attach maintenance to every launch. | First beachhead client launched and on maintenance |
 | 11–13 | **Review and widen.** Read the metrics. If 3+ beachhead clients have launched, open cleaning and contractors for outbound. Ask every client for a referral and a review. | 90-day review written; segments confirmed or changed |
 
-## 9. Open decisions (owner)
+## 9. Decisions (resolved 2026-11-18)
 
-1. A fixed public price for the Technology Checkup (section 3).
-2. Permission to publish two case studies, and which projects.
-3. Whether in-person visits fit your schedule. If not, move those two
-   weekly slots to extra outreach.
+1. Technology Checkup: $349 flat, credited within 30 days (section 3).
+2. Case studies published on `portfolio.html`: **Mirror Finish Mobile
+   Detailing** (the founder's own business, labeled as such) and a
+   **barbershop booking concept** (labeled as a concept build). Robinson &
+   Associates and Alaska Northstar were left out: they are third-party firms,
+   and one proposal is marked confidential. Add them only with written client
+   permission.
+3. Two in-person visits a week: confirmed.

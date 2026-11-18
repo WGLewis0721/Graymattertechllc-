@@ -311,11 +311,14 @@ These need a decision from the business before they can appear on the site:
 1. **Approved prices and timelines** for: Opportunity Finder, Workflow
    Time-Saver, Business Process System, Work From Anywhere Setup,
    Technology Cost Cleanup, Business Security Setup, Backup & Recovery
-   Setup, Complete Protection Package, Business Technology Checkup, and
-   Technology Partner. Until then all ten display the fit-check wording.
+   Setup, Complete Protection Package, and Technology Partner. Until then
+   these nine display the fit-check wording. (Business Technology Checkup:
+   $349 flat, approved 2026-11-18; see `ops/GTM.md` §3.)
 2. **Real checkout or deposit links** for the two website plans, pasted
    into `GM_FUNNEL.checkout.links`.
-3. **Case studies** — `GM_DATA.caseStudies` is deliberately empty until
-   real, approved client work exists.
+3. **Case studies** — two published 2026-11-18 with the owner's approval:
+   Mirror Finish Mobile Detailing (the founder's own business) and a
+   barbershop concept build, labeled as a concept. Add client work only
+   with written client permission.
 4. **Low-ticket digital products** — `GM_DATA.products` is deliberately
    empty until a real price and deliverable exist.

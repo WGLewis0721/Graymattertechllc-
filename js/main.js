@@ -598,11 +598,15 @@ function gmEscape(str) {
       '<div class="cs-body">' +
         '<span class="cs-industry">' + gmEscape(cs.industry || '') + '</span>' +
         '<h3>' + gmEscape(cs.client || '') + '</h3>' +
+        (cs.label ? '<p class="cs-label">' + gmEscape(cs.label) + '</p>' : '') +
         '<dl>' +
           '<div><dt>Problem</dt><dd>' + gmEscape(cs.problem || '') + '</dd></div>' +
           '<div><dt>Built</dt><dd>' + (cs.built || []).map(gmEscape).join(', ') + '</dd></div>' +
           '<div><dt>Result</dt><dd class="cs-result">' + gmEscape(cs.result || '') + '</dd></div>' +
         '</dl>' +
+        (/^https:\/\//.test(cs.link || '')
+          ? '<a class="cs-link" href="' + gmEscape(cs.link) + '" target="_blank" rel="noopener">See it live <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>'
+          : '') +
       '</div>' +
     '</article>'
   )).join('');

@@ -6,9 +6,23 @@
     "service": "See how it works: {service_url}",
     "checkup": "Not sure where to start? Start with a Business Technology Checkup: https://graymatterdigitalsolutions.com/services/business-technology-checkup.html",
     "call": "Call Gray Matter at (334) 652-2601.",
-    "comment": "{question} Tell us in the comments.",
     "website-pricing": "Website plans start at $750. See what each one includes: https://graymatterdigitalsolutions.com/pricing.html"
   },
-  "approved_prices": ["$750", "$1,500", "$3,000"],
-  "base_hashtags": ["#GrayMatter", "#MontgomeryAL", "#SmallBusiness"]
+  "approved_prices": [
+    "$750",
+    "$1,500",
+    "$3,000"
+  ],
+  "base_hashtags": [
+    "#GrayMatter",
+    "#MontgomeryAL",
+    "#SmallBusiness"
+  ],
+  "instagram_ctas": {
+    "_default": "Tap the link in our bio to build your plan.",
+    "call": "Call Gray Matter at (334) 652-2601.",
+    "website-pricing": "Website plans start at $750. Pricing is at the link in our bio.",
+    "checkup": "Not sure where to start? Book a Business Technology Checkup at the link in our bio.",
+    "fit-check": "Tell us what needs to change at the link in our bio. We figure out the technology."
+  }
 }

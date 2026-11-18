@@ -32,6 +32,8 @@ topic: T08
 service: backup-recovery
 industry: contractors
 format: tip
+keyword: estimate office laptop
+question: {question}
 hook: {hook}
 cta: fit-check
 image: assets/gray-matter/social/gm-social-digital-solutions-square.png
@@ -64,8 +66,8 @@ class ContentEngine(unittest.TestCase):
         (content.POSTS, content.RESEARCH, content.MUSE, content.INDEX, content.POSTED_LOG) = self.saved
         shutil.rmtree(self.tmp)
 
-    def post(self, pid, hook, body=BODY):
-        (content.POSTS / f"{pid}.md").write_text(GOOD_POST.format(id=pid, hook=hook, body=body))
+    def post(self, pid, hook, body=BODY, question=""):
+        (content.POSTS / f"{pid}.md").write_text(GOOD_POST.format(id=pid, hook=hook, body=body, question=question))
 
     def test_good_post_passes(self):
         self.post("gm-fb-9001", "The office laptop holds every estimate you have ever sent.")
@@ -77,6 +79,28 @@ class ContentEngine(unittest.TestCase):
         errors = " ".join(content.validate(quiet=True))
         for expected in ("in today's digital", "unlock", "percentages", "$999"):
             self.assertIn(expected, errors)
+
+    def test_rejects_engagement_bait_and_long_hook(self):
+        self.post("gm-fb-9001", "The office laptop holds every estimate you have ever sent. " * 3,
+                  question="Like this if your files live on one laptop?")
+        errors = " ".join(content.validate(quiet=True))
+        self.assertIn("engagement bait", errors)
+        self.assertIn("characters", errors)
+
+    def test_exports_facebook_and_instagram_text(self):
+        self.post("gm-fb-9001", "The office laptop holds every estimate you have ever sent.",
+                  question="Where does your newest estimate live right now?")
+        content.set_status(["gm-fb-9001"], "approved")
+
+        class A:
+            start, days, include_drafts = "2026-11-23", 7, False
+        content.export_muse(A)
+        p = json.loads((content.MUSE / "queue.json").read_text())["posts"][0]
+        self.assertIn("Where does your newest estimate live", p["full_text"])
+        self.assertIn("https://", p["full_text"])
+        self.assertNotIn("https://", p["instagram_text"])
+        self.assertIn("bio", p["instagram_text"])
+        self.assertLessEqual(p["instagram_text"].split("\n")[-1].count("#"), 5)
 
     def test_rejects_near_duplicate(self):
         self.post("gm-fb-9001", "The office laptop holds every estimate you have ever sent.")
@@ -94,7 +118,7 @@ class ContentEngine(unittest.TestCase):
         content.export_muse(A)
         queue = json.loads((content.MUSE / "queue.json").read_text())
         self.assertTrue(queue["approved"])
-        self.assertIn("Facebook CTA", (content.MUSE / "README_DAILY_CAPTIONS.md").read_text())
+        self.assertIn("### Instagram text", (content.MUSE / "README_DAILY_CAPTIONS.md").read_text())
         self.assertIn("graymatterdigitalsolutions.com", queue["posts"][0]["full_text"])
 
         class P:

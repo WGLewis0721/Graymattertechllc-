@@ -88,6 +88,8 @@ def build_lines(k, items, adds, prices):
         listed = entry["price"]
         if line["item"] in prices:
             amount = prices[line["item"]]
+            if isinstance(listed, (int, float)) and entry.get("price_type") == "flat" and amount != listed:
+                sys.exit(f"{line['item']} is a published flat price of {money(listed)}; it cannot be quoted at {money(amount)}")
             if isinstance(listed, (int, float)) and amount < listed and entry.get("price_type") == "from":
                 sys.exit(f"{line['item']} starts at {money(listed)}; {money(amount)} is below the published price")
             if isinstance(listed, list) and not listed[0] <= amount <= listed[1]:

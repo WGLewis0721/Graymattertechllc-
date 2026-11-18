@@ -542,9 +542,9 @@
       service: 'business-technology-checkup',
       serviceName: 'Business Technology Checkup',
       detailUrl: 'services/business-technology-checkup.html',
-      price: FIT_PRICE,
-      timeline: FIT_TIME,
-      includes: ['Review of your software, systems, and accounts', 'Security, backup, and cost gaps identified', 'A prioritized plan you are free to act on yourself'],
+      price: { display: '$349 flat', status: 'approved' },
+      timeline: { display: 'One 90-minute session plus a written plan', status: 'approved' },
+      includes: ['Review of your software, systems, and accounts', 'Security, backup, and cost gaps identified', 'A prioritized plan you are free to act on yourself', 'The $349 is credited toward a project booked within 30 days'],
       excludes: 'This is the review and the plan. There is no obligation to have us do the work afterwards.',
       options: [],
       checkoutMode: 'fit-check'
