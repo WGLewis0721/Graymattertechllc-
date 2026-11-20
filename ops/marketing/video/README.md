@@ -67,6 +67,19 @@ npm install
 
 See `docs/workflow.md` and `docs/recommended-repos.md` for details.
 
+## Reel engine (built, working)
+
+A small deterministic renderer turns a validated post into a Reel. No timeline editor, no subscription.
+
+```bash
+python3 ops/tools/content.py reel-spec gm-fb-0001 > /tmp/spec.json
+node ops/marketing/video/engine/reel.js --spec /tmp/spec.json --check     # determinism + layout test
+node ops/marketing/video/engine/reel.js --spec /tmp/spec.json --format 9x16
+python3 ops/marketing/video/engine/review.py ops/marketing/video/engine/out/gm-fb-0001-9x16.mp4
+```
+
+How it works and what is human-checked: `docs/seek-engine.md`.
+
 ## License
 
 Private business use. Respect upstream licenses and provider ToS for generated content.

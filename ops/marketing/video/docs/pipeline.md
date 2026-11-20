@@ -26,4 +26,4 @@ Poll or webhook for results. Store clips locally or in S3.
 
 - Kie.ai: pay-per-second, credits never expire, best for volume.
 - Higgsfield: subscription + credits for interactive/creative work; API separate.
-- Remotion: free for open source / self-hosted render; paid for cloud if needed.
+- Remotion: free for individuals and companies of up to 3 people (everyone counts, contractors included); beyond that, paid licenses. Not needed for the Reel engine in `engine/`, which uses only Playwright + ffmpeg.
