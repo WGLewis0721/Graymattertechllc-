@@ -28,7 +28,7 @@ ops/
 │   ├── posts/             one file per Facebook post (draft → approved → posted)
 │   ├── index/             generated searchable index (md + json)
 │   ├── muse/              generated Muse hand-off folder
-│   └── video/             AI video pipeline notes (folded in from ai-video-unified)
+│   └── video/             video notes + engine/ (post → Reel renderer and review tool)
 ├── leads/              B. Lead Intelligence System
 │   ├── DISCOVERY.md       where to find leads, what to capture, rules
 │   ├── scoring.json       signals, points, tiers, cadence, campaign windows

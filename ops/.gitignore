@@ -3,3 +3,4 @@ __pycache__/
 # This repository is public. These never get committed.
 leads/private/
 delivery/private/
+marketing/video/engine/out/

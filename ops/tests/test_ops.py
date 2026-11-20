@@ -102,6 +102,20 @@ class ContentEngine(unittest.TestCase):
         self.assertIn("bio", p["instagram_text"])
         self.assertLessEqual(p["instagram_text"].split("\n")[-1].count("#"), 5)
 
+    def test_reel_spec_from_valid_post_only(self):
+        self.post("gm-fb-9001", "The office laptop holds every estimate you have ever sent.")
+        spec = content.reel_spec("gm-fb-9001")
+        self.assertEqual([s["id"] for s in spec["scenes"]], ["hook", "answer", "cta"])
+        self.assertEqual(spec["scenes"][0]["text"], "The office laptop holds every estimate you have ever sent.")
+        self.assertEqual(spec["scenes"][0]["start"], 0)
+        for a, b in zip(spec["scenes"], spec["scenes"][1:]):
+            self.assertEqual(a["end"], b["start"])
+        self.assertEqual(spec["scenes"][-1]["end"], spec["duration"])
+        self.assertEqual(set(spec["formats"]), {"9x16", "1x1"})
+        self.post("gm-fb-9002", "In today's digital world backups matter.")
+        with self.assertRaises(SystemExit):
+            content.reel_spec("gm-fb-9002")
+
     def test_rejects_near_duplicate(self):
         self.post("gm-fb-9001", "The office laptop holds every estimate you have ever sent.")
         self.post("gm-fb-9002", "Your truck cab is not a filing cabinet for paper invoices.")

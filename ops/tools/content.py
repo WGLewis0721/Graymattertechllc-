@@ -7,6 +7,7 @@
   python3 ops/tools/content.py export-muse --start 2026-11-23 --days 14 [--include-drafts]
   python3 ops/tools/content.py approve <id> [<id> ...]
   python3 ops/tools/content.py mark-posted <id> --date 2026-11-23 --url https://...
+  python3 ops/tools/content.py reel-spec <id>      # campaign data for a Reel (ops/marketing/video/engine)
 """
 import argparse
 import csv
@@ -422,6 +423,66 @@ def set_status(ids, status):
         print(f"{post_id} -> {status}")
 
 
+REEL_ACCENT = {"grow": "#B8E1D0", "save-time": "#B8E1D0", "save-money": "#F3C969",
+               "protect": "#E9785D", "get-it-handled": "#F3C969"}
+REEL_LOGO = "assets/gray-matter-media-package/brand/approved-reference/gm-logo-horizontal-approved.png"
+
+
+def _unescape_js(text):
+    text = re.sub(r"\\u([0-9a-fA-F]{4})", lambda m: chr(int(m.group(1), 16)), text)
+    return text.replace("\\'", "'")
+
+
+def service_copy():
+    """slug -> {name, outcome}: the approved service wording in js/data.js."""
+    js = (ROOT / "js" / "data.js").read_text(encoding="utf-8")
+    pat = (r"slug: '([a-z0-9-]+)',\s*name: '((?:[^'\\]|\\.)*)',\s*short: '(?:[^'\\]|\\.)*',"
+           r".*?outcome: '((?:[^'\\]|\\.)*)'")
+    return {m.group(1): {"name": _unescape_js(m.group(2)), "outcome": _unescape_js(m.group(3))}
+            for m in re.finditer(pat, js, re.S)}
+
+
+def _scene_len(text, lo, hi):
+    n = len(text.split())
+    return round(min(hi, max(lo, 0.9 + n * 0.12 + max(1.8, n / 3.0))), 2)
+
+
+def reel_spec(post_id):
+    """Campaign data for one Reel: the post's hook, the approved service outcome, the CTA.
+    Only a post that passes validation can become a Reel. No text is written here."""
+    path = POSTS / f"{post_id}.md"
+    if not path.exists():
+        sys.exit(f"no such post: {post_id}")
+    bad = [p for p in validate(quiet=True) if post_id in p]
+    if bad:
+        sys.exit("refusing: the post does not validate:\n" + "\n".join(bad))
+    meta, _ = parse(path)
+    svc = service_copy().get(meta["service"])
+    if not svc:
+        sys.exit(f"no approved wording for service {meta['service']} in js/data.js")
+    contact = json.loads((MKT / "ads" / "ads.json").read_text(encoding="utf-8"))["contact"]
+    d_hook = _scene_len(meta["hook"], 4.0, 8.0)
+    d_ans = _scene_len(svc["outcome"], 3.6, 5.5)
+    d_cta = 3.6
+    return {
+        "id": post_id, "keyword": meta["keyword"], "fps": 30,
+        "duration": round(d_hook + d_ans + d_cta, 2),
+        "brand": {"ink": "#152238", "paper": "#F7F4ED", "blue": "#2F64D6", "mint": "#B8E1D0",
+                  "accent": REEL_ACCENT[meta["pillar"]]},
+        "logo": REEL_LOGO,
+        "formats": {"9x16": [1080, 1920], "1x1": [1080, 1080]},
+        "scenes": [
+            {"id": "hook", "type": "words", "start": 0, "end": d_hook, "text": meta["hook"], "stagger": 0.12},
+            {"id": "answer", "type": "line", "start": d_hook, "end": round(d_hook + d_ans, 2),
+             "kicker": svc["name"].upper(), "text": svc["outcome"]},
+            {"id": "cta", "type": "cta", "start": round(d_hook + d_ans, 2), "end": round(d_hook + d_ans + d_cta, 2),
+             "title": "Free 10-minute check", "sub": f"Text or call {contact['phone']}", "site": contact["site"]},
+        ],
+        "source": {"post": post_id, "service": meta["service"], "outcome_from": "js/data.js",
+                   "contact_from": "ops/marketing/ads/ads.json"},
+    }
+
+
 def mark_posted(args):
     new = not POSTED_LOG.exists()
     if args.id in posted_ids():
@@ -454,6 +515,8 @@ def main():
     m.add_argument("id")
     m.add_argument("--date", required=True)
     m.add_argument("--url", required=True)
+    r = sub.add_parser("reel-spec")
+    r.add_argument("id")
     args = ap.parse_args()
     if args.cmd == "validate":
         sys.exit(1 if validate() else 0)
@@ -467,6 +530,8 @@ def main():
         set_status(args.ids, "approved")
     elif args.cmd == "mark-posted":
         mark_posted(args)
+    elif args.cmd == "reel-spec":
+        print(json.dumps(reel_spec(args.id), indent=2, ensure_ascii=False))
 
 
 if __name__ == "__main__":
